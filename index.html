@@ -1,6 +1,379 @@
 <!DOCTYPE html>
-<html>
-  <body>
-    Vibium — Hello World
-  </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vibium – The fastest way to automate a browser</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0a0a0b;
+      --surface: rgba(0, 0, 0, 0.3);
+      --border: rgba(255, 255, 255, 0.15);
+      --text: #fafafa;
+      --text-muted: #71717a;
+      --accent: #FF6700;
+      --accent-glow: rgba(255, 103, 0, 0.15);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      background: url('images/background.png') no-repeat center center fixed;
+      background-size: cover;
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      overflow-x: hidden;
+    }
+
+    /* No overlay - clean background */
+    body::before {
+      display: none;
+    }
+
+    .container {
+      max-width: 580px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .logo {
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .logo img {
+      height: 40px;
+      width: auto;
+    }
+
+    h1 {
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      font-size: clamp(2.5rem, 8vw, 4rem);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.1s forwards;
+    }
+
+    h1 em {
+      font-style: normal;
+      color: #fff;
+    }
+
+    .subtitle {
+      font-size: 1.125rem;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.6;
+      margin-bottom: 3rem;
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.2s forwards;
+    }
+
+    /* Form styles */
+    .form-wrapper {
+      opacity: 0;
+      animation: fadeUp 0.8s ease 0.3s forwards;
+    }
+
+    .signup-form {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .input-wrapper {
+      flex: 1;
+      position: relative;
+    }
+
+    input[type="email"] {
+      width: 100%;
+      padding: 1rem 1.25rem;
+      font-size: 1rem;
+      font-family: inherit;
+      background: var(--surface);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      color: var(--text);
+      outline: none;
+      transition: all 0.2s ease;
+    }
+
+    input[type="email"]::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    input[type="email"]:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-glow);
+    }
+
+    button[type="submit"] {
+      padding: 1rem 1.75rem;
+      font-size: 1rem;
+      font-family: inherit;
+      font-weight: 500;
+      background: var(--text);
+      color: var(--bg);
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+
+    button[type="submit"]:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(250, 250, 250, 0.15);
+    }
+
+    button[type="submit"]:active {
+      transform: translateY(0);
+    }
+
+    button[type="submit"]:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .form-note {
+      font-size: 0.875rem;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Success state */
+    .success-message {
+      display: none;
+      padding: 1.25rem;
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 12px;
+      color: var(--text);
+      animation: fadeUp 0.4s ease;
+    }
+
+    .success-message.show {
+      display: block;
+    }
+
+    /* Error state */
+    .error-message {
+      display: none;
+      padding: 1rem;
+      background: rgba(239, 68, 68, 0.2);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      border-radius: 12px;
+      color: #fecaca;
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    /* Footer */
+    footer {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.875rem;
+    }
+
+    footer a {
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+
+    /* Animations */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 500px) {
+      .signup-form {
+        flex-direction: column;
+      }
+
+      button[type="submit"] {
+        width: 100%;
+      }
+
+      footer {
+        position: static;
+        margin-top: 4rem;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo"><img src="images/logo.png" alt="Vibium"></div>
+    
+    <h1>The fastest way to automate a browser</h1>
+    
+    <p class="subtitle">
+      Something new is coming. Wanna ride along? Subscribe for updates.
+    </p>
+
+    <div class="form-wrapper">
+      <div class="error-message" id="errorMessage"></div>
+      
+      <form class="signup-form" id="waitlistForm">
+        <div class="input-wrapper">
+          <input 
+            type="email" 
+            name="email" 
+            placeholder="Enter your email" 
+            required
+            autocomplete="email"
+          >
+        </div>
+        <button type="submit">Get Updates</button>
+      </form>
+      
+      <p class="form-note">Unsubscribe anytime.</p>
+      
+      <div class="success-message" id="successMessage">
+        🎉 You're in! We'll keep you posted.
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <a href="https://twitter.com/VibiumDev" target="_blank">Twitter</a>
+    <a href="https://github.com/vibiumdev" target="_blank">GitHub</a>
+    <a href="mailto:vibes@vibium.com">Contact</a>
+  </footer>
+
+  <script>
+    // ============================================
+    // LOOPS.SO CONFIGURATION
+    // ============================================
+    const LOOPS_FORM_ID = 'cmj0qy2u60s8s0y0icsxtqeqq';
+    
+    // Optional: Add your mailing list ID if you want to 
+    // automatically add subscribers to a specific list
+    const MAILING_LIST_ID = ''; // e.g., 'cly2xnjbn002z0mme68uog1wk'
+    // ============================================
+
+    const form = document.getElementById('waitlistForm');
+    const emailInput = form.querySelector('input[type="email"]');
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const email = emailInput.value.trim();
+      if (!email) return;
+
+      // Reset states
+      errorMessage.classList.remove('show');
+      successMessage.classList.remove('show');
+      
+      // Loading state
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Subscribing...';
+
+      try {
+        // Build form body
+        let formBody = `email=${encodeURIComponent(email)}`;
+        
+        // Add user group for tracking source
+        formBody += `&userGroup=${encodeURIComponent('Waitlist')}`;
+        
+        // Add mailing list if configured
+        if (MAILING_LIST_ID) {
+          formBody += `&mailingLists=${encodeURIComponent(MAILING_LIST_ID)}`;
+        }
+
+        const response = await fetch(
+          `https://app.loops.so/api/newsletter-form/${LOOPS_FORM_ID}`,
+          {
+            method: 'POST',
+            body: formBody,
+            headers: {
+              'Content-Type': 'application/x-www-form-urlencoded',
+            },
+          }
+        );
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          // Success
+          form.style.display = 'none';
+          document.querySelector('.form-note').style.display = 'none';
+          successMessage.classList.add('show');
+        } else if (data.message?.includes('already')) {
+          // Already subscribed
+          showError("You're already subscribed! We'll keep you posted.");
+        } else {
+          // Other error
+          showError(data.message || 'Something went wrong. Please try again.');
+        }
+      } catch (err) {
+        console.error('Form submission error:', err);
+        showError('Connection error. Please check your internet and try again.');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Get Updates';
+      }
+    });
+
+    function showError(message) {
+      errorMessage.textContent = message;
+      errorMessage.classList.add('show');
+    }
+
+    // Optional: Add keyboard shortcut (press Enter anywhere)
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && document.activeElement !== emailInput) {
+        emailInput.focus();
+      }
+    });
+  </script>
+</body>
 </html>
