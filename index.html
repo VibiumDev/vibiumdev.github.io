@@ -383,5 +383,15 @@
       }
     });
   </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.getElementById("signupForm");
+      if (!form) return;
+
+      form.addEventListener("submit", function () {
+        gtag('event', 'email_signup');
+      });
+    });
+  </script>
 </body>
 </html>
