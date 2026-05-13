@@ -35,7 +35,16 @@
 
     body {
       font-family: 'DM Sans', -apple-system, sans-serif;
-      background: url('images/background-3.png') no-repeat center center fixed;
+      background-color: var(--bg);
+      background-image: url('images/background-3.jpg');
+      background-image: image-set(
+        url('images/background-3.avif') type('image/avif'),
+        url('images/background-3.webp') type('image/webp'),
+        url('images/background-3.jpg') type('image/jpeg')
+      );
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-attachment: fixed;
       background-size: cover;
       color: var(--text);
       min-height: 100vh;
