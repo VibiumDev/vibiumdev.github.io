@@ -1,0 +1,8 @@
+# Generated outputs removed by `make clean`.
+# Paths are relative to the repository root.
+site/public/llms.txt
+site/public/llms-full.txt
+site/public/llms
+site/src/content/docs
+site/dist
+site/.astro

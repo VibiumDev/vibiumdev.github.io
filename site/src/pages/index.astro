@@ -1,0 +1,508 @@
+---
+import Favicons from '../components/Favicons.astro';
+import FontLinks from '../components/FontLinks.astro';
+import GoogleAnalytics from '../components/GoogleAnalytics.astro';
+import logo from '../assets/brand/logo-dark.webp';
+import backgroundAvif from '../assets/landing/background-3.avif';
+import backgroundJpg from '../assets/landing/background-3.jpg';
+import backgroundWebp from '../assets/landing/background-3.webp';
+
+const description =
+  'Vibium is the verification layer for coding agents, giving teams browser automation and evidence capture for AI-built software.';
+const siteUrl = Astro.site ?? Astro.url.origin;
+const canonicalUrl = new URL('/', siteUrl).toString();
+const backgroundStyle = [
+  `--landing-bg-avif: url("${backgroundAvif.src}")`,
+  `--landing-bg-webp: url("${backgroundWebp.src}")`,
+  `--landing-bg-jpg: url("${backgroundJpg.src}")`,
+].join('; ');
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      name: 'Vibium',
+      url: canonicalUrl,
+      description,
+      dateModified: new Date().toISOString().slice(0, 10),
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Vibium',
+          item: canonicalUrl,
+        },
+      ],
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vibium - The verification layer for coding agents</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" type="text/markdown" href="/llms/README.md" />
+    <meta property="og:title" content="Vibium" />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:site_name" content="Vibium" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <Favicons />
+    <FontLinks />
+    <GoogleAnalytics />
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
+  </head>
+  <body class="landing-body" style={backgroundStyle}>
+    <div class="landing-shell">
+      <nav class="topbar" aria-label="Primary">
+        <a class="brand-link" href="/" aria-label="Vibium home">
+          <img src={logo.src} alt="Vibium" width="1586" height="419" />
+        </a>
+        <div class="topbar-links">
+          <a href="/docs/">Docs</a>
+          <a href="https://github.com/VibiumDev/vibium">GitHub</a>
+        </div>
+      </nav>
+
+      <main class="hero">
+        <section class="hero-content" aria-labelledby="hero-title">
+          <h1 id="hero-title">The verification layer for coding agents</h1>
+          <p class="subtitle">Agents make it. We check it. Subscribe for updates.</p>
+
+          <div class="form-wrapper">
+            <h2 class="sr-only">Subscribe for Vibium updates</h2>
+            <p class="error-message" id="errorMessage" role="alert"></p>
+
+            <form class="signup-form" id="signupForm">
+              <div class="input-wrapper">
+                <label class="sr-only" for="email">Email address</label>
+                <input
+                  id="email"
+                  type="email"
+                  name="email"
+                  placeholder="Enter your email"
+                  required
+                  autocomplete="email"
+                />
+              </div>
+              <button type="submit">Get Updates</button>
+            </form>
+
+            <p class="form-note">Unsubscribe anytime.</p>
+
+            <p class="success-message" id="successMessage" role="status" aria-live="polite">
+              We sent a confirmation to your email. Check spam if you do not see it.
+            </p>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <h2 class="sr-only">Vibium links</h2>
+        <a href="/docs/">Docs</a>
+        <a href="/docs/concepts/">Glossary</a>
+        <a href="https://bsky.app/profile/vibium.bsky.social">Bluesky</a>
+        <a href="https://github.com/VibiumDev/vibium">GitHub</a>
+        <a href="https://twitter.com/VibiumDev">Twitter</a>
+        <a href="mailto:vibes@vibium.com">Contact</a>
+      </footer>
+    </div>
+
+    <script is:inline>
+      const LOOPS_FORM_ID = 'cmj0qy2u60s8s0y0icsxtqeqq';
+      const MAILING_LIST_ID = '';
+
+      const form = document.getElementById('signupForm');
+      const emailInput = form?.querySelector('input[type="email"]');
+      const submitBtn = form?.querySelector('button[type="submit"]');
+      const successMessage = document.getElementById('successMessage');
+      const errorMessage = document.getElementById('errorMessage');
+      const formNote = document.querySelector('.form-note');
+
+      form?.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const email = emailInput?.value.trim();
+        if (!email || !submitBtn || !successMessage || !errorMessage) return;
+
+        errorMessage.classList.remove('show');
+        successMessage.classList.remove('show');
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Subscribing...';
+
+        try {
+          let formBody = `email=${encodeURIComponent(email)}`;
+          formBody += `&userGroup=${encodeURIComponent('Updates')}`;
+
+          if (MAILING_LIST_ID) {
+            formBody += `&mailingLists=${encodeURIComponent(MAILING_LIST_ID)}`;
+          }
+
+          const response = await fetch(
+            `https://app.loops.so/api/newsletter-form/${LOOPS_FORM_ID}`,
+            {
+              method: 'POST',
+              body: formBody,
+              headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+              },
+            }
+          );
+
+          const data = await response.json();
+
+          if (response.ok && data.success) {
+            form.style.display = 'none';
+            if (formNote instanceof HTMLElement) formNote.style.display = 'none';
+            successMessage.classList.add('show');
+            if (typeof window.gtag === 'function') {
+              window.gtag('event', 'email_signup');
+            }
+          } else if (data.message?.includes('already')) {
+            showError("You're already subscribed. We'll keep you posted.");
+          } else {
+            showError(data.message || 'Something went wrong. Please try again.');
+          }
+        } catch (error) {
+          console.error('Form submission error:', error);
+          showError('Connection error. Please check your internet and try again.');
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Get Updates';
+        }
+      });
+
+      function showError(message) {
+        if (!errorMessage) return;
+        errorMessage.textContent = message;
+        errorMessage.classList.add('show');
+      }
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' && document.activeElement !== emailInput) {
+          emailInput?.focus();
+        }
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --landing-bg: #0a0a0b;
+    --landing-surface: rgba(0, 0, 0, 0.3);
+    --landing-border: rgba(255, 255, 255, 0.15);
+    --landing-text: #fafafa;
+    --landing-muted: rgba(255, 255, 255, 0.7);
+    --landing-accent: #ff6700;
+    --landing-accent-glow: rgba(255, 103, 0, 0.15);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    min-height: 100%;
+  }
+
+  .landing-body {
+    min-height: 100svh;
+    margin: 0;
+    background-color: var(--landing-bg);
+    background-image: var(--landing-bg-jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: var(--landing-text);
+    font-family: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  @supports (background-image: image-set(url("") type("image/avif"))) {
+    .landing-body {
+      background-image: image-set(
+        var(--landing-bg-avif) type("image/avif"),
+        var(--landing-bg-webp) type("image/webp"),
+        var(--landing-bg-jpg) type("image/jpeg")
+      );
+    }
+  }
+
+  .landing-shell {
+    min-height: 100svh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    padding: clamp(1rem, 3vw, 1.5rem);
+  }
+
+  .topbar,
+  .footer {
+    width: min(100%, 960px);
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .brand-link {
+    display: inline-flex;
+    align-items: center;
+    color: inherit;
+  }
+
+  .brand-link img {
+    width: auto;
+    height: 32px;
+  }
+
+  .topbar-links,
+  .footer {
+    font-size: 0.875rem;
+  }
+
+  .topbar-links {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .topbar a,
+  .footer a {
+    color: var(--landing-muted);
+    text-decoration: none;
+    transition: color 160ms ease;
+  }
+
+  .topbar a:hover,
+  .topbar a:focus-visible,
+  .footer a:hover,
+  .footer a:focus-visible {
+    color: #fff;
+  }
+
+  .hero {
+    display: grid;
+    place-items: center;
+    min-height: 0;
+    padding-block: clamp(1.5rem, 6vh, 3rem);
+  }
+
+  .hero-content {
+    width: min(100%, 580px);
+    text-align: center;
+  }
+
+  .hero-content h1 {
+    margin: 0 0 1.5rem;
+    font-size: clamp(2.5rem, 8vw, 4rem);
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1.1;
+    text-wrap: balance;
+    text-shadow: 0 3px 24px rgba(0, 0, 0, 0.28);
+    opacity: 0;
+    animation: fade-up 0.8s ease 0.1s forwards;
+  }
+
+  .subtitle {
+    margin: 0 auto clamp(1.75rem, 5vh, 2.25rem);
+    max-width: 36rem;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 1.125rem;
+    line-height: 1.6;
+    text-shadow: 0 2px 16px rgba(0, 0, 0, 0.28);
+    opacity: 0;
+    animation: fade-up 0.8s ease 0.2s forwards;
+  }
+
+  .form-wrapper {
+    opacity: 0;
+    animation: fade-up 0.8s ease 0.3s forwards;
+  }
+
+  .signup-form {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .input-wrapper {
+    flex: 1;
+    min-width: 0;
+  }
+
+  input[type="email"] {
+    width: 100%;
+    min-height: 54px;
+    padding: 1rem 1.25rem;
+    border: 1px solid var(--landing-border);
+    border-radius: 8px;
+    outline: none;
+    background: var(--landing-surface);
+    color: var(--landing-text);
+    font: inherit;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition:
+      border-color 160ms ease,
+      box-shadow 160ms ease,
+      background 160ms ease;
+  }
+
+  input[type="email"]::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  input[type="email"]:focus {
+    border-color: var(--landing-accent);
+    box-shadow: 0 0 0 3px var(--landing-accent-glow);
+  }
+
+  button[type="submit"] {
+    min-height: 54px;
+    padding: 1rem 1.5rem;
+    border: 0;
+    border-radius: 8px;
+    background: var(--landing-text);
+    color: var(--landing-bg);
+    cursor: pointer;
+    font: inherit;
+    font-weight: 600;
+    white-space: nowrap;
+    transition:
+      transform 160ms ease,
+      box-shadow 160ms ease,
+      opacity 160ms ease;
+  }
+
+  button[type="submit"]:hover,
+  button[type="submit"]:focus-visible {
+    box-shadow: 0 8px 24px rgba(250, 250, 250, 0.15);
+    transform: translateY(-2px);
+  }
+
+  button[type="submit"]:active {
+    transform: translateY(0);
+  }
+
+  button[type="submit"]:disabled {
+    cursor: wait;
+    opacity: 0.7;
+    transform: none;
+  }
+
+  .form-note {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+  }
+
+  .success-message,
+  .error-message {
+    display: none;
+    margin: 0 0 1rem;
+    border-radius: 8px;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .success-message {
+    padding: 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.3);
+    color: var(--landing-text);
+  }
+
+  .error-message {
+    padding: 1rem;
+    border: 1px solid rgba(239, 68, 68, 0.4);
+    background: rgba(239, 68, 68, 0.2);
+    color: #fecaca;
+    font-size: 0.875rem;
+  }
+
+  .success-message.show,
+  .error-message.show {
+    display: block;
+  }
+
+  .footer {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.1rem;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--landing-accent);
+    outline-offset: 3px;
+  }
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @media (max-width: 560px) {
+    .landing-shell {
+      padding: 1.25rem;
+    }
+
+    .topbar {
+      align-items: flex-start;
+    }
+
+    .brand-link img {
+      height: 28px;
+    }
+
+    .signup-form {
+      flex-direction: column;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>

@@ -1,0 +1,11 @@
+site/node_modules/
+site/dist/
+site/.astro/
+site/src/content/docs/
+llms.txt
+llms-full.txt
+site/public/llms.txt
+site/public/llms-full.txt
+site/public/llms/
+.pnpm-store/
+.DS_Store

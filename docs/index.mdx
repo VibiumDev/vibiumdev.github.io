@@ -1,0 +1,67 @@
+---
+title: Vibium Docs
+description: Browser automation for AI agents and humans, built on WebDriver BiDi.
+template: splash
+hero:
+  tagline: Browser automation for AI agents and humans, built on WebDriver BiDi.
+  actions:
+    - text: Quickstart
+      link: /docs/quickstart/
+      icon: right-arrow
+      variant: primary
+    - text: View on GitHub
+      link: https://github.com/VibiumDev/vibium
+      icon: external
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+<CardGrid stagger>
+  <Card title="Start here" icon="rocket">
+    Read the [Introduction](/docs/introduction/) for the elevator pitch, or jump
+    straight to the [Quickstart](/docs/quickstart/) to run three commands.
+  </Card>
+  <Card title="Build a mental model" icon="open-book">
+    [Getting Started](/docs/getting-started/) walks through the moving parts.
+    [Core Concepts](/docs/concepts/) explains the design.
+  </Card>
+  <Card title="Worked example" icon="document">
+    The [Tutorial](/docs/tutorial/) fills out a real form end-to-end.
+  </Card>
+  <Card title="Reference" icon="setting">
+    Browse the [Command Reference](/docs/commands/) and the
+    [Client Libraries](/docs/client-libraries/) overview.
+  </Card>
+</CardGrid>
+
+## What Vibium does
+
+Vibium gives an agent or script a real browser session with a compact command
+surface. The usual loop is to open a page, map the interactive elements, choose
+the right reference, act on that element, then read back the visible state. The
+same session can produce screenshots, PDFs, extracted text, and recordings, so
+the browser state is useful both to humans reviewing a run and to agents planning
+the next step.
+
+The documentation is organized around that loop. Start with installation when
+you need the binary and browser runtime, use the quickstart for a short live
+run, then move to the tutorial when you want a complete form-filling workflow.
+The command reference is intentionally direct: each page explains one command,
+its arguments, and a small example that can be copied into an agent or shell
+session.
+
+## Terminology and concepts
+
+The [Core Concepts](/docs/concepts/) page is the glossary-style reference for the
+terms used throughout these docs. It explains browser sessions, element
+references, maps, diffs, waits, assertions, captures, and recordings. Those
+terms appear in the CLI reference, the MCP integration guide, and the client
+library overview, so keeping the vocabulary explicit helps agents navigate the
+site without guessing from surrounding prose.
+
+## Agent-readable docs
+
+The site publishes multiple machine-readable entrypoints. `/llms.txt` is the
+curated index of clean Markdown sources, `/llms-full.txt` is the expanded
+single-file context document, and `/llms/` contains the source Markdown files
+linked by the index.

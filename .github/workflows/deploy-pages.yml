@@ -1,0 +1,44 @@
+name: Deploy Vibium Site to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Build and upload Astro site
+        uses: withastro/action@v6
+        with:
+          path: ./site
+          package-manager: pnpm@latest
+          build-cmd: make -C .. build
+        env:
+          SITE_URL: ${{ vars.PAGES_SITE_URL || 'https://vibium.com' }}
+          BASE_PATH: ${{ vars.PAGES_BASE_PATH || '/' }}
+          ASTRO_TELEMETRY_DISABLED: true
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

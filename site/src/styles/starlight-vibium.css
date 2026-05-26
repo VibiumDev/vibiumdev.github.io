@@ -1,0 +1,301 @@
+/* ---------------------------------------------------------------------
+   Starlight ↔ Vibium token map.
+
+   Strategy: keep colors-and-type.css as the canonical brand spec, and in
+   this file map Starlight's `--sl-*` tokens onto Vibium tokens. The two
+   ramps live side by side so a future brand edit propagates here without
+   us hunting for hex values.
+
+   Starlight's grayscale runs from `--sl-color-white` (text) to
+   `--sl-color-black` (background) in dark mode, and inverts for light.
+   We override the semantic tokens directly so we don't depend on
+   Starlight's derivation logic.
+--------------------------------------------------------------------- */
+
+/* -- Dark theme (Starlight default) ------------------------------ */
+:root {
+  /* Accent ramp — orange */
+  --sl-color-accent-low:   color-mix(in oklch, var(--vb-orange) 18%, var(--bg));
+  --sl-color-accent:       var(--vb-orange);
+  --sl-color-accent-high:  #ffb380;            /* on-dark hover/active */
+
+  /* Grayscale ramp — warm stone, light → dark */
+  --sl-color-white:        var(--fg-strong);   /* #ffffff */
+  --sl-color-gray-1:       var(--fg);          /* #fafaf9 */
+  --sl-color-gray-2:       var(--stone-300);
+  --sl-color-gray-3:       var(--fg-mid);      /* #a8a29e */
+  --sl-color-gray-4:       var(--stone-500);
+  --sl-color-gray-5:       var(--stone-700);
+  --sl-color-gray-6:       var(--stone-800);
+  --sl-color-black:        var(--bg);          /* #0a0a0b */
+
+  /* Semantic surfaces */
+  --sl-color-bg:               var(--bg);
+  --sl-color-bg-nav:           color-mix(in oklch, var(--bg) 75%, transparent);
+  --sl-color-bg-sidebar:       var(--bg-elevated);
+  --sl-color-bg-inline-code:   var(--card);
+  --sl-color-bg-accent:        var(--vb-orange);
+
+  --sl-color-text:             var(--fg);
+  --sl-color-text-accent:      var(--vb-orange);
+  --sl-color-text-invert:      var(--stone-950);
+
+  --sl-color-hairline-shade:   var(--border-lit);
+  --sl-color-hairline-light:   var(--border);
+  --sl-color-hairline:         var(--hairline);
+
+  --sl-color-backdrop-overlay: color-mix(in oklch, var(--bg) 70%, transparent);
+
+  /* Typography */
+  --sl-font:       var(--font-sans);
+  --sl-font-mono:  var(--font-mono);
+}
+
+/* -- Light theme ------------------------------------------------- */
+:root[data-theme="light"] {
+  --sl-color-accent-low:   color-mix(in oklch, var(--vb-orange) 14%, white);
+  --sl-color-accent:       var(--vb-orange);
+  --sl-color-accent-high:  var(--vb-orange-700);
+
+  --sl-color-white:        var(--fg-strong);   /* #0c0a09 — darkest text */
+  --sl-color-gray-1:       var(--fg);
+  --sl-color-gray-2:       var(--fg-mid);
+  --sl-color-gray-3:       var(--stone-500);
+  --sl-color-gray-4:       var(--stone-400);
+  --sl-color-gray-5:       var(--stone-200);
+  --sl-color-gray-6:       var(--stone-100);
+  --sl-color-black:        var(--bg);          /* #fafaf9 — page bg */
+
+  --sl-color-bg:               var(--bg);
+  --sl-color-bg-nav:           color-mix(in oklch, var(--bg) 75%, transparent);
+  --sl-color-bg-sidebar:       var(--bg-elevated);
+  --sl-color-bg-inline-code:   var(--card);
+
+  --sl-color-text:             var(--fg);
+  --sl-color-text-accent:      var(--vb-orange-700);
+  --sl-color-text-invert:      var(--stone-50);
+
+  --sl-color-hairline-shade:   var(--border-lit);
+  --sl-color-hairline-light:   var(--border);
+  --sl-color-hairline:         var(--hairline);
+
+  --sl-color-backdrop-overlay: rgba(0, 0, 0, 0.4);
+}
+
+/* -----------------------------------------------------------------
+   Sitewide tone
+----------------------------------------------------------------- */
+
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--vb-orange-glow);
+  color: var(--fg-strong);
+}
+
+/* Subtle keyboard focus that picks up the brand orange */
+:focus-visible {
+  outline: 2px solid var(--vb-orange);
+  outline-offset: 2px;
+}
+
+/* -----------------------------------------------------------------
+   Site title / nav
+   The text wordmark is replaced by the logo image (replacesTitle: true
+   in astro.config.mjs). Constrain the image so it doesn't blow up the
+   header on tall variants.
+----------------------------------------------------------------- */
+
+.site-title img {
+  block-size: 28px;
+  inline-size: auto;
+  max-inline-size: none;   /* Starlight defaults to max-width: 100% which crops wide wordmarks */
+}
+
+/* -----------------------------------------------------------------
+   Markdown content typography
+   Body & headings stay in DM Sans per the brand spec (vb-h1/2/3).
+   Rajdhani is reserved for hero & eyebrow use below.
+----------------------------------------------------------------- */
+
+.sl-markdown-content {
+  & :is(h1, h2, h3, h4, h5, h6) {
+    font-family: var(--font-sans);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--fg);
+  }
+
+  & h1 { letter-spacing: -0.015em; }
+  & h2 { letter-spacing: -0.012em; }
+
+  & :is(code, kbd, samp) {
+    font-family: var(--font-mono);
+    font-feature-settings: "calt" 1, "ss01" 1;
+  }
+
+  /* Inline code — small chip, warm card surface */
+  & :not(pre) > code {
+    background: var(--sl-color-bg-inline-code);
+    border: 1px solid var(--hairline);
+    padding: 0.125em 0.4em;
+    border-radius: var(--radius-sm);
+    font-size: 0.875em;
+  }
+
+  & a {
+    color: var(--sl-color-text-accent);
+    text-decoration-color: color-mix(in oklch, var(--vb-orange) 50%, transparent);
+    text-underline-offset: 0.2em;
+
+    &:is(:hover, :focus-visible) {
+      text-decoration-color: var(--vb-orange);
+    }
+  }
+}
+
+/* -----------------------------------------------------------------
+   Splash hero (homepage)
+   This is where Rajdhani earns its keep — the condensed display face
+   reads as the brand "wordmark voice" on the landing surface.
+----------------------------------------------------------------- */
+
+/* When a hero image is present, stack image above text, centered, at all
+   breakpoints. Without an image we leave Starlight's default layout. */
+.hero:has(img) {
+  grid-template-columns: 1fr;
+  justify-items: center;
+  text-align: center;
+  gap: var(--sp-6);
+
+  & img {
+    block-size: clamp(96px, 12vw, 160px);
+    inline-size: auto;
+    max-inline-size: none;
+    filter: drop-shadow(0 6px 24px rgba(255, 103, 0, 0.18));
+  }
+
+  & .tagline { max-inline-size: 36ch; }
+  & .actions { justify-content: center; }
+}
+
+.hero {
+  & h1 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(2.75rem, 8vw, 4.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.005em;
+    text-transform: none;
+
+    background: var(--vb-logo-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  & .tagline {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    color: var(--fg-mid);
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    line-height: 1.5;
+  }
+
+  & .actions {
+    gap: var(--sp-3);
+  }
+}
+
+/* Primary CTA on the splash hero picks up the orange */
+.sl-link-button[data-variant="primary"] {
+  background: var(--vb-orange);
+  color: var(--stone-950);
+  border-color: transparent;
+  font-weight: 600;
+
+  &:is(:hover, :focus-visible) {
+    background: var(--vb-orange-600);
+    color: var(--stone-950);
+    box-shadow: var(--shadow-glow);
+  }
+}
+
+/* Eyebrow surfaces — small uppercase labels (e.g. card titles) */
+.card .title,
+.sl-link-card .title {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+
+/* -----------------------------------------------------------------
+   CardGrid (homepage cards)
+----------------------------------------------------------------- */
+
+.sl-markdown-content .card,
+.sl-markdown-content .sl-link-card {
+  background: var(--card);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+  transition: border-color var(--dur) var(--ease),
+              box-shadow var(--dur) var(--ease),
+              transform var(--dur) var(--ease);
+
+  &:is(:hover, :focus-within) {
+    border-color: var(--border-lit);
+    box-shadow: var(--shadow);
+  }
+}
+
+.sl-markdown-content .agent-context {
+  border-block-start: 1px solid var(--hairline);
+  padding-block-start: var(--sp-4);
+
+  & summary {
+    cursor: pointer;
+    color: var(--sl-color-text-accent);
+    font-weight: 600;
+  }
+
+  & pre {
+    max-block-size: 24rem;
+    overflow: auto;
+    white-space: pre-wrap;
+  }
+}
+
+/* -----------------------------------------------------------------
+   Code blocks (Expressive Code)
+   Anchor the frame to the warm card surface so it doesn't clash with
+   the near-black page background.
+----------------------------------------------------------------- */
+
+.expressive-code {
+  --ec-frm-edBg:        var(--card);
+  --ec-frm-edTabBarBg:  var(--panel);
+  --ec-brdRad:          var(--radius-lg);
+  --ec-brdCol:          var(--hairline);
+}
+
+/* -----------------------------------------------------------------
+   Sidebar fine-tuning
+----------------------------------------------------------------- */
+
+.sidebar-pane {
+  border-inline-end: 1px solid var(--hairline);
+}
+
+nav.sidebar a.large {
+  font-weight: 600;
+}
+
+/* Active sidebar item — orange spine on the leading edge */
+.sidebar-content a[aria-current="page"] {
+  color: var(--vb-orange);
+  background: color-mix(in oklch, var(--vb-orange) 8%, transparent);
+  border-inline-start: 2px solid var(--vb-orange);
+}
