@@ -1,0 +1,11 @@
+---
+const withBase = (path: string) => `${import.meta.env.BASE_URL}${path}`;
+---
+
+<link rel="icon" type="image/png" sizes="16x16" href={withBase('favicon-16.png')} />
+<link rel="icon" type="image/png" sizes="32x32" href={withBase('favicon-32.png')} />
+<link rel="icon" type="image/png" sizes="48x48" href={withBase('favicon-48.png')} />
+<link rel="icon" type="image/png" sizes="96x96" href={withBase('favicon-96.png')} />
+<link rel="icon" type="image/png" sizes="192x192" href={withBase('favicon-192.png')} />
+<link rel="icon" type="image/png" sizes="512x512" href={withBase('favicon-512.png')} />
+<link rel="apple-touch-icon" sizes="180x180" href={withBase('apple-touch-icon.png')} />

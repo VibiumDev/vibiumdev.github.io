@@ -1,0 +1,10 @@
+{
+  "name": "vibium-docs-site",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@astrojs/starlight": "^0.36.0",
+    "astro": "^5.14.0"
+  }
+}

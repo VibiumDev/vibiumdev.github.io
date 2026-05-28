@@ -1,0 +1,73 @@
+---
+import DefaultHead from '@astrojs/starlight/components/Head.astro';
+import Favicons from '../Favicons.astro';
+import FontLinks from '../FontLinks.astro';
+import GoogleAnalytics from '../GoogleAnalytics.astro';
+
+const { starlightRoute } = Astro.locals;
+const pathname = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).toString();
+const title = starlightRoute.entry.data.title ?? 'Vibium';
+const description =
+	starlightRoute.entry.data.description ??
+	'Browser automation for AI agents and humans, built on WebDriver BiDi.';
+const markdownPath = pathname.replace(/^\/docs\/?/, '').replace(/\/$/, '');
+const markdownHref =
+	markdownPath === ''
+		? '/llms/README.md'
+		: `/llms/docs/${markdownPath === 'commands' ? 'commands/index' : markdownPath}.md`;
+const rawLastUpdated = starlightRoute.entry.data.lastUpdated;
+const dateModified =
+	rawLastUpdated instanceof Date
+		? rawLastUpdated.toISOString().slice(0, 10)
+		: new Date().toISOString().slice(0, 10);
+const segments = pathname.split('/').filter(Boolean);
+const breadcrumbs = [
+	{
+		'@type': 'ListItem',
+		position: 1,
+		name: 'Vibium',
+		item: new URL('/', Astro.site ?? Astro.url.origin).toString(),
+	},
+	...segments.map((segment, index) => {
+		const isLast = index === segments.length - 1;
+		const urlPath = `/${segments.slice(0, index + 1).join('/')}/`;
+		return {
+			'@type': 'ListItem',
+			position: index + 2,
+			name: isLast ? title : segment.replaceAll('-', ' '),
+			item: new URL(urlPath, Astro.site ?? Astro.url.origin).toString(),
+		};
+	}),
+];
+const jsonLd = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'TechArticle',
+			headline: title,
+			description,
+			url: canonicalUrl,
+			dateModified,
+			isPartOf: {
+				'@type': 'WebSite',
+				name: 'Vibium',
+				url: new URL('/', Astro.site ?? Astro.url.origin).toString(),
+			},
+		},
+		{
+			'@type': 'BreadcrumbList',
+			itemListElement: breadcrumbs,
+		},
+	],
+};
+---
+
+<DefaultHead />
+<meta name="description" content={description} />
+<meta property="og:description" content={description} />
+<link rel="alternate" type="text/markdown" href={markdownHref} />
+<Favicons />
+<FontLinks />
+<GoogleAnalytics />
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
