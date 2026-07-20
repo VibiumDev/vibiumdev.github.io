@@ -6,7 +6,7 @@ This tutorial walks through a realistic Vibium session: open a search engine,
 type a query, submit the form, and capture the result. It exercises navigation,
 mapping, semantic finding, form filling, waiting, and screenshots.
 
-We'll use [https://duckduckgo.com](https://duckduckgo.com) as the target. Any
+We'll use [https://duckduckgo.com](https://duckduckgo.com) as the target. Any@
 search engine will work; just adjust the labels.
 
 If you have Vibium installed globally, the examples run as written. If you'd
@@ -61,6 +61,17 @@ that reacts to Enter.
 
 The `@eN` reference comes from the most recent `find` or `map` output. If the
 page navigates or re-renders, run `find` or `map` again before reusing it.
+
+
+> **Windows PowerShell**
+>
+> PowerShell treats `@` as special syntax. When using an element reference,
+> wrap it in quotes:
+>
+> ```powershell
+> vibium fill "@e1" "vibium browser automation"
+> vibium click "@e1"
+> ```
 
 ## 4. Wait for the results
 
