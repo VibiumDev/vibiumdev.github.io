@@ -33,8 +33,10 @@ Asks a fresh AI verifier to investigate a claim and return **PASS**,
 browser session; `-i` checks a saved recording instead. Requires a
 configured model provider — see [Run and Check](../run-and-check.md).
 
-> Looking for the old checkbox command? Toggling checkboxes is now
-> `vibium set` and `vibium unset`.
+> In `vibium@26.8.21` (the current npm release), `vibium check` still
+> toggles a checkbox (`uncheck` unchecks). The AI check above — and the
+> `set`/`unset` checkbox commands that replace the old names — are in the
+> nightly builds and the next release.
 
 ## Examples
 
