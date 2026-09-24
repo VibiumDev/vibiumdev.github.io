@@ -99,6 +99,20 @@ vibium record stop   # writes record.zip
 failures, debugging tests, attaching to a bug report, or playing back in the
 [Vibium Record Player](https://player.vibium.dev/).
 
+## 7. Or let the AI do all of it (optional)
+
+With a model configured (`vibium setup`), the whole session above collapses
+into two commands:
+
+```sh
+vibium run "search duckduckgo.com for 'vibium browser automation'"
+vibium check "the results page lists a link to the vibium project"
+```
+
+`run` performs the goal with the same browser tools you just used by hand;
+`check` verifies the outcome in a fresh model conversation. See
+[Run and Check](run-and-check.md).
+
 ## What you just learned
 
 - Drive a real browser with one command per step.

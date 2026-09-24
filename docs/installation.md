@@ -9,10 +9,11 @@ is a one-liner.
 ## Prerequisites
 
 - Node.js 18+ (only required for the npm-based installer and the JS client)
-- A supported platform: Linux x64, macOS x64/arm64, or Windows x64
+- A supported platform: Linux x64/arm64, macOS x64/arm64, or Windows x64
 
 You do **not** need a pre-installed browser; Vibium downloads Google Chrome
-for Testing.
+for Testing. Firefox is also supported — see
+[Browser engines](#browser-engines) below.
 
 ## Install the CLI
 
@@ -23,6 +24,21 @@ npm install -g vibium
 This installs the `vibium` binary globally. The first time you run any command
 that requires a browser, Vibium downloads its managed Google Chrome for
 Testing build. On macOS, the browser appears as "Google Chrome for Testing".
+
+### Guided setup
+
+After installing, `vibium setup` walks you through the rest in one step: it
+prompts for AI settings (used by [`run` and `check`](run-and-check.md)),
+installs agent skills for agents already present on the machine, downloads
+the browser, and finishes with a readiness check:
+
+```sh
+vibium setup
+```
+
+Every part is optional and can run on its own (`vibium setup browser`,
+`vibium setup ai`, `vibium setup skills`). In CI or from an agent, use
+`vibium setup --non-interactive`.
 
 ### Zero-install with `npx`
 
@@ -50,12 +66,39 @@ After that, every example in these docs that says `vibium ...` works as-is.
 
 ## Install as an agent skill
 
-If you are setting up Vibium for an AI coding agent (for example Claude Code),
-install it as a skill so the agent learns the full command set:
+If you are setting up Vibium for an AI coding agent, install its skills so
+the agent learns the full command set. Vibium detects Claude Code
+(`~/.claude`) and Grok (`~/.grok` or `$GROK_HOME`) and installs the
+`browser` and `check` skills for each agent present:
 
 ```sh
-npx skills add https://github.com/VibiumDev/vibium --skill vibe-check
+vibium add-skill
 ```
+
+Use `--agent claude`, `--agent grok`, or `--agent all` to choose explicitly.
+`vibium setup` runs the same installation as part of guided setup.
+
+## Browser engines
+
+Chrome is the default engine. Firefox is supported as an alternative, using
+Firefox's native WebDriver BiDi — no driver binary involved:
+
+```sh
+vibium install --engine firefox
+```
+
+Each engine auto-installs on first launch on macOS and Linux, so an explicit
+`vibium install` is only needed to pre-download. Every command accepts
+`--engine chrome|firefox`, or set `VIBIUM_ENGINE=firefox` once. On Windows,
+Firefox auto-install is not available: install Firefox yourself and point
+`VIBIUM_ENGINE_PATH` at `firefox.exe`.
+
+By default Vibium installs the known-good browser version baked into the
+release, so a browser update cannot break installs before Vibium has tested
+it. `--channel` (or `VIBIUM_ENGINE_CHANNEL`) selects another release channel
+— `beta`, `dev`, or `canary` for Chrome, `beta` for Firefox — and
+`VIBIUM_ENGINE_VERSION` pins an exact version for CI fleets.
+See [Using Firefox](using-firefox.md) for details.
 
 ## Install a client library
 
@@ -72,13 +115,20 @@ uv add vibium
 Java (Gradle):
 
 ```groovy
-implementation 'com.vibium:vibium:26.3.18'
+implementation 'com.vibium:vibium:26.8.21'
 ```
 
 Each client library bundles or locates the same `vibium` binary, so a single
 install gives you both the CLI and the programmatic API.
 
 ## Verify the installation
+
+```sh
+vibium ready
+```
+
+`ready` checks the installed browser files (and, if configured, the AI
+provider for `run` and `check`) and prints what is missing. Or just try it:
 
 ```sh
 vibium go https://example.com

@@ -16,9 +16,18 @@ moving toward.
 
 ## Which browsers does it support?
 
-Vibium ships with its own managed Google Chrome for Testing build, downloaded
-automatically on first use. Future browser support will follow as more
-browsers ship BiDi.
+Chrome and Firefox. Vibium ships with its own managed Google Chrome for
+Testing build, downloaded automatically on first use; Firefox is one
+`vibium install --engine firefox` (or just `--engine firefox` on any
+command) away. Both use the browser's native WebDriver BiDi — no driver
+binaries. See [Using Firefox](using-firefox.md).
+
+## Can Vibium drive the browser with AI?
+
+Yes. `vibium run "<goal>"` hands a goal to a configured model, which drives
+the browser tools itself; `vibium check "<claim>"` independently verifies an
+outcome. Providers: OpenAI, Anthropic, Google, xAI, or any OpenAI-compatible
+(including local) server. See [Run and Check](run-and-check.md).
 
 ## Do I need to install a separate driver?
 
@@ -41,9 +50,16 @@ where you'd rather not install software globally. See
 
 ## Can I run Vibium headlessly on CI?
 
-Yes. The browser will run without a visible window on hosts without a display.
-Capture commands (`screenshot`, `text`, `pdf`) work the same way as on a
-desktop.
+Yes. The browser will run without a visible window on hosts without a display,
+and `--headless` forces it anywhere. Capture commands (`screenshot`, `text`,
+`pdf`) work the same way as on a desktop. Pin the browser with
+`VIBIUM_ENGINE_VERSION` to keep a CI fleet on one version.
+
+## Can two scripts drive browsers at the same time?
+
+Yes — give each its own named session with `--session <name>` or
+`VIBIUM_SESSION`. Each session gets its own daemon and browser. See
+[Concurrent sessions](sessions.md).
 
 ## Is there a Python / TypeScript / Java SDK?
 

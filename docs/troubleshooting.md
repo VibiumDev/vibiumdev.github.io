@@ -4,6 +4,16 @@ title: Troubleshooting
 
 Quick fixes for the most common issues.
 
+## First stop: `vibium ready`
+
+```sh
+vibium ready
+```
+
+`ready` checks the installed browser files and, when AI is configured, the
+model provider used by `run` and `check`. It names what is missing and how to
+fix it. `vibium ready browser` and `vibium ready ai` run each half alone.
+
 ## "command not found: vibium"
 
 The npm global `bin` directory isn't on your `PATH`. Either add it
@@ -71,11 +81,20 @@ If the bundled browser hasn't been downloaded yet, run any normal command
 first (for example `vibium go https://example.com`) so the download
 completes, then restart your MCP client.
 
+## `run` or `check` reports a configuration error
+
+Run `vibium ready ai` in the same shell. It lists missing settings and tests
+the configured provider with up to two small model requests. If you have not
+configured a provider yet, `vibium setup` (or `vibium config init` for just
+the file) writes `~/.config/vibium/ai.env`. See
+[Model providers](ai-providers.md).
+
 ## Recordings are huge
 
-`vibium record` captures a screenshot per step. Long sessions produce big
-zips. If you only need a final snapshot, use [`vibium screenshot`](commands/screenshot.md)
-instead of `record`.
+`vibium record` captures screenshots per step, and on Firefox a video track
+as well. Long sessions produce big zips. If you only need a final snapshot,
+use [`vibium screenshot`](commands/screenshot.md) instead of `record`; for
+long sessions, `record chunk` splits the output.
 
 ## Where to ask for help
 
