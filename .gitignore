@@ -9,3 +9,4 @@ site/public/llms-full.txt
 site/public/llms/
 .pnpm-store/
 .DS_Store
+__pycache__/

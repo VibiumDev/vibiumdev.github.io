@@ -100,13 +100,29 @@ java.nio.file.Files.write(java.nio.file.Path.of("example.png"), png);
 browserSession.stop();
 ```
 
-## Agent skill for Codex
+## Let the AI drive
+
+With an AI provider configured (`vibium setup` asks the questions and writes
+the config), a whole goal is one command:
+
+```sh
+vibium run "open example.com and find its contact page"
+vibium check "the page shows contact information"
+```
+
+`run` drives the browser toward the goal and reports COMPLETED or
+NOT_COMPLETED; `check` independently verifies a claim with PASS, FAIL, or
+INCONCLUSIVE. See [Run and Check](run-and-check.md).
+
+## Agent skill
 
 ```sh
 npm install -g vibium
-npx skills add https://github.com/VibiumDev/vibium --skill vibe-check
+vibium add-skill
 ```
 
-After this, your agent can drive the browser by emitting `vibium ...` commands.
+This installs the `browser` and `check` skills for each supported agent
+already on the machine (Claude Code, Grok). After this, your agent can drive
+the browser by emitting `vibium ...` commands.
 
 See the [Tutorial](tutorial.md) for a longer worked example.

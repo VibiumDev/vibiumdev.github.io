@@ -57,16 +57,22 @@ match how an agent reads a page.
 | `vibium find label "Email"`         | Inputs whose label is "Email"          |
 | `vibium find placeholder "Search"`  | Inputs with that placeholder           |
 | `vibium find role button`           | Elements with that ARIA role           |
+| `vibium find title "Close"`         | Elements with that `title` attribute   |
+| `vibium find alt "Logo"`            | Images with that alt text              |
+| `vibium find testid "submit"`       | Elements with that `data-testid`       |
+| `vibium find xpath "//h2"`          | An explicit XPath, when you need one   |
 
 ## Verbs and subverbs
 
 A few Vibium commands are actually small command groups:
 
-- `vibium find` has subcommands `text`, `label`, `placeholder`, `role`.
+- `vibium find` has subcommands `text`, `label`, `placeholder`, `role`,
+  `title`, `alt`, `testid`, and `xpath`.
 - `vibium wait` is overloaded — `vibium wait "<selector>"` waits for a CSS
-  selector, while `vibium wait text "<text>"` and `vibium wait url "<path>"`
-  use named subcommands.
-- `vibium record` has `start` and `stop`.
+  selector, while `vibium wait text "<text>"`, `vibium wait url "<path>"`,
+  `vibium wait load`, and `vibium wait fn "<js>"` use named subcommands.
+- `vibium record` has `start` and `stop`, plus `group` and `chunk`
+  subgroups for structuring longer recordings.
 
 That means `vibium wait "h2"` and `vibium wait text "h2"` do different
 things: the first waits for any element matching the CSS selector `h2`, the
@@ -87,11 +93,44 @@ the W3C bidirectional WebDriver protocol. That means:
 
 Vibium splits into two clean halves:
 
-- **Interaction** — `go`, `click`, `fill`, `select`, `check`, `press`, `wait`.
+- **Interaction** — `go`, `click`, `fill`, `select`, `set`, `unset`,
+  `press`, `wait`.
 - **Capture** — `text`, `screenshot`, `pdf`, `eval`, `record`.
 
 This makes it easy to reason about side effects: capture commands never change
 the page; interaction commands always do.
+
+> Historical note: checkbox toggling used to be `vibium check`. That name now
+> belongs to the [AI acceptance check](run-and-check.md); checkboxes are
+> `set` and `unset`.
+
+## Run and Check
+
+Two commands hand control to an AI model instead of you scripting each step:
+
+- [`vibium run "<goal>"`](run-and-check.md) drives the live browser toward a
+  goal with the same tools you use by hand, and returns **COMPLETED** or
+  **NOT_COMPLETED** with evidence.
+- [`vibium check "<claim>"`](run-and-check.md) starts a fresh model
+  conversation to verify a claim against the live browser (or a saved
+  recording) and returns **PASS**, **FAIL**, or **INCONCLUSIVE**.
+
+They share one AI configuration (`vibium setup` writes it) but never share a
+conversation, so a Check is an independent second opinion on a Run.
+
+## Engines
+
+Chrome (the default) and Firefox are both supported; every command takes
+`--engine`, or set `VIBIUM_ENGINE` once. Vibium installs and manages the
+browser build itself, pinned to a known-good version per release. See
+[Using Firefox](using-firefox.md).
+
+## Named sessions
+
+One-shot CLI commands share a background daemon and its browser. Concurrent
+scripts get isolation through named sessions: `--session <name>` (or
+`VIBIUM_SESSION`) gives each script its own daemon, browser, and state. See
+[Concurrent sessions](sessions.md).
 
 ## MCP server mode
 

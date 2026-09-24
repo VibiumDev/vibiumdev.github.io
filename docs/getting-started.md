@@ -81,10 +81,25 @@ vibium find role button
 Each `find` returns one or more `@e` references you can then `click`, `fill`,
 or otherwise act on.
 
+## Letting the AI drive
+
+The loop above is also available as a single command: `vibium run` hands the
+goal to a configured AI model, which drives the same browser tools for you.
+A separate `vibium check` verifies an outcome with a fresh model conversation:
+
+```sh
+vibium run "search example.com for the contact page"
+vibium check "the contact page lists an email address"
+```
+
+Both need an AI provider configured once — `vibium setup` walks you through
+it. See [Run and Check](run-and-check.md).
+
 ## What to read next
 
 - [Tutorial](tutorial.md) — a complete form-filling walkthrough.
-- [Core Concepts](concepts.md) — references, mapping, daemon mode.
+- [Core Concepts](concepts.md) — references, mapping, daemon mode, sessions.
+- [Run and Check](run-and-check.md) — AI-driven goals and acceptance checks.
 - [Command Reference](/docs/commands/) — every command in detail.
 
 (If you skipped the [Quickstart](quickstart.md), it's a condensed

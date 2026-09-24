@@ -10,10 +10,12 @@ fill forms, click buttons, extract text, capture screenshots, and record session
 
 - **AI-native**. Install Vibium as a skill and an agent immediately gains the
   full browser-automation toolkit, with command names and semantics designed to
-  be intuitive for an LLM.
+  be intuitive for an LLM. With a model configured, [`vibium run`](run-and-check.md)
+  accomplishes whole goals and [`vibium check`](run-and-check.md) verifies
+  outcomes independently.
 - **Zero configuration**. A single install pulls down Google Chrome for
-  Testing. No driver binaries, no profile setup, no protocol shims to glue
-  together.
+  Testing (Firefox is one flag away). No driver binaries, no profile setup,
+  no protocol shims to glue together.
 - **Standards-based**. Built on the [WebDriver BiDi](https://w3c.github.io/webdriver-bidi/)
   protocol rather than a vendor-specific debugging protocol.
 - **Lightweight**. A single ~10 MB binary with no runtime dependencies.
@@ -34,6 +36,7 @@ fill forms, click buttons, extract text, capture screenshots, and record session
 | Platform                       | Support target |
 | ------------------------------ | -------------- |
 | Linux (x64)                    | Yes            |
+| Linux (arm64)                  | Yes            |
 | macOS (x64, Intel)             | Yes            |
 | macOS (arm64, Apple Silicon)   | Yes            |
 | Windows (x64)                  | Yes            |

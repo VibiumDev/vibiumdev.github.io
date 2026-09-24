@@ -2,35 +2,37 @@
 title: vibium check
 ---
 
-Toggle a checkbox.
+Verify a claim with an AI model.
 
 ## Synopsis
 
 ```
-vibium check @e<num>
+vibium check "<claim>" [-i <recording.zip>] [-o <evidence.zip>]
 ```
 
 ## Description
 
-Sets the checkbox referenced by `@e<num>` to its checked state. If you need to
-explicitly uncheck a checked box, click it directly with [`click`](click.md)
-instead.
+Asks a fresh AI verifier to investigate a claim and return **PASS**,
+**FAIL**, or **INCONCLUSIVE**, with evidence. Live checks use the existing
+browser session; `-i` checks a saved recording instead. Requires a
+configured model provider — see [Run and Check](../run-and-check.md).
+
+> Looking for the old checkbox command? Toggling checkboxes is now
+> `vibium set` and `vibium unset`.
 
 ## Examples
 
 ```sh
-vibium check @e7
+vibium check "the saved timezone is America/Chicago after refresh"
 ```
 
-Find first, then check:
+Check saved evidence instead of the live browser:
 
 ```sh
-$ vibium find label "I agree to the terms"
-@e7  input  label="I agree to the terms"
-
-$ vibium check @e7
+vibium check "the order confirmation was shown" -i record.zip
 ```
 
 ## See also
 
-- [`vibium click`](click.md), [`vibium select`](select.md), [`vibium fill`](fill.md).
+- [Run and Check](../run-and-check.md)
+- [Model Providers](../ai-providers.md)
