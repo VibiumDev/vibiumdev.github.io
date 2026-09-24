@@ -2,12 +2,18 @@
 title: vibium click
 ---
 
-Click an element by reference.
+Click an element (optionally navigate to URL first).
 
 ## Synopsis
 
 ```
-vibium click @e<num>
+vibium click [url] [selector] [flags]
+```
+
+## Flags
+
+```
+    --timeout timeout   Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)
 ```
 
 ## Description

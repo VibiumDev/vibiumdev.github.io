@@ -53,23 +53,14 @@ DOCS: list[Doc] = [
     Doc("docs/client-libraries.md", "Docs"),
     Doc("docs/troubleshooting.md", "Docs"),
     Doc("docs/faq.md", "Docs"),
-    Doc("docs/commands/index.md", "Command Reference"),
-    Doc("docs/commands/go.md", "Command Reference"),
-    Doc("docs/commands/map.md", "Command Reference"),
-    Doc("docs/commands/diff.md", "Command Reference"),
-    Doc("docs/commands/find.md", "Command Reference"),
-    Doc("docs/commands/click.md", "Command Reference"),
-    Doc("docs/commands/fill.md", "Command Reference"),
-    Doc("docs/commands/select.md", "Command Reference"),
-    Doc("docs/commands/check.md", "Command Reference"),
-    Doc("docs/commands/press.md", "Command Reference"),
-    Doc("docs/commands/wait.md", "Command Reference"),
-    Doc("docs/commands/text.md", "Command Reference"),
-    Doc("docs/commands/screenshot.md", "Command Reference"),
-    Doc("docs/commands/pdf.md", "Command Reference"),
-    Doc("docs/commands/eval.md", "Command Reference"),
-    Doc("docs/commands/record.md", "Command Reference"),
-    Doc("docs/commands/mcp.md", "Command Reference"),
+    Doc("docs/nightly.md", "Docs"),
+    *[
+        Doc(f"docs/commands/{p.name}", "Command Reference")
+        for p in sorted(
+            (Path(__file__).resolve().parent.parent / "docs" / "commands").glob("*.md")
+        )
+        if not p.name.startswith("_")
+    ],
     Doc("docs/contributing.md", "Optional"),
 ]
 

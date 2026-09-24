@@ -1,14 +1,30 @@
 ---
-title: vibium diff map
+title: vibium diff
 ---
 
-Show how the page's interactive elements have changed since the last
-[`map`](map.md).
+Compare current state vs previous.
 
 ## Synopsis
 
 ```
-vibium diff map
+vibium diff [flags]
+vibium diff [command]
+```
+
+## Subcommands
+
+### vibium diff map
+
+Compare current page elements vs last map.
+
+```
+vibium diff map [flags]
+```
+
+```sh
+vibium map           # take initial snapshot
+vibium click @e3     # interact with page
+vibium diff map      # see what changed
 ```
 
 ## Description

@@ -63,6 +63,7 @@ export default defineConfig({
                 { label: 'FAQ', slug: 'docs/faq' },
                 { label: 'Contributing', slug: 'docs/contributing' },
                 { label: 'Command Reference', autogenerate: { directory: 'docs/commands', collapsed: true } },
+                { label: "What's in Nightly", slug: 'docs/nightly' },
             ],
         }),
     ],

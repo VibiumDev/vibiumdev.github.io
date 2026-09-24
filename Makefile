@@ -7,7 +7,7 @@ SITE_DIR := site
 CLEAN_MANIFEST := scripts/clean-manifest.txt
 SITE_NODE_MODULES_DIR := $(SITE_DIR)/node_modules
 
-.PHONY: all build rebuild serve preview test install clean distclean help
+.PHONY: all build rebuild serve preview test install clean distclean help reference
 
 all: build
 
@@ -16,6 +16,9 @@ build:
 	$(PYTHON) scripts/sync_starlight.py
 	$(PNPM) --dir $(SITE_DIR) exec astro build
 	$(PYTHON) scripts/postprocess_site.py
+
+reference:
+	$(PYTHON) scripts/gen_command_reference.py
 
 rebuild: clean build
 
@@ -43,6 +46,7 @@ help:
 	@printf '%s\n' \
 		'Targets:' \
 		'  make build     Regenerate public LLM docs, sync Starlight content, and build site/dist.' \
+		'  make reference Regenerate docs/commands/ and docs/nightly.md from the vibium binaries.' \
 		'  make rebuild   Clean generated site output, then run make build.' \
 		'  make serve     Regenerate public LLM docs, sync Starlight content, and start Astro dev server.' \
 		'  make preview   Build, then preview site/dist.' \

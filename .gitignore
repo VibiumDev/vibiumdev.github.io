@@ -10,3 +10,4 @@ site/public/llms/
 .pnpm-store/
 .DS_Store
 __pycache__/
+.cache/

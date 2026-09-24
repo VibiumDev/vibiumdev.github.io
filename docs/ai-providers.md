@@ -1,6 +1,11 @@
 ---
 title: Model Providers
+sidebar:
+  badge: Nightly
 ---
+
+> **Nightly only for now.** The AI features these settings configure ship in
+> the [nightly builds](nightly.md) and the next npm release.
 
 [Run and Check](run-and-check.md) share one AI configuration. Each invocation
 still starts a fresh conversation.

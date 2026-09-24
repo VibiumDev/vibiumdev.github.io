@@ -2,12 +2,18 @@
 title: vibium mcp
 ---
 
-Start the MCP (Model Context Protocol) server.
+Start the Model Context Protocol (MCP) server.
 
 ## Synopsis
 
 ```
-vibium mcp
+vibium mcp [flags]
+```
+
+## Flags
+
+```
+    --screenshot-dir string   Directory for saving screenshots (default: ~/Pictures/Vibium, use "" to disable)
 ```
 
 ## Description

@@ -2,13 +2,28 @@
 title: vibium pdf
 ---
 
-Save the current page as a PDF.
+Save page as PDF.
 
 ## Synopsis
 
 ```
-vibium pdf [-o <file>]
+vibium pdf [url] [flags]
 ```
+
+## Flags
+
+```
+    --background           Print background graphics
+    --landscape            Landscape orientation
+    --margin float         Margin on all sides in cm (default 1)
+-o, --output string        Output file path (default "page.pdf")
+    --page-height float    Page height in cm (default 27.94)
+    --page-ranges string   Pages to print, e.g. 1,3-5 (default all)
+    --page-width float     Page width in cm (default 21.59)
+    --scale float          Print scale, 0.1-2 (default 1)
+```
+
+New in nightly (not yet in the npm release): `--background`, `--landscape`, `--margin`, `--page-height`, `--page-ranges`, `--page-width`, `--scale`
 
 ## Description
 

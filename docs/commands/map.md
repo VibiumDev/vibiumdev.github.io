@@ -2,12 +2,18 @@
 title: vibium map
 ---
 
-List the interactive elements on the current page as numbered references.
+Map interactive page elements with @refs.
 
 ## Synopsis
 
 ```
-vibium map
+vibium map [flags]
+```
+
+## Flags
+
+```
+    --selector string   Scope to elements within this CSS selector
 ```
 
 ## Description
