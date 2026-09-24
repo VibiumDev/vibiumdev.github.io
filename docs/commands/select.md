@@ -2,12 +2,18 @@
 title: vibium select
 ---
 
-Choose an option from a `<select>` dropdown.
+Select an option in a <select> element.
 
 ## Synopsis
 
 ```
-vibium select @e<num> "<option>"
+vibium select [selector] [value] [flags]
+```
+
+## Flags
+
+```
+    --timeout timeout   Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)
 ```
 
 ## Description

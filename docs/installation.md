@@ -27,6 +27,9 @@ Testing build. On macOS, the browser appears as "Google Chrome for Testing".
 
 ### Guided setup
 
+> `vibium setup` and `vibium ready` are in the [nightly builds](nightly.md)
+> and the next npm release.
+
 After installing, `vibium setup` walks you through the rest in one step: it
 prompts for AI settings (used by [`run` and `check`](run-and-check.md)),
 installs agent skills for agents already present on the machine, downloads
@@ -93,10 +96,10 @@ Each engine auto-installs on first launch on macOS and Linux, so an explicit
 Firefox auto-install is not available: install Firefox yourself and point
 `VIBIUM_ENGINE_PATH` at `firefox.exe`.
 
-By default Vibium installs the known-good browser version baked into the
-release, so a browser update cannot break installs before Vibium has tested
-it. `--channel` (or `VIBIUM_ENGINE_CHANNEL`) selects another release channel
-— `beta`, `dev`, or `canary` for Chrome, `beta` for Firefox — and
+`--channel` (or `VIBIUM_ENGINE_CHANNEL`) selects the Firefox release
+channel (`release` or `beta`). On [nightly builds](nightly.md), channels
+extend to Chrome (`stable`, `beta`, `dev`, `canary`), Vibium installs the
+known-good browser version baked into the release by default, and
 `VIBIUM_ENGINE_VERSION` pins an exact version for CI fleets.
 See [Using Firefox](using-firefox.md) for details.
 
@@ -124,18 +127,14 @@ install gives you both the CLI and the programmatic API.
 ## Verify the installation
 
 ```sh
-vibium ready
-```
-
-`ready` checks the installed browser files (and, if configured, the AI
-provider for `run` and `check`) and prints what is missing. Or just try it:
-
-```sh
 vibium go https://example.com
 vibium text
 ```
 
-If `vibium text` prints the page text, the install succeeded.
+If `vibium text` prints the page text, the install succeeded. On nightly
+builds, `vibium ready` runs the same verification as a proper diagnostic:
+it checks the installed browser files (and, if configured, the AI provider
+for `run` and `check`) and prints what is missing.
 
 ## Custom binary path
 

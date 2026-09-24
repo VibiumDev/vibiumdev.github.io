@@ -2,12 +2,18 @@
 title: vibium fill
 ---
 
-Type text into an input field.
+Clear an input field and type new text.
 
 ## Synopsis
 
 ```
-vibium fill @e<num> "<value>"
+vibium fill [selector] [text] [flags]
+```
+
+## Flags
+
+```
+    --timeout timeout   Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)
 ```
 
 ## Description

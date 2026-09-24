@@ -2,12 +2,20 @@
 title: vibium screenshot
 ---
 
-Capture a PNG screenshot of the current page.
+Capture a screenshot (optionally navigate to URL first).
 
 ## Synopsis
 
 ```
-vibium screenshot [-o <file>]
+vibium screenshot [url] [flags]
+```
+
+## Flags
+
+```
+    --annotate        Annotate interactive elements with numbered labels
+    --full-page       Capture the full page instead of just the viewport
+-o, --output string   Output file path (default "screenshot.png")
 ```
 
 ## Description

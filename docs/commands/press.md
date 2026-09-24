@@ -2,12 +2,12 @@
 title: vibium press
 ---
 
-Send a keystroke to the focused element.
+Press a key on a specific element or the focused element.
 
 ## Synopsis
 
 ```
-vibium press <key>
+vibium press [key] [selector] [flags]
 ```
 
 ## Description

@@ -48,15 +48,16 @@ an optional `channel`.
 
 ## Channels and version pinning
 
-`--channel beta` (or `VIBIUM_ENGINE_CHANNEL=beta`) selects the Firefox beta;
-for Chrome the channels are `stable`, `beta`, `dev`, and `canary`. Each
-channel is cached separately and only the selected one runs, so an installed
-beta never shadows stable.
+`--channel beta` (or `VIBIUM_ENGINE_CHANNEL=beta`) selects the Firefox beta.
+Each channel is cached separately and only the selected one runs, so an
+installed beta never shadows stable.
 
-Without a pin, the default channels install the known-good browser version
-baked into the Vibium release, so a browser update cannot break installs
-before Vibium has tested it. `VIBIUM_ENGINE_VERSION` pins an exact version —
-useful for keeping CI fleets on one version until you move the pin.
+On [nightly builds](nightly.md), channels extend to Chrome (`stable`,
+`beta`, `dev`, `canary`); without a pin, the default channels install the
+known-good browser version baked into the Vibium release, so a browser
+update cannot break installs before Vibium has tested it; and
+`VIBIUM_ENGINE_VERSION` pins an exact version — useful for keeping CI
+fleets on one version until you move the pin.
 
 | Variable | Effect |
 |----------|--------|

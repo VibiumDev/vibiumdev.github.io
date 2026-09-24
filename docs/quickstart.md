@@ -102,6 +102,8 @@ browserSession.stop();
 
 ## Let the AI drive
 
+> Nightly builds and the next npm release; see [Run and Check](run-and-check.md).
+
 With an AI provider configured (`vibium setup` asks the questions and writes
 the config), a whole goal is one command:
 

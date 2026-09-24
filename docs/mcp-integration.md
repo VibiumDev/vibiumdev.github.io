@@ -10,8 +10,9 @@ the browser as a first-class tool, alongside their other tools.
 When Vibium is registered as an MCP server, the agent gains tools that map
 1:1 to the CLI commands: navigation, mapping, finding, clicking, filling,
 capture, and so on. The agent can use them directly without spawning shell
-subprocesses. The AI-driven [`run` and `check`](run-and-check.md) operations
-are exposed too, as `vibium_run` and `vibium_check`.
+subprocesses. On nightly builds, the AI-driven
+[`run` and `check`](run-and-check.md) operations are exposed too, as
+`vibium_run` and `vibium_check`.
 
 ## Registering Vibium
 

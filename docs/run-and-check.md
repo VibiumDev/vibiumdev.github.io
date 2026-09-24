@@ -1,6 +1,13 @@
 ---
 title: Run and Check
+sidebar:
+  badge: Nightly
 ---
+
+> **Nightly only for now.** `run`, `check` (as an AI verdict), `setup`, and
+> `ready` are in the [nightly builds](nightly.md) and will be part of the
+> next npm release. In `vibium@26.8.21`, `vibium check` still toggles a
+> checkbox.
 
 Two commands hand the browser to an AI model instead of you scripting each
 step:
