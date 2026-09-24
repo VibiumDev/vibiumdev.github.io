@@ -1,6 +1,7 @@
 ---
 title: Command Reference
 sidebar:
+  label: Overview
   order: 0
 ---
 
@@ -20,7 +21,7 @@ hand the whole task to a model with [`run`](run.md) and verify it with
 | [`vibium back`](back.md) | Navigate back in browser history |
 | [`vibium check`](check.md) | Check a claim in a live browser or an existing recording with an independent model. |
 | [`vibium click`](click.md) | Click an element (optionally navigate to URL first) |
-| [`vibium config`](config.md) **(nightly)** | Manage Vibium settings files |
+| [`vibium config`](config.md) | Manage Vibium settings files **(nightly)** |
 | [`vibium content`](content.md) | Replace the page HTML content |
 | [`vibium cookies`](cookies.md) | Manage browser cookies |
 | [`vibium count`](count.md) | Count matching elements |
@@ -56,16 +57,16 @@ hand the whole task to a model with [`run`](run.md) and verify it with
 | [`vibium pdf`](pdf.md) | Save page as PDF |
 | [`vibium pipe`](pipe.md) | Start vibium in pipe mode where protocol messages are exchanged |
 | [`vibium press`](press.md) | Press a key on a specific element or the focused element |
-| [`vibium ready`](ready.md) **(nightly)** | Check the selected local browser executable files, then test AI when configured. No browser or driver is launched. |
+| [`vibium ready`](ready.md) | Check the selected local browser executable files, then test AI when configured. No browser or driver is launched. **(nightly)** |
 | [`vibium record`](record.md) | Record browser sessions (screenshots and snapshots) |
 | [`vibium reload`](reload.md) | Reload the current page |
-| [`vibium run`](run.md) **(nightly)** | Accomplish a live browser goal using VIBIUM_AI_* configuration. |
+| [`vibium run`](run.md) | Accomplish a live browser goal using VIBIUM_AI_* configuration. **(nightly)** |
 | [`vibium screenshot`](screenshot.md) | Capture a screenshot (optionally navigate to URL first) |
 | [`vibium scroll`](scroll.md) | Scroll the page or an element |
 | [`vibium select`](select.md) | Select an option in a <select> element |
 | [`vibium serve`](serve.md) | Start WebSocket proxy server for browser automation |
-| [`vibium set`](set.md) **(nightly)** | Check a checkbox or radio button |
-| [`vibium setup`](setup.md) **(nightly)** | Interactive setup for AI settings, agent skills, and the local browser. |
+| [`vibium set`](set.md) | Check a checkbox or radio button **(nightly)** |
+| [`vibium setup`](setup.md) | Interactive setup for AI settings, agent skills, and the local browser. **(nightly)** |
 | [`vibium sleep`](sleep.md) | Pause execution for a number of milliseconds |
 | [`vibium start`](start.md) | Start a browser session. Without arguments, launches a local browser. |
 | [`vibium stop`](stop.md) | Stop the browser session |
@@ -73,7 +74,7 @@ hand the whole task to a model with [`run`](run.md) and verify it with
 | [`vibium text`](text.md) | Get text content of the page or an element |
 | [`vibium title`](title.md) | Get the current page title |
 | [`vibium type`](type.md) | Type text into an element (optionally navigate to URL first) |
-| [`vibium unset`](unset.md) **(nightly)** | Uncheck a checkbox |
+| [`vibium unset`](unset.md) | Uncheck a checkbox **(nightly)** |
 | [`vibium upload`](upload.md) | Set files on an input[type=file] element |
 | [`vibium url`](url.md) | Get the current page URL |
 | [`vibium value`](value.md) | Get the current value of a form element |
