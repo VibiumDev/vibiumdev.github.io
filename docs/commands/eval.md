@@ -2,12 +2,18 @@
 title: vibium eval
 ---
 
-Run JavaScript in the current page.
+Evaluate a JavaScript expression (optionally navigate to URL first).
 
 ## Synopsis
 
 ```
-vibium eval "<javascript>"
+vibium eval [url] [expression] [flags]
+```
+
+## Flags
+
+```
+    --stdin   Read expression from stdin
 ```
 
 ## Description

@@ -24,10 +24,11 @@ binaries. See [Using Firefox](using-firefox.md).
 
 ## Can Vibium drive the browser with AI?
 
-Yes. `vibium run "<goal>"` hands a goal to a configured model, which drives
-the browser tools itself; `vibium check "<claim>"` independently verifies an
-outcome. Providers: OpenAI, Anthropic, Google, xAI, or any OpenAI-compatible
-(including local) server. See [Run and Check](run-and-check.md).
+Yes — in the nightly builds and the next npm release. `vibium run "<goal>"`
+hands a goal to a configured model, which drives the browser tools itself;
+`vibium check "<claim>"` independently verifies an outcome. Providers:
+OpenAI, Anthropic, Google, xAI, or any OpenAI-compatible (including local)
+server. See [Run and Check](run-and-check.md).
 
 ## Do I need to install a separate driver?
 

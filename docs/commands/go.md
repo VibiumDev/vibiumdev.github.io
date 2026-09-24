@@ -2,12 +2,12 @@
 title: vibium go
 ---
 
-Navigate the active tab to a URL.
+Go to a URL and print page info.
 
 ## Synopsis
 
 ```
-vibium go <url>
+vibium go [url] [flags]
 ```
 
 ## Description

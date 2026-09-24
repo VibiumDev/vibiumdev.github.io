@@ -111,6 +111,8 @@ shape of the API is the same across all three.
 
 ## Run and Check from code
 
+> Nightly builds and the next npm release; see [Run and Check](run-and-check.md).
+
 The AI-driven operations are first-class client methods on both Browser and
 Page. In JavaScript and Python the connected object is itself callable as a
 shorthand for `run`:

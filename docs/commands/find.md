@@ -2,15 +2,177 @@
 title: vibium find
 ---
 
-Locate an element by a semantic attribute and return its reference.
+Find elements by CSS selector or semantic locator.
 
 ## Synopsis
 
 ```
-vibium find text "<text>"
-vibium find label "<label>"
-vibium find placeholder "<text>"
-vibium find role <role>
+vibium find [selector] [flags]
+vibium find [command]
+```
+
+## Flags
+
+```
+    --all               Find all matching elements
+    --limit int         Maximum number of elements to return (with --all) (default 10)
+    --timeout timeout   Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)
+```
+
+## Subcommands
+
+### vibium find alt
+
+Find element by alt attribute.
+
+```
+vibium find alt [alt] [flags]
+```
+
+#### Flags
+
+```
+    --timeout timeout   Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)
+```
+
+```sh
+vibium find alt "Logo"
+```
+
+### vibium find label
+
+Find input by associated label text.
+
+```
+vibium find label [label] [flags]
+```
+
+#### Flags
+
+```
+    --timeout timeout   Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)
+```
+
+```sh
+vibium find label "Email"
+# → @e1 [input type="email"] placeholder="Email"
+```
+
+### vibium find placeholder
+
+Find element by placeholder attribute.
+
+```
+vibium find placeholder [placeholder] [flags]
+```
+
+#### Flags
+
+```
+    --timeout timeout   Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)
+```
+
+```sh
+vibium find placeholder "Search..."
+# → @e1 [input] placeholder="Search..."
+```
+
+### vibium find role
+
+Find element by ARIA role.
+
+```
+vibium find role [role] [flags]
+```
+
+#### Flags
+
+```
+    --name string       Accessible name filter
+    --timeout timeout   Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)
+```
+
+```sh
+vibium find role button
+# → @e1 [button] "Submit"
+
+vibium find role heading --name "Example"
+# Find heading with accessible name "Example"
+```
+
+### vibium find testid
+
+Find element by data-testid attribute.
+
+```
+vibium find testid [testid] [flags]
+```
+
+#### Flags
+
+```
+    --timeout timeout   Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)
+```
+
+```sh
+vibium find testid "submit-btn"
+# → @e1 [button] data-testid="submit-btn"
+```
+
+### vibium find text
+
+Find element by text content.
+
+```
+vibium find text [text] [flags]
+```
+
+#### Flags
+
+```
+    --timeout timeout   Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)
+```
+
+```sh
+vibium find text "Sign In"
+# → @e1 [button] "Sign In"
+```
+
+### vibium find title
+
+Find element by title attribute.
+
+```
+vibium find title [title] [flags]
+```
+
+#### Flags
+
+```
+    --timeout timeout   Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)
+```
+
+```sh
+vibium find title "Close"
+```
+
+### vibium find xpath
+
+Find element by XPath expression.
+
+```
+vibium find xpath [expression] [flags]
+```
+
+#### Flags
+
+```
+    --timeout timeout   Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)
+```
+
+```sh
+vibium find xpath "//div[@class='main']"
+# → @e1 [div.main] ...
 ```
 
 ## Description

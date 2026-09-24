@@ -48,6 +48,9 @@ def main() -> None:
         if src.suffix not in CONTENT_SUFFIXES:
             continue
         rel = src.relative_to(SRC)
+        if any(part.startswith("_") for part in rel.parts):
+            # _prose/ etc. are inputs to generators, not site pages.
+            continue
         target = DEST / ROUTE_PREFIX / rel
         target.parent.mkdir(parents=True, exist_ok=True)
         text = rewrite_md_links(src.read_text(encoding="utf-8"), rel)

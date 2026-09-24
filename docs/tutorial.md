@@ -101,8 +101,8 @@ failures, debugging tests, attaching to a bug report, or playing back in the
 
 ## 7. Or let the AI do all of it (optional)
 
-With a model configured (`vibium setup`), the whole session above collapses
-into two commands:
+On a nightly build with a model configured (`vibium setup`), the whole
+session above collapses into two commands:
 
 ```sh
 vibium run "search duckduckgo.com for 'vibium browser automation'"

@@ -2,12 +2,12 @@
 title: vibium text
 ---
 
-Extract the visible text of the current page.
+Get text content of the page or an element.
 
 ## Synopsis
 
 ```
-vibium text
+vibium text [selector] [flags]
 ```
 
 ## Description

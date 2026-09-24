@@ -100,9 +100,10 @@ Vibium splits into two clean halves:
 This makes it easy to reason about side effects: capture commands never change
 the page; interaction commands always do.
 
-> Historical note: checkbox toggling used to be `vibium check`. That name now
-> belongs to the [AI acceptance check](run-and-check.md); checkboxes are
-> `set` and `unset`.
+> Naming note: in `vibium@26.8.21` checkbox toggling is `check` and
+> `uncheck`. In the nightly builds and the next release, checkboxes are
+> `set` and `unset`, and `check` is the [AI acceptance
+> check](run-and-check.md).
 
 ## Run and Check
 
@@ -115,15 +116,15 @@ Two commands hand control to an AI model instead of you scripting each step:
   conversation to verify a claim against the live browser (or a saved
   recording) and returns **PASS**, **FAIL**, or **INCONCLUSIVE**.
 
-They share one AI configuration (`vibium setup` writes it) but never share a
-conversation, so a Check is an independent second opinion on a Run.
+They share one AI configuration (`vibium setup` writes it) but never share
+a conversation, so a Check is an independent second opinion on a Run. Both
+are in the nightly builds and the next npm release.
 
 ## Engines
 
 Chrome (the default) and Firefox are both supported; every command takes
 `--engine`, or set `VIBIUM_ENGINE` once. Vibium installs and manages the
-browser build itself, pinned to a known-good version per release. See
-[Using Firefox](using-firefox.md).
+browser build itself. See [Using Firefox](using-firefox.md).
 
 ## Named sessions
 
