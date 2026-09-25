@@ -59,6 +59,7 @@ export default defineConfig({
                 { label: 'Recording', slug: 'docs/recording' },
                 { label: 'MCP Integration', slug: 'docs/mcp-integration' },
                 { label: 'Client Libraries', slug: 'docs/client-libraries' },
+                { label: 'Scripting and Agents', slug: 'docs/scripting' },
                 { label: 'Troubleshooting', slug: 'docs/troubleshooting' },
                 { label: 'FAQ', slug: 'docs/faq' },
                 { label: 'Contributing', slug: 'docs/contributing' },

@@ -15,13 +15,24 @@ vibium ready [flags]
 vibium ready [command]
 ```
 
-## Flags
+## AI Flags
 
 ```
-    --ai-base-url string        Override the AI provider's API base URL for this call (the model endpoint, not the site under test); an empty value resets the provider default
-    --model string              Override the model for this call
-    --provider string           Override the provider for this call; changing provider requires --model and resets endpoint/effort defaults
-    --reasoning-effort string   Override OpenAI-compatible reasoning effort; an empty value uses the model default
+--ai-base-url string        AI provider API base URL, not the site under test (env: VIBIUM_AI_BASE_URL); empty resets the provider default
+--model string              Model ID for the provider; see Model IDs below (env: VIBIUM_AI_MODEL)
+--provider string           AI provider: openai, xai, anthropic, google, openai-compatible, or local (env: VIBIUM_AI_PROVIDER); changing it requires --model and resets endpoint/effort defaults
+--reasoning-effort string   none, minimal, low, medium, high, xhigh, or max; not for anthropic or google (env: VIBIUM_AI_REASONING_EFFORT); empty uses the model default
+```
+
+## Model IDs
+
+```
+openai              https://developers.openai.com/api/docs/models
+xai                 https://docs.x.ai/developers/models
+anthropic           https://platform.claude.com/docs/en/models/overview
+google              https://ai.google.dev/gemini-api/docs/models
+openai-compatible   the model name your server serves
+local               the model name your server serves
 ```
 
 ## Subcommands
@@ -36,13 +47,24 @@ Require valid AI configuration and test authentication, model access, tool calli
 vibium ready ai [provider] [flags]
 ```
 
-#### Flags
+#### AI Flags
 
 ```
-    --ai-base-url string        Override the AI provider's API base URL for this call (the model endpoint, not the site under test); an empty value resets the provider default
-    --model string              Override the model for this call
-    --provider string           Override the provider for this call; changing provider requires --model and resets endpoint/effort defaults
-    --reasoning-effort string   Override OpenAI-compatible reasoning effort; an empty value uses the model default
+--ai-base-url string        AI provider API base URL, not the site under test (env: VIBIUM_AI_BASE_URL); empty resets the provider default
+--model string              Model ID for the provider; see Model IDs below (env: VIBIUM_AI_MODEL)
+--provider string           AI provider: openai, xai, anthropic, google, openai-compatible, or local (env: VIBIUM_AI_PROVIDER); changing it requires --model and resets endpoint/effort defaults
+--reasoning-effort string   none, minimal, low, medium, high, xhigh, or max; not for anthropic or google (env: VIBIUM_AI_REASONING_EFFORT); empty uses the model default
+```
+
+#### Model IDs
+
+```
+openai              https://developers.openai.com/api/docs/models
+xai                 https://docs.x.ai/developers/models
+anthropic           https://platform.claude.com/docs/en/models/overview
+google              https://ai.google.dev/gemini-api/docs/models
+openai-compatible   the model name your server serves
+local               the model name your server serves
 ```
 
 ```sh

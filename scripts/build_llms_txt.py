@@ -51,6 +51,7 @@ DOCS: list[Doc] = [
     Doc("docs/recording.md", "Docs"),
     Doc("docs/mcp-integration.md", "Docs"),
     Doc("docs/client-libraries.md", "Docs"),
+    Doc("docs/scripting.md", "Docs"),
     Doc("docs/troubleshooting.md", "Docs"),
     Doc("docs/faq.md", "Docs"),
     Doc("docs/nightly.md", "Docs"),
@@ -196,7 +197,15 @@ def build_llms_txt(repo_root: Path, docs: list[Doc]) -> str:
             + "\n  - ".join(missing)
         )
 
-    for section in ("Docs", "Command Reference", "Optional"):
+    sections["Skills"] = [
+        f"- [Browser skill]({origin}/skills/browser.md): The full Vibium "
+        "browser-automation skill, as installed by vibium add-skill.",
+        f"- [Check skill]({origin}/skills/check.md): The independent "
+        "acceptance-check skill for PASS/FAIL/INCONCLUSIVE verdicts.",
+        f"- [commands.json]({origin}/commands.json): Machine-readable "
+        "listing of every CLI command, its flags, and nightly-only markers.",
+    ]
+    for section in ("Docs", "Command Reference", "Skills", "Optional"):
         items = sections.get(section)
         if not items:
             continue
