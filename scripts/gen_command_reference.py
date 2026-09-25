@@ -38,6 +38,8 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 COMMANDS_DIR = REPO_ROOT / "docs" / "commands"
 PROSE_DIR = COMMANDS_DIR / "_prose"
 NIGHTLY_PAGE = REPO_ROOT / "docs" / "nightly.md"
+COMMANDS_JSON = REPO_ROOT / "site" / "public" / "commands.json"
+SKILLS_DIR = REPO_ROOT / "site" / "public" / "skills"
 WORK_DIR = REPO_ROOT / ".cache" / "reference"
 
 # Debug utilities and cobra built-ins that should not appear in the docs.
@@ -142,6 +144,18 @@ class Help:
         self.examples = self._section("Examples:")
         self.flags = self._section("Flags:")
         self.subcommands = self._section("Available Commands:")
+        # Custom help sections (e.g. "AI Flags:", "Model IDs:" on run and
+        # check) that would otherwise be dropped.
+        known = {
+            "Usage:", "Examples:", "Available Commands:", "Flags:",
+            "Global Flags:",
+        }
+        self.extra_sections = {
+            line[:-1]: self._section(line)
+            for line in lines
+            if re.fullmatch(r"[A-Z][A-Za-z ]*:", line.rstrip())
+            and line.rstrip() not in known
+        }
 
     def _section(self, header: str) -> str:
         lines = self.text.splitlines()
@@ -165,8 +179,39 @@ class Help:
         cut = min(indents) if indents else 0
         return [l[cut:] if l.strip() else "" for l in lines]
 
+    def all_flag_text(self) -> str:
+        extra = "\n".join(
+            body for title, body in self.extra_sections.items()
+            if title.endswith("Flags")
+        )
+        return self.flags + "\n" + extra
+
     def flag_names(self) -> set[str]:
-        return set(re.findall(r"--[a-z][a-z0-9-]*", self.flags)) - {"--help"}
+        return set(
+            re.findall(r"--[a-z][a-z0-9-]*", self.all_flag_text())
+        ) - {"--help"}
+
+    FLAG_LINE_RE = re.compile(
+        r"^\s*(?:-(?P<short>\w), )?--(?P<name>[a-z][a-z0-9-]*)"
+        r"(?: (?P<arg>[a-zA-Z]\S*))?\s{2,}(?P<desc>.*)$"
+    )
+
+    def structured_flags(self) -> list[dict]:
+        out = []
+        for line in (self.public_flags() + "\n" + "\n".join(
+            body for title, body in self.extra_sections.items()
+            if title.endswith("Flags")
+        )).splitlines():
+            m = self.FLAG_LINE_RE.match(line)
+            if not m:
+                continue
+            entry = {"flag": "--" + m["name"], "description": m["desc"].strip()}
+            if m["short"]:
+                entry["shorthand"] = "-" + m["short"]
+            if m["arg"]:
+                entry["argument"] = m["arg"]
+            out.append(entry)
+        return out
 
     def public_flags(self) -> str:
         kept = [
@@ -240,18 +285,21 @@ def command_section(
     if path not in stable_paths:
         out.append(NIGHTLY_NOTE)
     out.append(code_block(help_.usage))
+    h = "#" * heading_level
     flags = help_.public_flags()
     if flags:
-        h = "#" * heading_level
         out.append(f"{h} Flags")
         out.append(code_block(flags))
-        if path in stable_paths:
-            new = help_.flag_names() - stable.help(path).flag_names()
-            if new:
-                pretty = ", ".join(f"`{f}`" for f in sorted(new))
-                out.append(
-                    f"New in nightly (not yet in the npm release): {pretty}"
-                )
+    for title, body in help_.extra_sections.items():
+        out.append(f"{h} {title}")
+        out.append(code_block(body))
+    if flags and path in stable_paths:
+        new = help_.flag_names() - stable.help(path).flag_names()
+        if new:
+            pretty = ", ".join(f"`{f}`" for f in sorted(new))
+            out.append(
+                f"New in nightly (not yet in the npm release): {pretty}"
+            )
     return out
 
 
@@ -376,6 +424,51 @@ def emit_nightly_page(
     return "\n\n".join(parts) + "\n"
 
 
+def emit_commands_json(
+    nightly: Binary, stable: Binary,
+    stable_paths: set[str], stable_version: str,
+) -> None:
+    commands = []
+    for path in nightly.paths:
+        help_ = nightly.help(path)
+        entry = {
+            "command": f"vibium {path}",
+            "description": help_.short,
+            "usage": help_.usage.splitlines(),
+            "flags": help_.structured_flags(),
+            "nightlyOnly": path not in stable_paths,
+            "docs": (
+                "https://vibium.com/docs/commands/"
+                f"{path.split()[0]}/"
+            ),
+        }
+        if path in stable_paths:
+            new = help_.flag_names() - stable.help(path).flag_names()
+            if new:
+                entry["nightlyOnlyFlags"] = sorted(new)
+        commands.append(entry)
+
+    payload = {
+        "description": (
+            "Machine-readable listing of every vibium CLI command, "
+            "generated from the binaries. nightlyOnly marks commands "
+            f"not yet in the npm release (vibium@{stable_version}). "
+            "Human docs: https://vibium.com/docs/commands/"
+        ),
+        "stableVersion": stable_version,
+        "globalFlags": nightly.help("").structured_flags(),
+        "commands": commands,
+    }
+    COMMANDS_JSON.write_text(json.dumps(payload, indent=1) + "\n")
+
+
+def emit_skills(nightly: Binary) -> None:
+    SKILLS_DIR.mkdir(parents=True, exist_ok=True)
+    for skill in ("browser", "check"):
+        text = run([str(nightly.path), "add-skill", skill, "--stdout"])
+        (SKILLS_DIR / f"{skill}.md").write_text(text)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--stable-bin", type=Path)
@@ -415,9 +508,11 @@ def main() -> None:
     NIGHTLY_PAGE.write_text(
         emit_nightly_page(nightly, stable, stable_paths, stable_version)
     )
+    emit_commands_json(nightly, stable, stable_paths, stable_version)
+    emit_skills(nightly)
     print(
         f"wrote {len(nightly.top_level)} command pages, index.md, "
-        f"and docs/nightly.md"
+        f"docs/nightly.md, commands.json, and {len(list(SKILLS_DIR.glob('*.md')))} skills"
     )
 
 

@@ -1,0 +1,1853 @@
+{
+ "description": "Machine-readable listing of every vibium CLI command, generated from the binaries. nightlyOnly marks commands not yet in the npm release (vibium@26.8.21). Human docs: https://vibium.com/docs/commands/",
+ "stableVersion": "26.8.21",
+ "globalFlags": [
+  {
+   "flag": "--channel",
+   "description": "Engine release channel to install and run (env: VIBIUM_ENGINE_CHANNEL); firefox: release (default) or beta; chrome: stable (default), beta, dev, or canary",
+   "argument": "string"
+  },
+  {
+   "flag": "--engine",
+   "description": "Browser engine to launch: chrome or firefox (env: VIBIUM_ENGINE) (default \"chrome\")",
+   "argument": "string"
+  },
+  {
+   "flag": "--headless",
+   "description": "Hide browser window (visible by default)"
+  },
+  {
+   "flag": "--json",
+   "description": "Output as JSON"
+  },
+  {
+   "flag": "--session",
+   "description": "Named daemon session for isolated concurrent use (env: VIBIUM_SESSION)",
+   "argument": "string"
+  },
+  {
+   "flag": "--verbose",
+   "description": "Enable debug logging",
+   "shorthand": "-v"
+  },
+  {
+   "flag": "--version",
+   "description": "version for vibium"
+  }
+ ],
+ "commands": [
+  {
+   "command": "vibium a11y-tree",
+   "description": "Get the accessibility tree of the current page",
+   "usage": [
+    "vibium a11y-tree [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--everything",
+     "description": "Show all nodes including generic containers"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/a11y-tree/"
+  },
+  {
+   "command": "vibium add-skill",
+   "description": "Install a Vibium skill for Grok and Claude Code",
+   "usage": [
+    "vibium add-skill [browser|check] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--agent",
+     "description": "Install for claude, grok, all, or auto (agents already present) (default \"auto\")",
+     "argument": "string"
+    },
+    {
+     "flag": "--stdout",
+     "description": "Print skill content to stdout instead of installing"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/add-skill/",
+   "nightlyOnlyFlags": [
+    "--agent"
+   ]
+  },
+  {
+   "command": "vibium attr",
+   "description": "Get an HTML attribute value from an element",
+   "usage": [
+    "vibium attr [selector] [attribute] [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/attr/"
+  },
+  {
+   "command": "vibium back",
+   "description": "Navigate back in browser history",
+   "usage": [
+    "vibium back [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/back/"
+  },
+  {
+   "command": "vibium check",
+   "description": "Check a claim in a live browser or an existing recording with an independent model.",
+   "usage": [
+    "vibium check \"<claim>\" [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--base-url",
+     "description": "Site under test: opened first unless the current page already shares its origin; relative navigation paths resolve against it",
+     "argument": "string"
+    },
+    {
+     "flag": "--input",
+     "description": "Read an existing Vibium recording or Playwright trace ZIP; no browser is launched",
+     "shorthand": "-i",
+     "argument": "string"
+    },
+    {
+     "flag": "--keep-open",
+     "description": "Leave a browser started by Check open after the run (existing browsers are always preserved)"
+    },
+    {
+     "flag": "--output",
+     "description": "Save a new recording ZIP of live verification; an active recording is exported without stopping it (current chunk, no video)",
+     "shorthand": "-o",
+     "argument": "string"
+    },
+    {
+     "flag": "--report",
+     "description": "Save the verdict and concise evidence as a new JSON file",
+     "argument": "string"
+    },
+    {
+     "flag": "--ai-base-url",
+     "description": "AI provider API base URL, not the site under test (env: VIBIUM_AI_BASE_URL); empty resets the provider default",
+     "argument": "string"
+    },
+    {
+     "flag": "--model",
+     "description": "Model ID for the provider; see Model IDs below (env: VIBIUM_AI_MODEL)",
+     "argument": "string"
+    },
+    {
+     "flag": "--provider",
+     "description": "AI provider: openai, xai, anthropic, google, openai-compatible, or local (env: VIBIUM_AI_PROVIDER); changing it requires --model and resets endpoint/effort defaults",
+     "argument": "string"
+    },
+    {
+     "flag": "--reasoning-effort",
+     "description": "none, minimal, low, medium, high, xhigh, or max; not for anthropic or google (env: VIBIUM_AI_REASONING_EFFORT); empty uses the model default",
+     "argument": "string"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/check/",
+   "nightlyOnlyFlags": [
+    "--ai-base-url",
+    "--base-url",
+    "--input",
+    "--keep-open",
+    "--model",
+    "--output",
+    "--provider",
+    "--reasoning-effort",
+    "--report"
+   ]
+  },
+  {
+   "command": "vibium click",
+   "description": "Click an element (optionally navigate to URL first)",
+   "usage": [
+    "vibium click [url] [selector] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/click/"
+  },
+  {
+   "command": "vibium config",
+   "description": "Manage Vibium settings files",
+   "usage": [
+    "vibium config [command]"
+   ],
+   "flags": [],
+   "nightlyOnly": true,
+   "docs": "https://vibium.com/docs/commands/config/"
+  },
+  {
+   "command": "vibium config init",
+   "description": "Write a commented settings file to the Vibium config directory.",
+   "usage": [
+    "vibium config init [ai|cloud|all] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--force",
+     "description": "Overwrite an existing file, keeping a .bak copy"
+    },
+    {
+     "flag": "--stdout",
+     "description": "Print the template instead of writing it"
+    }
+   ],
+   "nightlyOnly": true,
+   "docs": "https://vibium.com/docs/commands/config/"
+  },
+  {
+   "command": "vibium content",
+   "description": "Replace the page HTML content",
+   "usage": [
+    "vibium content [html] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--stdin",
+     "description": "Read HTML from stdin"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/content/"
+  },
+  {
+   "command": "vibium cookies",
+   "description": "Manage browser cookies",
+   "usage": [
+    "vibium cookies [name] [value] [flags]",
+    "vibium cookies [command]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/cookies/"
+  },
+  {
+   "command": "vibium cookies clear",
+   "description": "Clear all cookies",
+   "usage": [
+    "vibium cookies clear [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/cookies/"
+  },
+  {
+   "command": "vibium count",
+   "description": "Count matching elements",
+   "usage": [
+    "vibium count [selector] [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/count/"
+  },
+  {
+   "command": "vibium daemon",
+   "description": "Manage the vibium daemon (background browser process)",
+   "usage": [
+    "vibium daemon [flags]",
+    "vibium daemon [command]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/daemon/"
+  },
+  {
+   "command": "vibium daemon start",
+   "description": "Start the vibium daemon",
+   "usage": [
+    "vibium daemon start [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--connect",
+     "description": "Connect to a remote BiDi WebSocket URL instead of launching a local browser",
+     "argument": "string"
+    },
+    {
+     "flag": "--connect-caps",
+     "description": "Extra alwaysMatch capabilities for classic WebDriver endpoints (JSON object)",
+     "argument": "string"
+    },
+    {
+     "flag": "--connect-header",
+     "description": "HTTP header for WebSocket connect (repeatable, format: \"Key: Value\")",
+     "argument": "stringArray"
+    },
+    {
+     "flag": "--foreground",
+     "description": "Run daemon in foreground (for debugging)"
+    },
+    {
+     "flag": "--idle-timeout",
+     "description": "Shutdown after this duration of inactivity (0 to disable) (default 30m0s)",
+     "argument": "duration"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/daemon/",
+   "nightlyOnlyFlags": [
+    "--connect-caps"
+   ]
+  },
+  {
+   "command": "vibium daemon status",
+   "description": "Show daemon status",
+   "usage": [
+    "vibium daemon status [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/daemon/"
+  },
+  {
+   "command": "vibium daemon stop",
+   "description": "Stop the vibium daemon",
+   "usage": [
+    "vibium daemon stop [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/daemon/"
+  },
+  {
+   "command": "vibium dblclick",
+   "description": "Double-click an element",
+   "usage": [
+    "vibium dblclick [selector] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/dblclick/"
+  },
+  {
+   "command": "vibium dialog",
+   "description": "Handle browser dialogs (alert, confirm, prompt)",
+   "usage": [
+    "vibium dialog [flags]",
+    "vibium dialog [command]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/dialog/"
+  },
+  {
+   "command": "vibium dialog accept",
+   "description": "Accept a dialog (optionally with prompt text)",
+   "usage": [
+    "vibium dialog accept [text] [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/dialog/"
+  },
+  {
+   "command": "vibium dialog dismiss",
+   "description": "Dismiss a dialog",
+   "usage": [
+    "vibium dialog dismiss [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/dialog/"
+  },
+  {
+   "command": "vibium diff",
+   "description": "Compare current state vs previous",
+   "usage": [
+    "vibium diff [flags]",
+    "vibium diff [command]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/diff/"
+  },
+  {
+   "command": "vibium diff map",
+   "description": "Compare current page elements vs last map",
+   "usage": [
+    "vibium diff map [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/diff/"
+  },
+  {
+   "command": "vibium download",
+   "description": "Manage browser downloads",
+   "usage": [
+    "vibium download [flags]",
+    "vibium download [command]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/download/"
+  },
+  {
+   "command": "vibium download dir",
+   "description": "Set the download directory",
+   "usage": [
+    "vibium download dir [path] [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/download/"
+  },
+  {
+   "command": "vibium drag",
+   "description": "Drag from one element to another",
+   "usage": [
+    "vibium drag [source] [target] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/drag/"
+  },
+  {
+   "command": "vibium eval",
+   "description": "Evaluate a JavaScript expression (optionally navigate to URL first)",
+   "usage": [
+    "vibium eval [url] [expression] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--stdin",
+     "description": "Read expression from stdin"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/eval/"
+  },
+  {
+   "command": "vibium fill",
+   "description": "Clear an input field and type new text",
+   "usage": [
+    "vibium fill [selector] [text] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/fill/"
+  },
+  {
+   "command": "vibium find",
+   "description": "Find elements by CSS selector or semantic locator",
+   "usage": [
+    "vibium find [selector] [flags]",
+    "vibium find [command]"
+   ],
+   "flags": [
+    {
+     "flag": "--all",
+     "description": "Find all matching elements"
+    },
+    {
+     "flag": "--limit",
+     "description": "Maximum number of elements to return (with --all) (default 10)",
+     "argument": "int"
+    },
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/find/"
+  },
+  {
+   "command": "vibium find alt",
+   "description": "Find element by alt attribute",
+   "usage": [
+    "vibium find alt [alt] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/find/"
+  },
+  {
+   "command": "vibium find label",
+   "description": "Find input by associated label text",
+   "usage": [
+    "vibium find label [label] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/find/"
+  },
+  {
+   "command": "vibium find placeholder",
+   "description": "Find element by placeholder attribute",
+   "usage": [
+    "vibium find placeholder [placeholder] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/find/"
+  },
+  {
+   "command": "vibium find role",
+   "description": "Find element by ARIA role",
+   "usage": [
+    "vibium find role [role] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--name",
+     "description": "Accessible name filter",
+     "argument": "string"
+    },
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/find/"
+  },
+  {
+   "command": "vibium find testid",
+   "description": "Find element by data-testid attribute",
+   "usage": [
+    "vibium find testid [testid] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/find/"
+  },
+  {
+   "command": "vibium find text",
+   "description": "Find element by text content",
+   "usage": [
+    "vibium find text [text] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/find/"
+  },
+  {
+   "command": "vibium find title",
+   "description": "Find element by title attribute",
+   "usage": [
+    "vibium find title [title] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/find/"
+  },
+  {
+   "command": "vibium find xpath",
+   "description": "Find element by XPath expression",
+   "usage": [
+    "vibium find xpath [expression] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/find/"
+  },
+  {
+   "command": "vibium focus",
+   "description": "Focus an element",
+   "usage": [
+    "vibium focus [selector] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/focus/"
+  },
+  {
+   "command": "vibium forward",
+   "description": "Navigate forward in browser history",
+   "usage": [
+    "vibium forward [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/forward/"
+  },
+  {
+   "command": "vibium frame",
+   "description": "Find a frame by name or URL substring",
+   "usage": [
+    "vibium frame [nameOrUrl] [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/frame/"
+  },
+  {
+   "command": "vibium frames",
+   "description": "List all child frames (iframes) on the page",
+   "usage": [
+    "vibium frames [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/frames/"
+  },
+  {
+   "command": "vibium geolocation",
+   "description": "Override the browser geolocation",
+   "usage": [
+    "vibium geolocation [latitude] [longitude] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--accuracy",
+     "description": "Accuracy in meters (default: 1)",
+     "argument": "float"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/geolocation/"
+  },
+  {
+   "command": "vibium go",
+   "description": "Go to a URL and print page info",
+   "usage": [
+    "vibium go [url] [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/go/"
+  },
+  {
+   "command": "vibium highlight",
+   "description": "Highlight an element with a red outline for 3 seconds",
+   "usage": [
+    "vibium highlight [selector] [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/highlight/"
+  },
+  {
+   "command": "vibium hover",
+   "description": "Hover over an element by CSS selector",
+   "usage": [
+    "vibium hover [selector] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/hover/"
+  },
+  {
+   "command": "vibium html",
+   "description": "Get HTML content of the page or an element",
+   "usage": [
+    "vibium html [selector] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--outer",
+     "description": "Return outerHTML instead of innerHTML"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/html/"
+  },
+  {
+   "command": "vibium install",
+   "description": "Download the selected browser (Chrome for Testing by default)",
+   "usage": [
+    "vibium install [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/install/"
+  },
+  {
+   "command": "vibium is",
+   "description": "Check element state (visible, enabled, set, actionable)",
+   "usage": [
+    "vibium is [flags]",
+    "vibium is [command]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/is/"
+  },
+  {
+   "command": "vibium is actionable",
+   "description": "Check actionability of an element (Visible, Stable, ReceivesEvents, Enabled, Editable)",
+   "usage": [
+    "vibium is actionable [url] [selector] [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/is/"
+  },
+  {
+   "command": "vibium is enabled",
+   "description": "Check if an element is enabled",
+   "usage": [
+    "vibium is enabled [selector] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--fail",
+     "description": "Exit non-zero when the answer is false"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/is/"
+  },
+  {
+   "command": "vibium is set",
+   "description": "Check if a checkbox or radio is checked",
+   "usage": [
+    "vibium is set [selector] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--fail",
+     "description": "Exit non-zero when the answer is false"
+    }
+   ],
+   "nightlyOnly": true,
+   "docs": "https://vibium.com/docs/commands/is/"
+  },
+  {
+   "command": "vibium is visible",
+   "description": "Check if an element is visible on the page",
+   "usage": [
+    "vibium is visible [selector] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--fail",
+     "description": "Exit non-zero when the answer is false"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/is/"
+  },
+  {
+   "command": "vibium is-installed",
+   "description": "Check if the selected browser is installed (exit 0 = yes, exit 1 = no)",
+   "usage": [
+    "vibium is-installed [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/is-installed/"
+  },
+  {
+   "command": "vibium keys",
+   "description": "Press a key or key combination",
+   "usage": [
+    "vibium keys [keys] [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/keys/"
+  },
+  {
+   "command": "vibium map",
+   "description": "Map interactive page elements with @refs",
+   "usage": [
+    "vibium map [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--selector",
+     "description": "Scope to elements within this CSS selector",
+     "argument": "string"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/map/"
+  },
+  {
+   "command": "vibium mcp",
+   "description": "Start the Model Context Protocol (MCP) server.",
+   "usage": [
+    "vibium mcp [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--screenshot-dir",
+     "description": "Directory for saving screenshots (default: ~/Pictures/Vibium, use \"\" to disable)",
+     "argument": "string"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/mcp/"
+  },
+  {
+   "command": "vibium media",
+   "description": "Override CSS media features",
+   "usage": [
+    "vibium media [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--color-scheme",
+     "description": "Color scheme: light, dark, no-preference",
+     "argument": "string"
+    },
+    {
+     "flag": "--contrast",
+     "description": "Contrast: more, less, no-preference",
+     "argument": "string"
+    },
+    {
+     "flag": "--forced-colors",
+     "description": "Forced colors: active, none",
+     "argument": "string"
+    },
+    {
+     "flag": "--media",
+     "description": "Media type: screen, print",
+     "argument": "string"
+    },
+    {
+     "flag": "--reduced-motion",
+     "description": "Reduced motion: reduce, no-preference",
+     "argument": "string"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/media/"
+  },
+  {
+   "command": "vibium mouse",
+   "description": "Mouse control (click, move, down, up)",
+   "usage": [
+    "vibium mouse [flags]",
+    "vibium mouse [command]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/mouse/"
+  },
+  {
+   "command": "vibium mouse click",
+   "description": "Click at coordinates or current position",
+   "usage": [
+    "vibium mouse click [x] [y] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--button",
+     "description": "Mouse button (0=left, 1=middle, 2=right)",
+     "argument": "int"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/mouse/"
+  },
+  {
+   "command": "vibium mouse down",
+   "description": "Press a mouse button down",
+   "usage": [
+    "vibium mouse down [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--button",
+     "description": "Mouse button (0=left, 1=middle, 2=right)",
+     "argument": "int"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/mouse/"
+  },
+  {
+   "command": "vibium mouse move",
+   "description": "Move the mouse to coordinates",
+   "usage": [
+    "vibium mouse move [x] [y] [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/mouse/"
+  },
+  {
+   "command": "vibium mouse up",
+   "description": "Release a mouse button",
+   "usage": [
+    "vibium mouse up [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--button",
+     "description": "Mouse button (0=left, 1=middle, 2=right)",
+     "argument": "int"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/mouse/"
+  },
+  {
+   "command": "vibium page",
+   "description": "Manage browser pages (new, close, switch)",
+   "usage": [
+    "vibium page [flags]",
+    "vibium page [command]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/page/"
+  },
+  {
+   "command": "vibium page close",
+   "description": "Close a browser page by index or id (default: current page)",
+   "usage": [
+    "vibium page close [index or page id] [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/page/"
+  },
+  {
+   "command": "vibium page new",
+   "description": "Open a new browser page",
+   "usage": [
+    "vibium page new [url] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--isolated",
+     "description": "Open the page in its own isolated context (separate cookies and storage)"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/page/",
+   "nightlyOnlyFlags": [
+    "--isolated"
+   ]
+  },
+  {
+   "command": "vibium page switch",
+   "description": "Switch to a browser page by index or URL substring",
+   "usage": [
+    "vibium page switch [index or url] [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/page/"
+  },
+  {
+   "command": "vibium pages",
+   "description": "List all open browser pages",
+   "usage": [
+    "vibium pages [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/pages/"
+  },
+  {
+   "command": "vibium paths",
+   "description": "Print browser and cache paths for the selected engine",
+   "usage": [
+    "vibium paths [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/paths/"
+  },
+  {
+   "command": "vibium pdf",
+   "description": "Save page as PDF",
+   "usage": [
+    "vibium pdf [url] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--background",
+     "description": "Print background graphics"
+    },
+    {
+     "flag": "--landscape",
+     "description": "Landscape orientation"
+    },
+    {
+     "flag": "--margin",
+     "description": "Margin on all sides in cm (default 1)",
+     "argument": "float"
+    },
+    {
+     "flag": "--output",
+     "description": "Output file path (default \"page.pdf\")",
+     "shorthand": "-o",
+     "argument": "string"
+    },
+    {
+     "flag": "--page-height",
+     "description": "Page height in cm (default 27.94)",
+     "argument": "float"
+    },
+    {
+     "flag": "--page-ranges",
+     "description": "Pages to print, e.g. 1,3-5 (default all)",
+     "argument": "string"
+    },
+    {
+     "flag": "--page-width",
+     "description": "Page width in cm (default 21.59)",
+     "argument": "float"
+    },
+    {
+     "flag": "--scale",
+     "description": "Print scale, 0.1-2 (default 1)",
+     "argument": "float"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/pdf/",
+   "nightlyOnlyFlags": [
+    "--background",
+    "--landscape",
+    "--margin",
+    "--page-height",
+    "--page-ranges",
+    "--page-width",
+    "--scale"
+   ]
+  },
+  {
+   "command": "vibium pipe",
+   "description": "Start vibium in pipe mode where protocol messages are exchanged",
+   "usage": [
+    "vibium pipe [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--connect",
+     "description": "Connect to a remote BiDi WebSocket URL instead of launching a local browser",
+     "argument": "string"
+    },
+    {
+     "flag": "--connect-caps",
+     "description": "Extra alwaysMatch capabilities for classic WebDriver endpoints (JSON object)",
+     "argument": "string"
+    },
+    {
+     "flag": "--connect-header",
+     "description": "HTTP header for WebSocket connect (repeatable, format: \"Key: Value\")",
+     "argument": "stringArray"
+    },
+    {
+     "flag": "--no-browser",
+     "description": "Start the existing pipe runtime for read-only archive commands without installing or launching a browser"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/pipe/",
+   "nightlyOnlyFlags": [
+    "--connect-caps",
+    "--no-browser"
+   ]
+  },
+  {
+   "command": "vibium press",
+   "description": "Press a key on a specific element or the focused element",
+   "usage": [
+    "vibium press [key] [selector] [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/press/"
+  },
+  {
+   "command": "vibium ready",
+   "description": "Check the selected local browser executable files, then test AI when configured. No browser or driver is launched.",
+   "usage": [
+    "vibium ready [flags]",
+    "vibium ready [command]"
+   ],
+   "flags": [
+    {
+     "flag": "--ai-base-url",
+     "description": "AI provider API base URL, not the site under test (env: VIBIUM_AI_BASE_URL); empty resets the provider default",
+     "argument": "string"
+    },
+    {
+     "flag": "--model",
+     "description": "Model ID for the provider; see Model IDs below (env: VIBIUM_AI_MODEL)",
+     "argument": "string"
+    },
+    {
+     "flag": "--provider",
+     "description": "AI provider: openai, xai, anthropic, google, openai-compatible, or local (env: VIBIUM_AI_PROVIDER); changing it requires --model and resets endpoint/effort defaults",
+     "argument": "string"
+    },
+    {
+     "flag": "--reasoning-effort",
+     "description": "none, minimal, low, medium, high, xhigh, or max; not for anthropic or google (env: VIBIUM_AI_REASONING_EFFORT); empty uses the model default",
+     "argument": "string"
+    }
+   ],
+   "nightlyOnly": true,
+   "docs": "https://vibium.com/docs/commands/ready/"
+  },
+  {
+   "command": "vibium ready ai",
+   "description": "Require valid AI configuration and test authentication, model access, tool calling, and a structured response.",
+   "usage": [
+    "vibium ready ai [provider] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--ai-base-url",
+     "description": "AI provider API base URL, not the site under test (env: VIBIUM_AI_BASE_URL); empty resets the provider default",
+     "argument": "string"
+    },
+    {
+     "flag": "--model",
+     "description": "Model ID for the provider; see Model IDs below (env: VIBIUM_AI_MODEL)",
+     "argument": "string"
+    },
+    {
+     "flag": "--provider",
+     "description": "AI provider: openai, xai, anthropic, google, openai-compatible, or local (env: VIBIUM_AI_PROVIDER); changing it requires --model and resets endpoint/effort defaults",
+     "argument": "string"
+    },
+    {
+     "flag": "--reasoning-effort",
+     "description": "none, minimal, low, medium, high, xhigh, or max; not for anthropic or google (env: VIBIUM_AI_REASONING_EFFORT); empty uses the model default",
+     "argument": "string"
+    }
+   ],
+   "nightlyOnly": true,
+   "docs": "https://vibium.com/docs/commands/ready/"
+  },
+  {
+   "command": "vibium ready browser",
+   "description": "List discovered Vibium browser installations and check the selected Chrome or Firefox executable files.",
+   "usage": [
+    "vibium ready browser [engine] [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": true,
+   "docs": "https://vibium.com/docs/commands/ready/"
+  },
+  {
+   "command": "vibium record",
+   "description": "Record browser sessions (screenshots and snapshots)",
+   "usage": [
+    "vibium record [flags]",
+    "vibium record [command]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/record/"
+  },
+  {
+   "command": "vibium record chunk",
+   "description": "Manage recording chunks",
+   "usage": [
+    "vibium record chunk [flags]",
+    "vibium record chunk [command]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/record/"
+  },
+  {
+   "command": "vibium record chunk start",
+   "description": "Start a new chunk within the current recording",
+   "usage": [
+    "vibium record chunk start [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--name",
+     "description": "Name for the chunk",
+     "argument": "string"
+    },
+    {
+     "flag": "--title",
+     "description": "Title shown in trace viewer",
+     "argument": "string"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/record/"
+  },
+  {
+   "command": "vibium record chunk stop",
+   "description": "Package current chunk into a ZIP file (recording stays active)",
+   "usage": [
+    "vibium record chunk stop [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--output",
+     "description": "Output file path (default: chunk.zip)",
+     "shorthand": "-o",
+     "argument": "string"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/record/"
+  },
+  {
+   "command": "vibium record group",
+   "description": "Manage recording groups",
+   "usage": [
+    "vibium record group [flags]",
+    "vibium record group [command]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/record/"
+  },
+  {
+   "command": "vibium record group start",
+   "description": "Start a named group in the recording",
+   "usage": [
+    "vibium record group start <name> [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/record/"
+  },
+  {
+   "command": "vibium record group stop",
+   "description": "End the current recording group",
+   "usage": [
+    "vibium record group stop [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/record/"
+  },
+  {
+   "command": "vibium record start",
+   "description": "Start a recording",
+   "usage": [
+    "vibium record start [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--bidi",
+     "description": "Record raw BiDi commands in the recording"
+    },
+    {
+     "flag": "--format",
+     "description": "Screenshot format: jpeg or png (default \"jpeg\")",
+     "argument": "string"
+    },
+    {
+     "flag": "--name",
+     "description": "Name for the recording (also seeds the default filename stem)",
+     "argument": "string"
+    },
+    {
+     "flag": "--output",
+     "description": "Where the recording ZIP lands at stop (default: record-<timestamp>.zip)",
+     "shorthand": "-o",
+     "argument": "string"
+    },
+    {
+     "flag": "--quality",
+     "description": "JPEG quality 0.0-1.0 (ignored for png) (default 0.5)",
+     "argument": "float"
+    },
+    {
+     "flag": "--screenshots",
+     "description": "Capture screenshots after each action (default true)"
+    },
+    {
+     "flag": "--snapshots",
+     "description": "Capture HTML snapshots"
+    },
+    {
+     "flag": "--sources",
+     "description": "Include source information"
+    },
+    {
+     "flag": "--title",
+     "description": "Title shown in trace viewer (defaults to name)",
+     "argument": "string"
+    },
+    {
+     "flag": "--video",
+     "description": "Require video (omit: video when the engine supports it; =false: off)"
+    },
+    {
+     "flag": "--video-fps",
+     "description": "Video frame rate (engine default if omitted)",
+     "argument": "int"
+    },
+    {
+     "flag": "--video-remote",
+     "description": "On a remote connection, \"keep\" records anyway and leaves the video on the remote host",
+     "argument": "string"
+    },
+    {
+     "flag": "--video-size",
+     "description": "Video dimensions as WxH, e.g. 1280x720 (default: viewport)",
+     "argument": "string"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/record/"
+  },
+  {
+   "command": "vibium record stop",
+   "description": "Stop recording and save",
+   "usage": [
+    "vibium record stop [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--output",
+     "description": "Output file path (default: record-<timestamp>.zip)",
+     "shorthand": "-o",
+     "argument": "string"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/record/"
+  },
+  {
+   "command": "vibium reload",
+   "description": "Reload the current page",
+   "usage": [
+    "vibium reload [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/reload/"
+  },
+  {
+   "command": "vibium run",
+   "description": "Accomplish a live browser goal using VIBIUM_AI_* configuration.",
+   "usage": [
+    "vibium run \"<goal>\" [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--base-url",
+     "description": "Site under test: opened first unless the current page already shares its origin; relative navigation paths resolve against it",
+     "argument": "string"
+    },
+    {
+     "flag": "--keep-open",
+     "description": "Keep a browser started by Run open after saving evidence"
+    },
+    {
+     "flag": "--output",
+     "description": "Save a new live recording ZIP; an active recording exports its current chunk without continuous video",
+     "shorthand": "-o",
+     "argument": "string"
+    },
+    {
+     "flag": "--ai-base-url",
+     "description": "AI provider API base URL, not the site under test (env: VIBIUM_AI_BASE_URL); empty resets the provider default",
+     "argument": "string"
+    },
+    {
+     "flag": "--model",
+     "description": "Model ID for the provider; see Model IDs below (env: VIBIUM_AI_MODEL)",
+     "argument": "string"
+    },
+    {
+     "flag": "--provider",
+     "description": "AI provider: openai, xai, anthropic, google, openai-compatible, or local (env: VIBIUM_AI_PROVIDER); changing it requires --model and resets endpoint/effort defaults",
+     "argument": "string"
+    },
+    {
+     "flag": "--reasoning-effort",
+     "description": "none, minimal, low, medium, high, xhigh, or max; not for anthropic or google (env: VIBIUM_AI_REASONING_EFFORT); empty uses the model default",
+     "argument": "string"
+    }
+   ],
+   "nightlyOnly": true,
+   "docs": "https://vibium.com/docs/commands/run/"
+  },
+  {
+   "command": "vibium screenshot",
+   "description": "Capture a screenshot (optionally navigate to URL first)",
+   "usage": [
+    "vibium screenshot [url] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--annotate",
+     "description": "Annotate interactive elements with numbered labels"
+    },
+    {
+     "flag": "--full-page",
+     "description": "Capture the full page instead of just the viewport"
+    },
+    {
+     "flag": "--output",
+     "description": "Output file path (default \"screenshot.png\")",
+     "shorthand": "-o",
+     "argument": "string"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/screenshot/"
+  },
+  {
+   "command": "vibium scroll",
+   "description": "Scroll the page or an element",
+   "usage": [
+    "vibium scroll [up|down|left|right] [flags]",
+    "vibium scroll [command]"
+   ],
+   "flags": [
+    {
+     "flag": "--amount",
+     "description": "Number of scroll increments (default 3)",
+     "argument": "int"
+    },
+    {
+     "flag": "--selector",
+     "description": "CSS selector for the element to scroll within",
+     "argument": "string"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/scroll/"
+  },
+  {
+   "command": "vibium scroll into-view",
+   "description": "Scroll an element into view",
+   "usage": [
+    "vibium scroll into-view [selector] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/scroll/"
+  },
+  {
+   "command": "vibium select",
+   "description": "Select an option in a <select> element",
+   "usage": [
+    "vibium select [selector] [value] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/select/"
+  },
+  {
+   "command": "vibium serve",
+   "description": "Start WebSocket proxy server for browser automation",
+   "usage": [
+    "vibium serve [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--port",
+     "description": "Port to listen on (default 9515)",
+     "shorthand": "-p",
+     "argument": "int"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/serve/"
+  },
+  {
+   "command": "vibium set",
+   "description": "Check a checkbox or radio button",
+   "usage": [
+    "vibium set [selector] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    }
+   ],
+   "nightlyOnly": true,
+   "docs": "https://vibium.com/docs/commands/set/"
+  },
+  {
+   "command": "vibium setup",
+   "description": "Interactive setup for AI settings, agent skills, and the local browser.",
+   "usage": [
+    "vibium setup [browser|ai|skills] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--non-interactive",
+     "description": "Never prompt"
+    },
+    {
+     "flag": "--quick",
+     "description": "Only fill what is missing"
+    }
+   ],
+   "nightlyOnly": true,
+   "docs": "https://vibium.com/docs/commands/setup/"
+  },
+  {
+   "command": "vibium sleep",
+   "description": "Pause execution for a number of milliseconds",
+   "usage": [
+    "vibium sleep [ms] [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/sleep/"
+  },
+  {
+   "command": "vibium start",
+   "description": "Start a browser session. Without arguments, launches a local browser.",
+   "usage": [
+    "vibium start [url] [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/start/"
+  },
+  {
+   "command": "vibium stop",
+   "description": "Stop the browser session",
+   "usage": [
+    "vibium stop [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/stop/"
+  },
+  {
+   "command": "vibium storage",
+   "description": "Export or restore browser state (cookies, localStorage, sessionStorage)",
+   "usage": [
+    "vibium storage [flags]",
+    "vibium storage [command]"
+   ],
+   "flags": [
+    {
+     "flag": "--output",
+     "description": "Output file path",
+     "shorthand": "-o",
+     "argument": "string"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/storage/"
+  },
+  {
+   "command": "vibium storage restore",
+   "description": "Restore browser state from a JSON file",
+   "usage": [
+    "vibium storage restore [path] [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/storage/"
+  },
+  {
+   "command": "vibium text",
+   "description": "Get text content of the page or an element",
+   "usage": [
+    "vibium text [selector] [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/text/"
+  },
+  {
+   "command": "vibium title",
+   "description": "Get the current page title",
+   "usage": [
+    "vibium title [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/title/"
+  },
+  {
+   "command": "vibium type",
+   "description": "Type text into an element (optionally navigate to URL first)",
+   "usage": [
+    "vibium type [url] [selector] [text] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/type/"
+  },
+  {
+   "command": "vibium unset",
+   "description": "Uncheck a checkbox",
+   "usage": [
+    "vibium unset [selector] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    }
+   ],
+   "nightlyOnly": true,
+   "docs": "https://vibium.com/docs/commands/unset/"
+  },
+  {
+   "command": "vibium upload",
+   "description": "Set files on an input[type=file] element",
+   "usage": [
+    "vibium upload [selector] [files...] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/upload/"
+  },
+  {
+   "command": "vibium url",
+   "description": "Get the current page URL",
+   "usage": [
+    "vibium url [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/url/"
+  },
+  {
+   "command": "vibium value",
+   "description": "Get the current value of a form element",
+   "usage": [
+    "vibium value [selector] [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/value/"
+  },
+  {
+   "command": "vibium version",
+   "description": "Print the version number",
+   "usage": [
+    "vibium version [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/version/"
+  },
+  {
+   "command": "vibium viewport",
+   "description": "Get or set the browser viewport size",
+   "usage": [
+    "vibium viewport [width] [height] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--dpr",
+     "description": "Device pixel ratio (e.g., 2 for Retina)",
+     "argument": "float"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/viewport/"
+  },
+  {
+   "command": "vibium wait",
+   "description": "Wait for an element, URL, text, page load, or JS condition",
+   "usage": [
+    "vibium wait [selector] [flags]",
+    "vibium wait [command]"
+   ],
+   "flags": [
+    {
+     "flag": "--state",
+     "description": "State to wait for: attached, visible, hidden (default \"attached\")",
+     "argument": "string"
+    },
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/wait/"
+  },
+  {
+   "command": "vibium wait fn",
+   "description": "Wait until a JS expression returns truthy",
+   "usage": [
+    "vibium wait fn [expression] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/wait/"
+  },
+  {
+   "command": "vibium wait load",
+   "description": "Wait until the page is fully loaded",
+   "usage": [
+    "vibium wait load [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/wait/"
+  },
+  {
+   "command": "vibium wait text",
+   "description": "Wait until text appears on the page",
+   "usage": [
+    "vibium wait text [text] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/wait/"
+  },
+  {
+   "command": "vibium wait url",
+   "description": "Wait until the page URL contains a substring",
+   "usage": [
+    "vibium wait url [pattern] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/wait/"
+  },
+  {
+   "command": "vibium window",
+   "description": "Get or set the OS browser window size, position, or state",
+   "usage": [
+    "vibium window [width] [height] [x] [y] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--state",
+     "description": "Window state: normal, maximized, minimized, fullscreen",
+     "argument": "string"
+    }
+   ],
+   "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/window/"
+  }
+ ]
+}
