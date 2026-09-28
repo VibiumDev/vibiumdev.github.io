@@ -29,6 +29,20 @@ def repo_root() -> Path:
     return Path(__file__).resolve().parent.parent
 
 
+def doc_version(root: Path) -> str:
+    import json
+
+    manifest = root / "site" / "public" / "commands.json"
+    if manifest.is_file():
+        version = json.loads(manifest.read_text()).get("stableVersion")
+        if version:
+            return f"vibium {version}"
+    return "vibium-docs"
+
+
+DOC_VERSION = doc_version(Path(__file__).resolve().parent.parent)
+
+
 def mirror_markdown_page(src: Path, target: Path, last_updated: str) -> None:
     title, description = metadata(src)
     _, body = strip_frontmatter(src.read_text(encoding="utf-8"))
@@ -37,7 +51,7 @@ def mirror_markdown_page(src: Path, target: Path, last_updated: str) -> None:
             "---",
             f"title: {yaml_scalar(title)}",
             f"description: {yaml_scalar(description)}",
-            'doc_version: "vibium-docs"',
+            f"doc_version: {yaml_scalar(DOC_VERSION)}",
             f"last_updated: {last_updated}",
             "---",
             "",
