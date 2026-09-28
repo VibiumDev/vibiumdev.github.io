@@ -1,0 +1,19 @@
+{
+  "version": "1.0",
+  "skills": [
+    {
+      "name": "browser",
+      "description": "Automate browsers with the Vibium CLI. Use to navigate websites, inspect pages, fill forms, extract page data, debug UI behavior, capture screenshots and recordings, or delegate browser goals with vibium run.",
+      "url": "/skills/browser.md",
+      "license": "Apache-2.0",
+      "sha256": "5e78b9df476b23c5aea53bb514b8f2a33c2adb5d2deae53ee05141699e630aa2"
+    },
+    {
+      "name": "check",
+      "description": "Independently check application acceptance criteria in a live browser or saved recording with the Vibium CLI. Use for a formal verification step in the development loop, with PASS, FAIL, or INCONCLUSIVE and recorded evidence.",
+      "url": "/skills/check.md",
+      "license": "Apache-2.0",
+      "sha256": "e65533527150ac3af0d99a4e5b342473948c1b0029bf65ce92bf93e32dc7d7c9"
+    }
+  ]
+}

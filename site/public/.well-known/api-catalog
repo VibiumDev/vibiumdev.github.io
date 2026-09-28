@@ -1,0 +1,33 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://vibium.com/commands.json",
+      "service-desc": [
+        {
+          "href": "https://vibium.com/commands.json",
+          "type": "application/json",
+          "title": "Vibium CLI command listing: every command, its flags, and nightly-only markers, generated from the binaries"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://vibium.com/docs/scripting/",
+          "type": "text/html",
+          "title": "Scripting and Agents: JSON envelope, exit codes, and machine-readable endpoints"
+        },
+        {
+          "href": "https://vibium.com/docs/scripting.md",
+          "type": "text/markdown",
+          "title": "Scripting and Agents (Markdown mirror)"
+        }
+      ],
+      "service-meta": [
+        {
+          "href": "https://vibium.com/llms.txt",
+          "type": "text/plain",
+          "title": "Curated Markdown index of the Vibium documentation"
+        }
+      ]
+    }
+  ]
+}

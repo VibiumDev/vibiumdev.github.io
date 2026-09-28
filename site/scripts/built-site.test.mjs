@@ -62,6 +62,21 @@ test('llms.txt list links all point to markdown files', async () => {
   }
 });
 
+test('well-known agent discovery files are published', async () => {
+  const index = JSON.parse(await readBuilt('.well-known/agent-skills/index.json'));
+  assert.ok(Array.isArray(index.skills) && index.skills.length >= 2);
+  for (const skill of index.skills) {
+    assert.match(skill.sha256, /^[0-9a-f]{64}$/);
+    assert.equal(await exists(skill.url.replace(/^\//, '')), true);
+  }
+
+  const catalog = JSON.parse(await readBuilt('.well-known/api-catalog'));
+  assert.ok(Array.isArray(catalog.linkset) && catalog.linkset.length > 0);
+
+  const robots = await readBuilt('robots.txt');
+  assert.match(robots, /^Content-Signal: search=yes, ai-input=yes, ai-train=yes$/m);
+});
+
 test('markdown mirrors carry the documented vibium version', async () => {
   const md = await readBuilt('docs/introduction.md');
 

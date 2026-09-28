@@ -59,6 +59,8 @@ This site publishes several endpoints meant for agents:
 | `/llms/docs/....md` | Clean Markdown copy of any page (linked via `rel="alternate"` in each page head) |
 | [`/skills/browser.md`](https://vibium.com/skills/browser.md) | The Vibium browser skill, as installed by `vibium add-skill` |
 | [`/skills/check.md`](https://vibium.com/skills/check.md) | The check skill for independent verification |
+| [`/.well-known/agent-skills/index.json`](https://vibium.com/.well-known/agent-skills/index.json) | Skills discovery index with sha256 digests |
+| [`/.well-known/api-catalog`](https://vibium.com/.well-known/api-catalog) | RFC 9727 linkset pointing at the machine-readable surfaces |
 
 The skills are the fastest way to teach an agent the CLI: they contain the
 full command reference with usage patterns. `vibium add-skill` installs the

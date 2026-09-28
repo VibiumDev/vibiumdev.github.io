@@ -463,10 +463,32 @@ def emit_commands_json(
 
 
 def emit_skills(nightly: Binary) -> None:
+    import hashlib
+
     SKILLS_DIR.mkdir(parents=True, exist_ok=True)
+    entries = []
     for skill in ("browser", "check"):
         text = run([str(nightly.path), "add-skill", skill, "--stdout"])
         (SKILLS_DIR / f"{skill}.md").write_text(text)
+        # Skill files start with YAML frontmatter carrying name/description.
+        desc = re.search(r"^description:\s*(.+)$", text, re.M)
+        entries.append({
+            "name": skill,
+            "description": desc.group(1).strip() if desc else "",
+            "url": f"/skills/{skill}.md",
+            "license": "Apache-2.0",
+            "sha256": hashlib.sha256(text.encode()).hexdigest(),
+        })
+
+    index = {
+        "version": "1.0",
+        "skills": entries,
+    }
+    well_known = SKILLS_DIR.parent / ".well-known" / "agent-skills"
+    well_known.mkdir(parents=True, exist_ok=True)
+    (well_known / "index.json").write_text(
+        json.dumps(index, indent=2) + "\n"
+    )
 
 
 def main() -> None:
