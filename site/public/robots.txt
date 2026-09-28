@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+# AI content usage preferences (contentsignals.org)
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
 Sitemap: https://vibium.com/sitemap-index.xml

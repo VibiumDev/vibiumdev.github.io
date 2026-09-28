@@ -50,7 +50,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git add docs site/public/commands.json site/public/skills
+          git add docs site/public/commands.json site/public/skills site/public/.well-known
           if git diff --cached --quiet; then
             echo "Reference unchanged; nothing to commit."
             exit 0

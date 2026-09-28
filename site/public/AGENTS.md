@@ -55,6 +55,8 @@ Full contract: [Scripting and Agents](https://vibium.com/docs/scripting.md).
   as installed by `vibium add-skill`
 - Any docs page is available as Markdown by appending `.md` to its path
   (e.g. `/docs/quickstart.md`), or under `/llms/docs/`
+- Discovery: `/.well-known/agent-skills/index.json` (skills index with
+  sha256 digests) and `/.well-known/api-catalog` (RFC 9727 linkset)
 
 ## Source
 
