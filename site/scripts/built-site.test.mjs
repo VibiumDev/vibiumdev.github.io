@@ -44,6 +44,30 @@ test('homepage publishes agent-readable metadata', async () => {
   assert.match(html, /<a href="\/docs\/concepts\/">Glossary<\/a>/);
 });
 
+test('AGENTS.md is published with the required sections', async () => {
+  const md = await readBuilt('AGENTS.md');
+
+  assert.match(md, /^## Installation$/m);
+  assert.match(md, /^## Configuration$/m);
+  assert.match(md, /^## Usage$/m);
+});
+
+test('llms.txt list links all point to markdown files', async () => {
+  const txt = await readBuilt('llms.txt');
+  const links = [...txt.matchAll(/^- \[[^\]]+\]\(([^)]+)\)/gm)].map((m) => m[1]);
+
+  assert.ok(links.length > 0);
+  for (const link of links) {
+    assert.match(link, /\.(md|mdx)$/, `non-markdown link in llms.txt: ${link}`);
+  }
+});
+
+test('markdown mirrors carry the documented vibium version', async () => {
+  const md = await readBuilt('docs/introduction.md');
+
+  assert.match(md, /^doc_version: "vibium \d+\.\d+\.\d+"$/m);
+});
+
 test('Starlight docs are mounted under /docs only', async () => {
   assert.equal(await exists('docs/index.html'), true);
   assert.equal(await exists('docs/quickstart/index.html'), true);

@@ -198,12 +198,13 @@ def build_llms_txt(repo_root: Path, docs: list[Doc]) -> str:
         )
 
     sections["Skills"] = [
+        f"- [Agent guide]({origin}/AGENTS.md): Install, configure, and "
+        "drive Vibium; machine-readable endpoints, including the "
+        f"commands.json command listing at {origin}/commands.json.",
         f"- [Browser skill]({origin}/skills/browser.md): The full Vibium "
         "browser-automation skill, as installed by vibium add-skill.",
         f"- [Check skill]({origin}/skills/check.md): The independent "
         "acceptance-check skill for PASS/FAIL/INCONCLUSIVE verdicts.",
-        f"- [commands.json]({origin}/commands.json): Machine-readable "
-        "listing of every CLI command, its flags, and nightly-only markers.",
     ]
     for section in ("Docs", "Command Reference", "Skills", "Optional"):
         items = sections.get(section)
