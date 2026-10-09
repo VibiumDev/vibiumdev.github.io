@@ -28,6 +28,9 @@ vibium window 1920 1080
 vibium window 1920 1080 0 0
 # Set window to 1920x1080 at position (0, 0)
 
+vibium window 1920 1080 -1920 25
+# Move to a monitor left of the primary display
+
 vibium window --state maximized
 # Maximize the window
 ```
