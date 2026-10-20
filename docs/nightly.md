@@ -30,4 +30,4 @@ Get a nightly from the [releases page](https://github.com/VibiumDev/vibium/relea
 | [`vibium daemon start`](commands/daemon.md) | `--connect-caps` |
 | [`vibium page new`](commands/page.md) | `--isolated` |
 | [`vibium pdf`](commands/pdf.md) | `--background`, `--landscape`, `--margin`, `--page-height`, `--page-ranges`, `--page-width`, `--scale` |
-| [`vibium pipe`](commands/pipe.md) | `--connect-caps`, `--no-browser` |
+| [`vibium pipe`](commands/pipe.md) | `--browser-arg`, `--connect-caps`, `--no-browser` |

@@ -1099,6 +1099,11 @@
    ],
    "flags": [
     {
+     "flag": "--browser-arg",
+     "description": "Extra engine command-line flag for a locally launched browser (repeatable)",
+     "argument": "stringArray"
+    },
+    {
      "flag": "--connect",
      "description": "Connect to a remote BiDi WebSocket URL instead of launching a local browser",
      "argument": "string"
@@ -1121,6 +1126,7 @@
    "nightlyOnly": false,
    "docs": "https://vibium.com/docs/commands/pipe/",
    "nightlyOnlyFlags": [
+    "--browser-arg",
     "--connect-caps",
     "--no-browser"
    ]

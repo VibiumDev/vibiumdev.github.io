@@ -13,13 +13,14 @@ vibium pipe [flags]
 ## Flags
 
 ```
+    --browser-arg stringArray      Extra engine command-line flag for a locally launched browser (repeatable)
     --connect string               Connect to a remote BiDi WebSocket URL instead of launching a local browser
     --connect-caps string          Extra alwaysMatch capabilities for classic WebDriver endpoints (JSON object)
     --connect-header stringArray   HTTP header for WebSocket connect (repeatable, format: "Key: Value")
     --no-browser                   Start the existing pipe runtime for read-only archive commands without installing or launching a browser
 ```
 
-New in nightly (not yet in the npm release): `--connect-caps`, `--no-browser`
+New in nightly (not yet in the npm release): `--browser-arg`, `--connect-caps`, `--no-browser`
 
 ## Examples
 
