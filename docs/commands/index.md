@@ -47,6 +47,7 @@ hand the whole task to a model with [`run`](run.md) and verify it with
 | [`vibium is`](is.md) | Check element state (visible, enabled, set, actionable) |
 | [`vibium is-installed`](is-installed.md) | Check if the selected browser is installed (exit 0 = yes, exit 1 = no) |
 | [`vibium keys`](keys.md) | Press a key or key combination |
+| [`vibium long-press`](long-press.md) | Press and hold a touchscreen at coordinates **(nightly)** |
 | [`vibium map`](map.md) | Map interactive page elements with @refs |
 | [`vibium mcp`](mcp.md) | Start the Model Context Protocol (MCP) server. |
 | [`vibium media`](media.md) | Override CSS media features |
@@ -71,6 +72,8 @@ hand the whole task to a model with [`run`](run.md) and verify it with
 | [`vibium start`](start.md) | Start a browser session. Without arguments, launches a local browser. |
 | [`vibium stop`](stop.md) | Stop the browser session |
 | [`vibium storage`](storage.md) | Export or restore browser state (cookies, localStorage, sessionStorage) |
+| [`vibium swipe`](swipe.md) | Swipe a touchscreen from one point to another **(nightly)** |
+| [`vibium tap`](tap.md) | Tap a touchscreen at coordinates **(nightly)** |
 | [`vibium text`](text.md) | Get text content of the page or an element |
 | [`vibium title`](title.md) | Get the current page title |
 | [`vibium type`](type.md) | Type text into an element (optionally navigate to URL first) |

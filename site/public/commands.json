@@ -827,6 +827,22 @@
    "docs": "https://vibium.com/docs/commands/keys/"
   },
   {
+   "command": "vibium long-press",
+   "description": "Press and hold a touchscreen at coordinates",
+   "usage": [
+    "vibium long-press [x] [y] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--duration",
+     "description": "How long to hold the press in milliseconds (default 500)",
+     "argument": "int"
+    }
+   ],
+   "nightlyOnly": true,
+   "docs": "https://vibium.com/docs/commands/long-press/"
+  },
+  {
    "command": "vibium map",
    "description": "Map interactive page elements with @refs",
    "usage": [
@@ -1638,6 +1654,32 @@
    "flags": [],
    "nightlyOnly": false,
    "docs": "https://vibium.com/docs/commands/storage/"
+  },
+  {
+   "command": "vibium swipe",
+   "description": "Swipe a touchscreen from one point to another",
+   "usage": [
+    "vibium swipe [x1] [y1] [x2] [y2] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--duration",
+     "description": "How long the move takes in milliseconds (default 300)",
+     "argument": "int"
+    }
+   ],
+   "nightlyOnly": true,
+   "docs": "https://vibium.com/docs/commands/swipe/"
+  },
+  {
+   "command": "vibium tap",
+   "description": "Tap a touchscreen at coordinates",
+   "usage": [
+    "vibium tap [x] [y] [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": true,
+   "docs": "https://vibium.com/docs/commands/tap/"
   },
   {
    "command": "vibium text",
