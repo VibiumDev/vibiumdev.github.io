@@ -23,6 +23,9 @@ Get a nightly from the [releases page](https://github.com/VibiumDev/vibium/relea
 | [`vibium swipe`](commands/swipe.md) | Swipe a touchscreen from one point to another |
 | [`vibium tap`](commands/tap.md) | Tap a touchscreen at coordinates |
 | [`vibium unset`](commands/unset.md) | Uncheck a checkbox |
+| [`vibium webbotauth`](commands/webbotauth.md) | Create and inspect the Ed25519 key used for Web Bot Auth request signing. |
+| [`vibium webbotauth directory`](commands/webbotauth.md) | Print the JWKS directory to publish at /.well-known/http-message-signatures-directory |
+| [`vibium webbotauth keygen`](commands/webbotauth.md) | Generate an Ed25519 signing key (PKCS#8 PEM) |
 
 ## New flags on existing commands
 

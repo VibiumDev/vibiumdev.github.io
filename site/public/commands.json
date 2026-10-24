@@ -1882,6 +1882,49 @@
    "docs": "https://vibium.com/docs/commands/wait/"
   },
   {
+   "command": "vibium webbotauth",
+   "description": "Create and inspect the Ed25519 key used for Web Bot Auth request signing.",
+   "usage": [
+    "vibium webbotauth [command]"
+   ],
+   "flags": [],
+   "nightlyOnly": true,
+   "docs": "https://vibium.com/docs/commands/webbotauth/"
+  },
+  {
+   "command": "vibium webbotauth directory",
+   "description": "Print the JWKS directory to publish at /.well-known/http-message-signatures-directory",
+   "usage": [
+    "vibium webbotauth directory [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--key",
+     "description": "Path to the Ed25519 key (PKCS#8 PEM)",
+     "argument": "string"
+    }
+   ],
+   "nightlyOnly": true,
+   "docs": "https://vibium.com/docs/commands/webbotauth/"
+  },
+  {
+   "command": "vibium webbotauth keygen",
+   "description": "Generate an Ed25519 signing key (PKCS#8 PEM)",
+   "usage": [
+    "vibium webbotauth keygen [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--output",
+     "description": "Write the key to this file (default: stdout)",
+     "shorthand": "-o",
+     "argument": "string"
+    }
+   ],
+   "nightlyOnly": true,
+   "docs": "https://vibium.com/docs/commands/webbotauth/"
+  },
+  {
    "command": "vibium window",
    "description": "Get or set the OS browser window size, position, or state",
    "usage": [

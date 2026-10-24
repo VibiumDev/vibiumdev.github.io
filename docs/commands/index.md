@@ -84,6 +84,7 @@ hand the whole task to a model with [`run`](run.md) and verify it with
 | [`vibium version`](version.md) | Print the version number |
 | [`vibium viewport`](viewport.md) | Get or set the browser viewport size |
 | [`vibium wait`](wait.md) | Wait for an element, URL, text, page load, or JS condition |
+| [`vibium webbotauth`](webbotauth.md) | Create and inspect the Ed25519 key used for Web Bot Auth request signing. **(nightly)** |
 | [`vibium window`](window.md) | Get or set the OS browser window size, position, or state |
 
 Commands marked **(nightly)** are not yet in the latest npm release; see [What's in Nightly](../nightly.md).
