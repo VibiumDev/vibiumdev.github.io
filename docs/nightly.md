@@ -32,7 +32,7 @@ Get a nightly from the [releases page](https://github.com/VibiumDev/vibium/relea
 | Command | New flags |
 | ------- | --------- |
 | [`vibium add-skill`](commands/add-skill.md) | `--agent` |
-| [`vibium check`](commands/check.md) | `--ai-base-url`, `--base-url`, `--input`, `--keep-open`, `--model`, `--output`, `--provider`, `--reasoning-effort`, `--report` |
+| [`vibium check`](commands/check.md) | `--ai-base-url`, `--base-url`, `--expect`, `--input`, `--keep-open`, `--model`, `--output`, `--provider`, `--reasoning-effort`, `--report` |
 | [`vibium daemon start`](commands/daemon.md) | `--connect-caps` |
 | [`vibium page new`](commands/page.md) | `--isolated` |
 | [`vibium pdf`](commands/pdf.md) | `--background`, `--landscape`, `--margin`, `--page-height`, `--page-ranges`, `--page-width`, `--scale` |

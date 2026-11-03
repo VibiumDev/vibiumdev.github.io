@@ -14,6 +14,7 @@ vibium check "<claim>" [flags]
 
 ```
     --base-url string   Site under test: opened first unless the current page already shares its origin; relative navigation paths resolve against it
+    --expect string     Gate automation on the verdict: with pass, FAIL exits 2 and REVIEW exits 3 (execution errors keep exit 1)
 -i, --input string      Read an existing Vibium recording or Playwright trace ZIP; no browser is launched
     --keep-open         Leave a browser started by Check open after the run (existing browsers are always preserved)
 -o, --output string     Save a new recording ZIP of live verification; an active recording is exported without stopping it (current chunk, no video)
@@ -40,7 +41,7 @@ openai-compatible   the model name your server serves
 local               the model name your server serves
 ```
 
-New in nightly (not yet in the npm release): `--ai-base-url`, `--base-url`, `--input`, `--keep-open`, `--model`, `--output`, `--provider`, `--reasoning-effort`, `--report`
+New in nightly (not yet in the npm release): `--ai-base-url`, `--base-url`, `--expect`, `--input`, `--keep-open`, `--model`, `--output`, `--provider`, `--reasoning-effort`, `--report`
 
 ## Description
 

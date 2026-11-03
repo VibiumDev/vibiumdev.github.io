@@ -18,6 +18,7 @@ vibium run "<goal>" [flags]
 
 ```
     --base-url string   Site under test: opened first unless the current page already shares its origin; relative navigation paths resolve against it
+    --expect string     Gate automation on the result: with completed, NOT_COMPLETED exits 2 (execution errors keep exit 1)
     --keep-open         Keep a browser started by Run open after saving evidence
 -o, --output string     Save a new live recording ZIP; an active recording exports its current chunk without continuous video
 ```
@@ -53,4 +54,6 @@ vibium run "change my timezone to America/Chicago and save it" --provider local 
 # Uses these settings for one invocation; credentials still come from the environment.
 vibium run "add a battery pack to the cart" --base-url http://localhost:3000
 # Accomplishes the goal against that site; a page already on its origin keeps its state.
+vibium run "add a battery pack to the cart" --expect completed
+# Exits 0 when completed, 2 when not_completed for CI gating.
 ```

@@ -107,6 +107,11 @@
      "argument": "string"
     },
     {
+     "flag": "--expect",
+     "description": "Gate automation on the verdict: with pass, FAIL exits 2 and REVIEW exits 3 (execution errors keep exit 1)",
+     "argument": "string"
+    },
+    {
      "flag": "--input",
      "description": "Read an existing Vibium recording or Playwright trace ZIP; no browser is launched",
      "shorthand": "-i",
@@ -153,6 +158,7 @@
    "nightlyOnlyFlags": [
     "--ai-base-url",
     "--base-url",
+    "--expect",
     "--input",
     "--keep-open",
     "--model",
@@ -1430,6 +1436,11 @@
     {
      "flag": "--base-url",
      "description": "Site under test: opened first unless the current page already shares its origin; relative navigation paths resolve against it",
+     "argument": "string"
+    },
+    {
+     "flag": "--expect",
+     "description": "Gate automation on the result: with completed, NOT_COMPLETED exits 2 (execution errors keep exit 1)",
      "argument": "string"
     },
     {
