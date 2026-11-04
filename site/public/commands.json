@@ -185,6 +185,35 @@
    "docs": "https://vibium.com/docs/commands/click/"
   },
   {
+   "command": "vibium codegen",
+   "description": "Generate a runnable script that replays a recording's action stream.",
+   "usage": [
+    "vibium codegen -i <recording.zip> [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--input",
+     "description": "Recording zip to read (required)",
+     "shorthand": "-i",
+     "argument": "string"
+    },
+    {
+     "flag": "--language",
+     "description": "Script language: javascript or python (default \"javascript\")",
+     "shorthand": "-l",
+     "argument": "string"
+    },
+    {
+     "flag": "--output",
+     "description": "Save the script as a new file instead of printing it",
+     "shorthand": "-o",
+     "argument": "string"
+    }
+   ],
+   "nightlyOnly": true,
+   "docs": "https://vibium.com/docs/commands/codegen/"
+  },
+  {
    "command": "vibium config",
    "description": "Manage Vibium settings files",
    "usage": [
@@ -1451,6 +1480,11 @@
      "flag": "--output",
      "description": "Save a new live recording ZIP; an active recording exports its current chunk without continuous video",
      "shorthand": "-o",
+     "argument": "string"
+    },
+    {
+     "flag": "--report",
+     "description": "Save the result and concise evidence as a new JSON file",
      "argument": "string"
     },
     {

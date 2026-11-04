@@ -10,6 +10,7 @@ Get a nightly from the [releases page](https://github.com/VibiumDev/vibium/relea
 
 | Command | Description |
 | ------- | ----------- |
+| [`vibium codegen`](commands/codegen.md) | Generate a runnable script that replays a recording's action stream. |
 | [`vibium config`](commands/config.md) | Manage Vibium settings files |
 | [`vibium config init`](commands/config.md) | Write a commented settings file to the Vibium config directory. |
 | [`vibium is set`](commands/is.md) | Check if a checkbox or radio is checked |

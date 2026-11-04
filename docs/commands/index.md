@@ -21,6 +21,7 @@ hand the whole task to a model with [`run`](run.md) and verify it with
 | [`vibium back`](back.md) | Navigate back in browser history |
 | [`vibium check`](check.md) | Check a claim in a live browser or an existing recording with an independent model. |
 | [`vibium click`](click.md) | Click an element (optionally navigate to URL first) |
+| [`vibium codegen`](codegen.md) | Generate a runnable script that replays a recording's action stream. **(nightly)** |
 | [`vibium config`](config.md) | Manage Vibium settings files **(nightly)** |
 | [`vibium content`](content.md) | Replace the page HTML content |
 | [`vibium cookies`](cookies.md) | Manage browser cookies |

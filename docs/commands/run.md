@@ -21,6 +21,7 @@ vibium run "<goal>" [flags]
     --expect string     Gate automation on the result: with completed, NOT_COMPLETED exits 2 (execution errors keep exit 1)
     --keep-open         Keep a browser started by Run open after saving evidence
 -o, --output string     Save a new live recording ZIP; an active recording exports its current chunk without continuous video
+    --report string     Save the result and concise evidence as a new JSON file
 ```
 
 ## AI Flags
@@ -50,6 +51,8 @@ vibium run "change my timezone to America/Chicago"
 # Accomplishes the goal in the existing browser and reports its result.
 vibium run "open https://example.com" -o run.zip --keep-open
 # Saves the live recording and leaves a newly started browser open.
+vibium run "change my timezone to America/Chicago" --report result.json
+# Also saves {"status":"completed",...} with evidence to a new JSON file.
 vibium run "change my timezone to America/Chicago and save it" --provider local --model my-model --ai-base-url http://127.0.0.1:8080/v1 --reasoning-effort ""
 # Uses these settings for one invocation; credentials still come from the environment.
 vibium run "add a battery pack to the cart" --base-url http://localhost:3000
