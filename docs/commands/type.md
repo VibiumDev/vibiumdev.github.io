@@ -2,7 +2,7 @@
 title: vibium type
 ---
 
-Type text into an element (optionally navigate to URL first).
+Type text into an element, or into whatever has focus.
 
 ## Synopsis
 
@@ -19,8 +19,11 @@ vibium type [url] [selector] [text] [flags]
 ## Examples
 
 ```sh
+vibium type "calc"
+# Types into whatever has focus: a search box, or a phone's screen
+
 vibium type "input" "12345"
-# Types on current page
+# Types into the element on the current page
 
 vibium type https://the-internet.herokuapp.com/inputs "input" "12345"
 # Navigates to URL first, then types

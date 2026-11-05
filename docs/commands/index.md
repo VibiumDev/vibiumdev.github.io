@@ -77,7 +77,7 @@ hand the whole task to a model with [`run`](run.md) and verify it with
 | [`vibium tap`](tap.md) | Tap a touchscreen at coordinates **(nightly)** |
 | [`vibium text`](text.md) | Get text content of the page or an element |
 | [`vibium title`](title.md) | Get the current page title |
-| [`vibium type`](type.md) | Type text into an element (optionally navigate to URL first) |
+| [`vibium type`](type.md) | Type text into an element, or into whatever has focus |
 | [`vibium unset`](unset.md) | Uncheck a checkbox **(nightly)** |
 | [`vibium upload`](upload.md) | Set files on an input[type=file] element |
 | [`vibium url`](url.md) | Get the current page URL |
@@ -95,11 +95,12 @@ Commands marked **(nightly)** are not yet in the latest npm release; see [What's
 Every command accepts these flags in addition to its own:
 
 ```
-    --channel string   Engine release channel to install and run (env: VIBIUM_ENGINE_CHANNEL); firefox: release (default) or beta; chrome: stable (default), beta, dev, or canary
-    --engine string    Browser engine to launch: chrome or firefox (env: VIBIUM_ENGINE) (default "chrome")
-    --headless         Hide browser window (visible by default)
-    --json             Output as JSON
-    --session string   Named daemon session for isolated concurrent use (env: VIBIUM_SESSION)
--v, --verbose          Enable debug logging
-    --version          version for vibium
+    --channel string         Engine release channel to install and run (env: VIBIUM_ENGINE_CHANNEL); firefox: release (default) or beta; chrome: stable (default), beta, dev, or canary
+    --engine string          Browser engine to launch: chrome or firefox (env: VIBIUM_ENGINE) (default "chrome")
+    --headless               Hide browser window (visible by default)
+    --json                   Output as JSON
+    --session string         Named daemon session for isolated concurrent use (env: VIBIUM_SESSION)
+    --user-data-dir string   Persistent browser profile directory, created if missing and reused across runs; default is a temp profile wiped on close
+-v, --verbose                Enable debug logging
+    --version                version for vibium
 ```

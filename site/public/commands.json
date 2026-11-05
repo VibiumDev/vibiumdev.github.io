@@ -26,6 +26,11 @@
    "argument": "string"
   },
   {
+   "flag": "--user-data-dir",
+   "description": "Persistent browser profile directory, created if missing and reused across runs; default is a temp profile wiped on close",
+   "argument": "string"
+  },
+  {
    "flag": "--verbose",
    "description": "Enable debug logging",
    "shorthand": "-v"
@@ -1748,7 +1753,7 @@
   },
   {
    "command": "vibium type",
-   "description": "Type text into an element (optionally navigate to URL first)",
+   "description": "Type text into an element, or into whatever has focus",
    "usage": [
     "vibium type [url] [selector] [text] [flags]"
    ],
