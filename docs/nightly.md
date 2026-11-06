@@ -21,7 +21,7 @@ Get a nightly from the [releases page](https://github.com/VibiumDev/vibium/relea
 | [`vibium run`](commands/run.md) | Accomplish a live browser goal using VIBIUM_AI_* configuration. |
 | [`vibium set`](commands/set.md) | Check a checkbox or radio button |
 | [`vibium setup`](commands/setup.md) | Interactive setup for AI settings, agent skills, and the local browser. |
-| [`vibium swipe`](commands/swipe.md) | Swipe a touchscreen from one point to another |
+| [`vibium swipe`](commands/swipe.md) | Swipe a touchscreen in a direction or from one point to another |
 | [`vibium tap`](commands/tap.md) | Tap a touchscreen at coordinates |
 | [`vibium unset`](commands/unset.md) | Uncheck a checkbox |
 | [`vibium webbotauth`](commands/webbotauth.md) | Create and inspect the Ed25519 key used for Web Bot Auth request signing. |

@@ -1707,15 +1707,35 @@
   },
   {
    "command": "vibium swipe",
-   "description": "Swipe a touchscreen from one point to another",
+   "description": "Swipe a touchscreen in a direction or from one point to another",
    "usage": [
-    "vibium swipe [x1] [y1] [x2] [y2] [flags]"
+    "vibium swipe <up|down|left|right> | <x1> <y1> <x2> <y2> [flags]"
    ],
    "flags": [
+    {
+     "flag": "--distance",
+     "description": "How far a direction swipe moves in pixels (default: half the viewport)",
+     "argument": "int"
+    },
     {
      "flag": "--duration",
      "description": "How long the move takes in milliseconds (default 300)",
      "argument": "int"
+    },
+    {
+     "flag": "--from",
+     "description": "Where a direction swipe starts: top, bottom, left, right, top-left, top-right, bottom-left, bottom-right, center, or x,y",
+     "argument": "string"
+    },
+    {
+     "flag": "--hold",
+     "description": "Milliseconds to rest at the end before lifting",
+     "argument": "int"
+    },
+    {
+     "flag": "--speed",
+     "description": "slow, normal, fast, or pixels per second (instead of --duration)",
+     "argument": "string"
     }
    ],
    "nightlyOnly": true,
