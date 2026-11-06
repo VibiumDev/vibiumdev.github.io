@@ -114,7 +114,7 @@ vibium check "the page shows contact information"
 
 `run` drives the browser toward the goal and reports COMPLETED or
 NOT_COMPLETED; `check` independently verifies a claim with PASS, FAIL, or
-INCONCLUSIVE. See [Run and Check](run-and-check.md).
+REVIEW. See [Run and Check](run-and-check.md).
 
 ## Agent skill
 
