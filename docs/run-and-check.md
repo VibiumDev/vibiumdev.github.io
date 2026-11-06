@@ -15,7 +15,7 @@ step:
 - `vibium run "<goal>"` uses the live browser to carry out a goal and returns
   **COMPLETED** or **NOT_COMPLETED**, with concise evidence.
 - `vibium check "<claim>"` asks a fresh verifier to investigate a claim and
-  returns **PASS**, **FAIL**, or **INCONCLUSIVE**, with evidence. It can check
+  returns **PASS**, **FAIL**, or **REVIEW**, with evidence. It can check
   the live browser or a saved recording.
 
 They share one AI configuration but never share a conversation, so a Check is

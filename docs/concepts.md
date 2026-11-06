@@ -114,7 +114,7 @@ Two commands hand control to an AI model instead of you scripting each step:
   **NOT_COMPLETED** with evidence.
 - [`vibium check "<claim>"`](run-and-check.md) starts a fresh model
   conversation to verify a claim against the live browser (or a saved
-  recording) and returns **PASS**, **FAIL**, or **INCONCLUSIVE**.
+  recording) and returns **PASS**, **FAIL**, or **REVIEW**.
 
 They share one AI configuration (`vibium setup` writes it) but never share
 a conversation, so a Check is an independent second opinion on a Run. Both

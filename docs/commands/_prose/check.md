@@ -1,7 +1,7 @@
 ## Description
 
 Asks a fresh AI verifier to investigate a claim and return **PASS**,
-**FAIL**, or **INCONCLUSIVE**, with evidence. Live checks use the existing
+**FAIL**, or **REVIEW**, with evidence. Live checks use the existing
 browser session; `-i` checks a saved recording instead. Requires a
 configured model provider — see [Run and Check](../run-and-check.md).
 

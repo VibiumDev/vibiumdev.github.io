@@ -29,7 +29,7 @@ vibium --json url
 | ------- | ------ | ------ |
 | Most commands | Completed | Failed (bad selector, timeout, browser error) |
 | `run` | Operation completed, whether the status is `completed` or `not_completed` | Configuration, provider, browser, or timeout failure |
-| `check` | Verdict delivered: PASS, FAIL, or INCONCLUSIVE | Execution failure, no verdict |
+| `check` | Verdict delivered: PASS, FAIL, or REVIEW | Execution failure, no verdict |
 | `ready`, `ready ai`, `ready browser` | Ready | Setup problem |
 | `is-installed` | Browser installed | Not installed |
 | `is visible` / `enabled` / `set` / `actionable` | Answer printed (`true` or `false`) | Only with `--fail`: the answer was `false` |
