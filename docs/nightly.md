@@ -13,6 +13,10 @@ Get a nightly from the [releases page](https://github.com/VibiumDev/vibium/relea
 | [`vibium codegen`](commands/codegen.md) | Generate a runnable script that replays a recording's action stream. |
 | [`vibium config`](commands/config.md) | Manage Vibium settings files |
 | [`vibium config init`](commands/config.md) | Write a commented settings file to the Vibium config directory. |
+| [`vibium find css`](commands/find.md) | Find element by CSS selector |
+| [`vibium find description`](commands/find.md) | Find element by natural-language description |
+| [`vibium find image`](commands/find.md) | Find where a reference image appears on screen |
+| [`vibium find tag`](commands/find.md) | Find element by HTML tag name |
 | [`vibium is set`](commands/is.md) | Check if a checkbox or radio is checked |
 | [`vibium long-press`](commands/long-press.md) | Press and hold a touchscreen at coordinates |
 | [`vibium ready`](commands/ready.md) | Check the selected local browser executable files, then test AI when configured. No browser or driver is launched. |
@@ -22,7 +26,7 @@ Get a nightly from the [releases page](https://github.com/VibiumDev/vibium/relea
 | [`vibium set`](commands/set.md) | Check a checkbox or radio button |
 | [`vibium setup`](commands/setup.md) | Interactive setup for AI settings, agent skills, and the local browser. |
 | [`vibium swipe`](commands/swipe.md) | Swipe a touchscreen in a direction or from one point to another |
-| [`vibium tap`](commands/tap.md) | Tap a touchscreen at coordinates |
+| [`vibium tap`](commands/tap.md) | Tap a touchscreen at coordinates or on an element |
 | [`vibium unset`](commands/unset.md) | Uncheck a checkbox |
 | [`vibium webbotauth`](commands/webbotauth.md) | Create and inspect the Ed25519 key used for Web Bot Auth request signing. |
 | [`vibium webbotauth directory`](commands/webbotauth.md) | Print the JWKS directory to publish at /.well-known/http-message-signatures-directory |
@@ -35,6 +39,7 @@ Get a nightly from the [releases page](https://github.com/VibiumDev/vibium/relea
 | [`vibium add-skill`](commands/add-skill.md) | `--agent` |
 | [`vibium check`](commands/check.md) | `--ai-base-url`, `--base-url`, `--expect`, `--input`, `--keep-open`, `--model`, `--output`, `--provider`, `--reasoning-effort`, `--report` |
 | [`vibium daemon start`](commands/daemon.md) | `--connect-caps` |
+| [`vibium find`](commands/find.md) | `--ai-base-url`, `--details`, `--model`, `--provider`, `--reasoning-effort`, `--strategy` |
 | [`vibium page new`](commands/page.md) | `--isolated` |
 | [`vibium pdf`](commands/pdf.md) | `--background`, `--landscape`, `--margin`, `--page-height`, `--page-ranges`, `--page-width`, `--scale` |
 | [`vibium pipe`](commands/pipe.md) | `--browser-arg`, `--connect-caps`, `--no-browser` |

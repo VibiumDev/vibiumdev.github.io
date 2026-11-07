@@ -500,9 +500,9 @@
   },
   {
    "command": "vibium find",
-   "description": "Find elements by CSS selector or semantic locator",
+   "description": "Find elements and return @eN refs for later commands.",
    "usage": [
-    "vibium find [selector] [flags]",
+    "vibium find [description] [flags]",
     "vibium find [command]"
    ],
    "flags": [
@@ -511,18 +511,55 @@
      "description": "Find all matching elements"
     },
     {
+     "flag": "--details",
+     "description": "Print diagnostics: method, model, raw scores"
+    },
+    {
      "flag": "--limit",
      "description": "Maximum number of elements to return (with --all) (default 10)",
      "argument": "int"
     },
     {
+     "flag": "--strategy",
+     "description": "How to resolve: auto, cv (local image matching only), vlm (vision model only), or tree (page tree only) (default \"auto\")",
+     "argument": "string"
+    },
+    {
      "flag": "--timeout",
      "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
      "argument": "timeout"
+    },
+    {
+     "flag": "--ai-base-url",
+     "description": "AI provider API base URL, not the site under test (env: VIBIUM_AI_BASE_URL); empty resets the provider default",
+     "argument": "string"
+    },
+    {
+     "flag": "--model",
+     "description": "Model ID for the provider; see Model IDs below (env: VIBIUM_AI_MODEL)",
+     "argument": "string"
+    },
+    {
+     "flag": "--provider",
+     "description": "AI provider: openai, xai, anthropic, google, openai-compatible, or local (env: VIBIUM_AI_PROVIDER); changing it requires --model and resets endpoint/effort defaults",
+     "argument": "string"
+    },
+    {
+     "flag": "--reasoning-effort",
+     "description": "none, minimal, low, medium, high, xhigh, or max; not for anthropic or google (env: VIBIUM_AI_REASONING_EFFORT); empty uses the model default",
+     "argument": "string"
     }
    ],
    "nightlyOnly": false,
-   "docs": "https://vibium.com/docs/commands/find/"
+   "docs": "https://vibium.com/docs/commands/find/",
+   "nightlyOnlyFlags": [
+    "--ai-base-url",
+    "--details",
+    "--model",
+    "--provider",
+    "--reasoning-effort",
+    "--strategy"
+   ]
   },
   {
    "command": "vibium find alt",
@@ -538,6 +575,94 @@
     }
    ],
    "nightlyOnly": false,
+   "docs": "https://vibium.com/docs/commands/find/"
+  },
+  {
+   "command": "vibium find css",
+   "description": "Find element by CSS selector",
+   "usage": [
+    "vibium find css [css] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    }
+   ],
+   "nightlyOnly": true,
+   "docs": "https://vibium.com/docs/commands/find/"
+  },
+  {
+   "command": "vibium find description",
+   "description": "Find element by natural-language description",
+   "usage": [
+    "vibium find description [description] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    },
+    {
+     "flag": "--ai-base-url",
+     "description": "AI provider API base URL, not the site under test (env: VIBIUM_AI_BASE_URL); empty resets the provider default",
+     "argument": "string"
+    },
+    {
+     "flag": "--model",
+     "description": "Model ID for the provider; see Model IDs below (env: VIBIUM_AI_MODEL)",
+     "argument": "string"
+    },
+    {
+     "flag": "--provider",
+     "description": "AI provider: openai, xai, anthropic, google, openai-compatible, or local (env: VIBIUM_AI_PROVIDER); changing it requires --model and resets endpoint/effort defaults",
+     "argument": "string"
+    },
+    {
+     "flag": "--reasoning-effort",
+     "description": "none, minimal, low, medium, high, xhigh, or max; not for anthropic or google (env: VIBIUM_AI_REASONING_EFFORT); empty uses the model default",
+     "argument": "string"
+    }
+   ],
+   "nightlyOnly": true,
+   "docs": "https://vibium.com/docs/commands/find/"
+  },
+  {
+   "command": "vibium find image",
+   "description": "Find where a reference image appears on screen",
+   "usage": [
+    "vibium find image [path] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    },
+    {
+     "flag": "--ai-base-url",
+     "description": "AI provider API base URL, not the site under test (env: VIBIUM_AI_BASE_URL); empty resets the provider default",
+     "argument": "string"
+    },
+    {
+     "flag": "--model",
+     "description": "Model ID for the provider; see Model IDs below (env: VIBIUM_AI_MODEL)",
+     "argument": "string"
+    },
+    {
+     "flag": "--provider",
+     "description": "AI provider: openai, xai, anthropic, google, openai-compatible, or local (env: VIBIUM_AI_PROVIDER); changing it requires --model and resets endpoint/effort defaults",
+     "argument": "string"
+    },
+    {
+     "flag": "--reasoning-effort",
+     "description": "none, minimal, low, medium, high, xhigh, or max; not for anthropic or google (env: VIBIUM_AI_REASONING_EFFORT); empty uses the model default",
+     "argument": "string"
+    }
+   ],
+   "nightlyOnly": true,
    "docs": "https://vibium.com/docs/commands/find/"
   },
   {
@@ -594,6 +719,22 @@
    "docs": "https://vibium.com/docs/commands/find/"
   },
   {
+   "command": "vibium find tag",
+   "description": "Find element by HTML tag name",
+   "usage": [
+    "vibium find tag [tag] [flags]"
+   ],
+   "flags": [
+    {
+     "flag": "--timeout",
+     "description": "Max time to wait, e.g. 5s or 5000 (bare number = milliseconds) (default 30s)",
+     "argument": "timeout"
+    }
+   ],
+   "nightlyOnly": true,
+   "docs": "https://vibium.com/docs/commands/find/"
+  },
+  {
    "command": "vibium find testid",
    "description": "Find element by data-testid attribute",
    "usage": [
@@ -645,7 +786,7 @@
    "command": "vibium find xpath",
    "description": "Find element by XPath expression",
    "usage": [
-    "vibium find xpath [expression] [flags]"
+    "vibium find xpath [xpath] [flags]"
    ],
    "flags": [
     {
@@ -1743,9 +1884,9 @@
   },
   {
    "command": "vibium tap",
-   "description": "Tap a touchscreen at coordinates",
+   "description": "Tap a touchscreen at coordinates or on an element",
    "usage": [
-    "vibium tap [x] [y] [flags]"
+    "vibium tap [x] [y] | tap <selector|@ref> [flags]"
    ],
    "flags": [],
    "nightlyOnly": true,

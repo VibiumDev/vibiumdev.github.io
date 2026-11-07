@@ -34,7 +34,7 @@ hand the whole task to a model with [`run`](run.md) and verify it with
 | [`vibium drag`](drag.md) | Drag from one element to another |
 | [`vibium eval`](eval.md) | Evaluate a JavaScript expression (optionally navigate to URL first) |
 | [`vibium fill`](fill.md) | Clear an input field and type new text |
-| [`vibium find`](find.md) | Find elements by CSS selector or semantic locator |
+| [`vibium find`](find.md) | Find elements and return @eN refs for later commands. |
 | [`vibium focus`](focus.md) | Focus an element |
 | [`vibium forward`](forward.md) | Navigate forward in browser history |
 | [`vibium frame`](frame.md) | Find a frame by name or URL substring |
@@ -74,7 +74,7 @@ hand the whole task to a model with [`run`](run.md) and verify it with
 | [`vibium stop`](stop.md) | Stop the browser session |
 | [`vibium storage`](storage.md) | Export or restore browser state (cookies, localStorage, sessionStorage) |
 | [`vibium swipe`](swipe.md) | Swipe a touchscreen in a direction or from one point to another **(nightly)** |
-| [`vibium tap`](tap.md) | Tap a touchscreen at coordinates **(nightly)** |
+| [`vibium tap`](tap.md) | Tap a touchscreen at coordinates or on an element **(nightly)** |
 | [`vibium text`](text.md) | Get text content of the page or an element |
 | [`vibium title`](title.md) | Get the current page title |
 | [`vibium type`](type.md) | Type text into an element, or into whatever has focus |
