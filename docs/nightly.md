@@ -43,3 +43,4 @@ Get a nightly from the [releases page](https://github.com/VibiumDev/vibium/relea
 | [`vibium page new`](commands/page.md) | `--isolated` |
 | [`vibium pdf`](commands/pdf.md) | `--background`, `--landscape`, `--margin`, `--page-height`, `--page-ranges`, `--page-width`, `--scale` |
 | [`vibium pipe`](commands/pipe.md) | `--browser-arg`, `--connect-caps`, `--no-browser` |
+| [`vibium record stop`](commands/record.md) | `--upload`, `--upload-to` |

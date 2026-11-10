@@ -1586,10 +1586,23 @@
      "description": "Output file path (default: record-<timestamp>.zip)",
      "shorthand": "-o",
      "argument": "string"
+    },
+    {
+     "flag": "--upload",
+     "description": "Also upload the ZIP to the station the session is connected through (its Record Store)"
+    },
+    {
+     "flag": "--upload-to",
+     "description": "Upload to this station's URL instead, with the API key from VIBIUM_CONNECT_API_KEY",
+     "argument": "string"
     }
    ],
    "nightlyOnly": false,
-   "docs": "https://vibium.com/docs/commands/record/"
+   "docs": "https://vibium.com/docs/commands/record/",
+   "nightlyOnlyFlags": [
+    "--upload",
+    "--upload-to"
+   ]
   },
   {
    "command": "vibium reload",

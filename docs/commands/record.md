@@ -167,8 +167,12 @@ vibium record stop [flags]
 #### Flags
 
 ```
--o, --output string   Output file path (default: record-<timestamp>.zip)
+-o, --output string      Output file path (default: record-<timestamp>.zip)
+    --upload             Also upload the ZIP to the station the session is connected through (its Record Store)
+    --upload-to string   Upload to this station's URL instead, with the API key from VIBIUM_CONNECT_API_KEY
 ```
+
+New in nightly (not yet in the npm release): `--upload`, `--upload-to`
 
 ```sh
 vibium record stop
@@ -176,6 +180,10 @@ vibium record stop
 
 vibium record stop -o my-recording.zip
 # Save to a custom path (overrides the path declared at start)
+
+vibium record stop --upload
+# Also upload the ZIP to the station the session is connected through
+# (its Record Store); prints where it landed
 ```
 
 ## Description
