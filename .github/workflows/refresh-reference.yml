@@ -2,8 +2,9 @@ name: Refresh Generated Reference
 
 # Regenerates the command reference, the client API references, and the
 # MCP tool reference from the latest npm release and the latest nightly
-# prerelease, and commits to main only when the generated output changed
-# (a new release, command, flag, API method, or MCP tool). Runs after the vibium nightly publish finishes (~14:20 UTC).
+# prerelease, re-imports the guides listed in scripts/upstream-manifest.json,
+# and commits to main only when the output changed (a new release, command,
+# flag, API method, MCP tool, or guide edit). Runs after the vibium nightly publish finishes (~14:20 UTC).
 
 on:
   schedule:

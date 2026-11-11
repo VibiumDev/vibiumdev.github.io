@@ -82,6 +82,7 @@ export default defineConfig({
                             { label: 'Concurrent Sessions', slug: 'docs/sessions' },
                             { label: 'Recording', slug: 'docs/recording' },
                             { label: 'Scripting and Agents', slug: 'docs/scripting' },
+                            { label: 'How-to', autogenerate: { directory: 'docs/guides' } },
                         ],
                     },
                     {
@@ -132,7 +133,7 @@ export default defineConfig({
                     {
                         label: 'Reference',
                         link: '/docs/reference/api-matrix/',
-                        items: [{ label: 'API Matrix', slug: 'docs/reference/api-matrix' }],
+                        items: [{ label: 'Reference', autogenerate: { directory: 'docs/reference' } }],
                     },
                 ]),
             ],

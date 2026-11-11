@@ -64,6 +64,7 @@ DOCS: list[Doc] = [
     Doc("docs/sessions.md", "Guides"),
     Doc("docs/recording.md", "Guides"),
     Doc("docs/scripting.md", "Guides"),
+    *tree("guides", "Guides"),
     *tree("cli", "CLI"),
     *tree("mcp", "MCP"),
     *tree("libraries", "Libraries"),

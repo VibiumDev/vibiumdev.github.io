@@ -1,77 +1,142 @@
 ---
-title: Using Firefox
+title: "Using Firefox"
+description: "Vibium launches Chrome by default. Firefox is supported as an alternative engine, using Firefox's native WebDriver BiDi — no driver binary involved."
+editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/how-to-guides/using-firefox.md
 ---
 
-Vibium launches Chrome by default. Firefox is supported as an alternative
-engine, using Firefox's native WebDriver BiDi — no driver binary involved.
+<!-- Imported from docs/how-to-guides/using-firefox.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
+
+> This guide tracks the nightly builds and has changed since 26.8.21; parts of it MAY need a nightly. See [What's in Nightly](nightly.md).
+
+Vibium launches Chrome by default. Firefox is supported as an alternative engine, using Firefox's native WebDriver BiDi — no driver binary involved.
 
 ## Install
 
-```sh
-vibium install --engine firefox
+```
+$ vibium install --engine firefox
+Installing Firefox v153.0.3 (release channel)...
+Downloading Firefox from https://ftp.mozilla.org/pub/firefox/releases/153.0.3/mac/en-US/Firefox%20153.0.3.dmg...
+Installation complete!
+Firefox: /Users/you/Library/Caches/vibium/firefox/release/153.0.3/Firefox.app/Contents/MacOS/firefox
 ```
 
-Firefox installs into the Vibium cache next to Chrome for Testing. The
+Firefox installs into the vibium cache next to Chrome for Testing. The vibium
 binary auto-installs the selected engine on first launch on macOS and Linux,
-so the CLI, MCP, and every client get it for free. On Windows, Firefox
-auto-install is not available: install Firefox yourself and point
-`VIBIUM_ENGINE_PATH` at `firefox.exe`.
+same as Chrome, so the CLI, MCP, and every client get it for free. On Windows, Firefox auto-install is not available:
+install Firefox yourself and point `VIBIUM_ENGINE_PATH` at `firefox.exe`.
 
-## Launch
+### Release channels
 
-Every CLI command accepts `--engine`, or set it once with
-`VIBIUM_ENGINE=firefox`:
-
-```sh
-vibium start --engine firefox
-```
-
-The clients have a named launcher and an engine option:
+`--channel beta` (or `VIBIUM_ENGINE_CHANNEL=beta`) selects the Firefox beta instead of the release build. The channel applies to install and launch alike: each channel is cached separately, and only the selected one is run, so an installed beta never shadows stable. In the clients, pass `channel` when starting the browser:
 
 ```js
-import { firefox, browser } from 'vibium'
-const bro = await firefox.start()
-// equivalent: await browser.start({ engine: 'firefox' })
+const bro = await firefox.start({ channel: 'beta' });
 ```
 
 ```python
-from vibium import firefox
-bro = firefox.start()
+bro = firefox.start(channel="beta")
 ```
+
+```java
+Browser bro = Vibium.start(
+    new StartOptions().engine("firefox").channel("beta")
+);
+```
+
+The release channel covers everything vibium supports, including [video recording](guides/record-video.md) (Firefox 154+); the beta is for trying upcoming Firefox changes early.
+
+## Launch
+
+CLI — every command accepts `--engine`, or set it once with `VIBIUM_ENGINE=firefox`:
+
+```
+$ vibium start --engine firefox
+```
+
+JavaScript — a named launcher, or the engine option:
+
+```js
+const { browser, firefox } = require('vibium');
+const bro = await firefox.start();
+
+// equivalent:
+const bro = await browser.start({ engine: 'firefox' });
+```
+
+The synchronous JavaScript API supports the same two forms:
+
+```js
+const { browser, firefox } = require('vibium/sync');
+const bro = firefox.start();
+
+// equivalent:
+const bro = browser.start({ engine: 'firefox' });
+```
+
+Python:
+
+```python
+from vibium import browser, firefox
+bro = firefox.start()
+
+# equivalent:
+bro = browser.start(engine="firefox")
+```
+
+Java:
 
 ```java
 Browser bro = Vibium.start(new StartOptions().engine("firefox"));
 ```
 
 MCP — `browser_start` takes an `engine` argument (`chrome` or `firefox`) and
-an optional `channel`.
+an optional Firefox `channel` argument (`release` or `beta`).
 
-## Channels and version pinning
+## Selecting Firefox with an environment variable
 
-`--channel beta` (or `VIBIUM_ENGINE_CHANNEL=beta`) selects the Firefox beta.
-Each channel is cached separately and only the selected one runs, so an
-installed beta never shadows stable.
+The `VIBIUM_ENGINE` env var changes the default engine of the vibium binary
+itself, so code that uses browser-neutral APIs can select Firefox without a
+code change:
 
-On [nightly builds](nightly.md), channels extend to Chrome (`stable`,
-`beta`, `dev`, `canary`); without a pin, the default channels install the
-known-good browser version baked into the Vibium release, so a browser
-update cannot break installs before Vibium has tested it; and
-`VIBIUM_ENGINE_VERSION` pins an exact version — useful for keeping CI
-fleets on one version until you move the pin.
+```
+$ VIBIUM_ENGINE=firefox node my-script.js
+```
+
+Browser-specific features still differ. In particular, native video recording
+currently requires Firefox, while PDF output may differ between engines.
+
+## Environment variables
 
 | Variable | Effect |
 |----------|--------|
 | `VIBIUM_ENGINE` | Default engine (`chrome` or `firefox`) when `--engine` is not given |
-| `VIBIUM_ENGINE_PATH` | Use this Firefox executable instead of the Vibium cache (Firefox only) |
-| `VIBIUM_ENGINE_CHANNEL` | Channel to install and run, same as `--channel` |
-| `VIBIUM_ENGINE_VERSION` | Pin the exact version to install and run (e.g. `153.0.4`) |
+| `VIBIUM_ENGINE_PATH` | Use this Firefox executable instead of the vibium cache; when set, channel selection does not apply |
+| `VIBIUM_ENGINE_CHANNEL` | Channel to install and run: `release` (default) or `beta` for Firefox, `stable` (default), `beta`, `dev`, or `canary` for Chrome; same as `--channel` or the clients' `channel` option |
+| `VIBIUM_ENGINE_VERSION` | Pin the exact version to install and run (e.g. `153.0.4`) instead of the default; keeps CI and fleets on one version until you move the pin |
 
-## Feature differences
+Without a pin, the default channels (`release`/`stable`) install the
+known-good version baked into this vibium release, so a browser release
+cannot break installs before a vibium release has tested it. The other
+channels install their current version. `VIBIUM_ENGINE_CHANNEL` and
+`VIBIUM_ENGINE_VERSION` apply to both engines; `VIBIUM_ENGINE_PATH` is
+Firefox-only, and setting it with `--engine chrome` is an error rather than
+a silent no-op.
 
-Almost everything works identically on both engines: navigation, elements,
-input, screenshots, dialogs, network events, downloads, storage, and trace
-recording. The notable differences:
+## Feature notes
 
-- **Native video recording** requires Firefox 154+ — Chrome has not
-  implemented the BiDi screencast command yet. See [Recording](recording.md).
-- **PDF printing** output may differ between engines.
+| Capability | Chrome | Firefox |
+|------------|--------|---------|
+| Navigation, elements, input, pages, screenshots, storage, and trace recording | Supported | Supported and covered by the Firefox core suite |
+| Native video (`recording.start({ video: true })`) | Not implemented by Chrome yet | Firefox 154+; see [Record Video](guides/record-video.md) |
+| Dialog callbacks and `capture.dialog()` | Supported | Supported and covered by the cross-engine suites |
+| Network events and request interception | Supported | Supported and covered by the cross-engine suites |
+| PDF printing (`page.pdf`) | Supported | Output and support may differ |
+| Console and page error events (`onConsole`, `onError`) | Supported | Supported and covered by the cross-engine suites |
+| Download events (`onDownload`, `capture.download()`) | Supported | Supported and covered by the cross-engine suites |
+| New tab and popup events (`onPage`, `onPopup`) | Supported | Supported and covered by the cross-engine suites |
+| Navigation capture (`capture.navigation()`) | Supported | Supported and covered by the cross-engine suites |
+
+CI runs the full suite on Chrome. A separate Firefox job runs capability-selected
+CLI and client tests plus focused installation, launch, channel, and video coverage.
+Browser-driving cross-engine tests declare their requirements through the shared
+capability adapters; unsupported features are reported as skips with reasons.

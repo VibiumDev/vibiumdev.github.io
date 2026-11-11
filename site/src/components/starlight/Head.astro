@@ -65,8 +65,15 @@ const jsonLd = {
 ---
 
 <DefaultHead />
-<meta name="description" content={description} />
-<meta property="og:description" content={description} />
+{/* Starlight emits these itself when the page has a description. */}
+{
+	!starlightRoute.entry.data.description && (
+		<>
+			<meta name="description" content={description} />
+			<meta property="og:description" content={description} />
+		</>
+	)
+}
 <link rel="alternate" type="text/markdown" href={markdownHref} />
 <Favicons />
 <FontLinks />

@@ -58,3 +58,11 @@ Every client exposes the same controls via `recording.start()` /
 `recording.stop()`, including the `video` option. [Run and
 Check](run-and-check.md) accept `-o` to save their whole AI-driven session
 as a recording in the same format.
+
+## Go deeper
+
+- [Recording Browser Sessions](guides/recording-sessions.md): the full
+  tutorial, with actions, groups, chunks, and script generation.
+- [Record Video](guides/record-video.md): the video track on each surface.
+- [Recording File Format](reference/recording-format.md): what is inside
+  the zip.
