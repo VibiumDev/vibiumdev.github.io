@@ -6,7 +6,7 @@
       "description": "Automate browsers with the Vibium CLI. Use to navigate websites, inspect pages, fill forms, extract page data, debug UI behavior, capture screenshots and recordings, or delegate browser goals with vibium run.",
       "url": "/skills/browser.md",
       "license": "Apache-2.0",
-      "sha256": "578691d78548f7b6a34657a6a55dd36dfd01dcaf92892f2433274a0aa6fa7dd0"
+      "sha256": "67a63721d7e38bbb698b38434cdc2732aeaa6afdc04d98425677ac6e8b73e6a5"
     },
     {
       "name": "check",
