@@ -1,0 +1,30 @@
+{
+  "repo": "VibiumDev/vibium",
+  "pages": [
+    { "src": "docs/how-to-guides/using-firefox.md", "dest": "docs/using-firefox.md" },
+    { "src": "docs/how-to-guides/screenshots.md", "dest": "docs/guides/screenshots.md" },
+    { "src": "docs/how-to-guides/downloads.md", "dest": "docs/guides/downloads.md" },
+    { "src": "docs/how-to-guides/accessibility-tree.md", "dest": "docs/guides/accessibility-tree.md" },
+    { "src": "docs/how-to-guides/find-by-description-and-image.md", "dest": "docs/guides/find-by-description-and-image.md" },
+    { "src": "docs/tutorials/finding-things-by-sight.md", "dest": "docs/guides/finding-things-by-sight.md" },
+    { "src": "docs/how-to-guides/window-and-viewport.md", "dest": "docs/guides/window-and-viewport.md" },
+    { "src": "docs/how-to-guides/persistent-profile.md", "dest": "docs/guides/persistent-profile.md" },
+    { "src": "docs/how-to-guides/record-video.md", "dest": "docs/guides/record-video.md" },
+    { "src": "docs/tutorials/recording.md", "dest": "docs/guides/recording-sessions.md" },
+    { "src": "docs/tutorials/remote-browser.md", "dest": "docs/guides/remote-browser.md" },
+    { "src": "docs/how-to-guides/testing-private-sites.md", "dest": "docs/guides/testing-private-sites.md" },
+    { "src": "docs/how-to-guides/debugging.md", "dest": "docs/guides/debugging.md" },
+    { "src": "docs/reference/selectors.md", "dest": "docs/reference/selectors.md" },
+    { "src": "docs/reference/recording-format.md", "dest": "docs/reference/recording-format.md" }
+  ],
+  "aliases": {
+    "docs/tutorials/getting-started-js.md": "docs/libraries/javascript/index.md",
+    "docs/tutorials/getting-started-python.md": "docs/libraries/python/index.md",
+    "docs/tutorials/getting-started-java.md": "docs/libraries/java/index.md",
+    "docs/tutorials/getting-started-mcp.md": "docs/mcp/setup.md",
+    "docs/how-to-guides/run.md": "docs/run-and-check.md",
+    "docs/how-to-guides/check.md": "docs/run-and-check.md",
+    "docs/reference/model-providers.md": "docs/ai-providers.md",
+    "docs/reference/api.md": "docs/reference/api-matrix.md"
+  }
+}

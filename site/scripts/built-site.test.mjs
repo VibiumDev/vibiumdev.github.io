@@ -149,6 +149,15 @@ test('every docs page links to a Markdown alternate that exists', async () => {
   }
 });
 
+test('every docs page has one meta description of useful length', async () => {
+  for (const page of await docsPages()) {
+    const html = await readBuilt(`${page}/index.html`);
+    const found = [...html.matchAll(/<meta name="description" content="([^"]*)"/g)];
+    assert.equal(found.length, 1, `/${page}/ has ${found.length} meta descriptions`);
+    assert.ok(found[0][1].length >= 50, `/${page}/ description is only ${found[0][1].length} chars`);
+  }
+});
+
 test('every docs page links to the glossary', async () => {
   for (const page of await docsPages()) {
     const html = await readBuilt(`${page}/index.html`);
@@ -199,6 +208,20 @@ test('surface sections are published', async () => {
     'docs/reference/api-matrix',
   ]) {
     assert.equal(await exists(`${page}/index.html`), true, `missing /${page}/`);
+  }
+});
+
+test('guides imported from the main repository are published', async () => {
+  const manifest = JSON.parse(
+    await readFile(new URL('../../scripts/upstream-manifest.json', import.meta.url), 'utf8')
+  );
+  assert.ok(manifest.pages.length >= 10);
+  for (const { src, dest } of manifest.pages) {
+    const page = dest.replace(/\.md$/, '');
+    assert.equal(await exists(`${page}/index.html`), true, `missing /${page}/`);
+    const mirror = await readBuilt(`${page}.md`);
+    assert.ok(mirror.includes(`Imported from ${src}`), `${page}.md does not name its source`);
+    assert.doesNotMatch(mirror, /\]\(\.\.\/(how-to-guides|tutorials|explanation)\//, `${page}.md keeps an upstream-relative link`);
   }
 });
 

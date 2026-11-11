@@ -71,6 +71,12 @@ javascript, python, java) holds the shared docs plus one surface.
 - `scripts/gen_mcp_reference.py`: `docs/mcp/tools.md` and `/mcp-tools.json`,
   from the MCP server's `tools/list`.
 
+- `scripts/import_upstream_docs.py`: the guides listed in
+  `scripts/upstream-manifest.json`, imported from `docs/` in the main
+  repository. To publish another upstream guide, add a line to the manifest.
+  Its `aliases` map upstream pages to the site pages that replace them, so
+  links between guides stay on the site.
+
 Each compares the latest npm release with the latest nightly and marks what
 only the nightly has. Do not edit the generated pages by hand; the daily
 `refresh-reference` workflow overwrites them.
