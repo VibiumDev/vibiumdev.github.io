@@ -123,6 +123,7 @@ const verdict = await vibe.check('the page lists an email address')
 
 ## Next
 
+- [API Reference](api.md): every method, with its CLI and MCP equivalent.
 - [Client Libraries](../index.md): the object model shared by all three languages.
 - [Run and Check](../../run-and-check.md) and [Model Providers](../../ai-providers.md).
 - [Troubleshooting](../../troubleshooting.md).

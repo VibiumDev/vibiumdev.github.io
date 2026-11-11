@@ -30,7 +30,7 @@ The tools mirror the CLI commands, so everything in the
 | `browser_new_page`, `browser_list_pages`, `browser_switch_page` | Work with several tabs |
 | `vibium_run`, `vibium_check` | Hand over a whole goal, or verify a claim (nightly) |
 
-Run `vibium mcp --help` for the full list with descriptions.
+The [Tool Reference](tools.md) lists every tool with its parameters.
 
 ## The tool-use loop
 

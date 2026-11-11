@@ -28,6 +28,64 @@
           "title": "Curated Markdown index of the Vibium documentation"
         }
       ]
+    },
+    {
+      "anchor": "https://vibium.com/api.json",
+      "service-desc": [
+        {
+          "href": "https://vibium.com/api.json",
+          "type": "application/json",
+          "title": "Vibium API matrix: every operation and its CLI, MCP, JavaScript, Python, and Java form, with nightly-only markers"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://vibium.com/docs/reference/api-matrix/",
+          "type": "text/html",
+          "title": "API Matrix"
+        },
+        {
+          "href": "https://vibium.com/docs/reference/api-matrix.md",
+          "type": "text/markdown",
+          "title": "API Matrix (Markdown mirror)"
+        }
+      ],
+      "service-meta": [
+        {
+          "href": "https://vibium.com/llms.txt",
+          "type": "text/plain",
+          "title": "Curated Markdown index of the Vibium documentation"
+        }
+      ]
+    },
+    {
+      "anchor": "https://vibium.com/mcp-tools.json",
+      "service-desc": [
+        {
+          "href": "https://vibium.com/mcp-tools.json",
+          "type": "application/json",
+          "title": "Vibium MCP tool schemas: every tool the MCP server exposes, as reported by tools/list, with nightly-only markers"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://vibium.com/docs/mcp/tools/",
+          "type": "text/html",
+          "title": "MCP Tool Reference"
+        },
+        {
+          "href": "https://vibium.com/docs/mcp/tools.md",
+          "type": "text/markdown",
+          "title": "MCP Tool Reference (Markdown mirror)"
+        }
+      ],
+      "service-meta": [
+        {
+          "href": "https://vibium.com/llms.txt",
+          "type": "text/plain",
+          "title": "Curated Markdown index of the Vibium documentation"
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,2471 @@
+{
+  "stableVersion": "26.8.21",
+  "tools": [
+    {
+      "name": "vibium_run",
+      "description": "Accomplish a goal in the current local browser session using configured AI provider and constrained browser tools. Returns completed or not_completed with evidence. Live only; uses VIBIUM_AI_* configuration.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "aiBaseURL": {
+            "description": "Per-call override for the AI provider's API base URL (the model endpoint, not the site under test). Changing provider clears it. Credentials come from the runtime environment.",
+            "type": "string"
+          },
+          "baseURL": {
+            "description": "Site under test: opened first unless the current page already shares its origin, and relative browser_navigate paths resolve against it. Not the AI provider endpoint; that is aiBaseURL.",
+            "type": "string"
+          },
+          "goal": {
+            "type": "string"
+          },
+          "model": {
+            "description": "Per-call model setting override. Changing provider clears inherited model, endpoint, and reasoning effort. Credentials come from the runtime environment.",
+            "type": "string"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "provider": {
+            "description": "Per-call model setting override. Changing provider clears inherited model, endpoint, and reasoning effort. Credentials come from the runtime environment.",
+            "type": "string"
+          },
+          "reasoningEffort": {
+            "description": "Per-call model setting override. Changing provider clears inherited model, endpoint, and reasoning effort. Credentials come from the runtime environment.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "goal"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": true
+    },
+    {
+      "name": "vibium_check",
+      "description": "Independently verify an explicit claim against the current local Chrome/Firefox session, or a read-only recording zip. Returns passed, failed, or inconclusive with evidence. Recorded mode never launches a browser. Uses shared AI configuration from the server environment.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "aiBaseURL": {
+            "description": "Per-call override for the AI provider's API base URL (the model endpoint, not the site under test). Changing provider clears it. Credentials come from the runtime environment.",
+            "type": "string"
+          },
+          "baseURL": {
+            "description": "Site under test: opened first unless the current page already shares its origin, and relative browser_navigate paths resolve against it. Not the AI provider endpoint; that is aiBaseURL.",
+            "type": "string"
+          },
+          "claim": {
+            "type": "string"
+          },
+          "model": {
+            "description": "Per-call model setting override. Changing provider clears inherited model, endpoint, and reasoning effort. Credentials come from the runtime environment.",
+            "type": "string"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "provider": {
+            "description": "Per-call model setting override. Changing provider clears inherited model, endpoint, and reasoning effort. Credentials come from the runtime environment.",
+            "type": "string"
+          },
+          "reasoningEffort": {
+            "description": "Per-call model setting override. Changing provider clears inherited model, endpoint, and reasoning effort. Credentials come from the runtime environment.",
+            "type": "string"
+          },
+          "record": {
+            "description": "Optional path to an existing version 8 Vibium record.zip or Playwright trace.zip on this host; selects archive mode instead of the live browser.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "claim"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": true
+    },
+    {
+      "name": "browser_start",
+      "description": "Start a browser session",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "channel": {
+            "description": "Release channel of the selected engine; chrome: stable (default), beta, dev, canary; firefox: release (default), beta",
+            "enum": [
+              "beta",
+              "canary",
+              "dev",
+              "release",
+              "stable"
+            ],
+            "type": "string"
+          },
+          "engine": {
+            "default": "chrome",
+            "description": "Browser engine to launch",
+            "enum": [
+              "chrome",
+              "firefox"
+            ],
+            "type": "string"
+          },
+          "headless": {
+            "default": false,
+            "description": "Run browser in headless mode (no visible window)",
+            "type": "boolean"
+          },
+          "userDataDir": {
+            "description": "Persistent browser profile directory, created if missing and reused across sessions (cookies, logins survive); omit for a temporary profile wiped on close",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_navigate",
+      "description": "Navigate to a URL in the browser",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "url": {
+            "description": "The URL to navigate to",
+            "type": "string"
+          }
+        },
+        "required": [
+          "url"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_click",
+      "description": "Click an element by CSS selector. Waits for element to be visible, stable, and enabled.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "selector": {
+            "description": "CSS selector for the element to click",
+            "type": "string"
+          },
+          "timeout": {
+            "default": 30000,
+            "description": "Timeout in milliseconds (default: 30000)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "selector"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_type",
+      "description": "Type text into an element by CSS selector, or, with no selector, into whatever has focus. With a selector, waits for the element to be visible, stable, enabled, and editable.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "selector": {
+            "description": "CSS selector for the element to type into. Omit it to type into the focused element, or on a device with no DOM.",
+            "type": "string"
+          },
+          "text": {
+            "description": "The text to type",
+            "type": "string"
+          },
+          "timeout": {
+            "default": 30000,
+            "description": "Timeout in milliseconds (default: 30000)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "text"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_screenshot",
+      "description": "Capture a screenshot of the current page",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "annotate": {
+            "default": false,
+            "description": "Annotate interactive elements with numbered labels (default: false)",
+            "type": "boolean"
+          },
+          "filename": {
+            "description": "Optional filename to save the screenshot (e.g., screenshot.png)",
+            "type": "string"
+          },
+          "fullPage": {
+            "default": false,
+            "description": "Capture the full page (entire document) instead of just the viewport (default: false)",
+            "type": "boolean"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_find",
+      "description": "Find one element and register it as an @eN ref for later tools. Give a natural-language description, a reference image, or an exact locator: css (a CSS selector), tag, or a semantic locator (role, text, label, placeholder, testid, xpath, alt, title); role combines with text and the others. A description is matched against the page's names and roles first; when that is not enough and an AI provider is configured, the screenshot goes to a vision model. An image is matched locally first and only then, if a provider is configured, sent to the model with the screenshot. Explicit locators never call a model.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "aiBaseURL": {
+            "description": "AI provider base URL override for this call",
+            "type": "string"
+          },
+          "alt": {
+            "description": "Find element by alt attribute",
+            "type": "string"
+          },
+          "css": {
+            "description": "CSS selector; exact, never sent to a model. Next to a semantic locator it restricts the candidates",
+            "type": "string"
+          },
+          "description": {
+            "description": "Natural-language description of the element, e.g. \"the Add to Cart button\". Stands alone.",
+            "type": "string"
+          },
+          "details": {
+            "description": "Include diagnostics: method, whether a model was called, provider and model, raw scores",
+            "type": "boolean"
+          },
+          "image": {
+            "description": "Reference image as base64 PNG or JPEG (a data: URL is accepted), up to 4 MB. Stands alone. Matched locally; see strategy.",
+            "type": "string"
+          },
+          "label": {
+            "description": "Find input by associated label text or aria-label",
+            "type": "string"
+          },
+          "model": {
+            "description": "Model override for this call; a vision-capable model",
+            "type": "string"
+          },
+          "name": {
+            "description": "Accessible name filter: the text, label, alt, or aria-label a person would read the element by",
+            "type": "string"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "placeholder": {
+            "description": "Find element by placeholder attribute",
+            "type": "string"
+          },
+          "provider": {
+            "description": "AI provider override for this call (same as vibium_check)",
+            "type": "string"
+          },
+          "reasoningEffort": {
+            "description": "Reasoning effort override for this call",
+            "type": "string"
+          },
+          "role": {
+            "description": "ARIA role to match (e.g., \"button\", \"link\", \"textbox\", \"heading\", \"checkbox\")",
+            "type": "string"
+          },
+          "selector": {
+            "description": "Same as css",
+            "type": "string"
+          },
+          "strategy": {
+            "description": "auto (default): local evidence first, a vision model only when needed and configured. cv: local image matching only, nothing leaves the machine. vlm: vision model only; needs a configured provider. tree: the page's DOM/accessibility tree only",
+            "enum": [
+              "auto",
+              "cv",
+              "vlm",
+              "tree"
+            ],
+            "type": "string"
+          },
+          "tag": {
+            "description": "HTML tag name, e.g. \"h1\"",
+            "type": "string"
+          },
+          "testid": {
+            "description": "Find element by data-testid attribute",
+            "type": "string"
+          },
+          "text": {
+            "description": "Find element containing this text",
+            "type": "string"
+          },
+          "timeout": {
+            "default": 30000,
+            "description": "Timeout in milliseconds (default: 30000)",
+            "type": "number"
+          },
+          "title": {
+            "description": "Find element by title attribute",
+            "type": "string"
+          },
+          "xpath": {
+            "description": "Find element by XPath expression",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_find_all",
+      "description": "Find every element matching a description, reference image, or locator, each registered as an @eN ref. Returns an empty list when nothing matches.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "aiBaseURL": {
+            "description": "AI provider base URL override for this call",
+            "type": "string"
+          },
+          "alt": {
+            "description": "Find element by alt attribute",
+            "type": "string"
+          },
+          "css": {
+            "description": "CSS selector; exact, never sent to a model. Next to a semantic locator it restricts the candidates",
+            "type": "string"
+          },
+          "description": {
+            "description": "Natural-language description of the element, e.g. \"the Add to Cart button\". Stands alone.",
+            "type": "string"
+          },
+          "details": {
+            "description": "Include diagnostics: method, whether a model was called, provider and model, raw scores",
+            "type": "boolean"
+          },
+          "image": {
+            "description": "Reference image as base64 PNG or JPEG (a data: URL is accepted), up to 4 MB. Stands alone. Matched locally; see strategy.",
+            "type": "string"
+          },
+          "label": {
+            "description": "Find input by associated label text or aria-label",
+            "type": "string"
+          },
+          "limit": {
+            "default": 10,
+            "description": "Maximum number of elements to return (default: 10)",
+            "type": "number"
+          },
+          "model": {
+            "description": "Model override for this call; a vision-capable model",
+            "type": "string"
+          },
+          "name": {
+            "description": "Accessible name filter: the text, label, alt, or aria-label a person would read the element by",
+            "type": "string"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "placeholder": {
+            "description": "Find element by placeholder attribute",
+            "type": "string"
+          },
+          "provider": {
+            "description": "AI provider override for this call (same as vibium_check)",
+            "type": "string"
+          },
+          "reasoningEffort": {
+            "description": "Reasoning effort override for this call",
+            "type": "string"
+          },
+          "role": {
+            "description": "ARIA role to match (e.g., \"button\", \"link\", \"textbox\", \"heading\", \"checkbox\")",
+            "type": "string"
+          },
+          "selector": {
+            "description": "Same as css",
+            "type": "string"
+          },
+          "strategy": {
+            "description": "auto (default): local evidence first, a vision model only when needed and configured. cv: local image matching only, nothing leaves the machine. vlm: vision model only; needs a configured provider. tree: the page's DOM/accessibility tree only",
+            "enum": [
+              "auto",
+              "cv",
+              "vlm",
+              "tree"
+            ],
+            "type": "string"
+          },
+          "tag": {
+            "description": "HTML tag name, e.g. \"h1\"",
+            "type": "string"
+          },
+          "testid": {
+            "description": "Find element by data-testid attribute",
+            "type": "string"
+          },
+          "text": {
+            "description": "Find element containing this text",
+            "type": "string"
+          },
+          "timeout": {
+            "default": 30000,
+            "description": "Timeout in milliseconds (default: 30000)",
+            "type": "number"
+          },
+          "title": {
+            "description": "Find element by title attribute",
+            "type": "string"
+          },
+          "xpath": {
+            "description": "Find element by XPath expression",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_evaluate",
+      "description": "Execute JavaScript in the browser to extract data, query the DOM, or inspect page state. Returns the evaluated result. Use this to get text content, attributes, element data, or any information from the page.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "expression": {
+            "description": "JavaScript expression to evaluate",
+            "type": "string"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "expression"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_stop",
+      "description": "Stop the browser session",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_get_html",
+      "description": "Get the HTML content of the page or a specific element",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "outer": {
+            "default": false,
+            "description": "Return outerHTML instead of innerHTML (default: false)",
+            "type": "boolean"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "selector": {
+            "description": "CSS selector for a specific element (optional, defaults to full page HTML)",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_wait",
+      "description": "Wait for an element to reach a specified state (attached, visible, or hidden)",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "selector": {
+            "description": "CSS selector for the element to wait for",
+            "type": "string"
+          },
+          "state": {
+            "default": "attached",
+            "description": "State to wait for: \"attached\" (exists in DOM), \"visible\" (visible on page), or \"hidden\" (not found or not visible)",
+            "enum": [
+              "attached",
+              "visible",
+              "hidden"
+            ],
+            "type": "string"
+          },
+          "timeout": {
+            "default": 30000,
+            "description": "Timeout in milliseconds (default: 30000)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "selector"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_new_page",
+      "description": "Open a new browser page, optionally navigating to a URL",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "isolated": {
+            "description": "Open the page in its own isolated context with separate cookies and storage (default: false). Concurrent callers sharing this server should open an isolated page and pass its id as the page argument on every call.",
+            "type": "boolean"
+          },
+          "url": {
+            "description": "URL to navigate to in the new page (optional)",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_list_pages",
+      "description": "List all open browser pages with their URLs",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_switch_page",
+      "description": "Switch to a browser page by index or URL substring",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "index": {
+            "description": "Page index (0-based) from browser_list_pages",
+            "type": "number"
+          },
+          "url": {
+            "description": "URL substring to match (alternative to index)",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_close_page",
+      "description": "Close a browser page by id or index (default: current page)",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "index": {
+            "default": 0,
+            "description": "Page index to close (default: 0, the current page); ignored when a page id is given",
+            "type": "number"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_hover",
+      "description": "Hover over an element by CSS selector",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "selector": {
+            "description": "CSS selector for the element to hover over",
+            "type": "string"
+          },
+          "timeout": {
+            "default": 30000,
+            "description": "Timeout in milliseconds (default: 30000)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "selector"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_select",
+      "description": "Select an option in a <select> element by value",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "selector": {
+            "description": "CSS selector for the <select> element",
+            "type": "string"
+          },
+          "timeout": {
+            "default": 30000,
+            "description": "Timeout in milliseconds (default: 30000)",
+            "type": "number"
+          },
+          "value": {
+            "description": "The value to select",
+            "type": "string"
+          }
+        },
+        "required": [
+          "selector",
+          "value"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_scroll",
+      "description": "Scroll the page or a specific element",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "amount": {
+            "default": 3,
+            "description": "Number of scroll increments (default: 3)",
+            "type": "number"
+          },
+          "direction": {
+            "default": "down",
+            "description": "Scroll direction: up, down, left, right (default: down)",
+            "enum": [
+              "up",
+              "down",
+              "left",
+              "right"
+            ],
+            "type": "string"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "selector": {
+            "description": "CSS selector for the element to scroll within (optional; without it the page scrolls at the viewport center)",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_keys",
+      "description": "Press a key or key combination (e.g., \"Enter\", \"Control+a\", \"Shift+Tab\")",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "keys": {
+            "description": "Key or key combination to press (e.g., \"Enter\", \"Control+a\", \"Shift+ArrowDown\")",
+            "type": "string"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "keys"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_get_text",
+      "description": "Get the text content of the page or a specific element",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "selector": {
+            "description": "CSS selector for a specific element (optional, defaults to full page text)",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_get_url",
+      "description": "Get the current page URL",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_get_title",
+      "description": "Get the current page title",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_a11y_tree",
+      "description": "Get the accessibility tree of the current page. Returns a tree of ARIA roles, names, and states — useful for understanding page structure without visual rendering.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "everything": {
+            "default": false,
+            "description": "Show all nodes including generic containers. Default: false",
+            "type": "boolean"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "page_clock_install",
+      "description": "Install a fake clock on the page, overriding Date, setTimeout, setInterval, requestAnimationFrame, and performance.now",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "time": {
+            "description": "Initial time as epoch milliseconds (optional)",
+            "type": "number"
+          },
+          "timezone": {
+            "description": "IANA timezone ID to override (e.g. 'America/New_York', 'Europe/London')",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "page_clock_fast_forward",
+      "description": "Jump the fake clock forward by N milliseconds, firing each due timer at most once",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "ticks": {
+            "description": "Number of milliseconds to fast-forward",
+            "type": "number"
+          }
+        },
+        "required": [
+          "ticks"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "page_clock_run_for",
+      "description": "Advance the fake clock by N milliseconds, firing all time-related callbacks systematically",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "ticks": {
+            "description": "Number of milliseconds to advance",
+            "type": "number"
+          }
+        },
+        "required": [
+          "ticks"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "page_clock_pause_at",
+      "description": "Jump the fake clock to a specific time and pause — no timers fire until resumed or advanced",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "time": {
+            "description": "Time as epoch milliseconds to pause at",
+            "type": "number"
+          }
+        },
+        "required": [
+          "time"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "page_clock_resume",
+      "description": "Resume real-time progression from the current fake clock time",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "page_clock_set_fixed_time",
+      "description": "Freeze Date.now() at a specific value permanently. Timers still run.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "time": {
+            "description": "Time as epoch milliseconds to freeze at",
+            "type": "number"
+          }
+        },
+        "required": [
+          "time"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "page_clock_set_system_time",
+      "description": "Set Date.now() to a specific value without triggering any timers",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "time": {
+            "description": "Time as epoch milliseconds to set",
+            "type": "number"
+          }
+        },
+        "required": [
+          "time"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "page_clock_set_timezone",
+      "description": "Override the browser timezone. Pass an IANA timezone ID (e.g. 'America/New_York'), or empty string to reset to system default",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "timezone": {
+            "description": "IANA timezone ID (e.g. 'America/New_York', 'Europe/London', 'Asia/Tokyo'). Empty string resets to system default.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "timezone"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_fill",
+      "description": "Clear an input field and type new text. Waits for element to be editable, clears existing value, then types. Use this instead of browser_type when you want to replace the field contents.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "selector": {
+            "description": "CSS selector for the input element",
+            "type": "string"
+          },
+          "text": {
+            "description": "The text to fill in",
+            "type": "string"
+          },
+          "timeout": {
+            "default": 30000,
+            "description": "Timeout in milliseconds (default: 30000)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "selector",
+          "text"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_press",
+      "description": "Press a key or key combination on a specific element or the focused element. If selector is given, clicks the element first to focus it, then presses the key.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "key": {
+            "description": "Key or key combination to press (e.g., \"Enter\", \"Control+a\", \"Escape\")",
+            "type": "string"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "selector": {
+            "description": "CSS selector for the element to focus before pressing (optional, defaults to currently focused element)",
+            "type": "string"
+          }
+        },
+        "required": [
+          "key"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_back",
+      "description": "Navigate back in browser history (like clicking the back button)",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_forward",
+      "description": "Navigate forward in browser history (like clicking the forward button)",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_reload",
+      "description": "Reload the current page. Waits for the page to fully load.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_get_value",
+      "description": "Get the current value of an input, textarea, or select element",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "selector": {
+            "description": "CSS selector for the form element",
+            "type": "string"
+          }
+        },
+        "required": [
+          "selector"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_get_attribute",
+      "description": "Get the value of an HTML attribute on an element",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "attribute": {
+            "description": "Attribute name to retrieve (e.g., \"href\", \"src\", \"class\", \"data-id\")",
+            "type": "string"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "selector": {
+            "description": "CSS selector for the element",
+            "type": "string"
+          }
+        },
+        "required": [
+          "selector",
+          "attribute"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_is_visible",
+      "description": "Check if an element is visible on the page. Returns true/false without throwing errors.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "selector": {
+            "description": "CSS selector for the element",
+            "type": "string"
+          }
+        },
+        "required": [
+          "selector"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_set",
+      "description": "Set checkbox/radio selection. Defaults to true; false clears a checkbox. Idempotent.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "selector": {
+            "description": "CSS selector for the checkbox or radio button",
+            "type": "string"
+          },
+          "timeout": {
+            "default": 30000,
+            "description": "Timeout in milliseconds (default: 30000)",
+            "type": "number"
+          },
+          "value": {
+            "default": true,
+            "description": "Desired selection state; false clears a checkbox",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "selector"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": true
+    },
+    {
+      "name": "browser_unset",
+      "description": "Uncheck a checkbox. Idempotent — does nothing if already unchecked.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "selector": {
+            "description": "CSS selector for the checkbox",
+            "type": "string"
+          },
+          "timeout": {
+            "default": 30000,
+            "description": "Timeout in milliseconds (default: 30000)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "selector"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": true
+    },
+    {
+      "name": "browser_scroll_into_view",
+      "description": "Scroll an element into view, centering it on screen",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "selector": {
+            "description": "CSS selector for the element to scroll into view",
+            "type": "string"
+          },
+          "timeout": {
+            "default": 30000,
+            "description": "Timeout in milliseconds (default: 30000)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "selector"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_wait_for_url",
+      "description": "Wait until the page URL contains a given substring",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "pattern": {
+            "description": "Substring to match in the URL",
+            "type": "string"
+          },
+          "timeout": {
+            "default": 30000,
+            "description": "Timeout in milliseconds (default: 30000)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "pattern"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_wait_for_load",
+      "description": "Wait until the page reaches the \"complete\" ready state (all resources loaded)",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "timeout": {
+            "default": 30000,
+            "description": "Timeout in milliseconds (default: 30000)",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_sleep",
+      "description": "Pause execution for a specified number of milliseconds. Use sparingly — prefer browser_wait or browser_wait_for_url when possible.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "ms": {
+            "description": "Number of milliseconds to sleep (max 30000)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "ms"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_map",
+      "description": "Map interactive page elements with @refs for targeting. Returns a list of interactive elements (buttons, links, inputs, etc.) each with a short @ref like @e1, @e2. Use these refs as selectors in other commands (click, fill, etc.).",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "selector": {
+            "description": "CSS selector to scope element discovery to a subtree (e.g. \"nav\", \"#sidebar\")",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_diff_map",
+      "description": "Compare current page state vs last map. Shows additions (+) and removals (-) since the last browser_map call.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_pdf",
+      "description": "Save the current page as a PDF file",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "background": {
+            "description": "Print background graphics (default: false)",
+            "type": "boolean"
+          },
+          "filename": {
+            "description": "Output filename for the PDF (e.g., page.pdf)",
+            "type": "string"
+          },
+          "landscape": {
+            "description": "Landscape orientation (default: portrait)",
+            "type": "boolean"
+          },
+          "marginBottom": {
+            "description": "Bottom margin in cm (default: 1)",
+            "type": "number"
+          },
+          "marginLeft": {
+            "description": "Left margin in cm (default: 1)",
+            "type": "number"
+          },
+          "marginRight": {
+            "description": "Right margin in cm (default: 1)",
+            "type": "number"
+          },
+          "marginTop": {
+            "description": "Top margin in cm (default: 1)",
+            "type": "number"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "pageHeight": {
+            "description": "Page height in cm (default: 27.94)",
+            "type": "number"
+          },
+          "pageRanges": {
+            "description": "Pages to print, e.g. [1, \"3-5\"] (default: all)",
+            "items": {
+              "type": [
+                "string",
+                "integer"
+              ]
+            },
+            "type": "array"
+          },
+          "pageWidth": {
+            "description": "Page width in cm (default: 21.59)",
+            "type": "number"
+          },
+          "scale": {
+            "description": "Print scale, 0.1-2 (default: 1)",
+            "type": "number"
+          },
+          "shrinkToFit": {
+            "description": "Shrink content to fit the page width (default: true)",
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_highlight",
+      "description": "Highlight an element with a red outline for 3 seconds. Useful for visual debugging.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "selector": {
+            "description": "CSS selector or @ref for the element to highlight",
+            "type": "string"
+          }
+        },
+        "required": [
+          "selector"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_dblclick",
+      "description": "Double-click an element by CSS selector or @ref",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "selector": {
+            "description": "CSS selector or @ref for the element to double-click",
+            "type": "string"
+          },
+          "timeout": {
+            "default": 30000,
+            "description": "Timeout in milliseconds (default: 30000)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "selector"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_focus",
+      "description": "Focus an element by CSS selector or @ref",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "selector": {
+            "description": "CSS selector or @ref for the element to focus",
+            "type": "string"
+          },
+          "timeout": {
+            "default": 30000,
+            "description": "Timeout in milliseconds (default: 30000)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "selector"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_count",
+      "description": "Count the number of elements matching a CSS selector",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "selector": {
+            "description": "CSS selector to count matches for",
+            "type": "string"
+          }
+        },
+        "required": [
+          "selector"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_is_enabled",
+      "description": "Check if an element is enabled (not disabled). Returns true/false.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "selector": {
+            "description": "CSS selector or @ref for the element",
+            "type": "string"
+          }
+        },
+        "required": [
+          "selector"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_is_set",
+      "description": "Check if a checkbox or radio button is checked. Returns true/false.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "selector": {
+            "description": "CSS selector or @ref for the checkbox/radio element",
+            "type": "string"
+          }
+        },
+        "required": [
+          "selector"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": true
+    },
+    {
+      "name": "browser_wait_for_text",
+      "description": "Wait until specific text appears on the page",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "text": {
+            "description": "Text to wait for on the page",
+            "type": "string"
+          },
+          "timeout": {
+            "default": 30000,
+            "description": "Timeout in milliseconds (default: 30000)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "text"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_wait_for_fn",
+      "description": "Wait until a JavaScript expression returns a truthy value",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "expression": {
+            "description": "JavaScript expression to evaluate (e.g., \"window.ready === true\")",
+            "type": "string"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "timeout": {
+            "default": 30000,
+            "description": "Timeout in milliseconds (default: 30000)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "expression"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_dialog_accept",
+      "description": "Accept a dialog (alert, confirm, prompt). Optionally provide text for prompt dialogs.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "text": {
+            "description": "Text to enter in the prompt dialog (optional)",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_dialog_dismiss",
+      "description": "Dismiss a dialog (cancel/close)",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_get_cookies",
+      "description": "List all cookies for the current page",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_set_cookie",
+      "description": "Set a cookie",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "domain": {
+            "description": "Cookie domain (optional, defaults to current page domain)",
+            "type": "string"
+          },
+          "name": {
+            "description": "Cookie name",
+            "type": "string"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "path": {
+            "description": "Cookie path (optional, defaults to /)",
+            "type": "string"
+          },
+          "value": {
+            "description": "Cookie value",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "value"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_delete_cookies",
+      "description": "Delete cookies. If name is given, deletes that cookie. Otherwise deletes all cookies.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "description": "Cookie name to delete (optional, omit to delete all)",
+            "type": "string"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_mouse_move",
+      "description": "Move the mouse to specific coordinates",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "x": {
+            "description": "X coordinate",
+            "type": "number"
+          },
+          "y": {
+            "description": "Y coordinate",
+            "type": "number"
+          }
+        },
+        "required": [
+          "x",
+          "y"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_mouse_down",
+      "description": "Press a mouse button down at the current position",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "button": {
+            "default": 0,
+            "description": "Mouse button (0=left, 1=middle, 2=right). Default: 0",
+            "type": "number"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_mouse_up",
+      "description": "Release a mouse button at the current position",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "button": {
+            "default": 0,
+            "description": "Mouse button (0=left, 1=middle, 2=right). Default: 0",
+            "type": "number"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_mouse_click",
+      "description": "Click at coordinates or at the current mouse position. If x and y are provided, moves the mouse there first.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "button": {
+            "default": 0,
+            "description": "Mouse button (0=left, 1=middle, 2=right). Default: 0",
+            "type": "number"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "x": {
+            "description": "X coordinate to click at",
+            "type": "number"
+          },
+          "y": {
+            "description": "Y coordinate to click at",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_tap",
+      "description": "Tap a touch pointer at coordinates, or on an element given as a selector or @ref (for touchscreen devices and phones)",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "selector": {
+            "description": "CSS selector or @ref to tap at its center, instead of x and y",
+            "type": "string"
+          },
+          "x": {
+            "description": "X coordinate to tap at",
+            "type": "number"
+          },
+          "y": {
+            "description": "Y coordinate to tap at",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": true
+    },
+    {
+      "name": "browser_swipe",
+      "description": "Swipe a touch pointer, finger held down for the move (for touchscreen devices and phones). Give a direction, or x1, y1, x2, y2. A direction swipe starts at the viewport center, or at an edge with from, and moves half the viewport unless distance says otherwise. On a phone through Roadie, from: bottom with direction: up goes home, from: top with direction: down opens Notification Center or the notification shade, and from: top-right with direction: down opens Control Center on an iPhone",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "direction": {
+            "description": "Which way the finger moves. Instead of x1, y1, x2, y2",
+            "enum": [
+              "up",
+              "down",
+              "left",
+              "right"
+            ],
+            "type": "string"
+          },
+          "distance": {
+            "description": "How far a direction swipe moves, in pixels (default: half the viewport)",
+            "type": "number"
+          },
+          "duration": {
+            "default": 300,
+            "description": "How long the move takes in milliseconds (default: 300)",
+            "type": "number"
+          },
+          "from": {
+            "description": "Where a direction swipe starts: an edge or corner of the viewport, or its center (default)",
+            "enum": [
+              "top",
+              "bottom",
+              "left",
+              "right",
+              "top-left",
+              "top-right",
+              "bottom-left",
+              "bottom-right",
+              "center"
+            ],
+            "type": "string"
+          },
+          "fromX": {
+            "description": "X coordinate a direction swipe starts at, with fromY. Instead of from",
+            "type": "number"
+          },
+          "fromY": {
+            "description": "Y coordinate a direction swipe starts at, with fromX",
+            "type": "number"
+          },
+          "hold": {
+            "description": "Milliseconds the finger rests at the end before lifting (a slow swipe up from the bottom with a hold opens the app switcher)",
+            "type": "number"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "speed": {
+            "description": "slow, normal, fast, or pixels per second. Instead of duration",
+            "type": [
+              "string",
+              "number"
+            ]
+          },
+          "x1": {
+            "description": "X coordinate to start from",
+            "type": "number"
+          },
+          "x2": {
+            "description": "X coordinate to end at",
+            "type": "number"
+          },
+          "y1": {
+            "description": "Y coordinate to start from",
+            "type": "number"
+          },
+          "y2": {
+            "description": "Y coordinate to end at",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": true
+    },
+    {
+      "name": "browser_long_press",
+      "description": "Press and hold a touch pointer at coordinates (for touchscreen devices and phones)",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "duration": {
+            "default": 500,
+            "description": "How long to hold the press in milliseconds (default: 500)",
+            "type": "number"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "x": {
+            "description": "X coordinate to press at",
+            "type": "number"
+          },
+          "y": {
+            "description": "Y coordinate to press at",
+            "type": "number"
+          }
+        },
+        "required": [
+          "x",
+          "y"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": true
+    },
+    {
+      "name": "browser_drag",
+      "description": "Drag from one element to another",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "source": {
+            "description": "CSS selector or @ref for the source element",
+            "type": "string"
+          },
+          "target": {
+            "description": "CSS selector or @ref for the target element",
+            "type": "string"
+          },
+          "timeout": {
+            "default": 30000,
+            "description": "Timeout in milliseconds (default: 30000)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "source",
+          "target"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_set_viewport",
+      "description": "Set the browser viewport size",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "devicePixelRatio": {
+            "description": "Device pixel ratio (optional, e.g., 2 for Retina)",
+            "type": "number"
+          },
+          "height": {
+            "description": "Viewport height in pixels",
+            "type": "number"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "width": {
+            "description": "Viewport width in pixels",
+            "type": "number"
+          }
+        },
+        "required": [
+          "width",
+          "height"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_get_viewport",
+      "description": "Get the current viewport dimensions",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_get_window",
+      "description": "Get the OS browser window dimensions and state",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_set_window",
+      "description": "Set the OS browser window size, position, or state",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "height": {
+            "description": "Window height in pixels",
+            "type": "number"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "state": {
+            "description": "Window state: normal, maximized, minimized, or fullscreen",
+            "enum": [
+              "normal",
+              "maximized",
+              "minimized",
+              "fullscreen"
+            ],
+            "type": "string"
+          },
+          "width": {
+            "description": "Window width in pixels",
+            "type": "number"
+          },
+          "x": {
+            "description": "Window x position in pixels",
+            "type": "number"
+          },
+          "y": {
+            "description": "Window y position in pixels",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_emulate_media",
+      "description": "Override CSS media features (color scheme, reduced motion, etc.)",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "colorScheme": {
+            "description": "Color scheme: \"light\", \"dark\", or \"no-preference\"",
+            "enum": [
+              "light",
+              "dark",
+              "no-preference"
+            ],
+            "type": "string"
+          },
+          "contrast": {
+            "description": "Contrast preference: \"more\", \"less\", or \"no-preference\"",
+            "enum": [
+              "more",
+              "less",
+              "no-preference"
+            ],
+            "type": "string"
+          },
+          "forcedColors": {
+            "description": "Forced colors: \"active\" or \"none\"",
+            "enum": [
+              "active",
+              "none"
+            ],
+            "type": "string"
+          },
+          "media": {
+            "description": "Media type: \"screen\" or \"print\"",
+            "enum": [
+              "screen",
+              "print"
+            ],
+            "type": "string"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "reducedMotion": {
+            "description": "Reduced motion: \"reduce\" or \"no-preference\"",
+            "enum": [
+              "reduce",
+              "no-preference"
+            ],
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_set_geolocation",
+      "description": "Override the browser geolocation",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "accuracy": {
+            "default": 1,
+            "description": "Accuracy in meters (default: 1)",
+            "type": "number"
+          },
+          "latitude": {
+            "description": "Latitude (-90 to 90)",
+            "type": "number"
+          },
+          "longitude": {
+            "description": "Longitude (-180 to 180)",
+            "type": "number"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "latitude",
+          "longitude"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_set_content",
+      "description": "Replace the page HTML content",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "html": {
+            "description": "HTML content to set",
+            "type": "string"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "html"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_frames",
+      "description": "List all child frames (iframes) on the current page",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_frame",
+      "description": "Find a frame by name (exact match) or URL (substring match)",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "nameOrUrl": {
+            "description": "Frame name (exact match) or URL substring to find",
+            "type": "string"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          }
+        },
+        "required": [
+          "nameOrUrl"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_upload",
+      "description": "Set files on an input[type=file] element",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "files": {
+            "description": "Array of absolute file paths to upload",
+            "items": {
+              "type": "string"
+            },
+            "type": "array"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "selector": {
+            "description": "CSS selector for the file input element",
+            "type": "string"
+          },
+          "timeout": {
+            "default": 30000,
+            "description": "Timeout in milliseconds (default: 30000)",
+            "type": "number"
+          }
+        },
+        "required": [
+          "selector",
+          "files"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_record_start",
+      "description": "Start a browser recording (screenshots and/or HTML snapshots). Output is Playwright trace viewer compatible.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "bidi": {
+            "default": false,
+            "description": "Record raw BiDi commands in the recording (default: false)",
+            "type": "boolean"
+          },
+          "format": {
+            "default": "jpeg",
+            "description": "Screenshot format: \"jpeg\" or \"png\" (default: \"jpeg\")",
+            "enum": [
+              "jpeg",
+              "png"
+            ],
+            "type": "string"
+          },
+          "name": {
+            "description": "Name for the recording (default: \"record\"; also seeds the default filename stem)",
+            "type": "string"
+          },
+          "path": {
+            "description": "Where the recording ZIP lands at stop (default: a timestamped record-<timestamp>.zip in the server's working directory, or ~/Documents/Vibium when that isn't writable)",
+            "type": "string"
+          },
+          "quality": {
+            "default": 0.5,
+            "description": "JPEG quality 0.0-1.0 (default: 0.5, ignored for png)",
+            "type": "number"
+          },
+          "screenshots": {
+            "default": true,
+            "description": "Capture screenshots after each action (default: true)",
+            "type": "boolean"
+          },
+          "snapshots": {
+            "default": false,
+            "description": "Capture HTML snapshots (default: false)",
+            "type": "boolean"
+          },
+          "sources": {
+            "default": false,
+            "description": "Include source information (default: false)",
+            "type": "boolean"
+          },
+          "title": {
+            "description": "Title shown in trace viewer (defaults to name)",
+            "type": "string"
+          },
+          "video": {
+            "description": "Omit to record video when the engine supports it (Firefox 154+). Set true to require video — fails with an explanatory error on Chrome. Set false to disable.",
+            "type": "boolean"
+          },
+          "video_frame_rate": {
+            "description": "Video frame rate (engine default if omitted)",
+            "type": "number"
+          },
+          "video_height": {
+            "description": "Video height in pixels (defaults to the viewport)",
+            "type": "number"
+          },
+          "video_remote": {
+            "description": "On a remote browser connection, \"keep\" records anyway and leaves the video on the remote host; the stop result reports its remote path. Retrieval and cleanup are the caller's.",
+            "enum": [
+              "keep"
+            ],
+            "type": "string"
+          },
+          "video_width": {
+            "description": "Video width in pixels (defaults to the viewport)",
+            "type": "number"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_record_stop",
+      "description": "Stop recording and save to a Playwright-compatible trace ZIP file (with the video track when one was recorded). With upload, the ZIP also goes to the Record Store of the station the browser is connected through.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "description": "Output file path (overrides the path declared at start; default: record.zip)",
+            "type": "string"
+          },
+          "upload": {
+            "description": "Also upload the ZIP to the station the browser is connected through (its Record Store) and report its URL. Needs a remote connection with an API key; the file is saved locally either way.",
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_record_start_group",
+      "description": "Start a named group in the recording (groups nest actions in the trace viewer)",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "description": "Name for the group",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_record_stop_group",
+      "description": "End the current recording group",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_record_start_chunk",
+      "description": "Start a new chunk within the current recording (for splitting long recordings)",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "description": "Name for the chunk",
+            "type": "string"
+          },
+          "title": {
+            "description": "Title shown in trace viewer (defaults to name)",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_record_stop_chunk",
+      "description": "Package the current recording chunk into a ZIP file (recording remains active)",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "description": "Output file path (default: chunk.zip)",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_storage_state",
+      "description": "Export cookies, localStorage, and sessionStorage as JSON",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_restore_storage",
+      "description": "Restore cookies and storage from a JSON state file",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "path": {
+            "description": "Path to the JSON state file",
+            "type": "string"
+          }
+        },
+        "required": [
+          "path"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    },
+    {
+      "name": "browser_download_set_dir",
+      "description": "Set the download directory for the browser",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "path": {
+            "description": "Directory path for downloads",
+            "type": "string"
+          }
+        },
+        "required": [
+          "path"
+        ],
+        "type": "object"
+      },
+      "nightlyOnly": false
+    }
+  ]
+}

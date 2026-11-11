@@ -67,6 +67,10 @@ Full contract: [Scripting and Agents](https://vibium.com/docs/scripting.md).
 - `llms-<surface>.txt` — the shared docs plus one surface (see Surfaces)
 - [commands.json](https://vibium.com/commands.json) — every CLI command, its
   flags, and nightly-only markers, generated from the binaries
+- [api.json](https://vibium.com/api.json) — every operation and its CLI,
+  MCP, JavaScript, Python, and Java form; use it to translate between surfaces
+- [mcp-tools.json](https://vibium.com/mcp-tools.json) — the MCP server's
+  tool schemas, as reported by `tools/list`
 - [Browser skill](https://vibium.com/skills/browser.md) and
   [check skill](https://vibium.com/skills/check.md) — the full agent skills,
   as installed by `vibium add-skill`

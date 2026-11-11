@@ -70,13 +70,14 @@ DOCS: list[Doc] = [
     *tree("libraries/javascript", "JavaScript"),
     *tree("libraries/python", "Python"),
     *tree("libraries/java", "Java"),
+    *tree("reference", "Reference"),
     *tree("commands", "Command Reference"),
     Doc("docs/contributing.md", "Optional"),
 ]
 
 SECTION_ORDER = (
     "Docs", "Guides", "CLI", "MCP", "Libraries", "JavaScript", "Python",
-    "Java", "Command Reference", "Skills", "Optional",
+    "Java", "Reference", "Command Reference", "Skills", "Optional",
 )
 
 # Sections every surface bundle carries, and the sections each one adds.
@@ -232,8 +233,8 @@ def build_llms_txt(repo_root: Path, docs: list[Doc]) -> str:
 
     sections["Skills"] = [
         f"- [Agent guide]({origin}/AGENTS.md): Install, configure, and "
-        "drive Vibium; machine-readable endpoints, including the "
-        f"commands.json command listing at {origin}/commands.json.",
+        "drive Vibium; machine-readable endpoints, including "
+        f"{origin}/commands.json, {origin}/api.json, and {origin}/mcp-tools.json.",
         f"- [Browser skill]({origin}/skills/browser.md): The full Vibium "
         "browser-automation skill, as installed by vibium add-skill.",
         f"- [Check skill]({origin}/skills/check.md): The independent "
