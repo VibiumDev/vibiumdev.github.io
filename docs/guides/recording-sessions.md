@@ -1,12 +1,14 @@
 ---
 title: "Recording Browser Sessions"
 description: "Record a timeline of screenshots, network requests, DOM snapshots, action groups — and, on supported engines, a video track — then view it in Record Player."
+sidebar:
+  badge: Nightly
 editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/tutorials/recording.md
 ---
 
 <!-- Imported from docs/tutorials/recording.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
 
-> This guide tracks the nightly builds and has changed since 26.8.21; parts of it MAY need a nightly. See [What's in Nightly](../nightly.md).
+> **Nightly only.** This guide uses `vibium codegen`, `vibium run`, which are not in 26.8.21. See [What's in Nightly](../nightly.md).
 
 Record a timeline of screenshots, network requests, DOM snapshots, action groups — and, on supported engines, a video track — then view it in Record Player.
 
@@ -738,7 +740,7 @@ pip install vibium && python replay.py
 
 The JavaScript output uses top-level `await`, so keep the `.mjs` extension
 (or run it in a `"type": "module"` package). See the
-[Codegen reference](https://github.com/VibiumDev/vibium/blob/main/docs/reference/codegen.md) for the full action mapping
+[Codegen reference](../reference/codegen.md) for the full action mapping
 and limitations.
 
 ---
@@ -850,5 +852,5 @@ vibe.context().recording().start(
 
 - [Record Video](record-video.md) — the video track: engine support, Firefox channels, options
 - [Recording Format](../reference/recording-format.md) — detailed spec of the zip structure
-- [Codegen reference](https://github.com/VibiumDev/vibium/blob/main/docs/reference/codegen.md) — flags, action mapping, and limits for `vibium codegen`
+- [Codegen reference](../reference/codegen.md) — flags, action mapping, and limits for `vibium codegen`
 - [Getting Started](../libraries/javascript/index.md) — first steps with Vibium

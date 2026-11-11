@@ -177,6 +177,10 @@ test('llms.txt lists every docs page and every link resolves', async () => {
       `/${page}/ is missing from llms.txt`
     );
   }
+  for (const [, title, description] of text.matchAll(/^- \[([^\]]+)\]\([^)]+\): (.*)$/gm)) {
+    assert.ok(description.length >= 10, `llms.txt entry "${title}" has a ${description.length}-char description`);
+    assert.doesNotMatch(description, /<!--|-->/, `llms.txt entry "${title}" describes itself with a comment`);
+  }
   for (const section of ['CLI', 'MCP', 'JavaScript', 'Python', 'Java']) {
     assert.match(text, new RegExp(`^## ${section}$`, 'm'));
   }
@@ -217,11 +221,11 @@ test('guides imported from the main repository are published', async () => {
   );
   assert.ok(manifest.pages.length >= 10);
   for (const { src, dest } of manifest.pages) {
-    const page = dest.replace(/\.md$/, '');
+    const page = dest.replace(/(\/index)?\.md$/, '');
     assert.equal(await exists(`${page}/index.html`), true, `missing /${page}/`);
     const mirror = await readBuilt(`${page}.md`);
     assert.ok(mirror.includes(`Imported from ${src}`), `${page}.md does not name its source`);
-    assert.doesNotMatch(mirror, /\]\(\.\.\/(how-to-guides|tutorials|explanation)\//, `${page}.md keeps an upstream-relative link`);
+    assert.doesNotMatch(mirror, /\]\(\.\.\/(how-to-guides|tutorials)\//, `${page}.md keeps an upstream-relative link`);
   }
 });
 

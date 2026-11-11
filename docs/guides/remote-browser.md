@@ -6,7 +6,7 @@ editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/tutorials/remote-bro
 
 <!-- Imported from docs/tutorials/remote-browser.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
 
-> This guide tracks the nightly builds and has changed since 26.8.21; parts of it MAY need a nightly. See [What's in Nightly](../nightly.md).
+> This guide was updated after the 26.8.21 release, so parts of it MAY need a nightly build. See [What's in Nightly](../nightly.md).
 
 Run Chrome on one machine, control it from another.
 

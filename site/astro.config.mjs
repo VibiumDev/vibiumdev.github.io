@@ -131,9 +131,20 @@ export default defineConfig({
                         ],
                     },
                     {
+                        label: 'Cloud',
+                        link: '/docs/cloud-browsers/',
+                        items: [
+                            { label: 'Cloud browsers', autogenerate: { directory: 'docs/cloud-browsers' } },
+                            { label: 'Cloud computers', autogenerate: { directory: 'docs/cloud-computers' } },
+                        ],
+                    },
+                    {
                         label: 'Reference',
                         link: '/docs/reference/api-matrix/',
-                        items: [{ label: 'Reference', autogenerate: { directory: 'docs/reference' } }],
+                        items: [
+                            { label: 'Reference', autogenerate: { directory: 'docs/reference' } },
+                            { label: 'How it works', autogenerate: { directory: 'docs/explanation' } },
+                        ],
                     },
                 ]),
             ],

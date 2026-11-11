@@ -1,14 +1,12 @@
 ---
 title: "Testing private sites with remote browsers"
 description: "Testing private sites with remote browsers. A remote browser can only test what it can reach."
-sidebar:
-  badge: Nightly
 editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/how-to-guides/testing-private-sites.md
 ---
 
 <!-- Imported from docs/how-to-guides/testing-private-sites.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
 
-> **Nightly only.** This guide covers features added after 26.8.21. See [What's in Nightly](../nightly.md).
+> This guide was added after the 26.8.21 release, so parts of it MAY need a nightly build. See [What's in Nightly](../nightly.md).
 
 A remote browser can only test what it can reach. Your app on
 `localhost:3000`, a LAN address, or an internal VPN doesn't exist from
@@ -27,7 +25,7 @@ because the capabilities differ:
 ## Cloud computers: join the box to your tailnet
 
 If you run the browser on a machine you control
-([cloud computers](https://github.com/VibiumDev/vibium/blob/main/docs/how-to-guides/cloud-computers)), the clean solution is a VPN
+([cloud computers](../cloud-computers/index.md)), the clean solution is a VPN
 between the box and wherever the app lives. With Tailscale:
 
 ```bash
@@ -63,7 +61,7 @@ side: BrowserStack Local, Sauce Connect, the LambdaTest tunnel,
 TestingBot Tunnel. Each is a small binary you run next to the app; the
 vendor's browser routes matching traffic back through it. They change
 nothing about how vibium connects — protocol and page traffic stay
-separate — and each grid's [guide](https://github.com/VibiumDev/vibium/blob/main/docs/how-to-guides/cloud-browsers) covers its tunnel
+separate — and each grid's [guide](../cloud-browsers/index.md) covers its tunnel
 flag once the guides are verified.
 
 Vendors without a tunnel product may still support customer-supplied

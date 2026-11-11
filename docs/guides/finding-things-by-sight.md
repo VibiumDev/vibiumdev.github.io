@@ -8,7 +8,7 @@ editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/tutorials/finding-th
 
 <!-- Imported from docs/tutorials/finding-things-by-sight.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
 
-> **Nightly only.** This guide covers features added after 26.8.21. See [What's in Nightly](../nightly.md).
+> **Nightly only.** This guide uses `vibium find css`, `vibium find description`, `vibium find image`, which are not in 26.8.21. See [What's in Nightly](../nightly.md).
 
 `find` takes a description, an exact locator, or a picture, and hands back
 an `@eN` ref that the next command can act on. This walk uses
@@ -202,5 +202,5 @@ The fixture page in step 6 is part of the repository and does not change.
 Run the whole walk against it instead: its heading is "Gallery", its
 button is "Add to Cart", its link is "Learn more", and `pattern.png` is the
 thumbnail. See [Vibium Find: Natural Language by Default](find-by-description-and-image.md)
-for every locator form and [How find by intent works](https://github.com/VibiumDev/vibium/blob/main/docs/explanation/find-by-intent.md)
+for every locator form and [How find by intent works](../explanation/find-by-intent.md)
 for what happens underneath.
