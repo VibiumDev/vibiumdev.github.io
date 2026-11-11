@@ -25,7 +25,7 @@ finding, clicking, filling, capture, and so on.
 
 You normally do not invoke `vibium mcp` directly. Instead, register it with
 your client and let the client manage its lifecycle. See
-[MCP Server Integration](../mcp-integration.md) for the registration
+[MCP Server Integration](../mcp/index.md) for the registration
 recipes.
 
 ## Examples
@@ -44,4 +44,4 @@ gemini mcp add vibium npx -y vibium mcp
 
 ## See also
 
-- [MCP Server Integration](../mcp-integration.md)
+- [MCP Server Integration](../mcp/index.md)

@@ -64,12 +64,12 @@ Yes — give each its own named session with `--session <name>` or
 
 ## Is there a Python / TypeScript / Java SDK?
 
-Yes — see [Client Libraries](client-libraries.md). All three wrap the same
+Yes — see [Client Libraries](libraries/index.md). All three wrap the same
 binary, so behavior is identical across languages.
 
 ## How do I plug it into Codex or another agent?
 
-Register Vibium as an MCP server. See [MCP Server Integration](mcp-integration.md).
+Register Vibium as an MCP server. See [MCP Server Integration](mcp/index.md).
 
 ## Why semantic locators instead of CSS selectors?
 

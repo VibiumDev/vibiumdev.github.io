@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
-import { readFile, stat } from 'node:fs/promises';
+import { readdir, readFile, stat } from 'node:fs/promises';
 import test from 'node:test';
+
+import { surfaceOf } from '../src/plugins/remark-surface-groups.mjs';
 
 const dist = new URL('../dist/', import.meta.url);
 
@@ -16,6 +18,22 @@ async function exists(path) {
 
 async function readBuilt(path) {
   return readFile(new URL(path, dist), 'utf8');
+}
+
+const SURFACES = ['cli', 'mcp', 'javascript', 'python', 'java'];
+const MOVED = {
+  'docs/client-libraries': '/docs/libraries/',
+  'docs/mcp-integration': '/docs/mcp/',
+  'docs/getting-started': '/docs/cli/',
+};
+
+// Every Starlight page as a dist-relative directory, e.g. "docs/libraries/python".
+async function docsPages() {
+  const entries = await readdir(new URL('docs/', dist), { recursive: true });
+  return entries
+    .filter((entry) => entry.endsWith('index.html'))
+    .map((entry) => `docs/${entry}`.replace(/\/?index\.html$/, ''))
+    .filter((page) => page !== 'docs' && !(page in MOVED));
 }
 
 test('homepage is the Vibium landing page and links to docs', async () => {
@@ -115,9 +133,125 @@ test('agent-readable Markdown stays rooted at /llms', async () => {
 test('HTML pages have same-path Markdown mirrors', async () => {
   assert.equal(await exists('index.md'), true);
   assert.equal(await exists('docs.md'), true);
-  assert.equal(await exists('docs/introduction.md'), true);
-  assert.equal(await exists('docs/commands.md'), true);
-  assert.equal(await exists('docs/commands/go.md'), true);
+  const pages = await docsPages();
+  assert.ok(pages.length > 90);
+  for (const page of pages) {
+    assert.equal(await exists(`${page}.md`), true, `no Markdown mirror for /${page}/`);
+  }
+});
+
+test('every docs page links to a Markdown alternate that exists', async () => {
+  for (const page of await docsPages()) {
+    const html = await readBuilt(`${page}/index.html`);
+    const href = html.match(/<link rel="alternate" type="text\/markdown" href="\/([^"]+)">/)?.[1];
+    assert.ok(href, `no Markdown alternate on /${page}/`);
+    assert.equal(await exists(href), true, `dead Markdown alternate on /${page}/: /${href}`);
+  }
+});
+
+test('every docs page links to the glossary', async () => {
+  for (const page of await docsPages()) {
+    const html = await readBuilt(`${page}/index.html`);
+    assert.match(html, /<a href="\/docs\/concepts\/">Glossary<\/a>/, `no glossary link on /${page}/`);
+  }
+});
+
+test('llms.txt lists every docs page and every link resolves', async () => {
+  const text = await readBuilt('llms.txt');
+  const links = [...text.matchAll(/\]\(https:\/\/vibium\.com\/([^)]+)\)/g)].map((match) => match[1]);
+  for (const link of links) {
+    assert.equal(await exists(link), true, `llms.txt link does not resolve: /${link}`);
+  }
+  for (const page of await docsPages()) {
+    assert.ok(
+      links.includes(`llms/${page}.md`) || links.includes(`llms/${page}/index.md`),
+      `/${page}/ is missing from llms.txt`
+    );
+  }
+  for (const section of ['CLI', 'MCP', 'JavaScript', 'Python', 'Java']) {
+    assert.match(text, new RegExp(`^## ${section}$`, 'm'));
+  }
+});
+
+test('moved pages redirect and keep a Markdown pointer', async () => {
+  for (const [page, target] of Object.entries(MOVED)) {
+    const html = await readBuilt(`${page}/index.html`);
+    assert.ok(html.includes(`url=${target}`), `/${page}/ does not redirect to ${target}`);
+    for (const stub of [`${page}.md`, `llms/${page}.md`]) {
+      assert.match(await readBuilt(stub), /This page moved to \[/, `no pointer at /${stub}`);
+    }
+  }
+});
+
+test('surface sections are published', async () => {
+  for (const page of [
+    'docs/cli',
+    'docs/mcp',
+    'docs/mcp/setup',
+    'docs/libraries',
+    'docs/libraries/javascript',
+    'docs/libraries/python',
+    'docs/libraries/java',
+  ]) {
+    assert.equal(await exists(`${page}/index.html`), true, `missing /${page}/`);
+  }
+});
+
+test('surface picker ships on docs pages and hides nothing by default', async () => {
+  const html = await readBuilt('docs/installation/index.html');
+  assert.match(html, /<vibium-surface-select/);
+  assert.match(html, /<script src="\/surface\.js"><\/script>/);
+  assert.equal(await exists('surface.js'), true);
+  for (const surface of ['all', ...SURFACES]) {
+    assert.match(html, new RegExp(`<option value="${surface}"`));
+  }
+  assert.doesNotMatch(html, /<html[^>]*data-surface=/);
+});
+
+test('surface groups keep every surface in the HTML and in the mirror', async () => {
+  for (const page of ['docs/installation', 'docs/quickstart']) {
+    const html = await readBuilt(`${page}/index.html`);
+    const blocks = [...html.matchAll(/class="surface-block" data-surface="([a-z]+)"/g)];
+    assert.deepEqual(blocks.map((match) => match[1]), SURFACES, `surface group on /${page}/`);
+
+    const mirror = await readBuilt(`${page}.md`);
+    const fences = [...mirror.matchAll(/^```(\w+)(.*)$/gm)].map(([, lang, meta]) =>
+      surfaceOf({ type: 'code', lang, meta })
+    );
+    for (const surface of SURFACES) {
+      assert.ok(fences.includes(surface), `${page}.md has no ${surface} example`);
+    }
+  }
+});
+
+test('a shell fence is CLI only when it runs vibium commands', () => {
+  const shell = (value, meta) => surfaceOf({ type: 'code', lang: 'sh', meta, value });
+  assert.equal(shell('vibium go https://example.com\nvibium text'), 'cli');
+  assert.equal(shell('# open a page\nnpx -y vibium go https://example.com'), 'cli');
+  assert.equal(shell('pip install vibium'), undefined);
+  assert.equal(shell('npm install vibium\nvibium go https://example.com'), undefined);
+  assert.equal(shell('pip install vibium', 'title="Python"'), 'python');
+});
+
+test('per-surface llms bundles carry shared docs plus their surface', async () => {
+  const marker = {
+    cli: '--- file: docs/commands/go.md ---',
+    mcp: '--- file: docs/mcp/setup.md ---',
+    javascript: '--- file: docs/libraries/javascript/index.md ---',
+    python: '--- file: docs/libraries/python/index.md ---',
+    java: '--- file: docs/libraries/java/index.md ---',
+  };
+  for (const surface of SURFACES) {
+    const bundle = await readBuilt(`llms-${surface}.txt`);
+    assert.ok(bundle.includes('--- file: docs/quickstart.md ---'), `llms-${surface}.txt lacks shared docs`);
+    for (const other of SURFACES) {
+      assert.equal(
+        bundle.includes(marker[other]),
+        other === surface,
+        `llms-${surface}.txt and ${other} pages`
+      );
+    }
+  }
 });
 
 test('docs links use indexed command overview route', async () => {

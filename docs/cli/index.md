@@ -3,7 +3,7 @@ title: Getting Started
 ---
 
 This page walks through your first real session with Vibium. It assumes you
-have either [installed](installation.md) the `vibium` binary globally or
+have either [installed](../installation.md) the `vibium` binary globally or
 are running it via `npx -y vibium ...`. The two are interchangeable; pick
 whichever you prefer.
 
@@ -50,7 +50,7 @@ vibium map
 You should see lines like:
 
 ```
-@e1  link   "More information..."  (https://www.iana.org/...)
+@e1 [a] "Learn more"
 ```
 
 Click the first link by reference:
@@ -94,14 +94,14 @@ vibium check "the contact page lists an email address"
 
 Both need an AI provider configured once — `vibium setup` walks you through
 it. These commands are in the nightly builds and the next npm release; see
-[Run and Check](run-and-check.md).
+[Run and Check](../run-and-check.md).
 
 ## What to read next
 
-- [Tutorial](tutorial.md) — a complete form-filling walkthrough.
-- [Core Concepts](concepts.md) — references, mapping, daemon mode, sessions.
-- [Run and Check](run-and-check.md) — AI-driven goals and acceptance checks.
+- [Tutorial](../tutorial.md) — a complete form-filling walkthrough.
+- [Core Concepts](../concepts.md) — references, mapping, daemon mode, sessions.
+- [Run and Check](../run-and-check.md) — AI-driven goals and acceptance checks.
 - [Command Reference](/docs/commands/) — every command in detail.
 
-(If you skipped the [Quickstart](quickstart.md), it's a condensed
+(If you skipped the [Quickstart](../quickstart.md), it's a condensed
 copy-paste version of this page.)

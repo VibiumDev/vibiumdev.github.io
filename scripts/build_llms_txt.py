@@ -31,39 +31,70 @@ class Doc:
     section: str
 
 
-# Ordered list of doc files, relative to the repo root. New docs should be
-# added here in the order they should appear in llms.txt and llms-full.txt.
+REPO_ROOT = Path(__file__).resolve().parent.parent
+
+
+def tree(directory: str, section: str) -> list[Doc]:
+    """Every page directly under docs/<directory>, index first."""
+    base = REPO_ROOT / "docs" / directory
+    pages = sorted(base.glob("*.md"), key=lambda p: (p.name != "index.md", p.name))
+    return [
+        Doc(p.relative_to(REPO_ROOT).as_posix(), section)
+        for p in pages
+        if not p.name.startswith("_")
+    ]
+
+
+# Ordered list of doc files, relative to the repo root. Top-level pages are
+# listed by hand; surface directories register every page they contain, so a
+# new page there gets its llms.txt entry and Markdown mirrors automatically.
 DOCS: list[Doc] = [
     Doc("README.md", "Optional"),
     Doc("docs/introduction.md", "Docs"),
     Doc("docs/installation.md", "Docs"),
-    # Reading order intentionally puts Quickstart before Getting Started:
-    # Quickstart is the copy-paste onramp, Getting Started is the deeper
-    # mental-model walk-through.
     Doc("docs/quickstart.md", "Docs"),
-    Doc("docs/getting-started.md", "Docs"),
-    Doc("docs/tutorial.md", "Docs"),
     Doc("docs/concepts.md", "Docs"),
-    Doc("docs/run-and-check.md", "Docs"),
-    Doc("docs/ai-providers.md", "Docs"),
-    Doc("docs/using-firefox.md", "Docs"),
-    Doc("docs/sessions.md", "Docs"),
-    Doc("docs/recording.md", "Docs"),
-    Doc("docs/mcp-integration.md", "Docs"),
-    Doc("docs/client-libraries.md", "Docs"),
-    Doc("docs/scripting.md", "Docs"),
     Doc("docs/troubleshooting.md", "Docs"),
     Doc("docs/faq.md", "Docs"),
     Doc("docs/nightly.md", "Docs"),
-    *[
-        Doc(f"docs/commands/{p.name}", "Command Reference")
-        for p in sorted(
-            (Path(__file__).resolve().parent.parent / "docs" / "commands").glob("*.md")
-        )
-        if not p.name.startswith("_")
-    ],
+    Doc("docs/tutorial.md", "Guides"),
+    Doc("docs/run-and-check.md", "Guides"),
+    Doc("docs/ai-providers.md", "Guides"),
+    Doc("docs/using-firefox.md", "Guides"),
+    Doc("docs/sessions.md", "Guides"),
+    Doc("docs/recording.md", "Guides"),
+    Doc("docs/scripting.md", "Guides"),
+    *tree("cli", "CLI"),
+    *tree("mcp", "MCP"),
+    *tree("libraries", "Libraries"),
+    *tree("libraries/javascript", "JavaScript"),
+    *tree("libraries/python", "Python"),
+    *tree("libraries/java", "Java"),
+    *tree("commands", "Command Reference"),
     Doc("docs/contributing.md", "Optional"),
 ]
+
+SECTION_ORDER = (
+    "Docs", "Guides", "CLI", "MCP", "Libraries", "JavaScript", "Python",
+    "Java", "Command Reference", "Skills", "Optional",
+)
+
+# Sections every surface bundle carries, and the sections each one adds.
+SHARED_SECTIONS = {"Docs", "Guides"}
+SURFACE_SECTIONS: dict[str, set[str]] = {
+    "cli": {"CLI", "Command Reference"},
+    "mcp": {"MCP"},
+    "javascript": {"Libraries", "JavaScript"},
+    "python": {"Libraries", "Python"},
+    "java": {"Libraries", "Java"},
+}
+
+# Pages that moved. The old Markdown URLs keep answering with a pointer.
+MOVED: dict[str, str] = {
+    "docs/client-libraries.md": "docs/libraries/index.md",
+    "docs/mcp-integration.md": "docs/mcp/index.md",
+    "docs/getting-started.md": "docs/cli/index.md",
+}
 
 FRONTMATTER_RE = re.compile(r"\A---\n(?P<frontmatter>.*?)\n---\n", re.DOTALL)
 TITLE_RE = re.compile(r"^title:\s*(?P<title>.+?)\s*$", re.MULTILINE)
@@ -175,7 +206,9 @@ def build_llms_txt(repo_root: Path, docs: list[Doc]) -> str:
         "canonical repository docs.",
         "",
         "Use `llms-full.txt` when a single expanded context file is more useful "
-        "than following individual links.",
+        "than following individual links. Per-surface bundles hold the shared "
+        "docs plus one surface: `llms-cli.txt`, `llms-mcp.txt`, "
+        "`llms-javascript.txt`, `llms-python.txt`, `llms-java.txt`.",
         "",
     ]
 
@@ -206,7 +239,7 @@ def build_llms_txt(repo_root: Path, docs: list[Doc]) -> str:
         f"- [Check skill]({origin}/skills/check.md): The independent "
         "acceptance-check skill for PASS/FAIL/REVIEW verdicts.",
     ]
-    for section in ("Docs", "Command Reference", "Skills", "Optional"):
+    for section in SECTION_ORDER:
         items = sections.get(section)
         if not items:
             continue
@@ -220,11 +253,35 @@ def build_llms_txt(repo_root: Path, docs: list[Doc]) -> str:
     return text
 
 
-def build_llms_full(repo_root: Path, docs: list[Doc]) -> str:
+def surface_docs(surface: str) -> list[Doc]:
+    wanted = SHARED_SECTIONS | SURFACE_SECTIONS[surface]
+    return [doc for doc in DOCS if doc.section in wanted]
+
+
+def moved_stub(old: str, new: str) -> str:
+    """Markdown left at a moved page's old path."""
+    title, _ = metadata(REPO_ROOT / new)
+    link = os.path.relpath(new, start=os.path.dirname(old))
+    return f"---\ntitle: {title} (moved)\n---\n\nThis page moved to [{title}]({link}).\n"
+
+
+def build_llms_full(repo_root: Path, docs: list[Doc], surface: str | None = None) -> str:
     parts: list[str] = []
     generated_at = _dt.datetime.now(_dt.timezone.utc).strftime(
         "%Y-%m-%d %H:%M:%S UTC"
     )
+    if surface:
+        scope = (
+            f"This file holds the shared Vibium docs plus the {surface} surface, "
+            "for agents that use only that surface. The complete set is "
+            "`/llms-full.txt`."
+        )
+    else:
+        scope = (
+            "This file is a single-document concatenation of the Vibium "
+            "documentation for agent consumption. Per-surface bundles are at "
+            "`/llms-<surface>.txt` (cli, mcp, javascript, python, java)."
+        )
     parts.append(
         "\n".join(
             [
@@ -232,10 +289,9 @@ def build_llms_full(repo_root: Path, docs: list[Doc]) -> str:
                 "",
                 PROJECT_SUMMARY,
                 "",
-                "This file is a single-document concatenation of the Vibium "
-                "documentation for agent consumption. It is generated from the "
-                "Markdown sources by `scripts/build_llms_txt.py`. Edit the "
-                "sources, not this file.",
+                scope,
+                "It is generated from the Markdown sources by "
+                "`scripts/build_llms_txt.py`. Edit the sources, not this file.",
                 "",
                 "The spec-compliant llms.txt index is available at `/llms.txt`.",
                 "",
@@ -307,6 +363,12 @@ def mirror_markdown(repo_root: Path, docs: list[Doc], public_dir: Path) -> int:
         shutil.copyfile(src, target)
         count += 1
 
+    for old, new in MOVED.items():
+        target = mirror_dir / old
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(moved_stub(old, new), encoding="utf-8")
+        count += 1
+
     return count
 
 
@@ -316,6 +378,9 @@ def write_outputs(repo_root: Path, output: Path, llms_text: str, full_text: str)
 
     full_output = output.with_name("llms-full.txt")
     full_output.write_text(full_text, encoding="utf-8")
+    for surface in SURFACE_SECTIONS:
+        bundle = build_llms_full(repo_root, surface_docs(surface), surface)
+        output.with_name(f"llms-{surface}.txt").write_text(bundle, encoding="utf-8")
     mirror_count = mirror_markdown(repo_root, DOCS, output.parent)
 
     size_kb = len(llms_text.encode("utf-8")) / 1024

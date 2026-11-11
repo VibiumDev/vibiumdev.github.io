@@ -15,16 +15,21 @@ inside an agent context window.
 
 - [Introduction](docs/introduction.md)
 - [Installation](docs/installation.md)
-- [Quickstart](docs/quickstart.md) — a few lines, copy-paste.
-- [Getting Started](docs/getting-started.md) — the mental model.
+- [Quickstart](docs/quickstart.md) — one session on every surface.
 - [Tutorial: Filling a Form End-to-End](docs/tutorial.md) — a worked example.
 - [Core Concepts](docs/concepts.md)
-- [Command Reference](docs/commands/index.md)
-- [MCP Server Integration](docs/mcp-integration.md)
-- [Client Libraries](docs/client-libraries.md)
 - [Troubleshooting](docs/troubleshooting.md)
 - [FAQ](docs/faq.md)
 - [Contributing](docs/contributing.md)
+
+By surface:
+
+- CLI: [Getting Started](docs/cli/index.md), [Command Reference](docs/commands/index.md)
+- MCP: [MCP Server](docs/mcp/index.md), [Client Setup](docs/mcp/setup.md)
+- Libraries: [Overview](docs/libraries/index.md),
+  [JavaScript](docs/libraries/javascript/index.md),
+  [Python](docs/libraries/python/index.md),
+  [Java](docs/libraries/java/index.md)
 
 ## Site generation
 
@@ -51,7 +56,24 @@ stable served assets.
 The generated `site/public/llms.txt` is a spec-compliant index served at
 `/llms.txt`; it links to Markdown copies of the docs under `/llms/`. The
 generated `site/public/llms-full.txt` keeps the single-file context form for
-agents that prefer one large document.
+agents that prefer one large document, and `llms-<surface>.txt` (cli, mcp,
+javascript, python, java) holds the shared docs plus one surface.
+
+## Surfaces
+
+The docs cover five surfaces: CLI, MCP, JavaScript, Python, and Java. Each
+has its own sidebar topic (`site/astro.config.mjs`). Pages under `docs/cli/`,
+`docs/mcp/`, and `docs/libraries/` register themselves in `llms.txt` and get
+Markdown mirrors automatically; a new top-level page must be added to `DOCS`
+in `scripts/build_llms_txt.py`, and `make test` fails if it is not.
+
+Write examples as plain adjacent code fences, one per surface. A fence's
+surface comes from `title="CLI|MCP|JavaScript|Python|Java"` or, without a
+title, from its language. A shell fence counts as CLI only when every command
+in it is a `vibium` command, so an install step is never filtered away. Two or more adjacent fences for different surfaces
+become a group that the header picker filters
+(`site/src/plugins/remark-surface-groups.mjs`). Nothing is hidden until a
+reader picks a surface, and the Markdown mirrors always keep every block.
 
 `scripts/postprocess_site.py` runs after Astro builds. It writes same-path
 Markdown mirrors into `site/dist/`, adds language classes to generated code

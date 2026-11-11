@@ -139,4 +139,4 @@ scripts get isolation through named sessions: `--session <name>` (or
 same commands as MCP tools. Plug it into Codex, Claude Code, Cline, Cursor, or
 another MCP-aware client and the browser becomes part of the agent's tool
 inventory.
-See [MCP Server Integration](mcp-integration.md).
+See [MCP Server Integration](mcp/index.md).

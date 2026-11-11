@@ -16,13 +16,41 @@ hero:
 
 import { Card, CardGrid } from '@astrojs/starlight/components';
 
+One binary, five ways to drive it: CLI, MCP, JavaScript, Python, and Java.
+Pick your surface. The picker in the header filters every example to it.
+
+<CardGrid>
+  <Card title="CLI" icon="forward-slash">
+    Shell commands for humans, scripts, and coding agents. Start with the
+    [CLI guide](/docs/cli/), then the [Command Reference](/docs/commands/).
+  </Card>
+  <Card title="MCP" icon="puzzle">
+    Browser tools for AI clients over the Model Context Protocol. See the
+    [MCP server](/docs/mcp/) and [client setup](/docs/mcp/setup/).
+  </Card>
+  <Card title="JavaScript" icon="laptop">
+    `npm install vibium`. Async and sync APIs with TypeScript types.
+    [JavaScript quickstart](/docs/libraries/javascript/).
+  </Card>
+  <Card title="Python" icon="laptop">
+    `pip install vibium`. Sync and async APIs.
+    [Python quickstart](/docs/libraries/python/).
+  </Card>
+  <Card title="Java" icon="laptop">
+    `com.vibium:vibium` on Maven Central.
+    [Java quickstart](/docs/libraries/java/).
+  </Card>
+</CardGrid>
+
+## Where to go next
+
 <CardGrid stagger>
   <Card title="Start here" icon="rocket">
     Read the [Introduction](/docs/introduction/) for the elevator pitch, or jump
     straight to the [Quickstart](/docs/quickstart/) to run three commands.
   </Card>
   <Card title="Build a mental model" icon="open-book">
-    [Getting Started](/docs/getting-started/) walks through the moving parts.
+    [Getting Started](/docs/cli/) walks through the moving parts.
     [Core Concepts](/docs/concepts/) explains the design.
   </Card>
   <Card title="Worked example" icon="document">
@@ -33,8 +61,7 @@ import { Card, CardGrid } from '@astrojs/starlight/components';
     `vibium run` acts, `vibium check` independently verifies.
   </Card>
   <Card title="Reference" icon="setting">
-    Browse the [Command Reference](/docs/commands/) and the
-    [Client Libraries](/docs/client-libraries/) overview.
+    Browse the [Command Reference](/docs/commands/) for every CLI command.
   </Card>
 </CardGrid>
 
@@ -59,8 +86,8 @@ session.
 The [Core Concepts](/docs/concepts/) page is the glossary-style reference for the
 terms used throughout these docs. It explains browser sessions, element
 references, maps, diffs, waits, assertions, captures, and recordings. Those
-terms appear in the CLI reference, the MCP integration guide, and the client
-library overview, so keeping the vocabulary explicit helps agents navigate the
+terms appear in the CLI reference, the MCP guide, and the client library
+overview, so keeping the vocabulary explicit helps agents navigate the
 site without guessing from surrounding prose.
 
 ## Agent-readable docs
