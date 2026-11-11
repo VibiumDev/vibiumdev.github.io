@@ -378,3 +378,17 @@ ul.starlight-sidebar-topics a.starlight-sidebar-topics-current {
 .docs-footer-links a:hover {
   color: var(--vb-orange);
 }
+
+/* -----------------------------------------------------------------
+   Reference tables
+   Tables with four or more columns scroll sideways rather than
+   breaking method and tool names mid-word.
+----------------------------------------------------------------- */
+
+.sl-markdown-content table:has(th:nth-child(4)) code {
+  white-space: nowrap;
+}
+
+.sl-markdown-content table:has(th:nth-child(5)) td:first-child {
+  min-width: 14rem;
+}

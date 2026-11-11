@@ -127,6 +127,10 @@ Use one `browser.start()` per process and one page per logical task.
 `vibium map` and its `@e1` references are a CLI and MCP feature. Libraries
 hold element objects instead.
 
+The [API matrix](../reference/api-matrix.md) lists every operation on every
+surface. Per-language references: [JavaScript](javascript/api.md),
+[Python](python/api.md), [Java](java/api.md).
+
 ## Run and Check from code
 
 > Nightly builds and the next release; see [Run and Check](../run-and-check.md).

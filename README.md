@@ -59,6 +59,22 @@ generated `site/public/llms-full.txt` keeps the single-file context form for
 agents that prefer one large document, and `llms-<surface>.txt` (cli, mcp,
 javascript, python, java) holds the shared docs plus one surface.
 
+## Generated reference
+
+`make reference` regenerates everything that comes from the product itself:
+
+- `scripts/gen_command_reference.py`: `docs/commands/`, `docs/nightly.md`,
+  and `/commands.json`, from the binaries' own help.
+- `scripts/gen_api_reference.py`: `docs/libraries/*/api.md`,
+  `docs/reference/api-matrix.md`, and `/api.json`, from
+  `docs/reference/api.md` in the main repository.
+- `scripts/gen_mcp_reference.py`: `docs/mcp/tools.md` and `/mcp-tools.json`,
+  from the MCP server's `tools/list`.
+
+Each compares the latest npm release with the latest nightly and marks what
+only the nightly has. Do not edit the generated pages by hand; the daily
+`refresh-reference` workflow overwrites them.
+
 ## Surfaces
 
 The docs cover five surfaces: CLI, MCP, JavaScript, Python, and Java. Each

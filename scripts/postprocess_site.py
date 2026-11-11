@@ -9,12 +9,14 @@ import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-from build_llms_txt import DOCS, MOVED, metadata, moved_stub, strip_frontmatter
+from build_llms_txt import DOCS, MOVED, metadata, moved_stub, site_origin, strip_frontmatter
 
 
 PRE_RE = re.compile(r"<pre(?P<attrs>[^>]*)data-language=\"(?P<lang>[^\"]+)\"(?P<after>[^>]*)>")
 URL_RE = re.compile(r"<url>(?P<body>.*?)</url>")
 SITEMAP_NS = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+# JSON endpoints for agents. Astro's sitemap only lists HTML pages.
+MACHINE_ENDPOINTS = ("commands.json", "api.json", "mcp-tools.json")
 
 
 def yaml_scalar(value: str) -> str:
@@ -130,10 +132,17 @@ def postprocess_html(dist: Path) -> int:
 
 def add_sitemap_lastmod(dist: Path, last_updated: str) -> int:
     count = 0
+    endpoints = "".join(
+        f"<url><loc>{site_origin()}/{name}</loc></url>"
+        for name in MACHINE_ENDPOINTS
+        if (dist / name).is_file()
+    )
     for path in dist.glob("sitemap-*.xml"):
         if path.name == "sitemap-index.xml":
             continue
         text = path.read_text(encoding="utf-8")
+        if endpoints and endpoints not in text:
+            text = text.replace("</urlset>", endpoints + "</urlset>")
 
         def replace(match: re.Match[str]) -> str:
             body = match.group("body")
@@ -141,10 +150,8 @@ def add_sitemap_lastmod(dist: Path, last_updated: str) -> int:
                 return match.group(0)
             return f"<url>{body}<lastmod>{last_updated}</lastmod></url>"
 
-        updated = URL_RE.sub(replace, text)
-        if updated != text:
-            path.write_text(updated, encoding="utf-8")
-            count += 1
+        path.write_text(URL_RE.sub(replace, text), encoding="utf-8")
+        count += 1
     return count
 
 

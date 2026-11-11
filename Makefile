@@ -19,6 +19,8 @@ build:
 
 reference:
 	$(PYTHON) scripts/gen_command_reference.py
+	$(PYTHON) scripts/gen_api_reference.py
+	$(PYTHON) scripts/gen_mcp_reference.py
 
 rebuild: clean build
 
@@ -46,7 +48,7 @@ help:
 	@printf '%s\n' \
 		'Targets:' \
 		'  make build     Regenerate public LLM docs, sync Starlight content, and build site/dist.' \
-		'  make reference Regenerate docs/commands/ and docs/nightly.md from the vibium binaries.' \
+		'  make reference Regenerate the command, API, and MCP tool references from the vibium binaries and API spec.' \
 		'  make rebuild   Clean generated site output, then run make build.' \
 		'  make serve     Regenerate public LLM docs, sync Starlight content, and start Astro dev server.' \
 		'  make preview   Build, then preview site/dist.' \

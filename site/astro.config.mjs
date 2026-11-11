@@ -98,6 +98,7 @@ export default defineConfig({
                         items: [
                             { label: 'Overview', slug: 'docs/mcp' },
                             { label: 'Client Setup', slug: 'docs/mcp/setup' },
+                            { label: 'Tool Reference', slug: 'docs/mcp/tools' },
                         ],
                     },
                     {
@@ -105,10 +106,33 @@ export default defineConfig({
                         link: '/docs/libraries/',
                         items: [
                             { label: 'Overview', slug: 'docs/libraries' },
-                            { label: 'JavaScript', slug: 'docs/libraries/javascript' },
-                            { label: 'Python', slug: 'docs/libraries/python' },
-                            { label: 'Java', slug: 'docs/libraries/java' },
+                            {
+                                label: 'JavaScript',
+                                items: [
+                                    { label: 'Quickstart', slug: 'docs/libraries/javascript' },
+                                    { label: 'API Reference', slug: 'docs/libraries/javascript/api' },
+                                ],
+                            },
+                            {
+                                label: 'Python',
+                                items: [
+                                    { label: 'Quickstart', slug: 'docs/libraries/python' },
+                                    { label: 'API Reference', slug: 'docs/libraries/python/api' },
+                                ],
+                            },
+                            {
+                                label: 'Java',
+                                items: [
+                                    { label: 'Quickstart', slug: 'docs/libraries/java' },
+                                    { label: 'API Reference', slug: 'docs/libraries/java/api' },
+                                ],
+                            },
                         ],
+                    },
+                    {
+                        label: 'Reference',
+                        link: '/docs/reference/api-matrix/',
+                        items: [{ label: 'API Matrix', slug: 'docs/reference/api-matrix' }],
                     },
                 ]),
             ],

@@ -188,12 +188,58 @@ test('surface sections are published', async () => {
     'docs/cli',
     'docs/mcp',
     'docs/mcp/setup',
+    'docs/mcp/tools',
     'docs/libraries',
     'docs/libraries/javascript',
+    'docs/libraries/javascript/api',
     'docs/libraries/python',
+    'docs/libraries/python/api',
     'docs/libraries/java',
+    'docs/libraries/java/api',
+    'docs/reference/api-matrix',
   ]) {
     assert.equal(await exists(`${page}/index.html`), true, `missing /${page}/`);
+  }
+});
+
+test('api.json maps each operation across the five surfaces', async () => {
+  const api = JSON.parse(await readBuilt('api.json'));
+  assert.match(api.stableVersion, /^\d+\.\d+\.\d+$/);
+  assert.deepEqual(api.surfaces, SURFACES);
+  assert.ok(api.operations.length > 150);
+  for (const op of api.operations) {
+    for (const surface of SURFACES) {
+      assert.ok(surface in op, `operation ${op.id} has no ${surface} field`);
+    }
+  }
+  const go = api.operations.find((op) => op.cli === 'vibium go <url>');
+  assert.equal(go.mcp, 'browser_navigate');
+  assert.equal(go.python, 'page.go(url)');
+});
+
+test('mcp-tools.json carries the server tool schemas', async () => {
+  const { tools } = JSON.parse(await readBuilt('mcp-tools.json'));
+  assert.ok(tools.length > 50);
+  const navigate = tools.find((tool) => tool.name === 'browser_navigate');
+  assert.deepEqual(navigate.inputSchema.required, ['url']);
+  const page = await readBuilt('docs/mcp/tools.md');
+  for (const tool of tools) {
+    assert.ok(page.includes(`### \`${tool.name}\``), `tools.md has no section for ${tool.name}`);
+  }
+});
+
+test('sitemap announces the JSON endpoints for agents', async () => {
+  const sitemap = await readBuilt('sitemap-0.xml');
+  for (const name of ['commands.json', 'api.json', 'mcp-tools.json']) {
+    assert.ok(sitemap.includes(`<loc>https://vibium.com/${name}</loc>`), `${name} is not in the sitemap`);
+  }
+});
+
+test('api-catalog entries point at published files', async () => {
+  const catalog = JSON.parse(await readBuilt('.well-known/api-catalog'));
+  for (const entry of catalog.linkset) {
+    const path = new URL(entry.anchor).pathname.slice(1);
+    assert.equal(await exists(path), true, `api-catalog anchor is not published: /${path}`);
   }
 });
 

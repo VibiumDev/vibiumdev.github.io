@@ -1,9 +1,9 @@
-name: Refresh Command Reference
+name: Refresh Generated Reference
 
-# Regenerates docs/commands/ and docs/nightly.md from the latest npm
-# release and the latest nightly prerelease, and commits to main only
-# when the generated output changed (a new release, a new command, or a
-# new flag). Runs after the vibium nightly publish finishes (~14:20 UTC).
+# Regenerates the command reference, the client API references, and the
+# MCP tool reference from the latest npm release and the latest nightly
+# prerelease, and commits to main only when the generated output changed
+# (a new release, command, flag, API method, or MCP tool). Runs after the vibium nightly publish finishes (~14:20 UTC).
 
 on:
   schedule:
@@ -33,7 +33,7 @@ jobs:
       - name: Regenerate the reference
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python3 scripts/gen_command_reference.py
+        run: make reference
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
@@ -50,14 +50,14 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git add docs site/public/commands.json site/public/skills site/public/.well-known
+          git add docs site/public/commands.json site/public/api.json site/public/mcp-tools.json site/public/skills site/public/.well-known
           if git diff --cached --quiet; then
             echo "Reference unchanged; nothing to commit."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Refresh generated command reference"
+          git commit -m "Refresh generated reference"
           git push
           # Pushes made with GITHUB_TOKEN do not trigger the Pages
           # workflow; dispatch it explicitly.
