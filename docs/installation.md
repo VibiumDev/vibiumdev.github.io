@@ -15,6 +15,36 @@ You do **not** need a pre-installed browser; Vibium downloads Google Chrome
 for Testing. Firefox is also supported — see
 [Browser engines](#browser-engines) below.
 
+## Install for your surface
+
+Vibium has five surfaces over one binary. Install the one you will use; the
+header picker filters these examples to a single surface.
+
+```sh title="CLI"
+npm install -g vibium
+```
+
+```sh title="MCP"
+claude mcp add vibium -- npx -y vibium mcp
+```
+
+```sh title="JavaScript"
+npm install vibium
+```
+
+```sh title="Python"
+pip install vibium
+```
+
+```groovy title="Java"
+implementation 'com.vibium:vibium:26.8.21'
+```
+
+Each one bundles or locates the same `vibium` binary. Next steps per
+surface: [CLI](cli/index.md), [MCP](mcp/setup.md),
+[JavaScript](libraries/javascript/index.md),
+[Python](libraries/python/index.md), [Java](libraries/java/index.md).
+
 ## Install the CLI
 
 ```sh
@@ -102,27 +132,6 @@ extend to Chrome (`stable`, `beta`, `dev`, `canary`), Vibium installs the
 known-good browser version baked into the release by default, and
 `VIBIUM_ENGINE_VERSION` pins an exact version for CI fleets.
 See [Using Firefox](using-firefox.md) for details.
-
-## Install a client library
-
-Pick the language you want to drive Vibium from:
-
-```sh
-# JavaScript / TypeScript
-npm install vibium
-
-# Python
-uv add vibium
-```
-
-Java (Gradle):
-
-```groovy
-implementation 'com.vibium:vibium:26.8.21'
-```
-
-Each client library bundles or locates the same `vibium` binary, so a single
-install gives you both the CLI and the programmatic API.
 
 ## Verify the installation
 

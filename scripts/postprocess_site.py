@@ -9,7 +9,7 @@ import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-from build_llms_txt import DOCS, metadata, strip_frontmatter
+from build_llms_txt import DOCS, MOVED, metadata, moved_stub, strip_frontmatter
 
 
 PRE_RE = re.compile(r"<pre(?P<attrs>[^>]*)data-language=\"(?P<lang>[^\"]+)\"(?P<after>[^>]*)>")
@@ -74,13 +74,18 @@ def write_markdown_mirrors(root: Path, dist: Path, last_updated: str) -> int:
         if doc.path == "README.md":
             continue
         src = root / doc.path
-        if doc.path == "docs/commands/index.md":
-            targets = [dist / "docs" / "commands.md", dist / doc.path]
-        else:
-            targets = [dist / doc.path]
+        targets = [dist / doc.path]
+        if doc.path.endswith("/index.md"):
+            targets.append(dist / (doc.path[: -len("/index.md")] + ".md"))
         for target in targets:
             mirror_markdown_page(src, target, last_updated)
             count += 1
+
+    for old, new in MOVED.items():
+        target = dist / old
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(moved_stub(old, new), encoding="utf-8")
+        count += 1
 
     return count
 

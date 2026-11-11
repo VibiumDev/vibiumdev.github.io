@@ -20,8 +20,8 @@ fill forms, click buttons, extract text, capture screenshots, and record session
   protocol rather than a vendor-specific debugging protocol.
 - **Lightweight**. A single ~10 MB binary with no runtime dependencies.
 - **Multi-interface**. Use Vibium from the [CLI](/docs/commands/), as an
-  [MCP server](mcp-integration.md), or as a
-  [client library](client-libraries.md) in JavaScript/TypeScript, Python, or
+  [MCP server](mcp/index.md), or as a
+  [client library](libraries/index.md) in JavaScript/TypeScript, Python, or
   Java.
 
 ## Who it is for
@@ -45,6 +45,6 @@ fill forms, click buttons, extract text, capture screenshots, and record session
 
 - [Installation](installation.md) — install the binary and the browser.
 - [Quickstart](quickstart.md) — open a page and take a screenshot in 30 seconds.
-- [Getting Started](getting-started.md) — the mental model and the core command loop.
+- [Getting Started](cli/index.md) — the mental model and the core command loop.
 - [Tutorial](tutorial.md) — a worked end-to-end example.
 - [Command Reference](/docs/commands/) — every command, with examples.

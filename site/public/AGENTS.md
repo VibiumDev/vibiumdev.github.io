@@ -5,6 +5,22 @@ BiDi. This file is the entry point for agents: how to install the CLI,
 configure it, drive a browser with it, and where the machine-readable docs
 live.
 
+## Surfaces
+
+One binary, five ways to drive it. Pick one and read only its bundle.
+
+| Surface | Install | Start page | Bundle |
+| --- | --- | --- | --- |
+| CLI | `npm install -g vibium` | [/docs/cli.md](https://vibium.com/docs/cli.md) | [llms-cli.txt](https://vibium.com/llms-cli.txt) |
+| MCP | `claude mcp add vibium -- npx -y vibium mcp` | [/docs/mcp/setup.md](https://vibium.com/docs/mcp/setup.md) | [llms-mcp.txt](https://vibium.com/llms-mcp.txt) |
+| JavaScript | `npm install vibium` | [/docs/libraries/javascript.md](https://vibium.com/docs/libraries/javascript.md) | [llms-javascript.txt](https://vibium.com/llms-javascript.txt) |
+| Python | `pip install vibium` | [/docs/libraries/python.md](https://vibium.com/docs/libraries/python.md) | [llms-python.txt](https://vibium.com/llms-python.txt) |
+| Java | `com.vibium:vibium` on Maven Central | [/docs/libraries/java.md](https://vibium.com/docs/libraries/java.md) | [llms-java.txt](https://vibium.com/llms-java.txt) |
+
+Docs pages show examples for every surface. Add `?surface=python` (or
+`cli`, `mcp`, `javascript`, `java`, `all`) to a docs URL to filter the HTML
+view; the Markdown always carries all of them.
+
 ## Installation
 
 ```sh
@@ -48,6 +64,7 @@ Full contract: [Scripting and Agents](https://vibium.com/docs/scripting.md).
 
 - [llms.txt](https://vibium.com/llms.txt) — curated Markdown index of the docs
 - [llms-full.txt](https://vibium.com/llms-full.txt) — all docs in one file
+- `llms-<surface>.txt` — the shared docs plus one surface (see Surfaces)
 - [commands.json](https://vibium.com/commands.json) — every CLI command, its
   flags, and nightly-only markers, generated from the binaries
 - [Browser skill](https://vibium.com/skills/browser.md) and

@@ -12,10 +12,11 @@ const description =
 	starlightRoute.entry.data.description ??
 	'Browser automation for AI agents and humans, built on WebDriver BiDi.';
 const markdownPath = pathname.replace(/^\/docs\/?/, '').replace(/\/$/, '');
+const isIndexPage = /\/index\.mdx?$/.test(starlightRoute.entry.filePath ?? '');
 const markdownHref =
 	markdownPath === ''
 		? '/llms/README.md'
-		: `/llms/docs/${markdownPath === 'commands' ? 'commands/index' : markdownPath}.md`;
+		: `/llms/docs/${markdownPath}${isIndexPage ? '/index' : ''}.md`;
 const rawLastUpdated = starlightRoute.entry.data.lastUpdated;
 const dateModified =
 	rawLastUpdated instanceof Date
@@ -71,3 +72,5 @@ const jsonLd = {
 <FontLinks />
 <GoogleAnalytics />
 <script type="application/ld+json" set:html={JSON.stringify(jsonLd)}></script>
+{/* Blocking, so the surface filter applies before first paint. */}
+<script is:inline src={`${import.meta.env.BASE_URL.replace(/\/$/, '')}/surface.js`}></script>

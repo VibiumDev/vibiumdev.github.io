@@ -33,6 +33,8 @@ def rewrite_md_links(text: str, rel: Path) -> str:
         resolved = posixpath.normpath(posixpath.join(rel.parent.as_posix(), target))
         if resolved == "." or resolved.startswith("../"):
             return m.group(0)
+        if resolved.endswith("/index"):
+            resolved = resolved[: -len("/index")]
         return f"{prefix}/{ROUTE_PREFIX}/{resolved}/{anchor}{suffix}"
 
     return MD_LINK_RE.sub(repl, text)

@@ -2,6 +2,11 @@
 # Paths are relative to the repository root.
 site/public/llms.txt
 site/public/llms-full.txt
+site/public/llms-cli.txt
+site/public/llms-mcp.txt
+site/public/llms-javascript.txt
+site/public/llms-python.txt
+site/public/llms-java.txt
 site/public/llms
 site/src/content/docs
 site/dist

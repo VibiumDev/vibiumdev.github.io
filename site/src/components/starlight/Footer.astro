@@ -1,0 +1,12 @@
+---
+// Topic sidebars no longer list every page, so the glossary link that agents
+// and audits expect on each page lives here.
+import Default from '@astrojs/starlight/components/Footer.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+
+<Default><slot /></Default>
+<nav class="docs-footer-links" aria-label="Reference links">
+	<a href={`${base}/docs/concepts/`}>Glossary</a>
+</nav>

@@ -1,0 +1,40 @@
+---
+// Fills Starlight's LanguageSelect slot: the site has one locale, so the slot
+// is free to hold the surface picker beside the theme picker.
+import Select from '@astrojs/starlight/components/Select.astro';
+---
+
+<vibium-surface-select>
+	<Select
+		icon="laptop"
+		label="Show examples for"
+		options={[
+			{ label: 'All surfaces', selected: true, value: 'all' },
+			{ label: 'CLI', selected: false, value: 'cli' },
+			{ label: 'MCP', selected: false, value: 'mcp' },
+			{ label: 'JavaScript', selected: false, value: 'javascript' },
+			{ label: 'Python', selected: false, value: 'python' },
+			{ label: 'Java', selected: false, value: 'java' },
+		]}
+		width="9em"
+	/>
+</vibium-surface-select>
+
+{/* Inlined to avoid a flash. Uses the global from `/surface.js`. */}
+<script is:inline>
+	VibiumSurface.updatePickers();
+</script>
+
+<script>
+	class VibiumSurfaceSelect extends HTMLElement {
+		constructor() {
+			super();
+			this.querySelector('select')?.addEventListener('change', (e) => {
+				if (e.currentTarget instanceof HTMLSelectElement) {
+					(window as any).VibiumSurface.set(e.currentTarget.value);
+				}
+			});
+		}
+	}
+	customElements.define('vibium-surface-select', VibiumSurfaceSelect);
+</script>

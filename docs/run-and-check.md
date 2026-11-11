@@ -125,12 +125,14 @@ MCP exposes `vibium_run` and `vibium_check`. Every client library has
 
 ```js
 const result = await page.run('change my timezone to America/Chicago')
-console.log(result.status, result.evidence)
+const verdict = await page.check('the saved timezone is America/Chicago')
+console.log(result.status, verdict.status)
 ```
 
 ```python
-result = page.check("the saved timezone is America/Chicago")
-print(result["status"])
+result = page.run("change my timezone to America/Chicago")
+verdict = page.check("the saved timezone is America/Chicago")
+print(result["status"], verdict["status"])
 ```
 
 All interfaces use the same model budget, action limit, and result contract.

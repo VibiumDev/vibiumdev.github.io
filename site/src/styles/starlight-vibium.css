@@ -299,3 +299,82 @@ nav.sidebar a.large {
   background: color-mix(in oklch, var(--vb-orange) 8%, transparent);
   border-inline-start: 2px solid var(--vb-orange);
 }
+
+/* -----------------------------------------------------------------
+   Surface groups
+   Adjacent examples for different surfaces. The header picker sets
+   html[data-surface]; a group hides its other surfaces only when it
+   has a block for the chosen one.
+----------------------------------------------------------------- */
+
+.surface-group > .surface-block + .surface-block {
+  margin-top: 1rem;
+}
+
+:root[data-surface="cli"] .surface-group:has(> [data-surface="cli"]) > .surface-block:not([data-surface="cli"]),
+:root[data-surface="mcp"] .surface-group:has(> [data-surface="mcp"]) > .surface-block:not([data-surface="mcp"]),
+:root[data-surface="javascript"] .surface-group:has(> [data-surface="javascript"]) > .surface-block:not([data-surface="javascript"]),
+:root[data-surface="python"] .surface-group:has(> [data-surface="python"]) > .surface-block:not([data-surface="python"]),
+:root[data-surface="java"] .surface-group:has(> [data-surface="java"]) > .surface-block:not([data-surface="java"]) {
+  display: none;
+}
+
+/* -----------------------------------------------------------------
+   Sidebar topics
+   A row of chips above the sidebar; the current one matches the
+   active sidebar item.
+----------------------------------------------------------------- */
+
+ul.starlight-sidebar-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+
+ul.starlight-sidebar-topics::after {
+  flex-basis: 100%;
+  margin-top: 0.625rem;
+}
+
+ul.starlight-sidebar-topics li + li {
+  margin-top: 0;
+}
+
+ul.starlight-sidebar-topics a {
+  padding: 0.2em 0.7em;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-pill);
+  font-size: var(--sl-text-sm);
+}
+
+ul.starlight-sidebar-topics a:is(:hover, :focus-visible) {
+  color: var(--vb-orange);
+}
+
+ul.starlight-sidebar-topics a.starlight-sidebar-topics-current {
+  color: var(--vb-orange);
+  background: color-mix(in oklch, var(--vb-orange) 8%, transparent);
+  border-color: var(--vb-orange);
+}
+
+/* -----------------------------------------------------------------
+   Docs footer links
+----------------------------------------------------------------- */
+
+.docs-footer-links {
+  display: flex;
+  gap: 1.25rem;
+  margin-block-start: 2rem;
+  padding-block-start: 1rem;
+  border-block-start: 1px solid var(--hairline);
+  font-size: var(--sl-text-sm);
+}
+
+.docs-footer-links a {
+  color: var(--fg-dim);
+  text-decoration: none;
+}
+
+.docs-footer-links a:hover {
+  color: var(--vb-orange);
+}

@@ -14,6 +14,9 @@ importers:
       astro:
         specifier: ^5.14.0
         version: 5.18.1(@types/node@24.12.3)(rollup@4.60.3)(typescript@5.9.3)
+      starlight-sidebar-topics:
+        specifier: 0.6.2
+        version: 0.6.2(@astrojs/starlight@0.36.3(astro@5.18.1(@types/node@24.12.3)(rollup@4.60.3)(typescript@5.9.3)))
 
 packages:
 
@@ -1711,6 +1714,12 @@ packages:
 
   space-separated-tokens@2.0.2:
     resolution: {integrity: sha512-PEGlAwrG8yXGXRjW32fGbg66JAlOAwbObuqVoJpv/mRgoWDQfgH1wDPvtzWyUSNAXBGSk8h755YDbbcEy3SH2Q==}
+
+  starlight-sidebar-topics@0.6.2:
+    resolution: {integrity: sha512-SNCTUZS/hcVor0ZcaXbaSVU37+V+qtvzNirkvnOg3Mqu/awuGpthkH5+uKpiZqWxLffp6TrOlsv5E5QsxrndNg==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@astrojs/starlight': '>=0.32.0'
 
   stream-replace-string@2.0.0:
     resolution: {integrity: sha512-TlnjJ1C0QrmxRNrON00JvaFFlNh5TTG00APw23j74ET7gkQpTASi6/L2fuiav8pzK715HXtUeClpBTw2NPSn6w==}
@@ -4181,6 +4190,11 @@ snapshots:
   source-map@0.7.6: {}
 
   space-separated-tokens@2.0.2: {}
+
+  starlight-sidebar-topics@0.6.2(@astrojs/starlight@0.36.3(astro@5.18.1(@types/node@24.12.3)(rollup@4.60.3)(typescript@5.9.3))):
+    dependencies:
+      '@astrojs/starlight': 0.36.3(astro@5.18.1(@types/node@24.12.3)(rollup@4.60.3)(typescript@5.9.3))
+      picomatch: 4.0.4
 
   stream-replace-string@2.0.0: {}
 
