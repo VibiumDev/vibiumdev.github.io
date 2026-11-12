@@ -158,6 +158,15 @@ test('every docs page has one meta description of useful length', async () => {
   }
 });
 
+test('docs pages contain no relative or malformed links', async () => {
+  for (const page of await docsPages()) {
+    const html = (await readBuilt(`${page}/index.html`)).replace(/<pre[\s\S]*?<\/pre>/g, '');
+    for (const [, href] of html.matchAll(/<a [^>]*href="([^"]*)"/g)) {
+      assert.match(href, /^(\/|#|https?:\/\/|mailto:)/, `/${page}/ links to "${href}"`);
+    }
+  }
+});
+
 test('every docs page links to the glossary', async () => {
   for (const page of await docsPages()) {
     const html = await readBuilt(`${page}/index.html`);
@@ -236,8 +245,28 @@ test('api.json maps each operation across the five surfaces', async () => {
     }
   }
   const go = api.operations.find((op) => op.cli === 'vibium go <url>');
+  assert.deepEqual(go.signatures.python, ['go(url: str) -> None']);
+  assert.match(go.signatures.javascript[0], /^go\(url: string\): Promise<void>;$/);
+  assert.match(go.signatures.java[0], /^public void go\(String url\);$/);
   assert.equal(go.mcp, 'browser_navigate');
   assert.equal(go.python, 'page.go(url)');
+});
+
+test('API references show typed signatures from the client sources', async () => {
+  const expected = {
+    javascript: '`go(url: string): Promise<void>;`',
+    python: '`go(url: str) -> None`',
+    java: '`public void go(String url);`',
+  };
+  for (const [lang, signature] of Object.entries(expected)) {
+    const page = await readBuilt(`docs/libraries/${lang}/api.md`);
+    assert.ok(page.includes(`\n${signature}\n`), `${lang} API reference has no typed signature for go()`);
+    assert.match(page, /^## Types$/m, `${lang} API reference has no Types section`);
+    const [methods] = page.split(/^## Types$/m);
+    const entries = methods.match(/^\*\*`/gm).length;
+    const withSignature = methods.split(/^\*\*`/m).slice(1).filter((entry) => /^(- )?`[^`\n]+`$|^```/m.test(entry.split('\n').slice(1).join('\n'))).length;
+    assert.ok(withSignature >= entries * 0.95, `${lang}: ${withSignature} signatures for ${entries} entries`);
+  }
 });
 
 test('mcp-tools.json carries the server tool schemas', async () => {

@@ -1,5 +1,5 @@
 {
-  "source": "https://github.com/VibiumDev/vibium/blob/nightly-2026.11.10-dev.20261110220518-01f5372/docs/reference/api.md",
+  "source": "https://github.com/VibiumDev/vibium/blob/nightly-2026.11.12-dev.20261112015632-bf3355b/docs/reference/api.md",
   "stableVersion": "26.8.21",
   "surfaces": [
     "cli",
@@ -20,7 +20,19 @@
       "python": "browser.start(opts?)",
       "java": "Vibium.start(options?)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "start(urlOrOptions?: string | StartOptions, options?: StartOptions): Promise<Browser>;"
+        ],
+        "python": [
+          "start(\n    url: Optional[str] = None,\n    *,\n    engine: Optional[str] = None,\n    channel: Optional[str] = None,\n    headless: bool = False,\n    user_data_dir: Optional[str] = None,\n    headers: Optional[dict] = None,\n    caps: Optional[dict] = None,\n    executable_path: Optional[str] = None,\n) -> Browser"
+        ],
+        "java": [
+          "public static Browser start();",
+          "public static Browser start(StartOptions options);"
+        ]
+      }
     },
     {
       "id": 2,
@@ -33,7 +45,18 @@
       "python": "browser.page()",
       "java": "browser.page()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "page(): Promise<Page>;"
+        ],
+        "python": [
+          "page() -> Page"
+        ],
+        "java": [
+          "public Page page();"
+        ]
+      }
     },
     {
       "id": 3,
@@ -46,7 +69,18 @@
       "python": "browser.new_page()",
       "java": "browser.newPage()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "newPage(): Promise<Page>;"
+        ],
+        "python": [
+          "new_page() -> Page"
+        ],
+        "java": [
+          "public Page newPage();"
+        ]
+      }
     },
     {
       "id": 4,
@@ -59,7 +93,18 @@
       "python": "browser.new_context()",
       "java": "browser.newContext()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "newContext(): Promise<BrowserContext>;"
+        ],
+        "python": [
+          "new_context() -> BrowserContext"
+        ],
+        "java": [
+          "public BrowserContext newContext();"
+        ]
+      }
     },
     {
       "id": 5,
@@ -72,7 +117,18 @@
       "python": "browser.pages()",
       "java": "browser.pages()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "pages(): Promise<Page[]>;"
+        ],
+        "python": [
+          "pages() -> List[Page]"
+        ],
+        "java": [
+          "public List<Page> pages();"
+        ]
+      }
     },
     {
       "id": 6,
@@ -85,7 +141,18 @@
       "python": "browser.stop()",
       "java": "browser.stop()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "stop(): Promise<void>;"
+        ],
+        "python": [
+          "stop() -> None"
+        ],
+        "java": [
+          "public void stop();"
+        ]
+      }
     },
     {
       "id": 7,
@@ -98,7 +165,18 @@
       "python": "browser.on_page(cb)",
       "java": "browser.onPage(cb)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "onPage(callback: (page: Page) => void): void;"
+        ],
+        "python": [
+          "on_page(callback: Callable[[Page], None]) -> None"
+        ],
+        "java": [
+          "public void onPage(Consumer<Page> callback);"
+        ]
+      }
     },
     {
       "id": 8,
@@ -111,7 +189,18 @@
       "python": "browser.on_popup(cb)",
       "java": "browser.onPopup(cb)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "onPopup(callback: (page: Page) => void): void;"
+        ],
+        "python": [
+          "on_popup(callback: Callable[[Page], None]) -> None"
+        ],
+        "java": [
+          "public void onPopup(Consumer<Page> callback);"
+        ]
+      }
     },
     {
       "id": 9,
@@ -124,7 +213,19 @@
       "python": "browser.remove_all_listeners(ev?)",
       "java": "browser.removeAllListeners(ev?)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "removeAllListeners(event?: 'page' | 'popup'): void;"
+        ],
+        "python": [
+          "remove_all_listeners(event: Optional[str] = None) -> None"
+        ],
+        "java": [
+          "public void removeAllListeners(String event);",
+          "public void removeAllListeners();"
+        ]
+      }
     },
     {
       "id": 187,
@@ -139,7 +240,12 @@
       "nightlyOnly": [
         "java"
       ],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "java": [
+          "public BrowserContext context();"
+        ]
+      }
     },
     {
       "id": 10,
@@ -152,7 +258,18 @@
       "python": "page.go(url)",
       "java": "page.go(url)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "go(url: string): Promise<void>;"
+        ],
+        "python": [
+          "go(url: str) -> None"
+        ],
+        "java": [
+          "public void go(String url);"
+        ]
+      }
     },
     {
       "id": 11,
@@ -165,7 +282,18 @@
       "python": "page.back()",
       "java": "page.back()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "back(): Promise<void>;"
+        ],
+        "python": [
+          "back() -> None"
+        ],
+        "java": [
+          "public void back();"
+        ]
+      }
     },
     {
       "id": 12,
@@ -178,7 +306,18 @@
       "python": "page.forward()",
       "java": "page.forward()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "forward(): Promise<void>;"
+        ],
+        "python": [
+          "forward() -> None"
+        ],
+        "java": [
+          "public void forward();"
+        ]
+      }
     },
     {
       "id": 13,
@@ -191,7 +330,18 @@
       "python": "page.reload()",
       "java": "page.reload()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "reload(): Promise<void>;"
+        ],
+        "python": [
+          "reload() -> None"
+        ],
+        "java": [
+          "public void reload();"
+        ]
+      }
     },
     {
       "id": 14,
@@ -204,7 +354,18 @@
       "python": "page.url()",
       "java": "page.url()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "url(): Promise<string>;"
+        ],
+        "python": [
+          "url() -> str"
+        ],
+        "java": [
+          "public String url();"
+        ]
+      }
     },
     {
       "id": 15,
@@ -217,7 +378,18 @@
       "python": "page.title()",
       "java": "page.title()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "title(): Promise<string>;"
+        ],
+        "python": [
+          "title() -> str"
+        ],
+        "java": [
+          "public String title();"
+        ]
+      }
     },
     {
       "id": 16,
@@ -230,7 +402,18 @@
       "python": "page.content()",
       "java": "page.content()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "content(): Promise<string>;"
+        ],
+        "python": [
+          "content() -> str"
+        ],
+        "java": [
+          "public String content();"
+        ]
+      }
     },
     {
       "id": 17,
@@ -248,7 +431,20 @@
         "javascript",
         "python",
         "java"
-      ]
+      ],
+      "signatures": {
+        "javascript": [
+          "find(selector: string | SelectorOptions, options?: FindOptions): FluentElement;"
+        ],
+        "python": [
+          "find(\n    selector: Optional[str] = None,\n    /,\n    *,\n    description: Optional[str] = None,\n    image: Optional[ImageInput] = None,\n    css: Optional[str] = None,\n    tag: Optional[str] = None,\n    name: Optional[str] = None,\n    role: Optional[str] = None,\n    text: Optional[str] = None,\n    label: Optional[str] = None,\n    placeholder: Optional[str] = None,\n    alt: Optional[str] = None,\n    title: Optional[str] = None,\n    testid: Optional[str] = None,\n    xpath: Optional[str] = None,\n    near: Optional[str] = None,\n    strategy: Optional[str] = None,\n    details: Optional[bool] = None,\n    provider: Optional[str] = None,\n    model: Optional[str] = None,\n    ai_base_url: Optional[str] = None,\n    reasoning_effort: Optional[str] = None,\n    timeout: Optional[int] = None,\n) -> Element"
+        ],
+        "java": [
+          "public Element find(String description);",
+          "public Element find(String description, FindOptions options);",
+          "public Element find(SelectorOptions options);"
+        ]
+      }
     },
     {
       "id": 18,
@@ -266,7 +462,20 @@
         "javascript",
         "python",
         "java"
-      ]
+      ],
+      "signatures": {
+        "javascript": [
+          "findAll(selector: string | SelectorOptions, options?: FindOptions): Promise<Element[]>;"
+        ],
+        "python": [
+          "find_all(\n    selector: Optional[str] = None,\n    /,\n    *,\n    description: Optional[str] = None,\n    image: Optional[ImageInput] = None,\n    css: Optional[str] = None,\n    tag: Optional[str] = None,\n    name: Optional[str] = None,\n    role: Optional[str] = None,\n    text: Optional[str] = None,\n    label: Optional[str] = None,\n    placeholder: Optional[str] = None,\n    alt: Optional[str] = None,\n    title: Optional[str] = None,\n    testid: Optional[str] = None,\n    xpath: Optional[str] = None,\n    near: Optional[str] = None,\n    strategy: Optional[str] = None,\n    details: Optional[bool] = None,\n    provider: Optional[str] = None,\n    model: Optional[str] = None,\n    ai_base_url: Optional[str] = None,\n    reasoning_effort: Optional[str] = None,\n    timeout: Optional[int] = None,\n) -> List[Element]"
+        ],
+        "java": [
+          "public List<Element> findAll(String description);",
+          "public List<Element> findAll(String description, FindOptions options);",
+          "public List<Element> findAll(SelectorOptions options);"
+        ]
+      }
     },
     {
       "id": 19,
@@ -279,7 +488,19 @@
       "python": "page.screenshot(opts?)",
       "java": "page.screenshot(options?)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "screenshot(options?: ScreenshotOptions): Promise<Buffer>;"
+        ],
+        "python": [
+          "screenshot(full_page: Optional[bool] = None, clip: Optional[Dict[str, Any]] = None) -> bytes"
+        ],
+        "java": [
+          "public byte[] screenshot();",
+          "public byte[] screenshot(ScreenshotOptions options);"
+        ]
+      }
     },
     {
       "id": 20,
@@ -296,7 +517,19 @@
         "javascript",
         "python",
         "java"
-      ]
+      ],
+      "signatures": {
+        "javascript": [
+          "pdf(options?: PdfOptions): Promise<Buffer>;"
+        ],
+        "python": [
+          "pdf(**options: Any) -> bytes"
+        ],
+        "java": [
+          "public byte[] pdf();",
+          "public byte[] pdf(PdfOptions options);"
+        ]
+      }
     },
     {
       "id": 21,
@@ -309,7 +542,18 @@
       "python": "page.evaluate(expr)",
       "java": "page.evaluate(expr)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "evaluate<T = unknown>(expression: string | (() => T | Promise<T>)): Promise<T>;"
+        ],
+        "python": [
+          "evaluate(expression: str) -> Any"
+        ],
+        "java": [
+          "public Object evaluate(String expression);"
+        ]
+      }
     },
     {
       "id": 22,
@@ -322,7 +566,18 @@
       "python": "page.add_script(src)",
       "java": "page.addScript(src)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "addScript(source: string): Promise<void>;"
+        ],
+        "python": [
+          "add_script(source: str) -> None"
+        ],
+        "java": [
+          "public void addScript(String source);"
+        ]
+      }
     },
     {
       "id": 23,
@@ -335,7 +590,18 @@
       "python": "page.add_style(src)",
       "java": "page.addStyle(src)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "addStyle(source: string): Promise<void>;"
+        ],
+        "python": [
+          "add_style(source: str) -> None"
+        ],
+        "java": [
+          "public void addStyle(String source);"
+        ]
+      }
     },
     {
       "id": 24,
@@ -348,7 +614,19 @@
       "python": "page.expose(name, fn)",
       "java": "page.expose(name, fn)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "expose(name: string, fn: string | ((...args: unknown[]) => unknown)): Promise<void>;"
+        ],
+        "python": [
+          "expose(name: str, fn: Union[str, Callable[..., Any]]) -> None"
+        ],
+        "java": [
+          "public void expose(String name, String fn);",
+          "public void expose(String name, Function<Object[], Object> callback);"
+        ]
+      }
     },
     {
       "id": 25,
@@ -361,7 +639,18 @@
       "python": "page.wait(ms)",
       "java": "page.sleep(ms)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "wait(ms: number): Promise<void>;"
+        ],
+        "python": [
+          "wait(ms: int) -> None"
+        ],
+        "java": [
+          "public void sleep(long ms);"
+        ]
+      }
     },
     {
       "id": 26,
@@ -374,7 +663,13 @@
       "python": null,
       "java": "page.waitFor(sel, options?)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "java": [
+          "public Element waitFor(String selector);",
+          "public Element waitFor(String selector, FindOptions options);"
+        ]
+      }
     },
     {
       "id": 27,
@@ -387,7 +682,19 @@
       "python": "page.wait_for_function(fn, **opts)",
       "java": "page.waitForFunction(fn, options?)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "waitForFunction(fn: string, options?: {\n    timeout?: number;\n}): Promise<unknown>;"
+        ],
+        "python": [
+          "wait_for_function(fn: str, timeout: Optional[int] = None) -> Any"
+        ],
+        "java": [
+          "public Object waitForFunction(String fn);",
+          "public Object waitForFunction(String fn, WaitOptions options);"
+        ]
+      }
     },
     {
       "id": 28,
@@ -400,7 +707,19 @@
       "python": "page.wait_for_url(url, **opts)",
       "java": "page.waitForURL(url, options?)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "waitForURL(pattern: string, options?: {\n    timeout?: number;\n}): Promise<void>;"
+        ],
+        "python": [
+          "wait_for_url(pattern: str, timeout: Optional[int] = None) -> None"
+        ],
+        "java": [
+          "public void waitForURL(String pattern);",
+          "public void waitForURL(String pattern, WaitOptions options);"
+        ]
+      }
     },
     {
       "id": 29,
@@ -413,7 +732,19 @@
       "python": "page.wait_for_load(**opts)",
       "java": "page.waitForLoad(options?)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "waitForLoad(state?: string, options?: {\n    timeout?: number;\n}): Promise<void>;"
+        ],
+        "python": [
+          "wait_for_load(state: Optional[str] = None, timeout: Optional[int] = None) -> None"
+        ],
+        "java": [
+          "public void waitForLoad();",
+          "public void waitForLoad(WaitOptions options);"
+        ]
+      }
     },
     {
       "id": 30,
@@ -426,7 +757,19 @@
       "python": "page.scroll(dir?, amt?, sel?)",
       "java": "page.scroll(options?)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "scroll(direction?: string, amount?: number, selector?: string): Promise<void>;"
+        ],
+        "python": [
+          "scroll(direction: str = 'down', amount: int = 3, selector: Optional[str] = None) -> None"
+        ],
+        "java": [
+          "public void scroll();",
+          "public void scroll(ScrollOptions options);"
+        ]
+      }
     },
     {
       "id": 31,
@@ -439,7 +782,18 @@
       "python": "page.set_viewport(size)",
       "java": "page.setViewport(size)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "setViewport(size: {\n    width: number;\n    height: number;\n}): Promise<void>;"
+        ],
+        "python": [
+          "set_viewport(size: Dict[str, int]) -> None"
+        ],
+        "java": [
+          "public void setViewport(ViewportSize size);"
+        ]
+      }
     },
     {
       "id": 32,
@@ -452,7 +806,18 @@
       "python": "page.viewport()",
       "java": "page.viewport()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "viewport(): Promise<{\n    width: number;\n    height: number;\n}>;"
+        ],
+        "python": [
+          "viewport() -> Dict[str, int]"
+        ],
+        "java": [
+          "public ViewportSize viewport();"
+        ]
+      }
     },
     {
       "id": 33,
@@ -465,7 +830,18 @@
       "python": "page.emulate_media(**opts)",
       "java": "page.emulateMedia(opts)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "emulateMedia(opts: {\n    media?: 'screen' | 'print' | null;\n    colorScheme?: 'light' | 'dark' | 'no-preference' | null;\n    reducedMotion?: 'reduce' | 'no-preference' | null;\n    forcedColors?: 'active' | 'none' | null;\n    contrast?: 'more' | 'no-preference' | null;\n}): Promise<void>;"
+        ],
+        "python": [
+          "emulate_media(\n    *,\n    media: Optional[str] = None,\n    color_scheme: Optional[str] = None,\n    reduced_motion: Optional[str] = None,\n    forced_colors: Optional[str] = None,\n    contrast: Optional[str] = None,\n) -> None"
+        ],
+        "java": [
+          "public void emulateMedia(MediaOptions options);"
+        ]
+      }
     },
     {
       "id": 34,
@@ -478,7 +854,18 @@
       "python": "page.set_content(html)",
       "java": "page.setContent(html)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "setContent(html: string): Promise<void>;"
+        ],
+        "python": [
+          "set_content(html: str) -> None"
+        ],
+        "java": [
+          "public void setContent(String html);"
+        ]
+      }
     },
     {
       "id": 35,
@@ -491,7 +878,18 @@
       "python": "page.set_geolocation(coords)",
       "java": "page.setGeolocation(coords)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "setGeolocation(coords: {\n    latitude: number;\n    longitude: number;\n    accuracy?: number;\n}): Promise<void>;"
+        ],
+        "python": [
+          "set_geolocation(coords: Dict[str, float]) -> None"
+        ],
+        "java": [
+          "public void setGeolocation(GeoCoords coords);"
+        ]
+      }
     },
     {
       "id": 36,
@@ -504,7 +902,18 @@
       "python": "page.set_window(**opts)",
       "java": "page.setWindow(opts)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "setWindow(options: {\n    width?: number;\n    height?: number;\n    x?: number;\n    y?: number;\n    state?: 'normal' | 'maximized' | 'minimized' | 'fullscreen';\n}): Promise<void>;"
+        ],
+        "python": [
+          "set_window(**options: Any) -> None"
+        ],
+        "java": [
+          "public void setWindow(WindowOptions options);"
+        ]
+      }
     },
     {
       "id": 37,
@@ -517,7 +926,18 @@
       "python": "page.window()",
       "java": "page.window()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "window(): Promise<{\n    state: string;\n    width: number;\n    height: number;\n    x: number;\n    y: number;\n}>;"
+        ],
+        "python": [
+          "window() -> Dict[str, Any]"
+        ],
+        "java": [
+          "public WindowInfo window();"
+        ]
+      }
     },
     {
       "id": 38,
@@ -530,7 +950,19 @@
       "python": "page.a11y_tree(opts?)",
       "java": "page.a11yTree(options?)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "a11yTree(options?: {\n    everything?: boolean;\n    root?: string;\n}): Promise<A11yNode>;"
+        ],
+        "python": [
+          "a11y_tree(everything: Optional[bool] = None, root: Optional[str] = None) -> A11yNode"
+        ],
+        "java": [
+          "public A11yNode a11yTree();",
+          "public A11yNode a11yTree(A11yOptions options);"
+        ]
+      }
     },
     {
       "id": 39,
@@ -543,7 +975,18 @@
       "python": "page.frames()",
       "java": "page.frames()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "frames(): Promise<Page[]>;"
+        ],
+        "python": [
+          "frames() -> List[Page]"
+        ],
+        "java": [
+          "public List<Page> frames();"
+        ]
+      }
     },
     {
       "id": 40,
@@ -556,7 +999,18 @@
       "python": "page.frame(name_or_url)",
       "java": "page.frame(nameOrUrl)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "frame(nameOrUrl: string): Promise<Page | null>;"
+        ],
+        "python": [
+          "frame(name_or_url: str) -> Optional[Page]"
+        ],
+        "java": [
+          "public Page frame(String nameOrUrl);"
+        ]
+      }
     },
     {
       "id": 41,
@@ -569,7 +1023,18 @@
       "python": "page.main_frame()",
       "java": "page.mainFrame()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "mainFrame(): Page;"
+        ],
+        "python": [
+          "main_frame() -> Page"
+        ],
+        "java": [
+          "public Page mainFrame();"
+        ]
+      }
     },
     {
       "id": 42,
@@ -582,7 +1047,18 @@
       "python": "page.bring_to_front()",
       "java": "page.bringToFront()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "bringToFront(): Promise<void>;"
+        ],
+        "python": [
+          "bring_to_front() -> None"
+        ],
+        "java": [
+          "public void bringToFront();"
+        ]
+      }
     },
     {
       "id": 43,
@@ -595,7 +1071,18 @@
       "python": "page.close()",
       "java": "page.close()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "close(): Promise<void>;"
+        ],
+        "python": [
+          "close() -> None"
+        ],
+        "java": [
+          "public void close();"
+        ]
+      }
     },
     {
       "id": 44,
@@ -608,7 +1095,18 @@
       "python": "page.route(pattern, handler)",
       "java": "page.route(pattern, handler)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "route(pattern: string, handler: (route: Route) => void): Promise<void>;"
+        ],
+        "python": [
+          "route(pattern: str, action: Union[str, Dict[str, Any], Callable[[Route], None]]) -> None"
+        ],
+        "java": [
+          "public void route(String pattern, Consumer<Route> handler);"
+        ]
+      }
     },
     {
       "id": 45,
@@ -621,7 +1119,18 @@
       "python": "page.unroute(pattern)",
       "java": "page.unroute(pattern)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "unroute(pattern: string): Promise<void>;"
+        ],
+        "python": [
+          "unroute(pattern: str) -> None"
+        ],
+        "java": [
+          "public void unroute(String pattern);"
+        ]
+      }
     },
     {
       "id": 46,
@@ -634,7 +1143,18 @@
       "python": "page.set_headers(headers)",
       "java": "page.setHeaders(headers)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "setHeaders(headers: Record<string, string>): Promise<void>;"
+        ],
+        "python": [
+          "set_headers(headers: Dict[str, str]) -> None"
+        ],
+        "java": [
+          "public void setHeaders(Map<String, String> headers);"
+        ]
+      }
     },
     {
       "id": 47,
@@ -647,7 +1167,18 @@
       "python": "page.on_request(fn)",
       "java": "page.onRequest(fn)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "onRequest(fn: (request: Request) => void): void;"
+        ],
+        "python": [
+          "on_request(fn: Callable) -> None"
+        ],
+        "java": [
+          "public void onRequest(Consumer<Request> callback);"
+        ]
+      }
     },
     {
       "id": 48,
@@ -660,7 +1191,18 @@
       "python": "page.on_response(fn)",
       "java": "page.onResponse(fn)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "onResponse(fn: (response: Response) => void): void;"
+        ],
+        "python": [
+          "on_response(fn: Callable) -> None"
+        ],
+        "java": [
+          "public void onResponse(Consumer<Response> callback);"
+        ]
+      }
     },
     {
       "id": 49,
@@ -673,7 +1215,18 @@
       "python": "page.on_dialog(fn)",
       "java": "page.onDialog(fn)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "onDialog(handler: (dialog: Dialog) => void): void;"
+        ],
+        "python": [
+          "on_dialog(action: Union[str, Callable]) -> None"
+        ],
+        "java": [
+          "public void onDialog(Consumer<Dialog> callback);"
+        ]
+      }
     },
     {
       "id": 50,
@@ -686,7 +1239,18 @@
       "python": "page.on_console(fn)",
       "java": "page.onConsole(fn)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "onConsole(handler: ((message: ConsoleMessage) => void) | 'collect'): void;"
+        ],
+        "python": [
+          "on_console(mode: str = 'collect') -> None"
+        ],
+        "java": [
+          "public void onConsole(Consumer<ConsoleMessage> callback);"
+        ]
+      }
     },
     {
       "id": 51,
@@ -699,7 +1263,18 @@
       "python": "page.on_error(fn)",
       "java": "page.onError(fn)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "onError(handler: ((error: Error) => void) | 'collect'): void;"
+        ],
+        "python": [
+          "on_error(mode: str = 'collect') -> None"
+        ],
+        "java": [
+          "public void onError(Consumer<String> callback);"
+        ]
+      }
     },
     {
       "id": 52,
@@ -712,7 +1287,18 @@
       "python": "page.on_download(fn)",
       "java": "page.onDownload(fn)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "onDownload(handler: (download: Download) => void): void;"
+        ],
+        "python": [
+          "on_download(fn: Callable) -> None"
+        ],
+        "java": [
+          "public void onDownload(Consumer<Download> callback);"
+        ]
+      }
     },
     {
       "id": 53,
@@ -725,7 +1311,18 @@
       "python": "page.on_web_socket(fn)",
       "java": "page.onWebSocket(fn)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "onWebSocket(fn: (ws: WebSocketInfo) => void): void;"
+        ],
+        "python": [
+          "on_web_socket(fn: Callable) -> None"
+        ],
+        "java": [
+          "public void onWebSocket(Consumer<WebSocketInfo> callback);"
+        ]
+      }
     },
     {
       "id": 54,
@@ -738,7 +1335,19 @@
       "python": "page.remove_all_listeners(ev?)",
       "java": "page.removeAllListeners(ev?)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "removeAllListeners(event?: 'request' | 'response' | 'dialog' | 'console' | 'error' | 'download' | 'navigation' | 'websocket'): void;"
+        ],
+        "python": [
+          "remove_all_listeners(event: Optional[str] = None) -> None"
+        ],
+        "java": [
+          "public void removeAllListeners(String event);",
+          "public void removeAllListeners();"
+        ]
+      }
     },
     {
       "id": 55,
@@ -751,7 +1360,19 @@
       "python": "page.capture.response(pat, fn?)",
       "java": "page.capture().response(pat, action)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "response(pattern: string, fn?: () => Promise<void>, options?: {\n    timeout?: number;\n}): Promise<Response>;"
+        ],
+        "python": [
+          "response(\n    pattern: str,\n    fn: Optional[Callable] = None,\n    timeout: Optional[int] = None,\n) -> Union[Dict[str, Any], _SyncCapturedResponse]"
+        ],
+        "java": [
+          "public Response response(String pattern, Runnable action);",
+          "public Response response(String pattern, Runnable action, WaitOptions options);"
+        ]
+      }
     },
     {
       "id": 56,
@@ -764,7 +1385,19 @@
       "python": "page.capture.request(pat, fn?)",
       "java": "page.capture().request(pat, action)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "request(pattern: string, fn?: () => Promise<void>, options?: {\n    timeout?: number;\n}): Promise<Request>;"
+        ],
+        "python": [
+          "request(\n    pattern: str,\n    fn: Optional[Callable] = None,\n    timeout: Optional[int] = None,\n) -> Union[Dict[str, Any], _SyncCapturedRequest]"
+        ],
+        "java": [
+          "public Request request(String pattern, Runnable action);",
+          "public Request request(String pattern, Runnable action, WaitOptions options);"
+        ]
+      }
     },
     {
       "id": 57,
@@ -777,7 +1410,19 @@
       "python": "page.capture.navigation(fn?)",
       "java": "page.capture().navigation(action)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "navigation(fn?: () => Promise<void>, options?: {\n    timeout?: number;\n}): Promise<string>;"
+        ],
+        "python": [
+          "navigation(fn: Optional[Callable] = None, timeout: Optional[int] = None) -> Union[str, _SyncCapturedNavigation]"
+        ],
+        "java": [
+          "public String navigation(Runnable action);",
+          "public String navigation(Runnable action, WaitOptions options);"
+        ]
+      }
     },
     {
       "id": 58,
@@ -790,7 +1435,19 @@
       "python": "page.capture.event(name, fn?)",
       "java": "page.capture().event(name, action)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "event(name: string, fn?: () => Promise<void>, options?: {\n    timeout?: number;\n}): Promise<unknown>;"
+        ],
+        "python": [
+          "event(name: str, fn: Optional[Callable] = None, timeout: Optional[int] = None) -> Union[Any, _SyncCapturedEvent]"
+        ],
+        "java": [
+          "public Object event(String name, Runnable action);",
+          "public Object event(String name, Runnable action, WaitOptions options);"
+        ]
+      }
     },
     {
       "id": 59,
@@ -803,7 +1460,19 @@
       "python": "page.capture.download(fn?)",
       "java": "page.capture().download(action)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "download(fn?: () => Promise<void>, options?: {\n    timeout?: number;\n}): Promise<Download>;"
+        ],
+        "python": [
+          "download(fn: Optional[Callable] = None, timeout: Optional[int] = None) -> Union[SyncDownload, _SyncCapturedDownload]"
+        ],
+        "java": [
+          "public Download download(Runnable action);",
+          "public Download download(Runnable action, WaitOptions options);"
+        ]
+      }
     },
     {
       "id": 60,
@@ -816,7 +1485,19 @@
       "python": "page.capture.dialog(fn?)",
       "java": "page.capture().dialog(action)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "dialog(fn?: () => Promise<void>, options?: {\n    timeout?: number;\n}): Promise<Dialog>;"
+        ],
+        "python": [
+          "dialog(fn: Optional[Callable] = None, timeout: Optional[int] = None) -> Union[Dict[str, Any], _SyncCapturedDialog]"
+        ],
+        "java": [
+          "public Dialog dialog(Runnable action);",
+          "public Dialog dialog(Runnable action, WaitOptions options);"
+        ]
+      }
     },
     {
       "id": 61,
@@ -829,7 +1510,18 @@
       "python": "page.console_messages()",
       "java": "page.consoleMessages()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "consoleMessages(): {\n    type: string;\n    text: string;\n}[];"
+        ],
+        "python": [
+          "console_messages() -> List[Dict[str, str]]"
+        ],
+        "java": [
+          "public List<ConsoleMessage> consoleMessages();"
+        ]
+      }
     },
     {
       "id": 62,
@@ -842,7 +1534,18 @@
       "python": "page.errors()",
       "java": "page.errors()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "errors(): {\n    message: string;\n}[];"
+        ],
+        "python": [
+          "errors() -> List[Dict[str, str]]"
+        ],
+        "java": [
+          "public List<String> errors();"
+        ]
+      }
     },
     {
       "id": 170,
@@ -859,7 +1562,18 @@
         "python",
         "java"
       ],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "get context(): BrowserContext;"
+        ],
+        "python": [
+          "context: BrowserContextType  # property"
+        ],
+        "java": [
+          "public BrowserContext context();"
+        ]
+      }
     },
     {
       "id": 171,
@@ -876,7 +1590,18 @@
         "python",
         "java"
       ],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "get id(): string;"
+        ],
+        "python": [
+          "id: str  # property"
+        ],
+        "java": [
+          "public String id();"
+        ]
+      }
     },
     {
       "id": 172,
@@ -893,7 +1618,18 @@
         "python",
         "java"
       ],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "readonly capture: {\n    /** Capture a response matching a URL pattern. Optionally pass fn to trigger the action. */\n    response(pattern: string, fn?: () => Promise<void>, options?: {\n        timeout?: number;\n    }): Promise<Response>;\n    /** Capture a request matching a URL pattern. Optionally pass fn to trigger the action. */\n    request(pattern: string, fn?: () => Promise<void>, options?: {\n        timeout?: number;\n    }): Promise<Request>;\n    /** Capture a navigation event. Optionally pass fn to trigger the action. Resolves with URL. */\n    navigation(fn?: () => Promise<void>, options?: {\n        timeout?: number;\n    }): Promise<string>;\n    /** Capture a download. Optionally pass fn to trigger the action. */\n    download(fn?: () => Promise<void>, options?: {\n        timeout?: number;\n    }): Promise<Download>;\n    /** Capture a dialog. Optionally pass fn to trigger the action. */\n    dialog(fn?: () => Promise<void>, options?: {\n        timeout?: number;\n    }): Promise<Dialog>;\n    /** Capture a named event. Optionally pass fn to trigger the action. */\n    event(name: string, fn?: () => Promise<void>, options?: {\n        timeout?: number;\n    }): Promise<unknown>;\n};"
+        ],
+        "python": [
+          "capture: _SyncCaptureNamespace  # property"
+        ],
+        "java": [
+          "public Capture capture();"
+        ]
+      }
     },
     {
       "id": 173,
@@ -910,7 +1646,18 @@
         "python",
         "java"
       ],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "readonly keyboard: Keyboard;"
+        ],
+        "python": [
+          "keyboard: Keyboard  # property"
+        ],
+        "java": [
+          "public Keyboard keyboard();"
+        ]
+      }
     },
     {
       "id": 174,
@@ -927,7 +1674,18 @@
         "python",
         "java"
       ],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "readonly mouse: Mouse;"
+        ],
+        "python": [
+          "mouse: Mouse  # property"
+        ],
+        "java": [
+          "public Mouse mouse();"
+        ]
+      }
     },
     {
       "id": 175,
@@ -944,7 +1702,18 @@
         "python",
         "java"
       ],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "readonly touch: Touch;"
+        ],
+        "python": [
+          "touch: Touch  # property"
+        ],
+        "java": [
+          "public Touch touch();"
+        ]
+      }
     },
     {
       "id": 176,
@@ -961,7 +1730,18 @@
         "python",
         "java"
       ],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "readonly clock: Clock;"
+        ],
+        "python": [
+          "clock: Clock  # property"
+        ],
+        "java": [
+          "public Clock clock();"
+        ]
+      }
     },
     {
       "id": 177,
@@ -977,7 +1757,15 @@
         "javascript",
         "python"
       ],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "readonly waitUntil: ((fn: string, options?: {\n    timeout?: number;\n}) => Promise<unknown>) & {\n    /** @deprecated Use waitForURL(). */\n    url(pattern: string, options?: {\n        timeout?: number;\n    }): Promise<void>;\n    /** @deprecated Use waitForLoad(). */\n    loaded(state?: string, options?: {\n        timeout?: number;\n    }): Promise<void>;\n};"
+        ],
+        "python": [
+          "wait_until: _SyncWaitUntilNamespace  # property"
+        ]
+      }
     },
     {
       "id": 178,
@@ -994,7 +1782,12 @@
         "python",
         "java"
       ],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "java": [
+          "public void collectConsole();"
+        ]
+      }
     },
     {
       "id": 179,
@@ -1011,7 +1804,12 @@
         "python",
         "java"
       ],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "java": [
+          "public void collectErrors();"
+        ]
+      }
     },
     {
       "id": 180,
@@ -1026,7 +1824,12 @@
       "nightlyOnly": [
         "javascript"
       ],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "routeWebSocket(_pattern: string, _handler: unknown): never;"
+        ]
+      }
     },
     {
       "id": 181,
@@ -1041,7 +1844,12 @@
       "nightlyOnly": [
         "python"
       ],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "python": [
+          "eval(expression: str) -> Any"
+        ]
+      }
     },
     {
       "id": 63,
@@ -1054,7 +1862,18 @@
       "python": "el.click(timeout?)",
       "java": "el.click()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "click(options?: ActionOptions): Promise<void>;"
+        ],
+        "python": [
+          "click(timeout: Optional[int] = None) -> None"
+        ],
+        "java": [
+          "public void click();"
+        ]
+      }
     },
     {
       "id": 64,
@@ -1067,7 +1886,18 @@
       "python": "el.dblclick(timeout?)",
       "java": "el.dblclick()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "dblclick(options?: ActionOptions): Promise<void>;"
+        ],
+        "python": [
+          "dblclick(timeout: Optional[int] = None) -> None"
+        ],
+        "java": [
+          "public void dblclick();"
+        ]
+      }
     },
     {
       "id": 65,
@@ -1080,7 +1910,18 @@
       "python": "el.fill(value, timeout?)",
       "java": "el.fill(value)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "fill(value: string, options?: ActionOptions): Promise<void>;"
+        ],
+        "python": [
+          "fill(value: str, timeout: Optional[int] = None) -> None"
+        ],
+        "java": [
+          "public void fill(String value);"
+        ]
+      }
     },
     {
       "id": 66,
@@ -1093,7 +1934,18 @@
       "python": "el.type(text, timeout?)",
       "java": "el.type(text)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "type(text: string, options?: ActionOptions): Promise<void>;"
+        ],
+        "python": [
+          "type(text: str, timeout: Optional[int] = None) -> None"
+        ],
+        "java": [
+          "public void type(String text);"
+        ]
+      }
     },
     {
       "id": 67,
@@ -1106,7 +1958,18 @@
       "python": "el.press(key, timeout?)",
       "java": "el.press(key)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "press(key: string, options?: ActionOptions): Promise<void>;"
+        ],
+        "python": [
+          "press(key: str, timeout: Optional[int] = None) -> None"
+        ],
+        "java": [
+          "public void press(String key);"
+        ]
+      }
     },
     {
       "id": 68,
@@ -1119,7 +1982,18 @@
       "python": "el.clear(timeout?)",
       "java": "el.clear()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "clear(options?: ActionOptions): Promise<void>;"
+        ],
+        "python": [
+          "clear(timeout: Optional[int] = None) -> None"
+        ],
+        "java": [
+          "public void clear();"
+        ]
+      }
     },
     {
       "id": 69,
@@ -1138,7 +2012,19 @@
         "javascript",
         "python",
         "java"
-      ]
+      ],
+      "signatures": {
+        "javascript": [
+          "set(value?: boolean, options?: ActionOptions): Promise<void>;"
+        ],
+        "python": [
+          "set(value: bool = True, timeout: Optional[int] = None) -> None"
+        ],
+        "java": [
+          "public void set();",
+          "public void set(boolean value);"
+        ]
+      }
     },
     {
       "id": 70,
@@ -1157,7 +2043,18 @@
         "javascript",
         "python",
         "java"
-      ]
+      ],
+      "signatures": {
+        "javascript": [
+          "unset(options?: ActionOptions): Promise<void>;"
+        ],
+        "python": [
+          "unset(timeout: Optional[int] = None) -> None"
+        ],
+        "java": [
+          "public void unset();"
+        ]
+      }
     },
     {
       "id": 71,
@@ -1170,7 +2067,18 @@
       "python": "el.select_option(val, timeout?)",
       "java": "el.selectOption(val)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "selectOption(value: string, options?: ActionOptions): Promise<void>;"
+        ],
+        "python": [
+          "select_option(value: str, timeout: Optional[int] = None) -> None"
+        ],
+        "java": [
+          "public void selectOption(String value);"
+        ]
+      }
     },
     {
       "id": 72,
@@ -1183,7 +2091,18 @@
       "python": "el.hover(timeout?)",
       "java": "el.hover()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "hover(options?: ActionOptions): Promise<void>;"
+        ],
+        "python": [
+          "hover(timeout: Optional[int] = None) -> None"
+        ],
+        "java": [
+          "public void hover();"
+        ]
+      }
     },
     {
       "id": 73,
@@ -1196,7 +2115,18 @@
       "python": "el.focus(timeout?)",
       "java": "el.focus()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "focus(options?: ActionOptions): Promise<void>;"
+        ],
+        "python": [
+          "focus(timeout: Optional[int] = None) -> None"
+        ],
+        "java": [
+          "public void focus();"
+        ]
+      }
     },
     {
       "id": 74,
@@ -1209,7 +2139,18 @@
       "python": "el.drag_to(target, timeout?)",
       "java": "el.dragTo(target)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "dragTo(target: Element, options?: ActionOptions): Promise<void>;"
+        ],
+        "python": [
+          "drag_to(target: Element, timeout: Optional[int] = None) -> None"
+        ],
+        "java": [
+          "public void dragTo(Element target);"
+        ]
+      }
     },
     {
       "id": 75,
@@ -1222,7 +2163,18 @@
       "python": "el.tap(timeout?)",
       "java": "el.tap()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "tap(options?: ActionOptions): Promise<void>;"
+        ],
+        "python": [
+          "tap(timeout: Optional[int] = None) -> None"
+        ],
+        "java": [
+          "public void tap();"
+        ]
+      }
     },
     {
       "id": 76,
@@ -1235,7 +2187,18 @@
       "python": "el.scroll_into_view(timeout?)",
       "java": "el.scrollIntoView()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "scrollIntoView(options?: ActionOptions): Promise<void>;"
+        ],
+        "python": [
+          "scroll_into_view(timeout: Optional[int] = None) -> None"
+        ],
+        "java": [
+          "public void scrollIntoView();"
+        ]
+      }
     },
     {
       "id": 77,
@@ -1248,7 +2211,19 @@
       "python": "el.dispatch_event(type, init?)",
       "java": "el.dispatchEvent(type, init?)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "dispatchEvent(eventType: string, eventInit?: Record<string, unknown>, options?: ActionOptions): Promise<void>;"
+        ],
+        "python": [
+          "dispatch_event(event_type: str, event_init: Optional[Dict[str, Any]] = None, timeout: Optional[int] = None) -> None"
+        ],
+        "java": [
+          "public void dispatchEvent(String eventType);",
+          "public void dispatchEvent(String eventType, Map<String, Object> eventInit);"
+        ]
+      }
     },
     {
       "id": 78,
@@ -1261,7 +2236,18 @@
       "python": "el.set_files(files, timeout?)",
       "java": "el.setFiles(files)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "setFiles(files: string[], options?: ActionOptions): Promise<void>;"
+        ],
+        "python": [
+          "set_files(files: List[str], timeout: Optional[int] = None) -> None"
+        ],
+        "java": [
+          "public void setFiles(List<String> files);"
+        ]
+      }
     },
     {
       "id": 79,
@@ -1274,7 +2260,18 @@
       "python": "el.highlight()",
       "java": "el.highlight()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "highlight(options?: ActionOptions): Promise<void>;"
+        ],
+        "python": [
+          "highlight(timeout: Optional[int] = None) -> None"
+        ],
+        "java": [
+          "public void highlight();"
+        ]
+      }
     },
     {
       "id": 80,
@@ -1287,7 +2284,18 @@
       "python": "el.text()",
       "java": "el.text()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "text(): Promise<string>;"
+        ],
+        "python": [
+          "text() -> str"
+        ],
+        "java": [
+          "public String text();"
+        ]
+      }
     },
     {
       "id": 81,
@@ -1300,7 +2308,18 @@
       "python": "el.inner_text()",
       "java": "el.innerText()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "innerText(): Promise<string>;"
+        ],
+        "python": [
+          "inner_text() -> str"
+        ],
+        "java": [
+          "public String innerText();"
+        ]
+      }
     },
     {
       "id": 82,
@@ -1313,7 +2332,18 @@
       "python": "el.html()",
       "java": "el.html()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "html(): Promise<string>;"
+        ],
+        "python": [
+          "html() -> str"
+        ],
+        "java": [
+          "public String html();"
+        ]
+      }
     },
     {
       "id": 83,
@@ -1326,7 +2356,18 @@
       "python": "el.value()",
       "java": "el.value()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "value(): Promise<string>;"
+        ],
+        "python": [
+          "value() -> str"
+        ],
+        "java": [
+          "public String value();"
+        ]
+      }
     },
     {
       "id": 84,
@@ -1339,7 +2380,18 @@
       "python": "el.attr(name)",
       "java": "el.attr(name)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "attr(name: string): Promise<string | null>;"
+        ],
+        "python": [
+          "attr(name: str) -> Optional[str]"
+        ],
+        "java": [
+          "public String attr(String name);"
+        ]
+      }
     },
     {
       "id": 85,
@@ -1352,7 +2404,18 @@
       "python": "el.bounds()",
       "java": "el.bounds()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "bounds(): Promise<BoundingBox>;"
+        ],
+        "python": [
+          "bounds() -> BoundingBox"
+        ],
+        "java": [
+          "public BoundingBox bounds();"
+        ]
+      }
     },
     {
       "id": 182,
@@ -1369,7 +2432,18 @@
         "python",
         "java"
       ],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "boundingBox(): Promise<BoundingBox>;"
+        ],
+        "python": [
+          "bounding_box() -> BoundingBox"
+        ],
+        "java": [
+          "public BoundingBox boundingBox();"
+        ]
+      }
     },
     {
       "id": 183,
@@ -1386,7 +2460,18 @@
         "python",
         "java"
       ],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "getAttribute(name: string): Promise<string | null>;"
+        ],
+        "python": [
+          "get_attribute(name: str) -> Optional[str]"
+        ],
+        "java": [
+          "public String getAttribute(String name);"
+        ]
+      }
     },
     {
       "id": 184,
@@ -1403,7 +2488,18 @@
         "python",
         "java"
       ],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "readonly info: ElementInfo;"
+        ],
+        "python": [
+          "info  # property"
+        ],
+        "java": [
+          "public ElementInfo info();"
+        ]
+      }
     },
     {
       "id": 86,
@@ -1416,7 +2512,18 @@
       "python": "el.is_visible()",
       "java": "el.isVisible()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "isVisible(): Promise<boolean>;"
+        ],
+        "python": [
+          "is_visible() -> bool"
+        ],
+        "java": [
+          "public boolean isVisible();"
+        ]
+      }
     },
     {
       "id": 87,
@@ -1429,7 +2536,18 @@
       "python": "el.is_hidden()",
       "java": "el.isHidden()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "isHidden(): Promise<boolean>;"
+        ],
+        "python": [
+          "is_hidden() -> bool"
+        ],
+        "java": [
+          "public boolean isHidden();"
+        ]
+      }
     },
     {
       "id": 88,
@@ -1442,7 +2560,18 @@
       "python": "el.is_enabled()",
       "java": "el.isEnabled()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "isEnabled(): Promise<boolean>;"
+        ],
+        "python": [
+          "is_enabled() -> bool"
+        ],
+        "java": [
+          "public boolean isEnabled();"
+        ]
+      }
     },
     {
       "id": 89,
@@ -1461,7 +2590,18 @@
         "javascript",
         "python",
         "java"
-      ]
+      ],
+      "signatures": {
+        "javascript": [
+          "isSet(): Promise<boolean>;"
+        ],
+        "python": [
+          "is_set() -> bool"
+        ],
+        "java": [
+          "public boolean isSet();"
+        ]
+      }
     },
     {
       "id": 90,
@@ -1474,7 +2614,18 @@
       "python": "el.is_editable()",
       "java": "el.isEditable()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "isEditable(): Promise<boolean>;"
+        ],
+        "python": [
+          "is_editable() -> bool"
+        ],
+        "java": [
+          "public boolean isEditable();"
+        ]
+      }
     },
     {
       "id": 91,
@@ -1487,7 +2638,18 @@
       "python": "el.role()",
       "java": "el.role()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "role(): Promise<string>;"
+        ],
+        "python": [
+          "role() -> str"
+        ],
+        "java": [
+          "public String role();"
+        ]
+      }
     },
     {
       "id": 92,
@@ -1500,7 +2662,18 @@
       "python": "el.label()",
       "java": "el.label()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "label(): Promise<string>;"
+        ],
+        "python": [
+          "label() -> str"
+        ],
+        "java": [
+          "public String label();"
+        ]
+      }
     },
     {
       "id": 93,
@@ -1513,7 +2686,18 @@
       "python": "el.screenshot()",
       "java": "el.screenshot()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "screenshot(): Promise<Buffer>;"
+        ],
+        "python": [
+          "screenshot() -> bytes"
+        ],
+        "java": [
+          "public byte[] screenshot();"
+        ]
+      }
     },
     {
       "id": 94,
@@ -1526,7 +2710,20 @@
       "python": "el.wait_until(state?, timeout?)",
       "java": "el.waitUntil(state?, options?)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "waitUntil(state?: string, options?: {\n    timeout?: number;\n}): Promise<void>;"
+        ],
+        "python": [
+          "wait_until(state: Optional[str] = None, timeout: Optional[int] = None) -> None"
+        ],
+        "java": [
+          "public void waitUntil();",
+          "public void waitUntil(String state);",
+          "public void waitUntil(String state, FindOptions options);"
+        ]
+      }
     },
     {
       "id": 95,
@@ -1539,7 +2736,20 @@
       "python": "el.find(sel, **opts)",
       "java": "el.find(sel, options?)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "find(selector: string | SelectorOptions, options?: {\n    timeout?: number;\n}): FluentElement;"
+        ],
+        "python": [
+          "find(\n    selector: Optional[str] = None,\n    /,\n    *,\n    description: Optional[str] = None,\n    image: Optional[ImageInput] = None,\n    css: Optional[str] = None,\n    tag: Optional[str] = None,\n    name: Optional[str] = None,\n    role: Optional[str] = None,\n    text: Optional[str] = None,\n    label: Optional[str] = None,\n    placeholder: Optional[str] = None,\n    alt: Optional[str] = None,\n    title: Optional[str] = None,\n    testid: Optional[str] = None,\n    xpath: Optional[str] = None,\n    near: Optional[str] = None,\n    strategy: Optional[str] = None,\n    details: Optional[bool] = None,\n    provider: Optional[str] = None,\n    model: Optional[str] = None,\n    ai_base_url: Optional[str] = None,\n    reasoning_effort: Optional[str] = None,\n    timeout: Optional[int] = None,\n) -> Element"
+        ],
+        "java": [
+          "public Element find(String description);",
+          "public Element find(String description, FindOptions options);",
+          "public Element find(SelectorOptions childOptions);"
+        ]
+      }
     },
     {
       "id": 96,
@@ -1552,7 +2762,20 @@
       "python": "el.find_all(sel, **opts)",
       "java": "el.findAll(sel, options?)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "findAll(selector: string | SelectorOptions, options?: {\n    timeout?: number;\n}): Promise<Element[]>;"
+        ],
+        "python": [
+          "find_all(\n    selector: Optional[str] = None,\n    /,\n    *,\n    description: Optional[str] = None,\n    image: Optional[ImageInput] = None,\n    css: Optional[str] = None,\n    tag: Optional[str] = None,\n    name: Optional[str] = None,\n    role: Optional[str] = None,\n    text: Optional[str] = None,\n    label: Optional[str] = None,\n    placeholder: Optional[str] = None,\n    alt: Optional[str] = None,\n    title: Optional[str] = None,\n    testid: Optional[str] = None,\n    xpath: Optional[str] = None,\n    near: Optional[str] = None,\n    strategy: Optional[str] = None,\n    details: Optional[bool] = None,\n    provider: Optional[str] = None,\n    model: Optional[str] = None,\n    ai_base_url: Optional[str] = None,\n    reasoning_effort: Optional[str] = None,\n    timeout: Optional[int] = None,\n) -> List[Element]"
+        ],
+        "java": [
+          "public List<Element> findAll(String description);",
+          "public List<Element> findAll(String description, FindOptions options);",
+          "public List<Element> findAll(SelectorOptions childOptions);"
+        ]
+      }
     },
     {
       "id": 97,
@@ -1565,7 +2788,18 @@
       "python": "context.new_page()",
       "java": "context.newPage()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "newPage(): Promise<Page>;"
+        ],
+        "python": [
+          "new_page() -> Page"
+        ],
+        "java": [
+          "public Page newPage();"
+        ]
+      }
     },
     {
       "id": 98,
@@ -1578,7 +2812,18 @@
       "python": "context.close()",
       "java": "context.close()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "close(): Promise<void>;"
+        ],
+        "python": [
+          "close() -> None"
+        ],
+        "java": [
+          "public void close();"
+        ]
+      }
     },
     {
       "id": 99,
@@ -1591,7 +2836,18 @@
       "python": "context.cookies(urls?)",
       "java": "context.cookies(urls?)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "cookies(urls?: string[]): Promise<Cookie[]>;"
+        ],
+        "python": [
+          "cookies(urls: Optional[List[str]] = None) -> List[Cookie]"
+        ],
+        "java": [
+          "public List<Cookie> cookies(String... urls);"
+        ]
+      }
     },
     {
       "id": 100,
@@ -1604,7 +2860,18 @@
       "python": "context.set_cookies(cookies)",
       "java": "context.setCookies(cookies)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "setCookies(cookies: SetCookieParam[]): Promise<void>;"
+        ],
+        "python": [
+          "set_cookies(cookies: List[SetCookieParam]) -> None"
+        ],
+        "java": [
+          "public void setCookies(List<SetCookieParam> cookies);"
+        ]
+      }
     },
     {
       "id": 101,
@@ -1617,7 +2884,18 @@
       "python": "context.clear_cookies()",
       "java": "context.clearCookies()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "clearCookies(): Promise<void>;"
+        ],
+        "python": [
+          "clear_cookies() -> None"
+        ],
+        "java": [
+          "public void clearCookies();"
+        ]
+      }
     },
     {
       "id": 102,
@@ -1630,7 +2908,18 @@
       "python": "context.storage()",
       "java": "context.storage()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "storage(): Promise<StorageState>;"
+        ],
+        "python": [
+          "storage() -> StorageState"
+        ],
+        "java": [
+          "public StorageState storage();"
+        ]
+      }
     },
     {
       "id": 103,
@@ -1643,7 +2932,18 @@
       "python": "context.set_storage(state)",
       "java": "context.setStorage(state)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "setStorage(state: StorageState): Promise<void>;"
+        ],
+        "python": [
+          "set_storage(state: StorageState) -> None"
+        ],
+        "java": [
+          "public void setStorage(StorageState state);"
+        ]
+      }
     },
     {
       "id": 104,
@@ -1656,7 +2956,18 @@
       "python": "context.clear_storage()",
       "java": "context.clearStorage()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "clearStorage(): Promise<void>;"
+        ],
+        "python": [
+          "clear_storage() -> None"
+        ],
+        "java": [
+          "public void clearStorage();"
+        ]
+      }
     },
     {
       "id": 105,
@@ -1669,7 +2980,18 @@
       "python": "context.add_init_script(script)",
       "java": "context.addInitScript(script)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "addInitScript(script: string): Promise<string>;"
+        ],
+        "python": [
+          "add_init_script(script: str) -> str"
+        ],
+        "java": [
+          "public String addInitScript(String script);"
+        ]
+      }
     },
     {
       "id": 185,
@@ -1686,7 +3008,18 @@
         "python",
         "java"
       ],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "get id(): string;"
+        ],
+        "python": [
+          "id: str  # property"
+        ],
+        "java": [
+          "public String id();"
+        ]
+      }
     },
     {
       "id": 186,
@@ -1703,7 +3036,18 @@
         "python",
         "java"
       ],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "readonly recording: Recording;"
+        ],
+        "python": [
+          "recording: Recording  # property"
+        ],
+        "java": [
+          "public Recording recording();"
+        ]
+      }
     },
     {
       "id": 106,
@@ -1716,7 +3060,18 @@
       "python": "keyboard.press(key)",
       "java": "keyboard.press(key)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "press(key: string): Promise<void>;"
+        ],
+        "python": [
+          "press(key: str) -> None"
+        ],
+        "java": [
+          "public void press(String key);"
+        ]
+      }
     },
     {
       "id": 107,
@@ -1729,7 +3084,18 @@
       "python": "keyboard.down(key)",
       "java": "keyboard.down(key)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "down(key: string): Promise<void>;"
+        ],
+        "python": [
+          "down(key: str) -> None"
+        ],
+        "java": [
+          "public void down(String key);"
+        ]
+      }
     },
     {
       "id": 108,
@@ -1742,7 +3108,18 @@
       "python": "keyboard.up(key)",
       "java": "keyboard.up(key)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "up(key: string): Promise<void>;"
+        ],
+        "python": [
+          "up(key: str) -> None"
+        ],
+        "java": [
+          "public void up(String key);"
+        ]
+      }
     },
     {
       "id": 109,
@@ -1755,7 +3132,18 @@
       "python": "keyboard.type(text)",
       "java": "keyboard.type(text)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "type(text: string): Promise<void>;"
+        ],
+        "python": [
+          "type(text: str) -> None"
+        ],
+        "java": [
+          "public void type(String text);"
+        ]
+      }
     },
     {
       "id": 110,
@@ -1768,7 +3156,19 @@
       "python": "mouse.click(x, y, **opts)",
       "java": "mouse.click(x, y, options?)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "click(x: number, y: number): Promise<void>;"
+        ],
+        "python": [
+          "click(x: float, y: float) -> None"
+        ],
+        "java": [
+          "public void click(double x, double y);",
+          "public void click(double x, double y, MouseOptions options);"
+        ]
+      }
     },
     {
       "id": 111,
@@ -1781,7 +3181,19 @@
       "python": "mouse.move(x, y, **opts)",
       "java": "mouse.move(x, y, options?)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "move(x: number, y: number): Promise<void>;"
+        ],
+        "python": [
+          "move(x: float, y: float) -> None"
+        ],
+        "java": [
+          "public void move(double x, double y);",
+          "public void move(double x, double y, MouseOptions options);"
+        ]
+      }
     },
     {
       "id": 112,
@@ -1794,7 +3206,19 @@
       "python": "mouse.down(**opts)",
       "java": "mouse.down(options?)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "down(): Promise<void>;"
+        ],
+        "python": [
+          "down() -> None"
+        ],
+        "java": [
+          "public void down();",
+          "public void down(MouseOptions options);"
+        ]
+      }
     },
     {
       "id": 113,
@@ -1807,7 +3231,19 @@
       "python": "mouse.up(**opts)",
       "java": "mouse.up(options?)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "up(): Promise<void>;"
+        ],
+        "python": [
+          "up() -> None"
+        ],
+        "java": [
+          "public void up();",
+          "public void up(MouseOptions options);"
+        ]
+      }
     },
     {
       "id": 114,
@@ -1820,7 +3256,18 @@
       "python": "mouse.wheel(dx, dy)",
       "java": "mouse.wheel(dx, dy)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "wheel(deltaX: number, deltaY: number): Promise<void>;"
+        ],
+        "python": [
+          "wheel(delta_x: float, delta_y: float) -> None"
+        ],
+        "java": [
+          "public void wheel(double deltaX, double deltaY);"
+        ]
+      }
     },
     {
       "id": 115,
@@ -1836,7 +3283,18 @@
         "cli",
         "mcp"
       ],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "tap(x: number, y: number): Promise<void>;"
+        ],
+        "python": [
+          "tap(x: float, y: float) -> None"
+        ],
+        "java": [
+          "public void tap(double x, double y);"
+        ]
+      }
     },
     {
       "id": 221,
@@ -1854,7 +3312,16 @@
         "javascript",
         "python"
       ],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "swipe(direction: SwipeDirection, options?: SwipeOptions): Promise<void>;",
+          "swipe(x1: number, y1: number, x2: number, y2: number, durationMs?: number): Promise<void>;"
+        ],
+        "python": [
+          "swipe(\n    x1: Union[float, str],\n    y1: Optional[float] = None,\n    x2: Optional[float] = None,\n    y2: Optional[float] = None,\n    duration_ms: Optional[int] = None,\n    *,\n    from_: Union[str, Tuple[float, float], None] = None,\n    distance: Optional[float] = None,\n    speed: Union[str, float, None] = None,\n    hold_ms: Optional[int] = None,\n) -> None"
+        ]
+      }
     },
     {
       "id": 222,
@@ -1872,7 +3339,15 @@
         "javascript",
         "python"
       ],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "longPress(x: number, y: number, durationMs?: number): Promise<void>;"
+        ],
+        "python": [
+          "long_press(x: float, y: float, duration_ms: Optional[int] = None) -> None"
+        ]
+      }
     },
     {
       "id": 116,
@@ -1885,7 +3360,19 @@
       "python": "clock.install(time?, timezone?)",
       "java": "clock.install(options?)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "install(options?: ClockInstallOptions): Promise<void>;"
+        ],
+        "python": [
+          "install(time: Optional[Union[int, str]] = None, timezone: Optional[str] = None) -> None"
+        ],
+        "java": [
+          "public void install();",
+          "public void install(ClockOptions options);"
+        ]
+      }
     },
     {
       "id": 117,
@@ -1898,7 +3385,18 @@
       "python": "clock.fast_forward(ticks)",
       "java": "clock.fastForward(ticks)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "fastForward(ticks: number): Promise<void>;"
+        ],
+        "python": [
+          "fast_forward(ticks: int) -> None"
+        ],
+        "java": [
+          "public void fastForward(long ticks);"
+        ]
+      }
     },
     {
       "id": 118,
@@ -1911,7 +3409,18 @@
       "python": "clock.run_for(ticks)",
       "java": "clock.runFor(ticks)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "runFor(ticks: number): Promise<void>;"
+        ],
+        "python": [
+          "run_for(ticks: int) -> None"
+        ],
+        "java": [
+          "public void runFor(long ticks);"
+        ]
+      }
     },
     {
       "id": 119,
@@ -1924,7 +3433,18 @@
       "python": "clock.pause_at(time)",
       "java": "clock.pauseAt(time)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "pauseAt(time: number | string | Date): Promise<void>;"
+        ],
+        "python": [
+          "pause_at(time: Union[int, str]) -> None"
+        ],
+        "java": [
+          "public void pauseAt(String time);"
+        ]
+      }
     },
     {
       "id": 120,
@@ -1937,7 +3457,18 @@
       "python": "clock.resume()",
       "java": "clock.resume()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "resume(): Promise<void>;"
+        ],
+        "python": [
+          "resume() -> None"
+        ],
+        "java": [
+          "public void resume();"
+        ]
+      }
     },
     {
       "id": 121,
@@ -1950,7 +3481,18 @@
       "python": "clock.set_fixed_time(time)",
       "java": "clock.setFixedTime(time)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "setFixedTime(time: number | string | Date): Promise<void>;"
+        ],
+        "python": [
+          "set_fixed_time(time: Union[int, str]) -> None"
+        ],
+        "java": [
+          "public void setFixedTime(String time);"
+        ]
+      }
     },
     {
       "id": 122,
@@ -1963,7 +3505,18 @@
       "python": "clock.set_system_time(time)",
       "java": "clock.setSystemTime(time)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "setSystemTime(time: number | string | Date): Promise<void>;"
+        ],
+        "python": [
+          "set_system_time(time: Union[int, str]) -> None"
+        ],
+        "java": [
+          "public void setSystemTime(String time);"
+        ]
+      }
     },
     {
       "id": 123,
@@ -1976,7 +3529,18 @@
       "python": "clock.set_timezone(tz)",
       "java": "clock.setTimezone(tz)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "setTimezone(timezone: string): Promise<void>;"
+        ],
+        "python": [
+          "set_timezone(timezone: str) -> None"
+        ],
+        "java": [
+          "public void setTimezone(String timezone);"
+        ]
+      }
     },
     {
       "id": 124,
@@ -1989,7 +3553,19 @@
       "python": "recording.start(opts?)",
       "java": "recording.start(options?)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "start(options?: RecordingStartOptions): Promise<void>;"
+        ],
+        "python": [
+          "start(\n    name: Optional[str] = None,\n    screenshots: Optional[bool] = None,\n    snapshots: Optional[bool] = None,\n    sources: Optional[bool] = None,\n    title: Optional[str] = None,\n    bidi: Optional[bool] = None,\n    format: Optional[str] = None,\n    quality: Optional[float] = None,\n    video: Optional[Union[bool, Dict[str, Any]]] = None,\n    path: Optional[str] = _UNSET,\n) -> None"
+        ],
+        "java": [
+          "public void start();",
+          "public void start(RecordingOptions options);"
+        ]
+      }
     },
     {
       "id": 125,
@@ -2004,7 +3580,19 @@
       "nightlyOnly": [],
       "changedInNightly": [
         "python"
-      ]
+      ],
+      "signatures": {
+        "javascript": [
+          "stop(options?: RecordingStopOptions): Promise<RecordingResult>;"
+        ],
+        "python": [
+          "stop(path: Optional[str] = None, upload: Union[bool, str] = False) -> RecordingResult"
+        ],
+        "java": [
+          "public RecordingResult stop();",
+          "public RecordingResult stop(String path);"
+        ]
+      }
     },
     {
       "id": 126,
@@ -2017,7 +3605,19 @@
       "python": "recording.start_chunk(opts?)",
       "java": "recording.startChunk(options?)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "startChunk(options?: {\n    name?: string;\n    title?: string;\n}): Promise<void>;"
+        ],
+        "python": [
+          "start_chunk(name: Optional[str] = None, title: Optional[str] = None) -> None"
+        ],
+        "java": [
+          "public void startChunk();",
+          "public void startChunk(ChunkOptions options);"
+        ]
+      }
     },
     {
       "id": 127,
@@ -2030,7 +3630,19 @@
       "python": "recording.stop_chunk(path?)",
       "java": "recording.stopChunk(path?)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "stopChunk(options?: RecordingStopOptions): Promise<RecordingResult>;"
+        ],
+        "python": [
+          "stop_chunk(path: Optional[str] = None) -> RecordingResult"
+        ],
+        "java": [
+          "public RecordingResult stopChunk();",
+          "public RecordingResult stopChunk(String path);"
+        ]
+      }
     },
     {
       "id": 128,
@@ -2043,7 +3655,19 @@
       "python": "recording.start_group(name, location?)",
       "java": "recording.startGroup(name, location?)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "startGroup(name: string, options?: {\n    location?: {\n        file: string;\n        line?: number;\n        column?: number;\n    };\n}): Promise<void>;"
+        ],
+        "python": [
+          "start_group(name: str, location: Optional[Dict[str, Any]] = None) -> None"
+        ],
+        "java": [
+          "public void startGroup(String name);",
+          "public void startGroup(String name, String location);"
+        ]
+      }
     },
     {
       "id": 129,
@@ -2056,7 +3680,18 @@
       "python": "recording.stop_group()",
       "java": "recording.stopGroup()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "stopGroup(): Promise<void>;"
+        ],
+        "python": [
+          "stop_group() -> None"
+        ],
+        "java": [
+          "public void stopGroup();"
+        ]
+      }
     },
     {
       "id": 130,
@@ -2071,7 +3706,18 @@
       "nightlyOnly": [],
       "changedInNightly": [
         "python"
-      ]
+      ],
+      "signatures": {
+        "javascript": [
+          "readonly request: Request;"
+        ],
+        "python": [
+          "request: Dict[str, Any]  # property"
+        ],
+        "java": [
+          "public Request request();"
+        ]
+      }
     },
     {
       "id": 131,
@@ -2084,7 +3730,19 @@
       "python": "route.fulfill(status?, headers?, ...)",
       "java": "route.fulfill(options?)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "fulfill(response?: {\n    status?: number;\n    headers?: Record<string, string>;\n    contentType?: string;\n    body?: string;\n}): Promise<void>;"
+        ],
+        "python": [
+          "fulfill(\n    status: Optional[int] = None,\n    headers: Optional[Dict[str, str]] = None,\n    content_type: Optional[str] = None,\n    body: Optional[str] = None,\n) -> None"
+        ],
+        "java": [
+          "public void fulfill();",
+          "public void fulfill(FulfillOptions options);"
+        ]
+      }
     },
     {
       "id": 132,
@@ -2097,7 +3755,19 @@
       "python": "route.continue_(overrides?)",
       "java": "route.doContinue(options?)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "continue(overrides?: {\n    url?: string;\n    method?: string;\n    headers?: Record<string, string>;\n    postData?: string;\n}): Promise<void>;"
+        ],
+        "python": [
+          "continue_(\n    url: Optional[str] = None,\n    method: Optional[str] = None,\n    headers: Optional[Dict[str, str]] = None,\n    post_data: Optional[str] = None,\n) -> None"
+        ],
+        "java": [
+          "public void doContinue();",
+          "public void doContinue(ContinueOptions options);"
+        ]
+      }
     },
     {
       "id": 133,
@@ -2110,7 +3780,18 @@
       "python": "route.abort()",
       "java": "route.abort()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "abort(): Promise<void>;"
+        ],
+        "python": [
+          "abort() -> None"
+        ],
+        "java": [
+          "public void abort();"
+        ]
+      }
     },
     {
       "id": 134,
@@ -2123,7 +3804,18 @@
       "python": "dialog.message()",
       "java": "dialog.message()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "message(): string;"
+        ],
+        "python": [
+          "message() -> str"
+        ],
+        "java": [
+          "public String message();"
+        ]
+      }
     },
     {
       "id": 135,
@@ -2136,7 +3828,18 @@
       "python": "dialog.type()",
       "java": "dialog.type()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "type(): string;"
+        ],
+        "python": [
+          "type() -> str"
+        ],
+        "java": [
+          "public String type();"
+        ]
+      }
     },
     {
       "id": 136,
@@ -2149,7 +3852,18 @@
       "python": "dialog.default_value()",
       "java": "dialog.defaultValue()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "defaultValue(): string;"
+        ],
+        "python": [
+          "default_value() -> str"
+        ],
+        "java": [
+          "public String defaultValue();"
+        ]
+      }
     },
     {
       "id": 137,
@@ -2162,7 +3876,19 @@
       "python": "dialog.accept(prompt_text?)",
       "java": "dialog.accept(promptText?)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "accept(promptText?: string): Promise<void>;"
+        ],
+        "python": [
+          "accept(prompt_text: Optional[str] = None) -> None"
+        ],
+        "java": [
+          "public void accept();",
+          "public void accept(String promptText);"
+        ]
+      }
     },
     {
       "id": 138,
@@ -2175,7 +3901,18 @@
       "python": "dialog.dismiss()",
       "java": "dialog.dismiss()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "dismiss(): Promise<void>;"
+        ],
+        "python": [
+          "dismiss() -> None"
+        ],
+        "java": [
+          "public void dismiss();"
+        ]
+      }
     },
     {
       "id": 139,
@@ -2188,7 +3925,18 @@
       "python": "download.save_as(path)",
       "java": "download.saveAs(path)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "saveAs(path: string): Promise<void>;"
+        ],
+        "python": [
+          "save_as(path: str) -> None"
+        ],
+        "java": [
+          "public void saveAs(String path);"
+        ]
+      }
     },
     {
       "id": 140,
@@ -2201,7 +3949,18 @@
       "python": "download.url()",
       "java": "download.url()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "url(): string;"
+        ],
+        "python": [
+          "url() -> str"
+        ],
+        "java": [
+          "public String url();"
+        ]
+      }
     },
     {
       "id": 141,
@@ -2214,7 +3973,18 @@
       "python": "download.suggested_filename()",
       "java": "download.suggestedFilename()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "suggestedFilename(): string;"
+        ],
+        "python": [
+          "suggested_filename() -> str"
+        ],
+        "java": [
+          "public String suggestedFilename();"
+        ]
+      }
     },
     {
       "id": 142,
@@ -2227,7 +3997,18 @@
       "python": "download.path()",
       "java": "download.path()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "path(): Promise<string | null>;"
+        ],
+        "python": [
+          "path() -> Optional[str]"
+        ],
+        "java": [
+          "public String path();"
+        ]
+      }
     },
     {
       "id": 143,
@@ -2240,7 +4021,18 @@
       "python": "request.url()",
       "java": "request.url()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "url(): string;"
+        ],
+        "python": [
+          "url() -> str"
+        ],
+        "java": [
+          "public String url();"
+        ]
+      }
     },
     {
       "id": 144,
@@ -2253,7 +4045,18 @@
       "python": "request.method()",
       "java": "request.method()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "method(): string;"
+        ],
+        "python": [
+          "method() -> str"
+        ],
+        "java": [
+          "public String method();"
+        ]
+      }
     },
     {
       "id": 145,
@@ -2266,7 +4069,18 @@
       "python": "request.headers()",
       "java": "request.headers()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "headers(): Record<string, string>;"
+        ],
+        "python": [
+          "headers() -> Dict[str, str]"
+        ],
+        "java": [
+          "public Map<String, String> headers();"
+        ]
+      }
     },
     {
       "id": 146,
@@ -2279,7 +4093,18 @@
       "python": "request.request_id()",
       "java": "request.requestId()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "requestId(): string;"
+        ],
+        "python": [
+          "request_id() -> str"
+        ],
+        "java": [
+          "public String requestId();"
+        ]
+      }
     },
     {
       "id": 147,
@@ -2292,7 +4117,18 @@
       "python": "request.post_data()",
       "java": "request.postData()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "postData(): Promise<string | null>;"
+        ],
+        "python": [
+          "post_data() -> Optional[str]"
+        ],
+        "java": [
+          "public String postData();"
+        ]
+      }
     },
     {
       "id": 148,
@@ -2305,7 +4141,18 @@
       "python": "response.url()",
       "java": "response.url()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "url(): string;"
+        ],
+        "python": [
+          "url() -> str"
+        ],
+        "java": [
+          "public String url();"
+        ]
+      }
     },
     {
       "id": 149,
@@ -2318,7 +4165,18 @@
       "python": "response.status()",
       "java": "response.status()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "status(): number;"
+        ],
+        "python": [
+          "status() -> int"
+        ],
+        "java": [
+          "public int status();"
+        ]
+      }
     },
     {
       "id": 150,
@@ -2331,7 +4189,18 @@
       "python": "response.headers()",
       "java": "response.headers()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "headers(): Record<string, string>;"
+        ],
+        "python": [
+          "headers() -> Dict[str, str]"
+        ],
+        "java": [
+          "public Map<String, String> headers();"
+        ]
+      }
     },
     {
       "id": 151,
@@ -2344,7 +4213,18 @@
       "python": "response.request_id()",
       "java": "response.requestId()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "requestId(): string;"
+        ],
+        "python": [
+          "request_id() -> str"
+        ],
+        "java": [
+          "public String requestId();"
+        ]
+      }
     },
     {
       "id": 152,
@@ -2357,7 +4237,18 @@
       "python": "response.body()",
       "java": "response.body()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "body(): Promise<string | null>;"
+        ],
+        "python": [
+          "body() -> Optional[str]"
+        ],
+        "java": [
+          "public String body();"
+        ]
+      }
     },
     {
       "id": 153,
@@ -2370,7 +4261,18 @@
       "python": "response.json()",
       "java": "response.json()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "json(): Promise<unknown>;"
+        ],
+        "python": [
+          "json() -> Any"
+        ],
+        "java": [
+          "public Object json();"
+        ]
+      }
     },
     {
       "id": 154,
@@ -2383,7 +4285,18 @@
       "python": "message.type()",
       "java": "message.type()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "type(): string;"
+        ],
+        "python": [
+          "type() -> str"
+        ],
+        "java": [
+          "public String type();"
+        ]
+      }
     },
     {
       "id": 155,
@@ -2396,7 +4309,18 @@
       "python": "message.text()",
       "java": "message.text()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "text(): string;"
+        ],
+        "python": [
+          "text() -> str"
+        ],
+        "java": [
+          "public String text();"
+        ]
+      }
     },
     {
       "id": 156,
@@ -2409,7 +4333,18 @@
       "python": "message.args()",
       "java": "message.args()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "args(): unknown[];"
+        ],
+        "python": [
+          "args() -> List[Any]"
+        ],
+        "java": [
+          "public List<Object> args();"
+        ]
+      }
     },
     {
       "id": 157,
@@ -2422,7 +4357,18 @@
       "python": "message.location()",
       "java": "message.location()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "location(): {\n    url: string;\n    lineNumber: number;\n    columnNumber: number;\n} | null;"
+        ],
+        "python": [
+          "location() -> Optional[Dict[str, Any]]"
+        ],
+        "java": [
+          "public SourceLocation location();"
+        ]
+      }
     },
     {
       "id": 158,
@@ -2435,7 +4381,18 @@
       "python": "socket.url()",
       "java": "socket.url()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "url(): string;"
+        ],
+        "python": [
+          "url() -> str"
+        ],
+        "java": [
+          "public String url();"
+        ]
+      }
     },
     {
       "id": 159,
@@ -2448,7 +4405,18 @@
       "python": "socket.on_message(fn)",
       "java": "socket.onMessage(fn)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "onMessage(fn: MessageHandler): void;"
+        ],
+        "python": [
+          "on_message(fn: Callable[[str, dict], None]) -> None"
+        ],
+        "java": [
+          "public void onMessage(BiConsumer<String, String> callback);"
+        ]
+      }
     },
     {
       "id": 160,
@@ -2461,7 +4429,18 @@
       "python": "socket.on_close(fn)",
       "java": "socket.onClose(fn)",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "onClose(fn: CloseHandler): void;"
+        ],
+        "python": [
+          "on_close(fn: Callable[[Optional[int], Optional[str]], None]) -> None"
+        ],
+        "java": [
+          "public void onClose(BiConsumer<Integer, String> callback);"
+        ]
+      }
     },
     {
       "id": 161,
@@ -2474,7 +4453,18 @@
       "python": "socket.is_closed()",
       "java": "socket.isClosed()",
       "nightlyOnly": [],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "isClosed(): boolean;"
+        ],
+        "python": [
+          "is_closed() -> bool"
+        ],
+        "java": [
+          "public boolean isClosed();"
+        ]
+      }
     },
     {
       "id": 162,
@@ -3055,7 +5045,19 @@
         "python",
         "java"
       ],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "check(claim: string, options?: CheckOptions): Promise<CheckResult>;"
+        ],
+        "python": [
+          "check(\n    claim: str,\n    *,\n    record: Optional[str] = None,\n    base_url: Optional[str] = None,\n    provider: Optional[str] = None,\n    model: Optional[str] = None,\n    ai_base_url: Optional[str] = None,\n    reasoning_effort: Optional[str] = None,\n) -> CheckResult"
+        ],
+        "java": [
+          "public CheckResult check(String claim);",
+          "public CheckResult check(String claim, CheckOptions options);"
+        ]
+      }
     },
     {
       "id": 213,
@@ -3072,7 +5074,19 @@
         "python",
         "java"
       ],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "check(claim: string, options?: CheckOptions): Promise<CheckResult>;"
+        ],
+        "python": [
+          "check(\n    claim: str,\n    *,\n    record: Optional[str] = None,\n    base_url: Optional[str] = None,\n    provider: Optional[str] = None,\n    model: Optional[str] = None,\n    ai_base_url: Optional[str] = None,\n    reasoning_effort: Optional[str] = None,\n) -> CheckResult"
+        ],
+        "java": [
+          "public CheckResult check(String claim);",
+          "public CheckResult check(String claim, CheckOptions options);"
+        ]
+      }
     },
     {
       "id": 214,
@@ -3087,7 +5101,12 @@
       "nightlyOnly": [
         "java"
       ],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "java": [
+          "public static com.vibium.types.CheckResult check(String claim, com.vibium.types.CheckOptions options);"
+        ]
+      }
     },
     {
       "id": 215,
@@ -3151,7 +5170,19 @@
         "python",
         "java"
       ],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "run(goal: string, options?: RunOptions): Promise<RunResult>;"
+        ],
+        "python": [
+          "run(\n    goal: str,\n    *,\n    base_url: Optional[str] = None,\n    provider: Optional[str] = None,\n    model: Optional[str] = None,\n    ai_base_url: Optional[str] = None,\n    reasoning_effort: Optional[str] = None,\n) -> RunResult"
+        ],
+        "java": [
+          "public RunResult run(String goal);",
+          "public RunResult run(String goal, RunOptions options);"
+        ]
+      }
     },
     {
       "id": 217,
@@ -3167,6 +5198,50 @@
         "javascript",
         "python",
         "java"
+      ],
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "run(goal: string, options?: RunOptions): Promise<RunResult>;"
+        ],
+        "python": [
+          "run(\n    goal: str,\n    *,\n    base_url: Optional[str] = None,\n    provider: Optional[str] = None,\n    model: Optional[str] = None,\n    ai_base_url: Optional[str] = None,\n    reasoning_effort: Optional[str] = None,\n) -> RunResult"
+        ],
+        "java": [
+          "public RunResult run(String goal);",
+          "public RunResult run(String goal, RunOptions options);"
+        ]
+      }
+    },
+    {
+      "id": 233,
+      "section": "Say and Listen",
+      "description": "Speak text into the session, this machine's speakers, or a WAV file",
+      "wire": null,
+      "cli": "vibium say <text>",
+      "mcp": "vibium_say",
+      "javascript": null,
+      "python": null,
+      "java": null,
+      "nightlyOnly": [
+        "cli",
+        "mcp"
+      ],
+      "changedInNightly": []
+    },
+    {
+      "id": 234,
+      "section": "Say and Listen",
+      "description": "Hear the session, this machine's microphone, or a WAV file, and return a transcript",
+      "wire": null,
+      "cli": "vibium listen",
+      "mcp": "vibium_listen",
+      "javascript": null,
+      "python": null,
+      "java": null,
+      "nightlyOnly": [
+        "cli",
+        "mcp"
       ],
       "changedInNightly": []
     }

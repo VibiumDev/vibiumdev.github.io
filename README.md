@@ -67,7 +67,10 @@ javascript, python, java) holds the shared docs plus one surface.
   and `/commands.json`, from the binaries' own help.
 - `scripts/gen_api_reference.py`: `docs/libraries/*/api.md`,
   `docs/reference/api-matrix.md`, and `/api.json`, from
-  `docs/reference/api.md` in the main repository.
+  `docs/reference/api.md` in the main repository. The typed signatures and
+  doc comments on the API pages come from the nightly release's own packages
+  (`scripts/api_details.py` reads the npm tarball's `.d.ts`, the Python
+  wheel's sources, and the Java sources jar as text; nothing is installed).
 - `scripts/gen_mcp_reference.py`: `docs/mcp/tools.md` and `/mcp-tools.json`,
   from the MCP server's `tools/list`.
 
