@@ -18,6 +18,9 @@ Signatures come from the latest nightly build. See
 is in the [API matrix](../../reference/api-matrix.md) and in
 [`/api.json`](/api.json).
 
+Examples assume `bro` is a started browser and `vibe` is its page, as in the
+[quickstart](index.md).
+
 Signatures are for the sync API (`from vibium import browser`). The async
 API in `vibium.async_api` has the same methods as coroutines.
 
@@ -43,6 +46,8 @@ start(
 
 Start a browser session.
 
+Example: `bro = browser.start(headless=True)`
+
 CLI `vibium start` · MCP `browser_start`
 
 **`browser.page()`**
@@ -53,6 +58,8 @@ Get the default page
 
 Get the default page (first browsing context).
 
+Example: `vibe = bro.page()`
+
 **`browser.new_page()`**
 
 Create a new page
@@ -60,6 +67,8 @@ Create a new page
 `new_page() -> Page`
 
 Create a new page (tab) in the default context.
+
+Example: `second = bro.new_page()`
 
 CLI `vibium page new` · MCP `browser_new_page`
 
@@ -88,6 +97,8 @@ Stop the browser
 `stop() -> None`
 
 Stop the browser and clean up.
+
+Example: `bro.stop()`
 
 CLI `vibium stop` · MCP `browser_stop`
 
@@ -123,6 +134,8 @@ Navigate to a URL
 
 `go(url: str) -> None`
 
+Example: `vibe.go("https://example.com")`
+
 CLI `vibium go <url>` · MCP `browser_navigate`
 
 **`page.back()`**
@@ -130,6 +143,8 @@ CLI `vibium go <url>` · MCP `browser_navigate`
 Go back
 
 `back() -> None`
+
+Example: `vibe.back()`
 
 CLI `vibium back` · MCP `browser_back`
 
@@ -147,6 +162,8 @@ Reload page
 
 `reload() -> None`
 
+Example: `vibe.reload()`
+
 CLI `vibium reload` · MCP `browser_reload`
 
 **`page.url()`**
@@ -154,6 +171,8 @@ CLI `vibium reload` · MCP `browser_reload`
 Get current URL
 
 `url() -> str`
+
+Example: `url = vibe.url()`
 
 CLI `vibium url` · MCP `browser_get_url`
 
@@ -163,6 +182,8 @@ Get page title
 
 `title() -> str`
 
+Example: `title = vibe.title()`
+
 CLI `vibium title` · MCP `browser_get_title`
 
 **`page.content()`**
@@ -170,6 +191,8 @@ CLI `vibium title` · MCP `browser_get_title`
 Get page HTML
 
 `content() -> str`
+
+Example: `html = vibe.content()`
 
 **`page.find(locator, **opts)`**
 
@@ -205,6 +228,8 @@ find(
 ```
 
 Find an element; see the async page.find for the forms.
+
+Example: `button = vibe.find(role="button", text="Submit")`
 
 CLI `vibium find <description>` · MCP `browser_find`
 
@@ -243,6 +268,8 @@ find_all(
 
 Find all matching elements; see the async page.find_all.
 
+Example: `links = vibe.find_all(role="link")`
+
 CLI `vibium find --all <description>` · MCP `browser_find_all`
 
 **`page.screenshot(opts?)`**
@@ -250,6 +277,8 @@ CLI `vibium find --all <description>` · MCP `browser_find_all`
 Take a page screenshot
 
 `screenshot(full_page: Optional[bool] = None, clip: Optional[Dict[str, Any]] = None) -> bytes`
+
+Example: `Path("page.png").write_bytes(vibe.screenshot())`
 
 CLI `vibium screenshot` · MCP `browser_screenshot`
 
@@ -270,6 +299,8 @@ Evaluate JavaScript
 `evaluate(expression: str) -> Any`
 
 Evaluate a JS expression and return the deserialized value.
+
+Example: `count = vibe.evaluate("document.links.length")`
 
 CLI `vibium eval <expr>` · MCP `browser_evaluate`
 
@@ -307,6 +338,8 @@ Wait for JS function to return truthy
 
 Wait until a function returns a truthy value.
 
+Example: `vibe.wait_for_function('document.readyState === "complete"')`
+
 CLI `vibium wait fn <expr>` · MCP `browser_wait_for_fn`
 
 **`page.wait_for_url(url, **opts)`**
@@ -317,6 +350,8 @@ Wait for URL to match
 
 Wait until the page URL matches a pattern.
 
+Example: `vibe.wait_for_url("**/next")`
+
 CLI `vibium wait url <pat>` · MCP `browser_wait_for_url`
 
 **`page.wait_for_load(**opts)`**
@@ -326,6 +361,8 @@ Wait for page load
 `wait_for_load(state: Optional[str] = None, timeout: Optional[int] = None) -> None`
 
 Wait until the page reaches a load state.
+
+Example: `vibe.wait_for_load()`
 
 CLI `vibium wait load` · MCP `browser_wait_for_load`
 
@@ -344,6 +381,8 @@ CLI `vibium scroll <dir> <amt>` · MCP `browser_scroll`
 Set viewport size
 
 `set_viewport(size: Dict[str, int]) -> None`
+
+Example: `vibe.set_viewport({"width": 375, "height": 812})`
 
 CLI `vibium viewport <w> <h>` · MCP `browser_set_viewport`
 
@@ -378,6 +417,8 @@ Set page HTML
 
 `set_content(html: str) -> None`
 
+Example: `vibe.set_content("<h1>Hello</h1>")`
+
 CLI `vibium content <html>` · MCP `browser_set_content`
 
 **`page.set_geolocation(coords)`**
@@ -409,6 +450,8 @@ CLI `vibium window` · MCP `browser_get_window`
 Get accessibility tree
 
 `a11y_tree(everything: Optional[bool] = None, root: Optional[str] = None) -> A11yNode`
+
+Example: `tree = vibe.a11y_tree()`
 
 CLI `vibium a11y-tree` · MCP `browser_a11y_tree`
 
@@ -478,6 +521,8 @@ Listen for requests
 
 Register a callback for every outgoing request.
 
+Example: `vibe.on_request(lambda req: print(req.method(), req.url()))`
+
 **`page.on_response(fn)`**
 
 Listen for responses
@@ -485,6 +530,8 @@ Listen for responses
 `on_response(fn: Callable) -> None`
 
 Register a callback for every completed response.
+
+Example: `vibe.on_response(lambda resp: print(resp.status(), resp.url()))`
 
 **`page.on_dialog(fn)`**
 
@@ -501,6 +548,8 @@ Listen for console messages
 `on_console(mode: str = 'collect') -> None`
 
 Start collecting console messages. Retrieve with console_messages().
+
+Example: `vibe.on_console(lambda msg: print(msg.type(), msg.text()))`
 
 **`page.on_error(fn)`**
 
@@ -546,6 +595,8 @@ response(
 
 Wait for a response matching a URL pattern.
 
+Example: `resp = vibe.capture.response("**/api/users", lambda: vibe.find(role="button", text="Users").click())`
+
 **`page.capture.request(pat, fn?)`**
 
 Capture request (before action)
@@ -583,6 +634,8 @@ Capture download (before action)
 `download(fn: Optional[Callable] = None, timeout: Optional[int] = None) -> Union[SyncDownload, _SyncCapturedDownload]`
 
 Wait for a download event.
+
+Example: `download = vibe.capture.download(lambda: vibe.find(role="link", text="Download").click())`
 
 **`page.capture.dialog(fn?)`**
 
@@ -686,6 +739,8 @@ Click an element
 
 `click(timeout: Optional[int] = None) -> None`
 
+Example: `vibe.find(role="button", text="Submit").click()`
+
 CLI `vibium click <sel>` · MCP `browser_click`
 
 **`el.dblclick(timeout?)`**
@@ -702,6 +757,8 @@ Fill an input field
 
 `fill(value: str, timeout: Optional[int] = None) -> None`
 
+Example: `vibe.find(label="Email").fill("user@example.com")`
+
 CLI `vibium fill <sel> <val>` · MCP `browser_fill`
 
 **`el.type(text, timeout?)`**
@@ -710,6 +767,8 @@ Type text character by character
 
 `type(text: str, timeout: Optional[int] = None) -> None`
 
+Example: `vibe.find(label="Email").type("user@example.com")`
+
 CLI `vibium type <text>` · MCP `browser_type`
 
 **`el.press(key, timeout?)`**
@@ -717,6 +776,8 @@ CLI `vibium type <text>` · MCP `browser_type`
 Press a key on focused element
 
 `press(key: str, timeout: Optional[int] = None) -> None`
+
+Example: `vibe.find(label="Email").press("Enter")`
 
 CLI `vibium press <key>` · MCP `browser_press`
 
@@ -731,6 +792,8 @@ Clear an input field
 Check a checkbox **(changed in nightly)**
 
 `set(value: bool = True, timeout: Optional[int] = None) -> None`
+
+Example: `vibe.find(css='input[type="checkbox"]').set()`
 
 CLI `vibium set <sel>` · MCP `browser_set`
 
@@ -748,6 +811,8 @@ Select a dropdown option
 
 `select_option(value: str, timeout: Optional[int] = None) -> None`
 
+Example: `vibe.find(label="Country").select_option("de")`
+
 CLI `vibium select <sel> <val>` · MCP `browser_select`
 
 **`el.hover(timeout?)`**
@@ -755,6 +820,8 @@ CLI `vibium select <sel> <val>` · MCP `browser_select`
 Hover over an element
 
 `hover(timeout: Optional[int] = None) -> None`
+
+Example: `vibe.find(role="button", text="Menu").hover()`
 
 CLI `vibium hover <sel>` · MCP `browser_hover`
 
@@ -818,6 +885,8 @@ Get element text content
 
 `text() -> str`
 
+Example: `heading = vibe.find(css="h1").text()`
+
 CLI `vibium text <sel>` · MCP `browser_get_text`
 
 **`el.inner_text()`**
@@ -842,6 +911,8 @@ Get input element value
 
 `value() -> str`
 
+Example: `email = vibe.find(label="Email").value()`
+
 CLI `vibium value <sel>` · MCP `browser_get_value`
 
 **`el.attr(name)`**
@@ -849,6 +920,8 @@ CLI `vibium value <sel>` · MCP `browser_get_value`
 Get element attribute
 
 `attr(name: str) -> Optional[str]`
+
+Example: `href = vibe.find(role="link", text="Next").attr("href")`
 
 CLI `vibium attr <sel> <name>` · MCP `browser_get_attribute`
 
@@ -883,6 +956,8 @@ Snapshot of tag, text, and box captured when the element was found.
 Check if element is visible
 
 `is_visible() -> bool`
+
+Example: `visible = vibe.find(role="button", text="Submit").is_visible()`
 
 CLI `vibium is visible <sel>` · MCP `browser_is_visible`
 
@@ -976,6 +1051,8 @@ find(
 ```
 
 Find a child element, scoped to this element; see the async page.find for the forms.
+
+Example: `home = vibe.find(css="nav").find(role="link", text="Home")`
 
 **`el.find_all(sel, **opts)`**
 
@@ -1097,6 +1174,8 @@ Recording controls for the context **(nightly)**
 Press a key
 
 `press(key: str) -> None`
+
+Example: `vibe.keyboard.press("Enter")`
 
 CLI `vibium keys <keys>` · MCP `browser_keys`
 

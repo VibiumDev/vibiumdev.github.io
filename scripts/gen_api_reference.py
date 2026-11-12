@@ -40,6 +40,7 @@ SOURCE_URL = "https://github.com/VibiumDev/vibium/blob/main/" + SPEC_PATH
 LIBRARIES_DIR = REPO_ROOT / "docs" / "libraries"
 MATRIX_PAGE = REPO_ROOT / "docs" / "reference" / "api-matrix.md"
 API_JSON = REPO_ROOT / "site" / "public" / "api.json"
+EXAMPLES_JSON = REPO_ROOT / "scripts" / "api-examples.json"
 
 SURFACES = ("cli", "mcp", "javascript", "python", "java")
 COLUMNS = ("id", "description", "wire", *SURFACES)
@@ -182,12 +183,28 @@ def signature_lines(signatures: list[str]) -> list[str]:
     return [*(f"- `{s}`" for s in signatures), ""]
 
 
+def load_examples(rows: list[Row]) -> dict[int, dict[str, str]]:
+    """Hand-written examples keyed by spec row. scripts/verify_api_examples.py
+    runs them; here they only have to point at rows that still exist."""
+    examples = {int(k): v for k, v in json.loads(EXAMPLES_JSON.read_text()).items()}
+    by_id = {r.id: r for r in rows}
+    for row_id, by_lang in examples.items():
+        row = by_id.get(row_id)
+        if row is None:
+            raise SystemExit(f"gen_api_reference: {EXAMPLES_JSON.name} has an example for row {row_id}, which the spec no longer has")
+        for lang in by_lang:
+            if not row.has(lang):
+                raise SystemExit(f"gen_api_reference: row {row_id} has a {lang} example but no {lang} form in the spec")
+    return examples
+
+
 def emit_language_page(
     lang: str,
     rows: list[Row],
     stable: dict[int, Row],
     stable_version: str,
     details: api_details.Details | None,
+    examples: dict[int, dict[str, str]],
 ) -> str:
     name = LANGUAGES[lang]
     count = sum(1 for r in rows if r.has(lang))
@@ -211,6 +228,11 @@ def emit_language_page(
         "[What's in Nightly](../../nightly.md). The same data for every surface",
         "is in the [API matrix](../../reference/api-matrix.md) and in",
         "[`/api.json`](/api.json).",
+        "",
+    ]
+    parts += [
+        "Examples assume `bro` is a started browser and `vibe` is its page, as in the",
+        "[quickstart](index.md).",
         "",
     ]
     if lang == "python":
@@ -237,6 +259,9 @@ def emit_language_page(
                 doc = re.split(r"\s@(?:param|returns?|throws|example)\b", member.doc)[0].strip()
                 if doc and not same_text(doc, r.description):
                     parts += [doc, ""]
+            example = examples.get(r.id, {}).get(lang)
+            if example:
+                parts += [f"Example: `{example}`", ""]
             equivalents = [
                 f"{label} {r.cells[s]}"
                 for s, label in (("cli", "CLI"), ("mcp", "MCP"))
@@ -315,6 +340,7 @@ def emit_json(
     stable_version: str,
     ref: str,
     details: dict[str, api_details.Details],
+    examples: dict[int, dict[str, str]],
 ) -> str:
     operations = []
     for r in rows:
@@ -342,6 +368,8 @@ def emit_json(
         }
         if signatures:
             op["signatures"] = signatures
+        if r.id in examples:
+            op["examples"] = examples[r.id]
         operations.append(op)
     data = {
         "source": f"https://github.com/VibiumDev/vibium/blob/{ref}/{SPEC_PATH}",
@@ -373,6 +401,7 @@ def main() -> None:
     rows = parse_spec(spec)
     stable = {r.id: r for r in parse_spec(stable_spec)}
     details = api_details.load(tag, args.workdir)
+    examples = load_examples(rows)
     for lang, found in details.items():
         cells = [r.cells[lang] for r in rows if r.has(lang)]
         print(f"  {lang}: signatures for {sum(1 for c in cells if found.lookup(c))} of {len(cells)}")
@@ -381,11 +410,13 @@ def main() -> None:
         page = LIBRARIES_DIR / lang / "api.md"
         page.parent.mkdir(parents=True, exist_ok=True)
         page.write_text(
-            emit_language_page(lang, rows, stable, stable_version, details.get(lang))
+            emit_language_page(
+                lang, rows, stable, stable_version, details.get(lang), examples
+            )
         )
     MATRIX_PAGE.parent.mkdir(parents=True, exist_ok=True)
     MATRIX_PAGE.write_text(emit_matrix_page(rows, stable, stable_version))
-    API_JSON.write_text(emit_json(rows, stable, stable_version, ref, details))
+    API_JSON.write_text(emit_json(rows, stable, stable_version, ref, details, examples))
     print(
         f"wrote {len(LANGUAGES)} language references, api-matrix.md, and api.json "
         f"({len(rows)} operations)"

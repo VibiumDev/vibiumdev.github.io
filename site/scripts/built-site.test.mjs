@@ -253,6 +253,8 @@ test('api.json maps each operation across the five surfaces', async () => {
   }
   const go = api.operations.find((op) => op.cli === 'vibium go <url>');
   assert.deepEqual(go.signatures.python, ['go(url: str) -> None']);
+  assert.equal(go.examples.python, 'vibe.go("https://example.com")');
+  assert.ok(api.operations.filter((op) => op.examples).length >= 30);
   assert.match(go.signatures.javascript[0], /^go\(url: string\): Promise<void>;$/);
   assert.match(go.signatures.java[0], /^public void go\(String url\);$/);
   assert.equal(go.mcp, 'browser_navigate');
@@ -269,6 +271,7 @@ test('API references show typed signatures from the client sources', async () =>
     const page = await readBuilt(`docs/libraries/${lang}/api.md`);
     assert.ok(page.includes(`\n${signature}\n`), `${lang} API reference has no typed signature for go()`);
     assert.match(page, /^## Types$/m, `${lang} API reference has no Types section`);
+    assert.ok(page.match(/^Example: `[^`\n]+`$/gm).length >= 30, `${lang} API reference has too few examples`);
     const [methods] = page.split(/^## Types$/m);
     const entries = methods.match(/^\*\*`/gm).length;
     const withSignature = methods.split(/^\*\*`/m).slice(1).filter((entry) => /^(- )?`[^`\n]+`$|^```/m.test(entry.split('\n').slice(1).join('\n'))).length;

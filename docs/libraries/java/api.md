@@ -18,6 +18,9 @@ Signatures come from the latest nightly build. See
 is in the [API matrix](../../reference/api-matrix.md) and in
 [`/api.json`](/api.json).
 
+Examples assume `bro` is a started browser and `vibe` is its page, as in the
+[quickstart](index.md).
+
 ## Browser
 
 **`Vibium.start(options?)`**
@@ -29,6 +32,8 @@ Launch browser and connect
 
 Start a visible browser.
 
+Example: `Browser bro = Vibium.start(new StartOptions().headless(true));`
+
 CLI `vibium start` · MCP `browser_start`
 
 **`browser.page()`**
@@ -37,6 +42,8 @@ Get the default page
 
 `public Page page();`
 
+Example: `Page vibe = bro.page();`
+
 **`browser.newPage()`**
 
 Create a new page
@@ -44,6 +51,8 @@ Create a new page
 `public Page newPage();`
 
 Create a new page (tab).
+
+Example: `Page second = bro.newPage();`
 
 CLI `vibium page new` · MCP `browser_new_page`
 
@@ -72,6 +81,8 @@ Stop the browser
 `public void stop();`
 
 Stop the browser and clean up.
+
+Example: `bro.stop();`
 
 CLI `vibium stop` · MCP `browser_stop`
 
@@ -112,6 +123,8 @@ Navigate to a URL
 
 `public void go(String url);`
 
+Example: `vibe.go("https://example.com");`
+
 CLI `vibium go <url>` · MCP `browser_navigate`
 
 **`page.back()`**
@@ -121,6 +134,8 @@ Go back
 `public void back();`
 
 Go back in history.
+
+Example: `vibe.back();`
 
 CLI `vibium back` · MCP `browser_back`
 
@@ -142,6 +157,8 @@ Reload page
 
 Reload the page.
 
+Example: `vibe.reload();`
+
 CLI `vibium reload` · MCP `browser_reload`
 
 **`page.url()`**
@@ -151,6 +168,8 @@ Get current URL
 `public String url();`
 
 Get the current URL.
+
+Example: `String url = vibe.url();`
 
 CLI `vibium url` · MCP `browser_get_url`
 
@@ -162,6 +181,8 @@ Get page title
 
 Get the page title.
 
+Example: `String title = vibe.title();`
+
 CLI `vibium title` · MCP `browser_get_title`
 
 **`page.content()`**
@@ -172,6 +193,8 @@ Get page HTML
 
 Get the full page HTML.
 
+Example: `String html = vibe.content();`
+
 **`page.find(locator, options?)`**
 
 Find a single element by description (a bare string), css, tag, semantic locator, or reference image; strategy auto, cv, vlm, or tree **(changed in nightly)**
@@ -181,6 +204,8 @@ Find a single element by description (a bare string), css, tag, semantic locator
 - `public Element find(SelectorOptions options);`
 
 Find a single element by natural-language description, e.g. "the Add to Cart button". For an exact locator use `find(SelectorOptions)` with css, tag, role, text, or image.
+
+Example: `Element button = vibe.find(new SelectorOptions().role("button").text("Submit"));`
 
 CLI `vibium find <description>` · MCP `browser_find`
 
@@ -194,6 +219,8 @@ Find all matching elements, same locator forms **(changed in nightly)**
 
 Find all matching elements by CSS selector. Waits up to the timeout for at least one match, then returns an empty list if there is none. Each element carries a snapshot of its tag, text, and bounding box taken at findAll time, readable via `Element#info()` with no further round trips: els.stream().map(e -\> e.info().text()). Live reads like `Element#text()` re-resolve the element and fail if the page has changed since findAll.
 
+Example: `List<Element> links = vibe.findAll(new SelectorOptions().role("link"));`
+
 CLI `vibium find --all <description>` · MCP `browser_find_all`
 
 **`page.screenshot(options?)`**
@@ -204,6 +231,8 @@ Take a page screenshot
 - `public byte[] screenshot(ScreenshotOptions options);`
 
 Take a screenshot, returns PNG bytes.
+
+Example: `Files.write(Path.of("page.png"), vibe.screenshot());`
 
 CLI `vibium screenshot` · MCP `browser_screenshot`
 
@@ -225,6 +254,8 @@ Evaluate JavaScript
 `public Object evaluate(String expression);`
 
 Evaluate a JavaScript expression.
+
+Example: `Object count = vibe.evaluate("document.links.length");`
 
 CLI `vibium eval <expr>` · MCP `browser_evaluate`
 
@@ -283,6 +314,8 @@ Wait for JS function to return truthy
 
 Wait for a JS function to return truthy.
 
+Example: `vibe.waitForFunction("document.readyState === \"complete\"");`
+
 CLI `vibium wait fn <expr>` · MCP `browser_wait_for_fn`
 
 **`page.waitForURL(url, options?)`**
@@ -294,6 +327,8 @@ Wait for URL to match
 
 Wait for URL to match a pattern.
 
+Example: `vibe.waitForURL("**/next");`
+
 CLI `vibium wait url <pat>` · MCP `browser_wait_for_url`
 
 **`page.waitForLoad(options?)`**
@@ -302,6 +337,8 @@ Wait for page load
 
 - `public void waitForLoad();`
 - `public void waitForLoad(WaitOptions options);`
+
+Example: `vibe.waitForLoad();`
 
 CLI `vibium wait load` · MCP `browser_wait_for_load`
 
@@ -323,6 +360,8 @@ Set viewport size
 `public void setViewport(ViewportSize size);`
 
 Set the viewport size.
+
+Example: `vibe.setViewport(new ViewportSize(375, 812));`
 
 CLI `vibium viewport <w> <h>` · MCP `browser_set_viewport`
 
@@ -351,6 +390,8 @@ Set page HTML
 `public void setContent(String html);`
 
 Set page HTML content.
+
+Example: `vibe.setContent("<h1>Hello</h1>");`
 
 CLI `vibium content <html>` · MCP `browser_set_content`
 
@@ -386,6 +427,8 @@ Get accessibility tree
 - `public A11yNode a11yTree(A11yOptions options);`
 
 Get the accessibility tree.
+
+Example: `A11yNode tree = vibe.a11yTree();`
 
 CLI `vibium a11y-tree` · MCP `browser_a11y_tree`
 
@@ -465,6 +508,8 @@ Listen for requests
 
 Listen for network requests.
 
+Example: `vibe.onRequest(req -> System.out.println(req.method() + " " + req.url()));`
+
 **`page.onResponse(fn)`**
 
 Listen for responses
@@ -472,6 +517,8 @@ Listen for responses
 `public void onResponse(Consumer<Response> callback);`
 
 Listen for network responses.
+
+Example: `vibe.onResponse(resp -> System.out.println(resp.status() + " " + resp.url()));`
 
 **`page.onDialog(fn)`**
 
@@ -484,6 +531,8 @@ Listen for dialogs
 Listen for console messages
 
 `public void onConsole(Consumer<ConsoleMessage> callback);`
+
+Example: `vibe.onConsole(msg -> System.out.println(msg.type() + " " + msg.text()));`
 
 **`page.onError(fn)`**
 
@@ -521,6 +570,8 @@ Capture response (before action)
 - `public Response response(String pattern, Runnable action);`
 - `public Response response(String pattern, Runnable action, WaitOptions options);`
 
+Example: `Response resp = vibe.capture().response("**/api/users", () -> vibe.find(new SelectorOptions().role("button").text("Users")).click());`
+
 **`page.capture().request(pat, action)`**
 
 Capture request (before action)
@@ -548,6 +599,8 @@ Capture download (before action)
 
 - `public Download download(Runnable action);`
 - `public Download download(Runnable action, WaitOptions options);`
+
+Example: `Download download = vibe.capture().download(() -> vibe.find(new SelectorOptions().role("link").text("Download")).click());`
 
 **`page.capture().dialog(action)`**
 
@@ -650,6 +703,8 @@ Click an element
 
 Click the element.
 
+Example: `vibe.find(new SelectorOptions().role("button").text("Submit")).click();`
+
 CLI `vibium click <sel>` · MCP `browser_click`
 
 **`el.dblclick()`**
@@ -670,6 +725,8 @@ Fill an input field
 
 Fill an input field (clears existing content first).
 
+Example: `vibe.find(new SelectorOptions().label("Email")).fill("user@example.com");`
+
 CLI `vibium fill <sel> <val>` · MCP `browser_fill`
 
 **`el.type(text)`**
@@ -680,6 +737,8 @@ Type text character by character
 
 Type text character by character (appends).
 
+Example: `vibe.find(new SelectorOptions().label("Email")).type("user@example.com");`
+
 CLI `vibium type <text>` · MCP `browser_type`
 
 **`el.press(key)`**
@@ -689,6 +748,8 @@ Press a key on focused element
 `public void press(String key);`
 
 Press a key or key combination.
+
+Example: `vibe.find(new SelectorOptions().label("Email")).press("Enter");`
 
 CLI `vibium press <key>` · MCP `browser_press`
 
@@ -706,6 +767,8 @@ Check a checkbox **(changed in nightly)**
 
 - `public void set();`
 - `public void set(boolean value);`
+
+Example: `vibe.find(new SelectorOptions().css("input[type=\"checkbox\"]")).set();`
 
 CLI `vibium set <sel>` · MCP `browser_set`
 
@@ -725,6 +788,8 @@ Select a dropdown option
 
 Select a dropdown option by value.
 
+Example: `vibe.find(new SelectorOptions().label("Country")).selectOption("de");`
+
 CLI `vibium select <sel> <val>` · MCP `browser_select`
 
 **`el.hover()`**
@@ -734,6 +799,8 @@ Hover over an element
 `public void hover();`
 
 Hover over the element.
+
+Example: `vibe.find(new SelectorOptions().role("button").text("Menu")).hover();`
 
 CLI `vibium hover <sel>` · MCP `browser_hover`
 
@@ -808,6 +875,8 @@ Get element text content
 
 Get the text content (trimmed).
 
+Example: `String heading = vibe.find(new SelectorOptions().css("h1")).text();`
+
 CLI `vibium text <sel>` · MCP `browser_get_text`
 
 **`el.innerText()`**
@@ -838,6 +907,8 @@ Get input element value
 
 Get the input value.
 
+Example: `String email = vibe.find(new SelectorOptions().label("Email")).value();`
+
 CLI `vibium value <sel>` · MCP `browser_get_value`
 
 **`el.attr(name)`**
@@ -847,6 +918,8 @@ Get element attribute
 `public String attr(String name);`
 
 Get an attribute value.
+
+Example: `String href = vibe.find(new SelectorOptions().role("link").text("Next")).attr("href");`
 
 CLI `vibium attr <sel> <name>` · MCP `browser_get_attribute`
 
@@ -889,6 +962,8 @@ Check if element is visible
 `public boolean isVisible();`
 
 Check if the element is visible.
+
+Example: `boolean visible = vibe.find(new SelectorOptions().role("button").text("Submit")).isVisible();`
 
 CLI `vibium is visible <sel>` · MCP `browser_is_visible`
 
@@ -973,6 +1048,8 @@ Find a child element (scoped)
 - `public Element find(SelectorOptions childOptions);`
 
 Find a child element by natural-language description, scoped to this element.
+
+Example: `Element home = vibe.find(new SelectorOptions().css("nav")).find(new SelectorOptions().role("link").text("Home"));`
 
 **`el.findAll(sel, options?)`**
 
@@ -1083,6 +1160,8 @@ Press a key
 `public void press(String key);`
 
 Press a key (down + up).
+
+Example: `vibe.keyboard().press("Enter");`
 
 CLI `vibium keys <keys>` · MCP `browser_keys`
 

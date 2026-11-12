@@ -71,6 +71,10 @@ javascript, python, java) holds the shared docs plus one surface.
   doc comments on the API pages come from the nightly release's own packages
   (`scripts/api_details.py` reads the npm tarball's `.d.ts`, the Python
   wheel's sources, and the Java sources jar as text; nothing is installed).
+  The per-method examples are hand-written in `scripts/api-examples.json`.
+  After editing them, or when an API change lands, run
+  `python3 scripts/verify_api_examples.py --vibium <checkout>`: it runs every
+  example in JavaScript, Python, and Java against a local page.
 - `scripts/gen_mcp_reference.py`: `docs/mcp/tools.md` and `/mcp-tools.json`,
   from the MCP server's `tools/list`.
 
