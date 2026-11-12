@@ -64,7 +64,7 @@ When reporting an issue, please include:
 - Your platform and architecture.
 - The exact command(s) and full output.
 - The Vibium version (`vibium --version`).
-- A `record.zip` from a `vibium record` session if the bug is interactive.
+- The zip from a `vibium record` session if the bug is interactive.
 
 ## Documentation contributions
 

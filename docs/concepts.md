@@ -30,9 +30,9 @@ takes a different approach: it numbers the interactive elements on the current
 page and lets you refer to them by short, stable IDs.
 
 ```
-@e1  link    "Sign in"
-@e2  input   placeholder="Email"
-@e3  button  "Continue"
+@e1 [a] "Sign in"
+@e2 [input type="email"] placeholder="Email"
+@e3 [button] "Continue"
 ```
 
 You get these IDs by running [`vibium map`](commands/map.md), or by calling
@@ -67,7 +67,9 @@ match how an agent reads a page.
 A few Vibium commands are actually small command groups:
 
 - `vibium find` has subcommands `text`, `label`, `placeholder`, `role`,
-  `title`, `alt`, `testid`, and `xpath`.
+  `title`, `alt`, `testid`, and `xpath`. Nightly builds add `css`, `tag`,
+  `description`, and `image`, and read a bare `vibium find "..."` as a
+  plain-language description.
 - `vibium wait` is overloaded — `vibium wait "<selector>"` waits for a CSS
   selector, while `vibium wait text "<text>"`, `vibium wait url "<path>"`,
   `vibium wait load`, and `vibium wait fn "<js>"` use named subcommands.
@@ -97,8 +99,9 @@ Vibium splits into two clean halves:
   `press`, `wait`.
 - **Capture** — `text`, `screenshot`, `pdf`, `eval`, `record`.
 
-This makes it easy to reason about side effects: capture commands never change
-the page; interaction commands always do.
+This makes it easy to reason about side effects: capture commands read the
+page and interaction commands change it. The one exception is `eval`, which
+does whatever the script you pass it does.
 
 > Naming note: in `vibium@26.8.21` checkbox toggling is `check` and
 > `uncheck`. In the nightly builds and the next release, checkboxes are

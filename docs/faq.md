@@ -19,8 +19,8 @@ moving toward.
 Chrome and Firefox. Vibium ships with its own managed Google Chrome for
 Testing build, downloaded automatically on first use; Firefox is one
 `vibium install --engine firefox` (or just `--engine firefox` on any
-command) away. Both use the browser's native WebDriver BiDi — no driver
-binaries. See [Using Firefox](using-firefox.md).
+command) away. Both are driven over WebDriver BiDi. See
+[Using Firefox](using-firefox.md).
 
 ## Can Vibium drive the browser with AI?
 
@@ -32,8 +32,10 @@ server. See [Run and Check](run-and-check.md).
 
 ## Do I need to install a separate driver?
 
-No. Vibium is one ~10 MB binary. There is no `chromedriver`, no `geckodriver`,
-no profile directory you have to maintain.
+No. Vibium is one ~10 MB binary. It downloads Chrome for Testing together
+with the matching `chromedriver` and manages both; `vibium paths` shows where
+they live. Firefox needs no driver at all. There is no profile directory you
+have to maintain.
 
 ## Do I need to install Vibium at all?
 
@@ -51,9 +53,10 @@ where you'd rather not install software globally. See
 
 ## Can I run Vibium headlessly on CI?
 
-Yes. The browser will run without a visible window on hosts without a display,
-and `--headless` forces it anywhere. Capture commands (`screenshot`, `text`,
-`pdf`) work the same way as on a desktop. Pin the browser with
+Yes. Pass `--headless` (every command and `vibium mcp` accept it) so the
+browser runs without a window; a host with no display needs it, or a virtual
+display such as `xvfb-run`. Capture commands (`screenshot`, `text`, `pdf`)
+work the same way as on a desktop. Pin the browser with
 `VIBIUM_ENGINE_VERSION` to keep a CI fleet on one version.
 
 ## Can two scripts drive browsers at the same time?

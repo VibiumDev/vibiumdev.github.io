@@ -36,9 +36,10 @@ alias vibium='npx -y vibium'
 
 By default Vibium runs a visible browser. If you don't see a window:
 
-- You may be on a headless host (e.g. a CI runner or a remote server with no
-  display). That's expected; capture commands like `screenshot` and `text`
-  still work.
+- You may be on a host with no display (a CI runner or a remote server).
+  The browser needs `--headless` there, or a virtual display such as
+  `xvfb-run`. Capture commands like `screenshot` and `text` work the same
+  in headless mode.
 - Google Chrome for Testing may still be downloading on first use. Re-run the
   command after it finishes.
 
@@ -110,5 +111,5 @@ When reporting a runtime bug, please include:
 - Your platform and architecture (`uname -a` or equivalent).
 - The exact command you ran and the full output.
 - The Vibium version (`vibium --version`).
-- A `record.zip` from a `vibium record` session reproducing the problem,
+- The zip from a `vibium record` session reproducing the problem,
   if you can.

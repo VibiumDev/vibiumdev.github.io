@@ -135,6 +135,12 @@ verdict = page.check("the saved timezone is America/Chicago")
 print(result["status"], verdict["status"])
 ```
 
+```java
+RunResult result = page.run("change my timezone to America/Chicago");
+CheckResult verdict = page.check("the saved timezone is America/Chicago");
+System.out.println(result.status() + " " + verdict.status());
+```
+
 All interfaces use the same model budget, action limit, and result contract.
 
 ## See also

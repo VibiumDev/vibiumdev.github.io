@@ -12,12 +12,12 @@ a single zip you can share, attach to a bug report, or play back in the
 ```sh
 vibium record start
 vibium go https://example.com
-vibium find text "More information"
+vibium find text "Learn more"
 vibium click @e1
-vibium record stop   # writes record.zip
+vibium record stop   # writes record-<timestamp>.zip
 ```
 
-`record start` accepts `-o` to name the output, `--screenshots=false`,
+`record start` accepts `-o` to choose the output file, `--screenshots=false`,
 `--snapshots` (HTML snapshots), `--format png`, and `--quality` to trade
 size against fidelity.
 

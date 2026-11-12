@@ -152,6 +152,43 @@ test('every docs page links to a Markdown alternate that exists', async () => {
   }
 });
 
+test('hand-written pages only name commands and flags that exist', async () => {
+  const root = new URL('../../', import.meta.url);
+  const { commands, globalFlags } = JSON.parse(await readBuilt('commands.json'));
+  const manifest = JSON.parse(await readFile(new URL('scripts/upstream-manifest.json', root), 'utf8'));
+  const imported = new Set(manifest.pages.map((page) => page.dest));
+  const names = (flags) => flags.flatMap((flag) => [flag.flag, flag.shorthand]).filter(Boolean);
+  const known = new Map(commands.map((command) => [command.command, new Set(names(command.flags))]));
+  const everywhere = new Set([...names(globalFlags), '--help', '-h']);
+  const paths = [...known.keys()].sort((a, b) => b.length - a.length);
+
+  const generated = /^docs\/(commands\/[^_]|nightly\.md|mcp\/tools\.md|reference\/api-matrix\.md|libraries\/\w+\/api\.md)/;
+  const files = (await readdir(new URL('docs/', root), { recursive: true }))
+    .map((file) => `docs/${file}`)
+    .filter((file) => /\.mdx?$/.test(file) && !imported.has(file) && !generated.test(file));
+  assert.ok(files.length > 30);
+
+  for (const file of files) {
+    const text = await readFile(new URL(file, root), 'utf8');
+    // Shell lines inside fences, and inline code spans, that invoke vibium.
+    const invocations = [
+      ...[...text.matchAll(/^(?:\$ )?(?:npx (?:-y )?)?(vibium [a-z][^\n#|&;]*)/gm)].map((match) => match[1]),
+      ...[...text.matchAll(/`(?:npx (?:-y )?)?(vibium [a-z][^`|]*)`/g)].map((match) => match[1]),
+    ];
+    for (const invocation of invocations) {
+      const path = paths.find((candidate) => new RegExp(`^${candidate}(?![\\w-])`).test(invocation));
+      if (!path) continue;
+      const rest = invocation.slice(path.length).replace(/"[^"]*"|'[^']*'/g, ' ');
+      for (const [, flag] of rest.matchAll(/(?:^|\s)(--[a-z][a-z0-9-]*|-[a-zA-Z])(?=[\s=]|$)/g)) {
+        assert.ok(
+          known.get(path).has(flag) || everywhere.has(flag),
+          `${file}: \`${invocation.trim()}\` uses ${flag}, which \`${path}\` does not have`
+        );
+      }
+    }
+  }
+});
+
 test('every docs page has one meta description of useful length', async () => {
   for (const page of await docsPages()) {
     const html = await readBuilt(`${page}/index.html`);

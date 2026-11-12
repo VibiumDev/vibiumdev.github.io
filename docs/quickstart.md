@@ -87,13 +87,11 @@ text.
 
 What you should see:
 
-- `vibium go https://example.com` — exits with status 0; the browser
-  navigates to the page. No output on stdout is normal.
-- `vibium screenshot -o example.png` — writes the PNG to
-  `~/Pictures/Vibium/example.png` and prints the saved path to stdout. The
-  CLI manages screenshot storage for you; `-o` controls the *filename*, not
-  the directory. `ls -lh ~/Pictures/Vibium/example.png` should show a
-  non-empty PNG.
+- `vibium go https://example.com` — exits with status 0 and prints
+  `Navigated to https://example.com`.
+- `vibium screenshot -o example.png` — writes `example.png` in the current
+  directory and prints `Screenshot saved to` with the full path. `-o` takes
+  any path and it is honored as given.
 - `vibium text` — prints the visible page text to stdout. For
   `https://example.com` that is a short notice that the domain is for
   documentation examples.
