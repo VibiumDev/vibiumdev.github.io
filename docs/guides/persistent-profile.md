@@ -8,7 +8,7 @@ editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/how-to-guides/persis
 
 <!-- Imported from docs/how-to-guides/persistent-profile.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
 
-> **Nightly only.** This guide covers features added after 26.8.21. See [What's in Nightly](../nightly.md).
+> **Nightly only.** This guide uses `vibium run`, which is not in 26.8.21. See [What's in Nightly](../nightly.md).
 
 Vibium launches the browser with a temporary profile and wipes it on close. Cookies, logins, and localStorage are gone on the next run. A persistent profile keeps them: pass a directory, log in once, and reuse the session across runs.
 

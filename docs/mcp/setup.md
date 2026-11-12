@@ -42,6 +42,9 @@ Open **Settings → Developer → Edit Config**. Add the `vibium` entry to
 Save, fully quit Claude Desktop, and reopen it. Vibium's tools then appear
 in the tools list. If `npx` cannot be found, use its absolute path.
 
+The [Claude Desktop guide](../guides/using-vibium-with-claude-desktop.md) walks
+through the same setup with a first prompt and the Run and Check settings.
+
 ## Gemini CLI
 
 ```sh

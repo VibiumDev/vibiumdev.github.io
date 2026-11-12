@@ -6,7 +6,7 @@ editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/how-to-guides/using-
 
 <!-- Imported from docs/how-to-guides/using-firefox.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
 
-> This guide tracks the nightly builds and has changed since 26.8.21; parts of it MAY need a nightly. See [What's in Nightly](nightly.md).
+> This guide was updated after the 26.8.21 release, so parts of it MAY need a nightly build. See [What's in Nightly](nightly.md).
 
 Vibium launches Chrome by default. Firefox is supported as an alternative engine, using Firefox's native WebDriver BiDi — no driver binary involved.
 

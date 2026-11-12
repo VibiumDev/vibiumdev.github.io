@@ -1,12 +1,14 @@
 ---
 title: "Selectors"
 description: "How vibium turns a selector into an element. Three kinds: CSS, pierce combinators for shadow DOM, and semantic locators."
+sidebar:
+  badge: Nightly
 editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/reference/selectors.md
 ---
 
 <!-- Imported from docs/reference/selectors.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
 
-> This guide tracks the nightly builds and has changed since 26.8.21; parts of it MAY need a nightly. See [What's in Nightly](../nightly.md).
+> **Nightly only.** This guide uses `vibium find css`, which is not in 26.8.21. See [What's in Nightly](../nightly.md).
 
 How vibium turns a selector into an element. Three kinds: CSS, pierce combinators for shadow DOM, and semantic locators.
 

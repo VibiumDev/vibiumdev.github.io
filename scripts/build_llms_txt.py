@@ -16,6 +16,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as _dt
+import json
 import os
 import re
 import shutil
@@ -64,7 +65,10 @@ DOCS: list[Doc] = [
     Doc("docs/sessions.md", "Guides"),
     Doc("docs/recording.md", "Guides"),
     Doc("docs/scripting.md", "Guides"),
-    *tree("guides", "Guides"),
+    *tree("guides", "How-to"),
+    *tree("cloud-browsers", "Cloud"),
+    *tree("cloud-computers", "Cloud"),
+    *tree("explanation", "How it works"),
     *tree("cli", "CLI"),
     *tree("mcp", "MCP"),
     *tree("libraries", "Libraries"),
@@ -77,7 +81,7 @@ DOCS: list[Doc] = [
 ]
 
 SECTION_ORDER = (
-    "Docs", "Guides", "CLI", "MCP", "Libraries", "JavaScript", "Python",
+    "Docs", "Guides", "How-to", "Cloud", "How it works", "CLI", "MCP", "Libraries", "JavaScript", "Python",
     "Java", "Reference", "Command Reference", "Skills", "Optional",
 )
 
@@ -100,6 +104,7 @@ MOVED: dict[str, str] = {
 
 FRONTMATTER_RE = re.compile(r"\A---\n(?P<frontmatter>.*?)\n---\n", re.DOTALL)
 TITLE_RE = re.compile(r"^title:\s*(?P<title>.+?)\s*$", re.MULTILINE)
+DESCRIPTION_RE = re.compile(r"^description:\s*(?P<description>.+?)\s*$", re.MULTILINE)
 LINK_ITEM_RE = re.compile(r"-\s+\[[^\]]+\]\([^)]+\)(?::\s+.+)?$")
 MARKDOWN_LINK_RE = re.compile(r"\[([^\]]+)\]\([^)]+\)")
 MARKDOWN_EMPHASIS_RE = re.compile(r"[*_]{1,3}([^*_]+)[*_]{1,3}")
@@ -133,10 +138,20 @@ def strip_frontmatter(text: str) -> tuple[str | None, str]:
     return title, text[match.end() :]
 
 
+def frontmatter_description(text: str) -> str | None:
+    match = FRONTMATTER_RE.match(text)
+    found = DESCRIPTION_RE.search(match.group("frontmatter")) if match else None
+    if not found:
+        return None
+    value = found.group("description")
+    return json.loads(value) if value.startswith('"') else value.strip("'")
+
+
 def metadata(path: Path) -> tuple[str, str]:
     text = path.read_text(encoding="utf-8")
     title, body = strip_frontmatter(text)
     lines = body.splitlines()
+    described = frontmatter_description(text)
 
     if title is None:
         for i, line in enumerate(lines):
@@ -163,7 +178,7 @@ def metadata(path: Path) -> tuple[str, str]:
                 paragraphs.append(" ".join(current))
                 current = []
             continue
-        if line.startswith(("#", "-", ">", "|")):
+        if line.startswith(("#", "-", ">", "|", "<")):
             if current:
                 paragraphs.append(" ".join(current))
                 current = []
@@ -172,7 +187,9 @@ def metadata(path: Path) -> tuple[str, str]:
     if current:
         paragraphs.append(" ".join(current))
 
-    desc = summarize(paragraphs[0] if paragraphs else "Vibium documentation.")
+    desc = described or summarize(
+        paragraphs[0] if paragraphs else "Vibium documentation."
+    )
     return title, desc
 
 
@@ -274,9 +291,10 @@ def build_llms_full(repo_root: Path, docs: list[Doc], surface: str | None = None
     )
     if surface:
         scope = (
-            f"This file holds the shared Vibium docs plus the {surface} surface, "
-            "for agents that use only that surface. The complete set is "
-            "`/llms-full.txt`."
+            f"This file holds the core Vibium docs plus the {surface} surface, "
+            "for agents that use only that surface. How-to guides, cloud "
+            "guides, and explanations are listed in `/llms.txt`; the complete "
+            "set is `/llms-full.txt`."
         )
     else:
         scope = (

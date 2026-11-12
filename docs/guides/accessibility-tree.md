@@ -6,7 +6,7 @@ editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/how-to-guides/access
 
 <!-- Imported from docs/how-to-guides/accessibility-tree.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
 
-> This guide tracks the nightly builds and has changed since 26.8.21; parts of it MAY need a nightly. See [What's in Nightly](../nightly.md).
+> This guide was updated after the 26.8.21 release, so parts of it MAY need a nightly build. See [What's in Nightly](../nightly.md).
 
 ## JavaScript
 Learn how to inspect page structure with `a11yTree()` and use the results to find and interact with elements.

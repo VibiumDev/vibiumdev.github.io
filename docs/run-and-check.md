@@ -139,5 +139,10 @@ All interfaces use the same model budget, action limit, and result contract.
 
 ## See also
 
+- [Accomplish a browser goal with Run](guides/run.md) and
+  [Check a live browser or saved recording](guides/check.md): the full guides.
+- [Check tutorial, part 1](guides/check-tutorial-1-live-website.md): a first
+  check on a live site, step by step.
+- [Check reference](reference/check.md) — every option and the verdict format.
 - [Model providers](ai-providers.md) — providers, env vars, per-call overrides.
 - [Recording](recording.md) — what's inside the evidence zips.

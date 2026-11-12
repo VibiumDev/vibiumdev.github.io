@@ -8,7 +8,7 @@ editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/how-to-guides/find-b
 
 <!-- Imported from docs/how-to-guides/find-by-description-and-image.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
 
-> **Nightly only.** This guide covers features added after 26.8.21. See [What's in Nightly](../nightly.md).
+> **Nightly only.** This guide uses `vibium find description`, `vibium find image`, `vibium run`, which are not in 26.8.21. See [What's in Nightly](../nightly.md).
 
 `find` locates an element by what it is, not only by how the page is built.
 A bare string is a description. Exact locators are explicit. A reference
