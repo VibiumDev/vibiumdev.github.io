@@ -26,7 +26,7 @@ jobs:
         with:
           path: ./site
           package-manager: pnpm@latest
-          build-cmd: make -C .. build
+          build-cmd: make -C .. test
         env:
           SITE_URL: ${{ vars.PAGES_SITE_URL || 'https://vibium.com' }}
           BASE_PATH: ${{ vars.PAGES_BASE_PATH || '/' }}
