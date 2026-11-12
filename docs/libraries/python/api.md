@@ -278,6 +278,8 @@ Take a page screenshot
 
 `screenshot(full_page: Optional[bool] = None, clip: Optional[Dict[str, Any]] = None) -> bytes`
 
+Take a screenshot. Returns PNG bytes.
+
 Example: `Path("page.png").write_bytes(vibe.screenshot())`
 
 CLI `vibium screenshot` · MCP `browser_screenshot`
@@ -310,11 +312,15 @@ Add a script tag
 
 `add_script(source: str) -> None`
 
+Inject a script into the page. Pass a URL or inline JavaScript.
+
 **`page.add_style(src)`**
 
 Add a style tag
 
 `add_style(source: str) -> None`
+
+Inject a stylesheet into the page. Pass a URL or inline CSS.
 
 **`page.expose(name, fn)`**
 
@@ -322,11 +328,15 @@ Expose a function to the page
 
 `expose(name: str, fn: Union[str, Callable[..., Any]]) -> None`
 
+Expose a function on window.
+
 **`page.wait(ms)`**
 
 Wait for a duration
 
 `wait(ms: int) -> None`
+
+Wait for a fixed amount of time (milliseconds).
 
 CLI `vibium sleep <ms>` · MCP `browser_sleep`
 
@@ -382,6 +392,8 @@ Set viewport size
 
 `set_viewport(size: Dict[str, int]) -> None`
 
+Set the viewport size. size: {width, height}.
+
 Example: `vibe.set_viewport({"width": 375, "height": 812})`
 
 CLI `vibium viewport <w> <h>` · MCP `browser_set_viewport`
@@ -391,6 +403,8 @@ CLI `vibium viewport <w> <h>` · MCP `browser_set_viewport`
 Get viewport size
 
 `viewport() -> Dict[str, int]`
+
+Get the current viewport size.
 
 CLI `vibium viewport` · MCP `browser_get_viewport`
 
@@ -417,6 +431,8 @@ Set page HTML
 
 `set_content(html: str) -> None`
 
+Replace the page HTML content.
+
 Example: `vibe.set_content("<h1>Hello</h1>")`
 
 CLI `vibium content <html>` · MCP `browser_set_content`
@@ -427,6 +443,8 @@ Override geolocation
 
 `set_geolocation(coords: Dict[str, float]) -> None`
 
+Override the browser's geolocation.
+
 CLI `vibium geolocation <lat> <lon>` · MCP `browser_set_geolocation`
 
 **`page.set_window(**opts)`**
@@ -434,6 +452,8 @@ CLI `vibium geolocation <lat> <lon>` · MCP `browser_set_geolocation`
 Set window size/position
 
 `set_window(**options: Any) -> None`
+
+Set the OS browser window size, position, or state.
 
 CLI `vibium window <opts>` · MCP `browser_set_window`
 
@@ -443,6 +463,8 @@ Get window info
 
 `window() -> Dict[str, Any]`
 
+Get the current OS browser window state and dimensions.
+
 CLI `vibium window` · MCP `browser_get_window`
 
 **`page.a11y_tree(opts?)`**
@@ -450,6 +472,8 @@ CLI `vibium window` · MCP `browser_get_window`
 Get accessibility tree
 
 `a11y_tree(everything: Optional[bool] = None, root: Optional[str] = None) -> A11yNode`
+
+Get the accessibility tree for the page.
 
 Example: `tree = vibe.a11y_tree()`
 
@@ -461,6 +485,8 @@ List all frames
 
 `frames() -> List[Page]`
 
+Get all child frames of this page.
+
 CLI `vibium frames` · MCP `browser_frames`
 
 **`page.frame(name_or_url)`**
@@ -469,6 +495,8 @@ Get a frame by name/URL
 
 `frame(name_or_url: str) -> Optional[Page]`
 
+Find a frame by name or URL substring.
+
 CLI `vibium frame <ref>` · MCP `browser_frame`
 
 **`page.main_frame()`**
@@ -476,6 +504,8 @@ CLI `vibium frame <ref>` · MCP `browser_frame`
 Get the main frame
 
 `main_frame() -> Page`
+
+Returns this page — the page IS its own main frame.
 
 **`page.bring_to_front()`**
 
@@ -507,11 +537,15 @@ Remove a route handler
 
 `unroute(pattern: str) -> None`
 
+Remove a previously registered route.
+
 **`page.set_headers(headers)`**
 
 Set extra HTTP headers
 
 `set_headers(headers: Dict[str, str]) -> None`
+
+Set extra HTTP headers for all requests in this page.
 
 **`page.on_request(fn)`**
 
@@ -580,6 +614,8 @@ Listen for WebSocket connections opened by the page.
 Remove all event listeners
 
 `remove_all_listeners(event: Optional[str] = None) -> None`
+
+Remove all listeners for a given event, or all events.
 
 **`page.capture.response(pat, fn?)`**
 
@@ -1097,17 +1133,23 @@ Create a page in a context
 
 `new_page() -> Page`
 
+Create a new page (tab) in this context.
+
 **`context.close()`**
 
 Close the context
 
 `close() -> None`
 
+Close this context and all its pages.
+
 **`context.cookies(urls?)`**
 
 Get cookies
 
 `cookies(urls: Optional[List[str]] = None) -> List[Cookie]`
+
+Get cookies for this context.
 
 CLI `vibium cookies` · MCP `browser_get_cookies`
 
@@ -1117,6 +1159,8 @@ Set cookies
 
 `set_cookies(cookies: List[SetCookieParam]) -> None`
 
+Set cookies in this context.
+
 CLI `vibium cookies <n> <v>` · MCP `browser_set_cookie`
 
 **`context.clear_cookies()`**
@@ -1124,6 +1168,8 @@ CLI `vibium cookies <n> <v>` · MCP `browser_set_cookie`
 Clear cookies
 
 `clear_cookies() -> None`
+
+Clear all cookies in this context.
 
 CLI `vibium cookies clear` · MCP `browser_delete_cookies`
 
@@ -1133,6 +1179,8 @@ Get storage state
 
 `storage() -> StorageState`
 
+Get the storage state (cookies + localStorage + sessionStorage).
+
 CLI `vibium storage` · MCP `browser_storage_state`
 
 **`context.set_storage(state)`**
@@ -1140,6 +1188,8 @@ CLI `vibium storage` · MCP `browser_storage_state`
 Set storage state
 
 `set_storage(state: StorageState) -> None`
+
+Set the storage state (cookies + localStorage + sessionStorage).
 
 MCP `browser_restore_storage`
 
@@ -1149,11 +1199,15 @@ Clear all storage
 
 `clear_storage() -> None`
 
+Clear all storage (cookies + localStorage + sessionStorage).
+
 **`context.add_init_script(script)`**
 
 Add an init script
 
 `add_init_script(script: str) -> str`
+
+Add an init script that runs before page scripts in this context.
 
 **`context.id`**
 
@@ -1266,6 +1320,8 @@ swipe(
 ) -> None
 ```
 
+Swipe in a direction, or from (x1, y1) to (x2, y2). The finger stays down for the move, so the gesture reads as a swipe/fling rather than two taps.
+
 CLI `vibium swipe <direction>` · MCP `browser_swipe`
 
 **`touch.long_press(x, y, duration_ms?)`**
@@ -1273,6 +1329,8 @@ CLI `vibium swipe <direction>` · MCP `browser_swipe`
 Long-press at coordinates **(nightly)**
 
 `long_press(x: float, y: float, duration_ms: Optional[int] = None) -> None`
+
+Press and hold at (x, y) for duration_ms before releasing (default 500).
 
 CLI `vibium long-press <x> <y>` · MCP `browser_long_press`
 
@@ -1284,6 +1342,8 @@ Install fake timers
 
 `install(time: Optional[Union[int, str]] = None, timezone: Optional[str] = None) -> None`
 
+Install fake clock, overriding Date, setTimeout, setInterval, etc.
+
 MCP `page_clock_install`
 
 **`clock.fast_forward(ticks)`**
@@ -1291,6 +1351,8 @@ MCP `page_clock_install`
 Fast-forward time
 
 `fast_forward(ticks: int) -> None`
+
+Jump forward by ticks ms, fire each due timer at most once.
 
 MCP `page_clock_fast_forward`
 
@@ -1300,6 +1362,8 @@ Run timers for a duration
 
 `run_for(ticks: int) -> None`
 
+Advance ticks ms, firing all callbacks systematically.
+
 MCP `page_clock_run_for`
 
 **`clock.pause_at(time)`**
@@ -1307,6 +1371,8 @@ MCP `page_clock_run_for`
 Pause clock at a time
 
 `pause_at(time: Union[int, str]) -> None`
+
+Jump to a specific time and pause.
 
 MCP `page_clock_pause_at`
 
@@ -1316,6 +1382,8 @@ Resume clock
 
 `resume() -> None`
 
+Resume real-time progression from current fake time.
+
 MCP `page_clock_resume`
 
 **`clock.set_fixed_time(time)`**
@@ -1323,6 +1391,8 @@ MCP `page_clock_resume`
 Set fixed fake time
 
 `set_fixed_time(time: Union[int, str]) -> None`
+
+Freeze Date.now() at a value permanently. Timers still run.
 
 MCP `page_clock_set_fixed_time`
 
@@ -1332,6 +1402,8 @@ Set system time
 
 `set_system_time(time: Union[int, str]) -> None`
 
+Set Date.now() without triggering timers.
+
 MCP `page_clock_set_system_time`
 
 **`clock.set_timezone(tz)`**
@@ -1339,6 +1411,8 @@ MCP `page_clock_set_system_time`
 Set timezone
 
 `set_timezone(timezone: str) -> None`
+
+Override the browser timezone.
 
 MCP `page_clock_set_timezone`
 
@@ -1371,6 +1445,8 @@ Stop recording, return trace **(changed in nightly)**
 
 `stop(path: Optional[str] = None, upload: Union[bool, str] = False) -> RecordingResult`
 
+Stop recording and deliver the zip to the declared path.
+
 CLI `vibium record stop` · MCP `browser_record_stop`
 
 **`recording.start_chunk(opts?)`**
@@ -1378,6 +1454,8 @@ CLI `vibium record stop` · MCP `browser_record_stop`
 Start a recording chunk
 
 `start_chunk(name: Optional[str] = None, title: Optional[str] = None) -> None`
+
+Start a new recording chunk.
 
 CLI `vibium record chunk start` · MCP `browser_record_start_chunk`
 
@@ -1387,6 +1465,8 @@ Stop a recording chunk
 
 `stop_chunk(path: Optional[str] = None) -> RecordingResult`
 
+Stop the current chunk.
+
 CLI `vibium record chunk stop` · MCP `browser_record_stop_chunk`
 
 **`recording.start_group(name, location?)`**
@@ -1395,6 +1475,8 @@ Start a logical group
 
 `start_group(name: str, location: Optional[Dict[str, Any]] = None) -> None`
 
+Start a named group of actions in the recording.
+
 CLI `vibium record group start <name>` · MCP `browser_record_start_group`
 
 **`recording.stop_group()`**
@@ -1402,6 +1484,8 @@ CLI `vibium record group start <name>` · MCP `browser_record_start_group`
 Stop a logical group
 
 `stop_group() -> None`
+
+End the current group.
 
 CLI `vibium record group stop` · MCP `browser_record_stop_group`
 
@@ -1428,6 +1512,8 @@ fulfill(
 ) -> None
 ```
 
+Fulfill the request with a custom response.
+
 **`route.continue_(overrides?)`**
 
 Continue an intercepted request
@@ -1441,11 +1527,15 @@ continue_(
 ) -> None
 ```
 
+Continue the request with optional overrides.
+
 **`route.abort()`**
 
 Abort an intercepted request
 
 `abort() -> None`
+
+Abort the request.
 
 ## Dialog
 
@@ -1455,11 +1545,15 @@ Get dialog message
 
 `message() -> str`
 
+The dialog message text.
+
 **`dialog.type()`**
 
 Get dialog type
 
 `type() -> str`
+
+The dialog type: 'alert', 'confirm', 'prompt', or 'beforeunload'.
 
 **`dialog.default_value()`**
 
@@ -1467,11 +1561,15 @@ Get dialog default value
 
 `default_value() -> str`
 
+The default value for prompt dialogs.
+
 **`dialog.accept(prompt_text?)`**
 
 Accept the dialog
 
 `accept(prompt_text: Optional[str] = None) -> None`
+
+Accept the dialog. For prompt dialogs, optionally provide text.
 
 CLI `vibium dialog accept` · MCP `browser_dialog_accept`
 
@@ -1480,6 +1578,8 @@ CLI `vibium dialog accept` · MCP `browser_dialog_accept`
 Dismiss the dialog
 
 `dismiss() -> None`
+
+Dismiss the dialog (cancel/close).
 
 CLI `vibium dialog dismiss` · MCP `browser_dialog_dismiss`
 

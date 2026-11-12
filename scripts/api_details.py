@@ -278,10 +278,16 @@ def parse_python(sources: dict[str, str]) -> Details:
             for item in node.body:
                 if not isinstance(item, (ast.FunctionDef, ast.AsyncFunctionDef)):
                     continue
-                if item.name.startswith("_") or item.name in members:
+                if item.name.startswith("_"):
                     continue
                 doc = " ".join((ast.get_docstring(item) or "").split("\n\n")[0].split())
                 doc = escape_markdown(doc.replace("``", "`"))
+                if item.name in members:
+                    # The sync class came first. Its methods often carry no
+                    # docstring where the async twin does; same method, so
+                    # the async text applies.
+                    members[item.name].doc = members[item.name].doc or doc
+                    continue
                 members[item.name] = Member([python_signature(item)], doc)
     return details
 
