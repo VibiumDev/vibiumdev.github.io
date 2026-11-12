@@ -1,6 +1,6 @@
 # Vibium Website
 
-[![Agent readability: 33/100](https://img.shields.io/badge/a14y-33%2F100-c2410c?label=agent%20readability)](https://a14y.dev/badge/?s=33&v=0.2.0&a=24&t=38&p=8&f=16&w=0&e=0&n=14&d=2026-05-26&m=site&u=https%3A%2F%2Fvibium.com%2F)
+[![Agent readability: 89/100](https://img.shields.io/badge/a14y-89%2F100-15803d?label=agent%20readability)](https://a14y.dev/badge/?s=89&v=0.2.0&a=3261&t=5894&p=2897&f=364&w=0&e=0&n=2633&d=2026-11-12&m=site&u=https%3A%2F%2Fvibium.com%2F)
 
 Browser automation for AI agents and humans, built on WebDriver BiDi.
 
