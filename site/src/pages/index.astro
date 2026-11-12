@@ -103,6 +103,15 @@ const jsonLd = {
               We sent a confirmation to your email. Check spam if you do not see it.
             </p>
           </div>
+
+          <p class="surfaces">
+            Drive a real browser from the
+            <a href="/docs/cli/">CLI</a>,
+            <a href="/docs/mcp/">MCP</a>,
+            <a href="/docs/libraries/javascript/">JavaScript</a>,
+            <a href="/docs/libraries/python/">Python</a>, or
+            <a href="/docs/libraries/java/">Java</a>.
+          </p>
         </section>
       </main>
 
@@ -408,6 +417,27 @@ const jsonLd = {
     margin: 0;
     color: rgba(255, 255, 255, 0.6);
     font-size: 0.875rem;
+  }
+
+  .surfaces {
+    margin: 2rem 0 0;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.875rem;
+    opacity: 0;
+    animation: fade-up 0.8s ease 0.4s forwards;
+  }
+
+  .surfaces a {
+    color: var(--landing-text);
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.35);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 160ms ease;
+  }
+
+  .surfaces a:hover,
+  .surfaces a:focus-visible {
+    text-decoration-color: #fff;
   }
 
   .success-message,

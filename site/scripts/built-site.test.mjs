@@ -45,6 +45,9 @@ test('homepage is the Vibium landing page and links to docs', async () => {
   assert.match(html, /href="\/docs\/"/);
   assert.match(html, /Subscribe for Vibium updates/);
   assert.match(html, /Vibium links/);
+  for (const path of ['cli', 'mcp', 'libraries/javascript', 'libraries/python', 'libraries/java']) {
+    assert.ok(html.includes(`href="/docs/${path}/"`), `homepage does not link to /docs/${path}/`);
+  }
 });
 
 test('homepage publishes agent-readable metadata', async () => {
