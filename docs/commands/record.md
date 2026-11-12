@@ -128,7 +128,8 @@ vibium record start [flags]
 ```sh
 vibium record start
 # Start recording with screenshots (default); video too when the
-# engine supports it (Firefox 154+)
+# engine supports it (Firefox 154+), or when the session drives a
+# device on a station or a Roadie
 
 vibium record start --video -o record.zip
 # Require video — fails with an explanatory error on Chrome

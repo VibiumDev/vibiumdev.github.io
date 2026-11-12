@@ -18,11 +18,13 @@ Get a nightly from the [releases page](https://github.com/VibiumDev/vibium/relea
 | [`vibium find image`](commands/find.md) | Find where a reference image appears on screen |
 | [`vibium find tag`](commands/find.md) | Find element by HTML tag name |
 | [`vibium is set`](commands/is.md) | Check if a checkbox or radio is checked |
+| [`vibium listen`](commands/listen.md) | Capture audio from a target and return a transcript. |
 | [`vibium long-press`](commands/long-press.md) | Press and hold a touchscreen at coordinates |
 | [`vibium ready`](commands/ready.md) | Check the selected local browser executable files, then test AI when configured. No browser or driver is launched. |
 | [`vibium ready ai`](commands/ready.md) | Require valid AI configuration and test authentication, model access, tool calling, and a structured response. |
 | [`vibium ready browser`](commands/ready.md) | List discovered Vibium browser installations and check the selected Chrome or Firefox executable files. |
 | [`vibium run`](commands/run.md) | Accomplish a live browser goal using VIBIUM_AI_* configuration. |
+| [`vibium say`](commands/say.md) | Turn text into speech and play it into a target. |
 | [`vibium set`](commands/set.md) | Check a checkbox or radio button |
 | [`vibium setup`](commands/setup.md) | Interactive setup for AI settings, agent skills, and the local browser. |
 | [`vibium swipe`](commands/swipe.md) | Swipe a touchscreen in a direction or from one point to another |

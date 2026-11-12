@@ -88,6 +88,110 @@
       "nightlyOnly": true
     },
     {
+      "name": "vibium_say",
+      "description": "Speak text into the target. The default is the current session: the phone on a Roadie, or the page's microphone in a browser. With no session open it is this machine's speakers. Returns when playback ends.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "cache": {
+            "description": "false renders again instead of replaying cached audio",
+            "type": "boolean"
+          },
+          "cacheDir": {
+            "description": "Where rendered audio is kept",
+            "type": "string"
+          },
+          "file": {
+            "description": "A WAV file to play as it is, in place of text",
+            "type": "string"
+          },
+          "language": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "provider": {
+            "description": "Text-to-speech provider or preset; the default comes from the server environment",
+            "type": "string"
+          },
+          "speed": {
+            "type": "number"
+          },
+          "target": {
+            "description": "session, local, or a path ending in .wav",
+            "type": "string"
+          },
+          "text": {
+            "description": "What to say. Give text or file",
+            "type": "string"
+          },
+          "voice": {
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": true
+    },
+    {
+      "name": "vibium_listen",
+      "description": "Listen to the target and return what was said. The default is the current session: what the phone or the page plays. With no session open it is this machine's microphone. Hears from the end of the last vibium_say, so a reply that began before this call is not missed. Stops after trailing silence.",
+      "inputSchema": {
+        "additionalProperties": false,
+        "properties": {
+          "allowSilence": {
+            "description": "Return an empty transcript instead of an error when nothing is heard",
+            "type": "boolean"
+          },
+          "duration": {
+            "description": "Maximum capture length from this call, in ms (default 30000)",
+            "type": "number"
+          },
+          "language": {
+            "type": "string"
+          },
+          "model": {
+            "type": "string"
+          },
+          "page": {
+            "description": "Page id (from browser_new_page or browser_list_pages) that pins this call to that page instead of the globally current one. Concurrent callers sharing this server should create their own page and pass its id on every call.",
+            "type": "string"
+          },
+          "path": {
+            "description": "Also save the captured audio as a WAV file",
+            "type": "string"
+          },
+          "provider": {
+            "description": "Speech-to-text provider or preset; the default comes from the server environment",
+            "type": "string"
+          },
+          "silence": {
+            "description": "Trailing silence that ends the reply, in ms (default 1000). 0 turns endpointing off",
+            "type": "number"
+          },
+          "target": {
+            "description": "session, local, or a path ending in .wav",
+            "type": "string"
+          },
+          "timeout": {
+            "description": "How long to wait for speech to start, from this call, in ms (default 10000)",
+            "type": "number"
+          },
+          "transcribe": {
+            "description": "false captures without a transcript; speech onset and reply latency are still measured",
+            "type": "boolean"
+          }
+        },
+        "type": "object"
+      },
+      "nightlyOnly": true
+    },
+    {
       "name": "browser_start",
       "description": "Start a browser session",
       "inputSchema": {
@@ -2304,7 +2408,7 @@
             "type": "string"
           },
           "video": {
-            "description": "Omit to record video when the engine supports it (Firefox 154+). Set true to require video — fails with an explanatory error on Chrome. Set false to disable.",
+            "description": "Omit to record video when it can be had: the engine's screencast (Firefox 154+), or the device's screen stream on a station or Roadie session. Set true to require video — fails with an explanatory error on Chrome. Set false to disable.",
             "type": "boolean"
           },
           "video_frame_rate": {

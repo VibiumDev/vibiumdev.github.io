@@ -48,6 +48,7 @@ hand the whole task to a model with [`run`](run.md) and verify it with
 | [`vibium is`](is.md) | Check element state (visible, enabled, set, actionable) |
 | [`vibium is-installed`](is-installed.md) | Check if the selected browser is installed (exit 0 = yes, exit 1 = no) |
 | [`vibium keys`](keys.md) | Press a key or key combination |
+| [`vibium listen`](listen.md) | Capture audio from a target and return a transcript. **(nightly)** |
 | [`vibium long-press`](long-press.md) | Press and hold a touchscreen at coordinates **(nightly)** |
 | [`vibium map`](map.md) | Map interactive page elements with @refs |
 | [`vibium mcp`](mcp.md) | Start the Model Context Protocol (MCP) server. |
@@ -63,6 +64,7 @@ hand the whole task to a model with [`run`](run.md) and verify it with
 | [`vibium record`](record.md) | Record browser sessions (screenshots and snapshots) |
 | [`vibium reload`](reload.md) | Reload the current page |
 | [`vibium run`](run.md) | Accomplish a live browser goal using VIBIUM_AI_* configuration. **(nightly)** |
+| [`vibium say`](say.md) | Turn text into speech and play it into a target. **(nightly)** |
 | [`vibium screenshot`](screenshot.md) | Capture a screenshot (optionally navigate to URL first) |
 | [`vibium scroll`](scroll.md) | Scroll the page or an element |
 | [`vibium select`](select.md) | Select an option in a <select> element |
