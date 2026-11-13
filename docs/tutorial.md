@@ -86,16 +86,16 @@ the steps individually so each `find` result is visible before you act on
 its reference:
 
 ```sh
-vibium record start
+vibium record start                # add -o search.zip to choose the file name
 vibium go https://duckduckgo.com
 vibium find placeholder "Search privately"   # note the @eN it returns, e.g. @e1
 vibium fill @e1 "vibium"
 vibium press Enter
 vibium wait text "vibium"
-vibium record stop   # writes record.zip
+vibium record stop   # writes record-<timestamp>.zip
 ```
 
-`record.zip` contains the captured screenshots and is convenient for sharing
+The zip contains the captured screenshots and is convenient for sharing
 failures, debugging tests, attaching to a bug report, or playing back in the
 [Vibium Record Player](https://player.vibium.dev/).
 

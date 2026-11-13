@@ -14,7 +14,7 @@ fill forms, click buttons, extract text, capture screenshots, and record session
   accomplishes whole goals and [`vibium check`](run-and-check.md) verifies
   outcomes independently.
 - **Zero configuration**. A single install pulls down Google Chrome for
-  Testing (Firefox is one flag away). No driver binaries, no profile setup,
+  Testing (Firefox is one flag away). No drivers to install, no profile setup,
   no protocol shims to glue together.
 - **Standards-based**. Built on the [WebDriver BiDi](https://w3c.github.io/webdriver-bidi/)
   protocol rather than a vendor-specific debugging protocol.

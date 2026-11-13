@@ -2,7 +2,8 @@
 
 `record start` begins a recording. From that point on, Vibium captures a
 screenshot at every step. `record stop` ends the recording and writes the
-captured screenshots to `record.zip` in the current directory.
+captured screenshots to `record-<timestamp>.zip` in the current directory.
+Pass `-o` to `record start` to choose the file.
 
 The resulting archive is useful for:
 
@@ -13,11 +14,11 @@ The resulting archive is useful for:
 ## Examples
 
 ```sh
-vibium record start
+vibium record start -o session.zip
 vibium go https://example.com
 vibium click @e1
 vibium record stop
-ls record.zip
+ls session.zip
 ```
 
 ## See also

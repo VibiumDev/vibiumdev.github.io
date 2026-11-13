@@ -20,7 +20,7 @@ and answers live inside `result`.
 
 ```sh
 vibium --json url
-# {"ok":true,"result":{"url":"https://example.com/"}}
+# {"ok":true,"result":"https://example.com/"}
 ```
 
 ## Exit codes
@@ -43,6 +43,10 @@ vibium check "the cart shows one item" --json
 vibium run "add a battery pack to the cart" --json
 # exit 0 even for not_completed; require result.status == "completed"
 ```
+
+On nightly builds, `check --expect pass` turns the verdict into an exit
+code for you: FAIL exits 2 and REVIEW exits 3, while execution errors keep
+exit 1.
 
 `is ...` subcommands print `true`/`false` and exit 0 either way; add
 `--fail` to turn a `false` answer into exit 1 for shell conditionals.
