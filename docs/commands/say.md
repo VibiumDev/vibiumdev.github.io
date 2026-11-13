@@ -32,13 +32,17 @@ vibium say "<text>" | say --file <clip.wav> [flags]
 
 ```sh
 vibium say "Come here, Watson"
-# Said "Come here, Watson" (1.4 s, openai gpt-4o-mini-tts alloy)
+# Said "Come here, Watson" (1.4 s, openai gpt-4o-mini-tts cedar)
 
 vibium say "Come here, Watson" --target watson.wav
-# Wrote watson.wav (1.4 s, openai gpt-4o-mini-tts alloy, cached)
+# Wrote watson.wav (1.4 s, openai gpt-4o-mini-tts cedar, cached)
 
 echo "What time is it?" | vibium say - --target local
 # Reads the text from stdin.
+
+VIBIUM_PIPER_URL=http://127.0.0.1:5000 vibium say "Come here, Watson"
+# Said "Come here, Watson" (1.2 s, piper-server)
+# Speaks through a Piper server you started, which keeps its voice loaded.
 
 vibium say -- "-5 degrees"
 # Text that starts with a dash goes after --.
