@@ -32,6 +32,11 @@
           "public static Browser start();",
           "public static Browser start(StartOptions options);"
         ]
+      },
+      "examples": {
+        "javascript": "const bro = await browser.start({ headless: true })",
+        "python": "bro = browser.start(headless=True)",
+        "java": "Browser bro = Vibium.start(new StartOptions().headless(true));"
       }
     },
     {
@@ -56,6 +61,11 @@
         "java": [
           "public Page page();"
         ]
+      },
+      "examples": {
+        "javascript": "const vibe = await bro.page()",
+        "python": "vibe = bro.page()",
+        "java": "Page vibe = bro.page();"
       }
     },
     {
@@ -80,6 +90,11 @@
         "java": [
           "public Page newPage();"
         ]
+      },
+      "examples": {
+        "javascript": "const second = await bro.newPage()",
+        "python": "second = bro.new_page()",
+        "java": "Page second = bro.newPage();"
       }
     },
     {
@@ -152,6 +167,11 @@
         "java": [
           "public void stop();"
         ]
+      },
+      "examples": {
+        "javascript": "await bro.stop()",
+        "python": "bro.stop()",
+        "java": "bro.stop();"
       }
     },
     {
@@ -269,6 +289,11 @@
         "java": [
           "public void go(String url);"
         ]
+      },
+      "examples": {
+        "javascript": "await vibe.go('https://example.com')",
+        "python": "vibe.go(\"https://example.com\")",
+        "java": "vibe.go(\"https://example.com\");"
       }
     },
     {
@@ -293,6 +318,11 @@
         "java": [
           "public void back();"
         ]
+      },
+      "examples": {
+        "javascript": "await vibe.back()",
+        "python": "vibe.back()",
+        "java": "vibe.back();"
       }
     },
     {
@@ -341,6 +371,11 @@
         "java": [
           "public void reload();"
         ]
+      },
+      "examples": {
+        "javascript": "await vibe.reload()",
+        "python": "vibe.reload()",
+        "java": "vibe.reload();"
       }
     },
     {
@@ -365,6 +400,11 @@
         "java": [
           "public String url();"
         ]
+      },
+      "examples": {
+        "javascript": "const url = await vibe.url()",
+        "python": "url = vibe.url()",
+        "java": "String url = vibe.url();"
       }
     },
     {
@@ -389,6 +429,11 @@
         "java": [
           "public String title();"
         ]
+      },
+      "examples": {
+        "javascript": "const title = await vibe.title()",
+        "python": "title = vibe.title()",
+        "java": "String title = vibe.title();"
       }
     },
     {
@@ -413,6 +458,11 @@
         "java": [
           "public String content();"
         ]
+      },
+      "examples": {
+        "javascript": "const html = await vibe.content()",
+        "python": "html = vibe.content()",
+        "java": "String html = vibe.content();"
       }
     },
     {
@@ -444,6 +494,11 @@
           "public Element find(String description, FindOptions options);",
           "public Element find(SelectorOptions options);"
         ]
+      },
+      "examples": {
+        "javascript": "const button = await vibe.find({ role: 'button', text: 'Submit' })",
+        "python": "button = vibe.find(role=\"button\", text=\"Submit\")",
+        "java": "Element button = vibe.find(new SelectorOptions().role(\"button\").text(\"Submit\"));"
       }
     },
     {
@@ -475,6 +530,11 @@
           "public List<Element> findAll(String description, FindOptions options);",
           "public List<Element> findAll(SelectorOptions options);"
         ]
+      },
+      "examples": {
+        "javascript": "const links = await vibe.findAll({ role: 'link' })",
+        "python": "links = vibe.find_all(role=\"link\")",
+        "java": "List<Element> links = vibe.findAll(new SelectorOptions().role(\"link\"));"
       }
     },
     {
@@ -500,6 +560,11 @@
           "public byte[] screenshot();",
           "public byte[] screenshot(ScreenshotOptions options);"
         ]
+      },
+      "examples": {
+        "javascript": "fs.writeFileSync('page.png', await vibe.screenshot())",
+        "python": "Path(\"page.png\").write_bytes(vibe.screenshot())",
+        "java": "Files.write(Path.of(\"page.png\"), vibe.screenshot());"
       }
     },
     {
@@ -553,6 +618,11 @@
         "java": [
           "public Object evaluate(String expression);"
         ]
+      },
+      "examples": {
+        "javascript": "const count = await vibe.evaluate('document.links.length')",
+        "python": "count = vibe.evaluate(\"document.links.length\")",
+        "java": "Object count = vibe.evaluate(\"document.links.length\");"
       }
     },
     {
@@ -694,6 +764,11 @@
           "public Object waitForFunction(String fn);",
           "public Object waitForFunction(String fn, WaitOptions options);"
         ]
+      },
+      "examples": {
+        "javascript": "await vibe.waitForFunction('document.readyState === \"complete\"')",
+        "python": "vibe.wait_for_function('document.readyState === \"complete\"')",
+        "java": "vibe.waitForFunction(\"document.readyState === \\\"complete\\\"\");"
       }
     },
     {
@@ -719,6 +794,11 @@
           "public void waitForURL(String pattern);",
           "public void waitForURL(String pattern, WaitOptions options);"
         ]
+      },
+      "examples": {
+        "javascript": "await vibe.waitForURL('**/next')",
+        "python": "vibe.wait_for_url(\"**/next\")",
+        "java": "vibe.waitForURL(\"**/next\");"
       }
     },
     {
@@ -744,6 +824,11 @@
           "public void waitForLoad();",
           "public void waitForLoad(WaitOptions options);"
         ]
+      },
+      "examples": {
+        "javascript": "await vibe.waitForLoad()",
+        "python": "vibe.wait_for_load()",
+        "java": "vibe.waitForLoad();"
       }
     },
     {
@@ -793,6 +878,11 @@
         "java": [
           "public void setViewport(ViewportSize size);"
         ]
+      },
+      "examples": {
+        "javascript": "await vibe.setViewport({ width: 375, height: 812 })",
+        "python": "vibe.set_viewport({\"width\": 375, \"height\": 812})",
+        "java": "vibe.setViewport(new ViewportSize(375, 812));"
       }
     },
     {
@@ -865,6 +955,11 @@
         "java": [
           "public void setContent(String html);"
         ]
+      },
+      "examples": {
+        "javascript": "await vibe.setContent('<h1>Hello</h1>')",
+        "python": "vibe.set_content(\"<h1>Hello</h1>\")",
+        "java": "vibe.setContent(\"<h1>Hello</h1>\");"
       }
     },
     {
@@ -962,6 +1057,11 @@
           "public A11yNode a11yTree();",
           "public A11yNode a11yTree(A11yOptions options);"
         ]
+      },
+      "examples": {
+        "javascript": "const tree = await vibe.a11yTree()",
+        "python": "tree = vibe.a11y_tree()",
+        "java": "A11yNode tree = vibe.a11yTree();"
       }
     },
     {
@@ -1178,6 +1278,11 @@
         "java": [
           "public void onRequest(Consumer<Request> callback);"
         ]
+      },
+      "examples": {
+        "javascript": "vibe.onRequest((req) => console.log(req.method(), req.url()))",
+        "python": "vibe.on_request(lambda req: print(req.method(), req.url()))",
+        "java": "vibe.onRequest(req -> System.out.println(req.method() + \" \" + req.url()));"
       }
     },
     {
@@ -1202,6 +1307,11 @@
         "java": [
           "public void onResponse(Consumer<Response> callback);"
         ]
+      },
+      "examples": {
+        "javascript": "vibe.onResponse((resp) => console.log(resp.status(), resp.url()))",
+        "python": "vibe.on_response(lambda resp: print(resp.status(), resp.url()))",
+        "java": "vibe.onResponse(resp -> System.out.println(resp.status() + \" \" + resp.url()));"
       }
     },
     {
@@ -1250,6 +1360,11 @@
         "java": [
           "public void onConsole(Consumer<ConsoleMessage> callback);"
         ]
+      },
+      "examples": {
+        "javascript": "vibe.onConsole((msg) => console.log(msg.type(), msg.text()))",
+        "python": "vibe.on_console(lambda msg: print(msg.type(), msg.text()))",
+        "java": "vibe.onConsole(msg -> System.out.println(msg.type() + \" \" + msg.text()));"
       }
     },
     {
@@ -1372,6 +1487,11 @@
           "public Response response(String pattern, Runnable action);",
           "public Response response(String pattern, Runnable action, WaitOptions options);"
         ]
+      },
+      "examples": {
+        "javascript": "const resp = await vibe.capture.response('**/api/users', () => vibe.find({ role: 'button', text: 'Users' }).click())",
+        "python": "resp = vibe.capture.response(\"**/api/users\", lambda: vibe.find(role=\"button\", text=\"Users\").click())",
+        "java": "Response resp = vibe.capture().response(\"**/api/users\", () -> vibe.find(new SelectorOptions().role(\"button\").text(\"Users\")).click());"
       }
     },
     {
@@ -1472,6 +1592,11 @@
           "public Download download(Runnable action);",
           "public Download download(Runnable action, WaitOptions options);"
         ]
+      },
+      "examples": {
+        "javascript": "const download = await vibe.capture.download(() => vibe.find({ role: 'link', text: 'Download' }).click())",
+        "python": "download = vibe.capture.download(lambda: vibe.find(role=\"link\", text=\"Download\").click())",
+        "java": "Download download = vibe.capture().download(() -> vibe.find(new SelectorOptions().role(\"link\").text(\"Download\")).click());"
       }
     },
     {
@@ -1873,6 +1998,11 @@
         "java": [
           "public void click();"
         ]
+      },
+      "examples": {
+        "javascript": "await vibe.find({ role: 'button', text: 'Submit' }).click()",
+        "python": "vibe.find(role=\"button\", text=\"Submit\").click()",
+        "java": "vibe.find(new SelectorOptions().role(\"button\").text(\"Submit\")).click();"
       }
     },
     {
@@ -1921,6 +2051,11 @@
         "java": [
           "public void fill(String value);"
         ]
+      },
+      "examples": {
+        "javascript": "await vibe.find({ label: 'Email' }).fill('user@example.com')",
+        "python": "vibe.find(label=\"Email\").fill(\"user@example.com\")",
+        "java": "vibe.find(new SelectorOptions().label(\"Email\")).fill(\"user@example.com\");"
       }
     },
     {
@@ -1945,6 +2080,11 @@
         "java": [
           "public void type(String text);"
         ]
+      },
+      "examples": {
+        "javascript": "await vibe.find({ label: 'Email' }).type('user@example.com')",
+        "python": "vibe.find(label=\"Email\").type(\"user@example.com\")",
+        "java": "vibe.find(new SelectorOptions().label(\"Email\")).type(\"user@example.com\");"
       }
     },
     {
@@ -1969,6 +2109,11 @@
         "java": [
           "public void press(String key);"
         ]
+      },
+      "examples": {
+        "javascript": "await vibe.find({ label: 'Email' }).press('Enter')",
+        "python": "vibe.find(label=\"Email\").press(\"Enter\")",
+        "java": "vibe.find(new SelectorOptions().label(\"Email\")).press(\"Enter\");"
       }
     },
     {
@@ -2024,6 +2169,11 @@
           "public void set();",
           "public void set(boolean value);"
         ]
+      },
+      "examples": {
+        "javascript": "await vibe.find({ css: 'input[type=\"checkbox\"]' }).set()",
+        "python": "vibe.find(css='input[type=\"checkbox\"]').set()",
+        "java": "vibe.find(new SelectorOptions().css(\"input[type=\\\"checkbox\\\"]\")).set();"
       }
     },
     {
@@ -2078,6 +2228,11 @@
         "java": [
           "public void selectOption(String value);"
         ]
+      },
+      "examples": {
+        "javascript": "await vibe.find({ label: 'Country' }).selectOption('de')",
+        "python": "vibe.find(label=\"Country\").select_option(\"de\")",
+        "java": "vibe.find(new SelectorOptions().label(\"Country\")).selectOption(\"de\");"
       }
     },
     {
@@ -2102,6 +2257,11 @@
         "java": [
           "public void hover();"
         ]
+      },
+      "examples": {
+        "javascript": "await vibe.find({ role: 'button', text: 'Menu' }).hover()",
+        "python": "vibe.find(role=\"button\", text=\"Menu\").hover()",
+        "java": "vibe.find(new SelectorOptions().role(\"button\").text(\"Menu\")).hover();"
       }
     },
     {
@@ -2295,6 +2455,11 @@
         "java": [
           "public String text();"
         ]
+      },
+      "examples": {
+        "javascript": "const heading = await vibe.find({ css: 'h1' }).text()",
+        "python": "heading = vibe.find(css=\"h1\").text()",
+        "java": "String heading = vibe.find(new SelectorOptions().css(\"h1\")).text();"
       }
     },
     {
@@ -2367,6 +2532,11 @@
         "java": [
           "public String value();"
         ]
+      },
+      "examples": {
+        "javascript": "const email = await vibe.find({ label: 'Email' }).value()",
+        "python": "email = vibe.find(label=\"Email\").value()",
+        "java": "String email = vibe.find(new SelectorOptions().label(\"Email\")).value();"
       }
     },
     {
@@ -2391,6 +2561,11 @@
         "java": [
           "public String attr(String name);"
         ]
+      },
+      "examples": {
+        "javascript": "const href = await vibe.find({ role: 'link', text: 'Next' }).attr('href')",
+        "python": "href = vibe.find(role=\"link\", text=\"Next\").attr(\"href\")",
+        "java": "String href = vibe.find(new SelectorOptions().role(\"link\").text(\"Next\")).attr(\"href\");"
       }
     },
     {
@@ -2523,6 +2698,11 @@
         "java": [
           "public boolean isVisible();"
         ]
+      },
+      "examples": {
+        "javascript": "const visible = await vibe.find({ role: 'button', text: 'Submit' }).isVisible()",
+        "python": "visible = vibe.find(role=\"button\", text=\"Submit\").is_visible()",
+        "java": "boolean visible = vibe.find(new SelectorOptions().role(\"button\").text(\"Submit\")).isVisible();"
       }
     },
     {
@@ -2749,6 +2929,11 @@
           "public Element find(String description, FindOptions options);",
           "public Element find(SelectorOptions childOptions);"
         ]
+      },
+      "examples": {
+        "javascript": "const home = await (await vibe.find({ css: 'nav' })).find({ role: 'link', text: 'Home' })",
+        "python": "home = vibe.find(css=\"nav\").find(role=\"link\", text=\"Home\")",
+        "java": "Element home = vibe.find(new SelectorOptions().css(\"nav\")).find(new SelectorOptions().role(\"link\").text(\"Home\"));"
       }
     },
     {
@@ -3071,6 +3256,11 @@
         "java": [
           "public void press(String key);"
         ]
+      },
+      "examples": {
+        "javascript": "await vibe.keyboard.press('Enter')",
+        "python": "vibe.keyboard.press(\"Enter\")",
+        "java": "vibe.keyboard().press(\"Enter\");"
       }
     },
     {

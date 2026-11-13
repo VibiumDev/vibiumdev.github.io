@@ -18,6 +18,9 @@ Signatures come from the latest nightly build. See
 is in the [API matrix](../../reference/api-matrix.md) and in
 [`/api.json`](/api.json).
 
+Examples assume `bro` is a started browser and `vibe` is its page, as in the
+[quickstart](index.md).
+
 ## Browser
 
 **`browser.start(opts?)`**
@@ -25,6 +28,8 @@ is in the [API matrix](../../reference/api-matrix.md) and in
 Launch browser and connect
 
 `start(urlOrOptions?: string | StartOptions, options?: StartOptions): Promise<Browser>;`
+
+Example: `const bro = await browser.start({ headless: true })`
 
 CLI `vibium start` · MCP `browser_start`
 
@@ -36,6 +41,8 @@ Get the default page
 
 Get the default page (first browsing context).
 
+Example: `const vibe = await bro.page()`
+
 **`browser.newPage()`**
 
 Create a new page
@@ -43,6 +50,8 @@ Create a new page
 `newPage(): Promise<Page>;`
 
 Create a new page (tab) in the default context.
+
+Example: `const second = await bro.newPage()`
 
 CLI `vibium page new` · MCP `browser_new_page`
 
@@ -71,6 +80,8 @@ Stop the browser
 `stop(): Promise<void>;`
 
 Stop the browser and clean up.
+
+Example: `await bro.stop()`
 
 CLI `vibium stop` · MCP `browser_stop`
 
@@ -106,6 +117,8 @@ Navigate to a URL
 
 `go(url: string): Promise<void>;`
 
+Example: `await vibe.go('https://example.com')`
+
 CLI `vibium go <url>` · MCP `browser_navigate`
 
 **`page.back()`**
@@ -115,6 +128,8 @@ Go back
 `back(): Promise<void>;`
 
 Navigate back in history.
+
+Example: `await vibe.back()`
 
 CLI `vibium back` · MCP `browser_back`
 
@@ -136,6 +151,8 @@ Reload page
 
 Reload the page.
 
+Example: `await vibe.reload()`
+
 CLI `vibium reload` · MCP `browser_reload`
 
 **`page.url()`**
@@ -145,6 +162,8 @@ Get current URL
 `url(): Promise<string>;`
 
 Get the current page URL.
+
+Example: `const url = await vibe.url()`
 
 CLI `vibium url` · MCP `browser_get_url`
 
@@ -156,6 +175,8 @@ Get page title
 
 Get the current page title.
 
+Example: `const title = await vibe.title()`
+
 CLI `vibium title` · MCP `browser_get_title`
 
 **`page.content()`**
@@ -166,6 +187,8 @@ Get page HTML
 
 Get the full HTML content of the page.
 
+Example: `const html = await vibe.content()`
+
 **`page.find(locator, opts?)`**
 
 Find a single element by description (a bare string), css, tag, semantic locator, or reference image; strategy auto, cv, vlm, or tree **(changed in nightly)**
@@ -173,6 +196,8 @@ Find a single element by description (a bare string), css, tag, semantic locator
 `find(selector: string | SelectorOptions, options?: FindOptions): FluentElement;`
 
 Find an element. A string is a natural-language description; an options object gives an exact locator (css, tag, role, text, ...) or a reference image. Waits for the element to exist.
+
+Example: `const button = await vibe.find({ role: 'button', text: 'Submit' })`
 
 CLI `vibium find <description>` · MCP `browser_find`
 
@@ -184,6 +209,8 @@ Find all matching elements, same locator forms **(changed in nightly)**
 
 Find all elements matching a description, image, css, or semantic options. Waits up to the timeout for at least one match, then returns an empty array if there is none. A timeout of 0 checks once without waiting. Each element carries a snapshot of its tag, text, and box taken at findAll time, readable via `el.info` with no further round trips: els.map(el =\> el.info.text). Live reads like el.text() re-resolve the element and fail if the page has changed since findAll.
 
+Example: `const links = await vibe.findAll({ role: 'link' })`
+
 CLI `vibium find --all <description>` · MCP `browser_find_all`
 
 **`page.screenshot(opts?)`**
@@ -193,6 +220,8 @@ Take a page screenshot
 `screenshot(options?: ScreenshotOptions): Promise<Buffer>;`
 
 Take a screenshot of the page. Returns a PNG buffer.
+
+Example: `fs.writeFileSync('page.png', await vibe.screenshot())`
 
 CLI `vibium screenshot` · MCP `browser_screenshot`
 
@@ -213,6 +242,8 @@ Evaluate JavaScript
 `evaluate<T = unknown>(expression: string | (() => T | Promise<T>)): Promise<T>;`
 
 Evaluate a JS expression string or argless function and return the deserialized value.
+
+Example: `const count = await vibe.evaluate('document.links.length')`
 
 CLI `vibium eval <expr>` · MCP `browser_evaluate`
 
@@ -262,6 +293,8 @@ waitForFunction(fn: string, options?: {
 
 Wait until a function returns a truthy value.
 
+Example: `await vibe.waitForFunction('document.readyState === "complete"')`
+
 CLI `vibium wait fn <expr>` · MCP `browser_wait_for_fn`
 
 **`page.waitForURL(url, opts?)`**
@@ -276,6 +309,8 @@ waitForURL(pattern: string, options?: {
 
 Wait until the page URL matches a pattern.
 
+Example: `await vibe.waitForURL('**/next')`
+
 CLI `vibium wait url <pat>` · MCP `browser_wait_for_url`
 
 **`page.waitForLoad(opts?)`**
@@ -289,6 +324,8 @@ waitForLoad(state?: string, options?: {
 ```
 
 Wait until the page reaches a load state.
+
+Example: `await vibe.waitForLoad()`
 
 CLI `vibium wait load` · MCP `browser_wait_for_load`
 
@@ -314,6 +351,8 @@ setViewport(size: {
 ```
 
 Set the viewport size.
+
+Example: `await vibe.setViewport({ width: 375, height: 812 })`
 
 CLI `vibium viewport <w> <h>` · MCP `browser_set_viewport`
 
@@ -357,6 +396,8 @@ Set page HTML
 `setContent(html: string): Promise<void>;`
 
 Replace the page HTML content.
+
+Example: `await vibe.setContent('<h1>Hello</h1>')`
 
 CLI `vibium content <html>` · MCP `browser_set_content`
 
@@ -424,6 +465,8 @@ a11yTree(options?: {
 ```
 
 Get the accessibility tree for the page.
+
+Example: `const tree = await vibe.a11yTree()`
 
 CLI `vibium a11y-tree` · MCP `browser_a11y_tree`
 
@@ -507,6 +550,8 @@ Listen for requests
 
 Register a callback for every outgoing request.
 
+Example: `vibe.onRequest((req) => console.log(req.method(), req.url()))`
+
 **`page.onResponse(fn)`**
 
 Listen for responses
@@ -514,6 +559,8 @@ Listen for responses
 `onResponse(fn: (response: Response) => void): void;`
 
 Register a callback for every completed response.
+
+Example: `vibe.onResponse((resp) => console.log(resp.status(), resp.url()))`
 
 **`page.onDialog(fn)`**
 
@@ -530,6 +577,8 @@ Listen for console messages
 `onConsole(handler: ((message: ConsoleMessage) => void) | 'collect'): void;`
 
 Register a handler for console messages, or pass 'collect' to buffer them for consoleMessages().
+
+Example: `vibe.onConsole((msg) => console.log(msg.type(), msg.text()))`
 
 **`page.onError(fn)`**
 
@@ -574,6 +623,8 @@ response(pattern: string, fn?: () => Promise<void>, options?: {
 ```
 
 Capture a response matching a URL pattern. Optionally pass fn to trigger the action.
+
+Example: `const resp = await vibe.capture.response('**/api/users', () => vibe.find({ role: 'button', text: 'Users' }).click())`
 
 **`page.capture.request(pat, fn?)`**
 
@@ -622,6 +673,8 @@ download(fn?: () => Promise<void>, options?: {
 ```
 
 Capture a download. Optionally pass fn to trigger the action.
+
+Example: `const download = await vibe.capture.download(() => vibe.find({ role: 'link', text: 'Download' }).click())`
 
 **`page.capture.dialog(fn?)`**
 
@@ -790,6 +843,8 @@ Click an element
 
 Click the element. Waits for element to be visible, stable, receive events, and enabled.
 
+Example: `await vibe.find({ role: 'button', text: 'Submit' }).click()`
+
 CLI `vibium click <sel>` · MCP `browser_click`
 
 **`el.dblclick(opts?)`**
@@ -810,6 +865,8 @@ Fill an input field
 
 Fill the element with text (clears existing content first). For inputs and textareas.
 
+Example: `await vibe.find({ label: 'Email' }).fill('user@example.com')`
+
 CLI `vibium fill <sel> <val>` · MCP `browser_fill`
 
 **`el.type(text, opts?)`**
@@ -820,6 +877,8 @@ Type text character by character
 
 Type text into the element (appends to existing content). Waits for element to be visible, stable, receive events, enabled, and editable.
 
+Example: `await vibe.find({ label: 'Email' }).type('user@example.com')`
+
 CLI `vibium type <text>` · MCP `browser_type`
 
 **`el.press(key, opts?)`**
@@ -829,6 +888,8 @@ Press a key on focused element
 `press(key: string, options?: ActionOptions): Promise<void>;`
 
 Press a key while the element is focused. Supports key names ("Enter", "Tab") and combos ("Control+a").
+
+Example: `await vibe.find({ label: 'Email' }).press('Enter')`
 
 CLI `vibium press <key>` · MCP `browser_press`
 
@@ -847,6 +908,8 @@ Check a checkbox **(changed in nightly)**
 `set(value?: boolean, options?: ActionOptions): Promise<void>;`
 
 Check a checkbox (no-op if already checked).
+
+Example: `await vibe.find({ css: 'input[type="checkbox"]' }).set()`
 
 CLI `vibium set <sel>` · MCP `browser_set`
 
@@ -868,6 +931,8 @@ Select a dropdown option
 
 Select an option in a \<select\> element by value.
 
+Example: `await vibe.find({ label: 'Country' }).selectOption('de')`
+
 CLI `vibium select <sel> <val>` · MCP `browser_select`
 
 **`el.hover(opts?)`**
@@ -877,6 +942,8 @@ Hover over an element
 `hover(options?: ActionOptions): Promise<void>;`
 
 Hover over the element (move mouse to center, no click).
+
+Example: `await vibe.find({ role: 'button', text: 'Menu' }).hover()`
 
 CLI `vibium hover <sel>` · MCP `browser_hover`
 
@@ -954,6 +1021,8 @@ Get element text content
 
 Get the element's textContent (trimmed).
 
+Example: `const heading = await vibe.find({ css: 'h1' }).text()`
+
 CLI `vibium text <sel>` · MCP `browser_get_text`
 
 **`el.innerText()`**
@@ -984,6 +1053,8 @@ Get input element value
 
 Get the element's value (for inputs, textareas, selects).
 
+Example: `const email = await vibe.find({ label: 'Email' }).value()`
+
 CLI `vibium value <sel>` · MCP `browser_get_value`
 
 **`el.attr(name)`**
@@ -993,6 +1064,8 @@ Get element attribute
 `attr(name: string): Promise<string | null>;`
 
 Get an attribute value. Short name for getAttribute.
+
+Example: `const href = await vibe.find({ role: 'link', text: 'Next' }).attr('href')`
 
 CLI `vibium attr <sel> <name>` · MCP `browser_get_attribute`
 
@@ -1033,6 +1106,8 @@ Check if element is visible
 `isVisible(): Promise<boolean>;`
 
 Check if the element is visible (has dimensions, not display:none/visibility:hidden/opacity:0).
+
+Example: `const visible = await vibe.find({ role: 'button', text: 'Submit' }).isVisible()`
 
 CLI `vibium is visible <sel>` · MCP `browser_is_visible`
 
@@ -1121,6 +1196,8 @@ find(selector: string | SelectorOptions, options?: {
 ```
 
 Find a child element by CSS selector or semantic options. Scoped to this element.
+
+Example: `const home = await (await vibe.find({ css: 'nav' })).find({ role: 'link', text: 'Home' })`
 
 **`el.findAll(sel, opts?)`**
 
@@ -1241,6 +1318,8 @@ Press a key
 `press(key: string): Promise<void>;`
 
 Press and release a key. Supports combos like "Control+a".
+
+Example: `await vibe.keyboard.press('Enter')`
 
 CLI `vibium keys <keys>` · MCP `browser_keys`
 
