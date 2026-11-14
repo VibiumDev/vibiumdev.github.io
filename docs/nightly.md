@@ -23,6 +23,7 @@ Get a nightly from the [releases page](https://github.com/VibiumDev/vibium/relea
 | [`vibium ready`](commands/ready.md) | Check the selected local browser executable files, then test AI when configured. No browser or driver is launched. |
 | [`vibium ready ai`](commands/ready.md) | Require valid AI configuration and test authentication, model access, tool calling, and a structured response. |
 | [`vibium ready browser`](commands/ready.md) | List discovered Vibium browser installations and check the selected Chrome or Firefox executable files. |
+| [`vibium ready speech`](commands/ready.md) | Resolve the say and listen providers as the say and listen commands do, have the say provider render one phrase into a WAV file, and have the listen provider transcribe that file. |
 | [`vibium run`](commands/run.md) | Accomplish a live browser goal using VIBIUM_AI_* configuration. |
 | [`vibium say`](commands/say.md) | Turn text into speech and play it into a target. |
 | [`vibium set`](commands/set.md) | Check a checkbox or radio button |

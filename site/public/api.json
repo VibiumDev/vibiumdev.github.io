@@ -1,5 +1,5 @@
 {
-  "source": "https://github.com/VibiumDev/vibium/blob/nightly-2026.11.13-dev.20261113102627-050039e/docs/reference/api.md",
+  "source": "https://github.com/VibiumDev/vibium/blob/nightly-2026.11.14-dev.20261114035046-cd25266/docs/reference/api.md",
   "stableVersion": "26.8.21",
   "surfaces": [
     "cli",
@@ -5344,6 +5344,21 @@
       "changedInNightly": []
     },
     {
+      "id": 237,
+      "section": "Run and Check",
+      "description": "Send one phrase through the say and listen providers, without a browser",
+      "wire": null,
+      "cli": "vibium ready speech",
+      "mcp": null,
+      "javascript": null,
+      "python": null,
+      "java": null,
+      "nightlyOnly": [
+        "cli"
+      ],
+      "changedInNightly": []
+    },
+    {
       "id": 216,
       "section": "Run and Check",
       "description": "Accomplish a goal in the active browser session",
@@ -5407,33 +5422,163 @@
       "id": 233,
       "section": "Say and Listen",
       "description": "Speak text into the session, this machine's speakers, or a WAV file",
-      "wire": null,
+      "wire": "vibium:speech.say",
       "cli": "vibium say <text>",
       "mcp": "vibium_say",
-      "javascript": null,
-      "python": null,
-      "java": null,
+      "javascript": "browser.say(text, opts?)",
+      "python": "browser.say(text, target=...)",
+      "java": "browser.say(text, options?)",
       "nightlyOnly": [
         "cli",
-        "mcp"
+        "mcp",
+        "javascript",
+        "python",
+        "java"
       ],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "say(text: string, options?: SayOptions): Promise<SayResult>;"
+        ],
+        "python": [
+          "say(\n    text: str,\n    *,\n    file: Optional[str] = None,\n    target: Optional[str] = None,\n    provider: Optional[str] = None,\n    model: Optional[str] = None,\n    voice: Optional[str] = None,\n    language: Optional[str] = None,\n    speed: Optional[float] = None,\n    cache: bool = True,\n    cache_dir: Optional[str] = None,\n) -> SayResult"
+        ],
+        "java": [
+          "public SayResult say(String text);",
+          "public SayResult say(String text, SayOptions options);"
+        ]
+      }
+    },
+    {
+      "id": 235,
+      "section": "Say and Listen",
+      "description": "Speak text into a pinned page",
+      "wire": "vibium:speech.say",
+      "cli": null,
+      "mcp": null,
+      "javascript": "page.say(text, opts?)",
+      "python": "page.say(text, target=...)",
+      "java": "page.say(text, options?)",
+      "nightlyOnly": [
+        "javascript",
+        "python",
+        "java"
+      ],
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "say(text: string, options?: SayOptions): Promise<SayResult>;"
+        ],
+        "python": [
+          "say(\n    text: str,\n    *,\n    file: Optional[str] = None,\n    target: Optional[str] = None,\n    provider: Optional[str] = None,\n    model: Optional[str] = None,\n    voice: Optional[str] = None,\n    language: Optional[str] = None,\n    speed: Optional[float] = None,\n    cache: bool = True,\n    cache_dir: Optional[str] = None,\n) -> SayResult"
+        ],
+        "java": [
+          "public SayResult say(String text);",
+          "public SayResult say(String text, SayOptions options);"
+        ]
+      }
     },
     {
       "id": 234,
       "section": "Say and Listen",
       "description": "Hear the session, this machine's microphone, or a WAV file, and return a transcript",
-      "wire": null,
+      "wire": "vibium:speech.listen",
       "cli": "vibium listen",
       "mcp": "vibium_listen",
-      "javascript": null,
-      "python": null,
-      "java": null,
+      "javascript": "browser.listen(opts?)",
+      "python": "browser.listen(target=...)",
+      "java": "browser.listen(options?)",
       "nightlyOnly": [
         "cli",
-        "mcp"
+        "mcp",
+        "javascript",
+        "python",
+        "java"
       ],
-      "changedInNightly": []
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "listen(options?: ListenOptions): Promise<ListenResult>;"
+        ],
+        "python": [
+          "listen(\n    *,\n    target: Optional[str] = None,\n    provider: Optional[str] = None,\n    model: Optional[str] = None,\n    language: Optional[str] = None,\n    silence: Optional[int] = None,\n    timeout: Optional[int] = None,\n    duration: Optional[int] = None,\n    allow_silence: bool = False,\n    path: Optional[str] = None,\n    transcribe: bool = True,\n) -> ListenResult"
+        ],
+        "java": [
+          "public ListenResult listen();",
+          "public ListenResult listen(ListenOptions options);"
+        ]
+      }
+    },
+    {
+      "id": 236,
+      "section": "Say and Listen",
+      "description": "Hear a pinned page and return a transcript",
+      "wire": "vibium:speech.listen",
+      "cli": null,
+      "mcp": null,
+      "javascript": "page.listen(opts?)",
+      "python": "page.listen(target=...)",
+      "java": "page.listen(options?)",
+      "nightlyOnly": [
+        "javascript",
+        "python",
+        "java"
+      ],
+      "changedInNightly": [],
+      "signatures": {
+        "javascript": [
+          "listen(options?: ListenOptions): Promise<ListenResult>;"
+        ],
+        "python": [
+          "listen(\n    *,\n    target: Optional[str] = None,\n    provider: Optional[str] = None,\n    model: Optional[str] = None,\n    language: Optional[str] = None,\n    silence: Optional[int] = None,\n    timeout: Optional[int] = None,\n    duration: Optional[int] = None,\n    allow_silence: bool = False,\n    path: Optional[str] = None,\n    transcribe: bool = True,\n) -> ListenResult"
+        ],
+        "java": [
+          "public ListenResult listen();",
+          "public ListenResult listen(ListenOptions options);"
+        ]
+      }
+    },
+    {
+      "id": 238,
+      "section": "Say and Listen",
+      "description": "Speak with no browser, into this machine's speakers or a WAV file",
+      "wire": "vibium:speech.say",
+      "cli": null,
+      "mcp": null,
+      "javascript": null,
+      "python": null,
+      "java": "Vibium.say(text, options?)",
+      "nightlyOnly": [
+        "java"
+      ],
+      "changedInNightly": [],
+      "signatures": {
+        "java": [
+          "public static com.vibium.types.SayResult say(String text);",
+          "public static com.vibium.types.SayResult say(String text, com.vibium.types.SayOptions options);"
+        ]
+      }
+    },
+    {
+      "id": 239,
+      "section": "Say and Listen",
+      "description": "Listen with no browser, to this machine's microphone or a WAV file",
+      "wire": "vibium:speech.listen",
+      "cli": null,
+      "mcp": null,
+      "javascript": null,
+      "python": null,
+      "java": "Vibium.listen(options?)",
+      "nightlyOnly": [
+        "java"
+      ],
+      "changedInNightly": [],
+      "signatures": {
+        "java": [
+          "public static com.vibium.types.ListenResult listen();",
+          "public static com.vibium.types.ListenResult listen(com.vibium.types.ListenOptions options);"
+        ]
+      }
     }
   ]
 }

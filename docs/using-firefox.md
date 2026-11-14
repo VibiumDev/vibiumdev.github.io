@@ -14,10 +14,10 @@ Vibium launches Chrome by default. Firefox is supported as an alternative engine
 
 ```
 $ vibium install --engine firefox
-Installing Firefox v153.0.3 (release channel)...
-Downloading Firefox from https://ftp.mozilla.org/pub/firefox/releases/153.0.3/mac/en-US/Firefox%20153.0.3.dmg...
+Installing Firefox v159.0.1 (release channel)...
+Downloading Firefox from https://ftp.mozilla.org/pub/firefox/releases/159.0.1/mac/en-US/Firefox%20159.0.1.dmg...
 Installation complete!
-Firefox: /Users/you/Library/Caches/vibium/firefox/release/153.0.3/Firefox.app/Contents/MacOS/firefox
+Firefox: /Users/you/Library/Caches/vibium/firefox/release/159.0.1/Firefox.app/Contents/MacOS/firefox
 ```
 
 Firefox installs into the vibium cache next to Chrome for Testing. The vibium
@@ -127,7 +127,7 @@ a silent no-op.
 | Capability | Chrome | Firefox |
 |------------|--------|---------|
 | Navigation, elements, input, pages, screenshots, storage, and trace recording | Supported | Supported and covered by the Firefox core suite |
-| Native video (`recording.start({ video: true })`) | Not implemented by Chrome yet | Firefox 154+; see [Record Video](guides/record-video.md) |
+| Native video (`recording.start()`) | Not implemented by Chrome yet | Firefox 154+; see [Record Video](guides/record-video.md) |
 | Dialog callbacks and `capture.dialog()` | Supported | Supported and covered by the cross-engine suites |
 | Network events and request interception | Supported | Supported and covered by the cross-engine suites |
 | PDF printing (`page.pdf`) | Supported | Output and support may differ |

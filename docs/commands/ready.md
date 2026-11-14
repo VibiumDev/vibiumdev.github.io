@@ -99,6 +99,25 @@ vibium ready browser chrome --json
 # Structured installation results; browser connection is reported as skipped.
 ```
 
+### vibium ready speech
+
+Resolve the say and listen providers as the say and listen commands do, have the say provider render one phrase into a WAV file, and have the listen provider transcribe that file.
+
+> **Nightly only.** This command is in the nightly builds but not yet in the latest npm release. See [What's in Nightly](../nightly.md).
+
+```
+vibium ready speech [flags]
+```
+
+```sh
+vibium ready speech
+# [PASSED] say: piper-server en_US-bryce-medium rendered 2.6 s of speech in 4.1 s.
+# [PASSED] listen: sherpa-server heard "the quick brown fox jumps over the lazy dog" in 2.9 s.
+# READY: Say and listen passed: a phrase went through both providers.
+vibium ready speech --json
+# The same checks as JSON; exit 0 when both pass, otherwise 1.
+```
+
 ## Examples
 
 ```sh

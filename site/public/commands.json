@@ -1472,6 +1472,16 @@
    "docs": "https://vibium.com/docs/commands/ready/"
   },
   {
+   "command": "vibium ready speech",
+   "description": "Resolve the say and listen providers as the say and listen commands do, have the say provider render one phrase into a WAV file, and have the listen provider transcribe that file.",
+   "usage": [
+    "vibium ready speech [flags]"
+   ],
+   "flags": [],
+   "nightlyOnly": true,
+   "docs": "https://vibium.com/docs/commands/ready/"
+  },
+  {
    "command": "vibium record",
    "description": "Record browser sessions (screenshots and snapshots)",
    "usage": [
