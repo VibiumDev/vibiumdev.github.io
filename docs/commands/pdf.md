@@ -23,8 +23,6 @@ vibium pdf [url] [flags]
     --scale float          Print scale, 0.1-2 (default 1)
 ```
 
-New in nightly (not yet in the npm release): `--background`, `--landscape`, `--margin`, `--page-height`, `--page-ranges`, `--page-width`, `--scale`
-
 ## Description
 
 Renders the current page as a PDF document. With `-o`, writes to the given

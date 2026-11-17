@@ -1,14 +1,10 @@
 ---
 title: "Codegen reference"
 description: "Use this page to look up options, the action mapping, and limits."
-sidebar:
-  badge: Nightly
 editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/reference/codegen.md
 ---
 
 <!-- Imported from docs/reference/codegen.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
-
-> **Nightly only.** This guide uses `vibium codegen`, which is not in 26.8.21. See [What's in Nightly](../nightly.md).
 
 Use this page to look up options, the action mapping, and limits.
 For the workflow, see [Generate a script from a recording](../guides/recording-sessions.md#generate-a-script-from-a-recording).

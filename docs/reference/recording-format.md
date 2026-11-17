@@ -6,8 +6,6 @@ editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/reference/recording-
 
 <!-- Imported from docs/reference/recording-format.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
 
-> This guide was updated after the 26.8.21 release, so parts of it MAY need a nightly build. See [What's in Nightly](../nightly.md).
-
 ## What Recording Does
 
 Recording captures a timeline of everything that happens during a browser session — screenshots, network requests, DOM snapshots, and action groups — and packages it into a single zip file.

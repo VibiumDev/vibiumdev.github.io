@@ -107,7 +107,7 @@ def nightly_binary(work: Path) -> tuple[Path, str]:
     )
     asset_name = nightly_asset_name()
     for release in releases:
-        if not release.get("prerelease"):
+        if not release.get("prerelease") or release.get("draft"):
             continue
         if not release["tag_name"].startswith("nightly-"):
             continue

@@ -24,7 +24,7 @@ pip install vibium
 ```
 
 ```groovy title="Java"
-implementation 'com.vibium:vibium:26.8.21'
+implementation 'com.vibium:vibium:26.11.16'
 ```
 
 The browser (Chrome for Testing) downloads on first launch. No driver setup
@@ -132,8 +132,6 @@ surface. Per-language references: [JavaScript](javascript/api.md),
 [Python](python/api.md), [Java](java/api.md).
 
 ## Run and Check from code
-
-> Nightly builds and the next release; see [Run and Check](../run-and-check.md).
 
 The AI-driven operations are client methods on both Browser and Page. In
 JavaScript and Python the connected object is also callable as a shorthand

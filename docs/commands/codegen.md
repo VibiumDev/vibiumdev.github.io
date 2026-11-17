@@ -1,14 +1,10 @@
 ---
 title: vibium codegen
-sidebar:
-  badge: Nightly
 ---
 
 Generate a runnable script that replays a recording's action stream.
 
 ## Synopsis
-
-> **Nightly only.** This command is in the nightly builds but not yet in the latest npm release. See [What's in Nightly](../nightly.md).
 
 ```
 vibium codegen -i <recording.zip> [flags]

@@ -17,7 +17,7 @@ Gradle:
 
 ```groovy
 dependencies {
-    implementation 'com.vibium:vibium:26.8.21'
+    implementation 'com.vibium:vibium:26.11.16'
 }
 ```
 
@@ -27,7 +27,7 @@ Maven:
 <dependency>
     <groupId>com.vibium</groupId>
     <artifactId>vibium</artifactId>
-    <version>26.8.21</version>
+    <version>26.11.16</version>
 </dependency>
 ```
 
@@ -118,14 +118,11 @@ vibe.find(new SelectorOptions().placeholder("Search..."));
 vibe.find(new SelectorOptions().testid("checkout"));
 ```
 
-> **Nightly only.** A bare string is a plain-language description
-> (`vibe.find("the Add to Cart button")`), and `.css("...")` takes an exact
-> CSS selector. In 26.8.21 a bare string is a CSS selector. The builder
-> forms above work in both.
+A bare string is a plain-language description
+(`vibe.find("the Add to Cart button")`), and `.css("...")` takes an exact
+CSS selector. Before 26.11.16 a bare string was a CSS selector.
 
 ## Let the AI drive
-
-> **Nightly only.** See [Run and Check](../../run-and-check.md).
 
 ```java
 var result = vibe.run("open the contact page");

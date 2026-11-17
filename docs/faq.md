@@ -24,7 +24,7 @@ command) away. Both are driven over WebDriver BiDi. See
 
 ## Can Vibium drive the browser with AI?
 
-Yes — in the nightly builds and the next npm release. `vibium run "<goal>"`
+Yes. `vibium run "<goal>"`
 hands a goal to a configured model, which drives the browser tools itself;
 `vibium check "<claim>"` independently verifies an outcome. Providers:
 OpenAI, Anthropic, Google, xAI, or any OpenAI-compatible (including local)

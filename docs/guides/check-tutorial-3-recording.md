@@ -1,14 +1,10 @@
 ---
 title: "Part 3: Check a recording or trace"
 description: "Use the sitecheck.zip from Part 1 to ask a fresh model about that recorded run, then save its verdict in a report."
-sidebar:
-  badge: Nightly
 editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/tutorials/check-from-a-recording.md
 ---
 
 <!-- Imported from docs/tutorials/check-from-a-recording.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
-
-> **Nightly only.** This guide uses `vibium check --report`, `vibium config init`, `vibium ready ai`, which are not in 26.8.21. See [What's in Nightly](../nightly.md).
 
 **Check tutorials:** [Part 1: Live websites](check-tutorial-1-live-website.md) · [Part 2: Coding agents](check-tutorial-2-coding-agent.md) · Part 3
 

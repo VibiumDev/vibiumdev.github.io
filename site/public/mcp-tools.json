@@ -1,5 +1,5 @@
 {
-  "stableVersion": "26.8.21",
+  "stableVersion": "26.11.16",
   "tools": [
     {
       "name": "vibium_run",
@@ -40,7 +40,7 @@
         ],
         "type": "object"
       },
-      "nightlyOnly": true
+      "nightlyOnly": false
     },
     {
       "name": "vibium_check",
@@ -85,7 +85,7 @@
         ],
         "type": "object"
       },
-      "nightlyOnly": true
+      "nightlyOnly": false
     },
     {
       "name": "vibium_say",
@@ -136,7 +136,7 @@
         },
         "type": "object"
       },
-      "nightlyOnly": true
+      "nightlyOnly": false
     },
     {
       "name": "vibium_listen",
@@ -189,7 +189,7 @@
         },
         "type": "object"
       },
-      "nightlyOnly": true
+      "nightlyOnly": false
     },
     {
       "name": "browser_start",
@@ -1277,7 +1277,7 @@
         ],
         "type": "object"
       },
-      "nightlyOnly": true
+      "nightlyOnly": false
     },
     {
       "name": "browser_unset",
@@ -1304,7 +1304,7 @@
         ],
         "type": "object"
       },
-      "nightlyOnly": true
+      "nightlyOnly": false
     },
     {
       "name": "browser_scroll_into_view",
@@ -1641,7 +1641,7 @@
         ],
         "type": "object"
       },
-      "nightlyOnly": true
+      "nightlyOnly": false
     },
     {
       "name": "browser_wait_for_text",
@@ -1920,7 +1920,7 @@
         },
         "type": "object"
       },
-      "nightlyOnly": true
+      "nightlyOnly": false
     },
     {
       "name": "browser_swipe",
@@ -2004,7 +2004,7 @@
         },
         "type": "object"
       },
-      "nightlyOnly": true
+      "nightlyOnly": false
     },
     {
       "name": "browser_long_press",
@@ -2036,7 +2036,7 @@
         ],
         "type": "object"
       },
-      "nightlyOnly": true
+      "nightlyOnly": false
     },
     {
       "name": "browser_drag",

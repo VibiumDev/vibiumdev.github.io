@@ -20,8 +20,6 @@ vibium pipe [flags]
     --no-browser                   Start the existing pipe runtime for read-only archive commands without installing or launching a browser
 ```
 
-New in nightly (not yet in the npm release): `--browser-arg`, `--connect-caps`, `--no-browser`
-
 ## Examples
 
 ```sh

@@ -6,8 +6,6 @@ editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/how-to-guides/cloud-
 
 <!-- Imported from docs/how-to-guides/cloud-browsers/testingbot.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
 
-> This guide was added after the 26.8.21 release, so parts of it MAY need a nightly build. See [What's in Nightly](../nightly.md).
-
 TestingBot exposes a classic WebDriver endpoint at
 `hub.testingbot.com/wd/hub`. vibium creates the session there with
 `webSocketUrl: true` and attaches to the BiDi socket the grid returns.

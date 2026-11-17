@@ -1,14 +1,10 @@
 ---
 title: vibium say
-sidebar:
-  badge: Nightly
 ---
 
 Turn text into speech and play it into a target.
 
 ## Synopsis
-
-> **Nightly only.** This command is in the nightly builds but not yet in the latest npm release. See [What's in Nightly](../nightly.md).
 
 ```
 vibium say "<text>" | say --file <clip.wav> [flags]

@@ -17,8 +17,6 @@ vibium add-skill [browser|check] [flags]
     --stdout         Print skill content to stdout instead of installing
 ```
 
-New in nightly (not yet in the npm release): `--agent`
-
 ## Examples
 
 ```sh

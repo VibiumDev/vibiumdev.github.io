@@ -11,7 +11,7 @@ All 186 entries of the Python client API, grouped by object. Each
 entry shows the signature from the client's own source, then the
 matching CLI command and MCP tool where one exists.
 
-Entries marked **(nightly)** are not in the latest release (26.8.21);
+Entries marked **(nightly)** are not in the latest release (26.11.16);
 **(changed in nightly)** means the documented signature differs from that release.
 Signatures come from the latest nightly build. See
 [What's in Nightly](../../nightly.md). The same data for every surface
@@ -196,7 +196,7 @@ Example: `html = vibe.content()`
 
 **`page.find(locator, **opts)`**
 
-Find a single element by description (a bare string), css, tag, semantic locator, or reference image; strategy auto, cv, vlm, or tree **(changed in nightly)**
+Find a single element by description (a bare string), css, tag, semantic locator, or reference image; strategy auto, cv, vlm, or tree
 
 ```text
 find(
@@ -235,7 +235,7 @@ CLI `vibium find <description>` · MCP `browser_find`
 
 **`page.find_all(locator, **opts)`**
 
-Find all matching elements, same locator forms **(changed in nightly)**
+Find all matching elements, same locator forms
 
 ```text
 find_all(
@@ -286,7 +286,7 @@ CLI `vibium screenshot` · MCP `browser_screenshot`
 
 **`page.pdf(**opts)`**
 
-Generate PDF **(changed in nightly)**
+Generate PDF
 
 `pdf(**options: Any) -> bytes`
 
@@ -699,7 +699,7 @@ Return collected errors.
 
 **`page.context`**
 
-Owning browser context **(nightly)**
+Owning browser context
 
 `context: BrowserContextType  # property`
 
@@ -707,13 +707,13 @@ The parent BrowserContext that owns this page.
 
 **`page.id`**
 
-Browsing context id **(nightly)**
+Browsing context id
 
 `id: str  # property`
 
 **`page.capture`**
 
-One-shot capture namespace **(nightly)**
+One-shot capture namespace
 
 `capture: _SyncCaptureNamespace  # property`
 
@@ -721,31 +721,31 @@ Capture namespace — set up a listener before performing an action.
 
 **`page.keyboard`**
 
-Keyboard input for the page **(nightly)**
+Keyboard input for the page
 
 `keyboard: Keyboard  # property`
 
 **`page.mouse`**
 
-Mouse input for the page **(nightly)**
+Mouse input for the page
 
 `mouse: Mouse  # property`
 
 **`page.touch`**
 
-Touch input for the page **(nightly)**
+Touch input for the page
 
 `touch: Touch  # property`
 
 **`page.clock`**
 
-Clock control for the page **(nightly)**
+Clock control for the page
 
 `clock: Clock  # property`
 
 **`page.wait_until`**
 
-Deprecated alias for the wait helpers **(nightly)**
+Deprecated alias for the wait helpers
 
 `wait_until: _SyncWaitUntilNamespace  # property`
 
@@ -753,15 +753,15 @@ Deprecated alias — use wait_for_function / wait_for_url / wait_for_load.
 
 ***mode of on_console('collect')***
 
-Enable console collect mode **(nightly)**
+Enable console collect mode
 
 ***mode of on_error('collect')***
 
-Enable error collect mode **(nightly)**
+Enable error collect mode
 
 **`page.eval(expr)`**
 
-Alias for evaluate **(nightly)**
+Alias for evaluate
 
 `eval(expression: str) -> Any`
 
@@ -825,7 +825,7 @@ Clear an input field
 
 **`el.set(value=True, timeout=...)`**
 
-Check a checkbox **(changed in nightly)**
+Check a checkbox
 
 `set(value: bool = True, timeout: Optional[int] = None) -> None`
 
@@ -835,7 +835,7 @@ CLI `vibium set <sel>` · MCP `browser_set`
 
 **`el.unset(timeout?)`**
 
-Uncheck a checkbox **(changed in nightly)**
+Uncheck a checkbox
 
 `unset(timeout: Optional[int] = None) -> None`
 
@@ -969,19 +969,19 @@ Get element bounding box
 
 **`el.bounding_box()`**
 
-Bounding box (Playwright-compat alias for bounds) **(nightly)**
+Bounding box (Playwright-compat alias for bounds)
 
 `bounding_box() -> BoundingBox`
 
 **`el.get_attribute(name)`**
 
-Get attribute (alias for attr) **(nightly)**
+Get attribute (alias for attr)
 
 `get_attribute(name: str) -> Optional[str]`
 
 **`el.info`**
 
-Find-time snapshot of tag, text, and box **(nightly)**
+Find-time snapshot of tag, text, and box
 
 `info  # property`
 
@@ -1013,7 +1013,7 @@ CLI `vibium is enabled <sel>` · MCP `browser_is_enabled`
 
 **`el.is_set()`**
 
-Check if element is checked **(changed in nightly)**
+Check if element is checked
 
 `is_set() -> bool`
 
@@ -1211,13 +1211,13 @@ Add an init script that runs before page scripts in this context.
 
 **`context.id`**
 
-User context id **(nightly)**
+User context id
 
 `id: str  # property`
 
 **`context.recording`**
 
-Recording controls for the context **(nightly)**
+Recording controls for the context
 
 `recording: Recording  # property`
 
@@ -1303,7 +1303,7 @@ CLI `vibium tap <x> <y>` · MCP `browser_tap`
 
 **`touch.swipe(direction, from_=, speed=, hold_ms=)`**
 
-Swipe in a direction (up, down, left, right; from an edge or point; speed, hold) or between coordinates **(nightly)**
+Swipe in a direction (up, down, left, right; from an edge or point; speed, hold) or between coordinates
 
 ```text
 swipe(
@@ -1326,7 +1326,7 @@ CLI `vibium swipe <direction>` · MCP `browser_swipe`
 
 **`touch.long_press(x, y, duration_ms?)`**
 
-Long-press at coordinates **(nightly)**
+Long-press at coordinates
 
 `long_press(x: float, y: float, duration_ms: Optional[int] = None) -> None`
 
@@ -1441,7 +1441,7 @@ CLI `vibium record start` · MCP `browser_record_start`
 
 **`recording.stop(path?, upload?)`**
 
-Stop recording, return trace **(changed in nightly)**
+Stop recording, return trace
 
 `stop(path: Optional[str] = None, upload: Union[bool, str] = False) -> RecordingResult`
 
@@ -1493,7 +1493,7 @@ CLI `vibium record group stop` · MCP `browser_record_stop_group`
 
 **`route.request` (property)**
 
-Access intercepted request **(changed in nightly)**
+Access intercepted request
 
 `request: Dict[str, Any]  # property`
 
@@ -1751,7 +1751,7 @@ Check whether socket is closed
 
 **`browser.check(claim, record=...)`**
 
-Independently verify the active session or a saved archive **(nightly)**
+Independently verify the active session or a saved archive
 
 ```text
 check(
@@ -1772,7 +1772,7 @@ CLI `vibium check <claim>` · MCP `vibium_check`
 
 **`page.check(claim, record=...)`**
 
-Independently verify a pinned page or a saved archive **(nightly)**
+Independently verify a pinned page or a saved archive
 
 ```text
 check(
@@ -1791,7 +1791,7 @@ Independently verify live behavior, or inspect a read-only archive.
 
 **`browser.run(goal, opts?)`**
 
-Accomplish a goal in the active browser session **(nightly)**
+Accomplish a goal in the active browser session
 
 ```text
 run(
@@ -1811,7 +1811,7 @@ CLI `vibium run <goal>` · MCP `vibium_run`
 
 **`page.run(goal, opts?)`**
 
-Accomplish a goal on a pinned page **(nightly)**
+Accomplish a goal on a pinned page
 
 ```text
 run(
@@ -1831,7 +1831,7 @@ Accomplish a live goal; the existing runtime owns the model loop.
 
 **`browser.say(text, target=...)`**
 
-Speak text into the session, this machine's speakers, or a WAV file **(nightly)**
+Speak text into the session, this machine's speakers, or a WAV file
 
 ```text
 say(
@@ -1855,7 +1855,7 @@ CLI `vibium say <text>` · MCP `vibium_say`
 
 **`page.say(text, target=...)`**
 
-Speak text into a pinned page **(nightly)**
+Speak text into a pinned page
 
 ```text
 say(
@@ -1877,7 +1877,7 @@ Speak text into this page's microphone, or into the device.
 
 **`browser.listen(target=...)`**
 
-Hear the session, this machine's microphone, or a WAV file, and return a transcript **(nightly)**
+Hear the session, this machine's microphone, or a WAV file, and return a transcript
 
 ```text
 listen(
@@ -1901,7 +1901,7 @@ CLI `vibium listen` · MCP `vibium_listen`
 
 **`page.listen(target=...)`**
 
-Hear a pinned page and return a transcript **(nightly)**
+Hear a pinned page and return a transcript
 
 ```text
 listen(

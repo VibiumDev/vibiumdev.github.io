@@ -1,14 +1,10 @@
 ---
 title: vibium unset
-sidebar:
-  badge: Nightly
 ---
 
 Uncheck a checkbox.
 
 ## Synopsis
-
-> **Nightly only.** This command is in the nightly builds but not yet in the latest npm release. See [What's in Nightly](../nightly.md).
 
 ```
 vibium unset [selector] [flags]

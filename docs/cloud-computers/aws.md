@@ -6,8 +6,6 @@ editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/how-to-guides/cloud-
 
 <!-- Imported from docs/how-to-guides/cloud-computers/aws.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
 
-> This guide was added after the 26.8.21 release, so parts of it MAY need a nightly build. See [What's in Nightly](../nightly.md).
-
 The most setup friction of the platforms here. Use this when you already live in
 AWS (spot instances make it very cheap); use Fly or DigitalOcean when
 you don't.

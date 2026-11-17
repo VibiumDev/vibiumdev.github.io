@@ -31,8 +31,6 @@ vibium daemon start [flags]
     --idle-timeout duration        Shutdown after this duration of inactivity (0 to disable) (default 30m0s)
 ```
 
-New in nightly (not yet in the npm release): `--connect-caps`
-
 ```sh
 vibium daemon start
 # Starts daemon in background

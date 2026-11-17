@@ -1,14 +1,10 @@
 ---
 title: vibium listen
-sidebar:
-  badge: Nightly
 ---
 
 Capture audio from a target and return a transcript.
 
 ## Synopsis
-
-> **Nightly only.** This command is in the nightly builds but not yet in the latest npm release. See [What's in Nightly](../nightly.md).
 
 ```
 vibium listen [flags]

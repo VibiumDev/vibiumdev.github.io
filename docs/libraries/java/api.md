@@ -11,7 +11,7 @@ All 187 entries of the Java client API, grouped by object. Each
 entry shows the signature from the client's own source, then the
 matching CLI command and MCP tool where one exists.
 
-Entries marked **(nightly)** are not in the latest release (26.8.21);
+Entries marked **(nightly)** are not in the latest release (26.11.16);
 **(changed in nightly)** means the documented signature differs from that release.
 Signatures come from the latest nightly build. See
 [What's in Nightly](../../nightly.md). The same data for every surface
@@ -109,7 +109,7 @@ Remove all event listeners, optionally filtered by event name.
 
 **`browser.context()`**
 
-Get the default context **(nightly)**
+Get the default context
 
 `public BrowserContext context();`
 
@@ -197,7 +197,7 @@ Example: `String html = vibe.content();`
 
 **`page.find(locator, options?)`**
 
-Find a single element by description (a bare string), css, tag, semantic locator, or reference image; strategy auto, cv, vlm, or tree **(changed in nightly)**
+Find a single element by description (a bare string), css, tag, semantic locator, or reference image; strategy auto, cv, vlm, or tree
 
 - `public Element find(String description);`
 - `public Element find(String description, FindOptions options);`
@@ -211,7 +211,7 @@ CLI `vibium find <description>` · MCP `browser_find`
 
 **`page.findAll(locator, options?)`**
 
-Find all matching elements, same locator forms **(changed in nightly)**
+Find all matching elements, same locator forms
 
 - `public List<Element> findAll(String description);`
 - `public List<Element> findAll(String description, FindOptions options);`
@@ -238,7 +238,7 @@ CLI `vibium screenshot` · MCP `browser_screenshot`
 
 **`page.pdf(options?)`**
 
-Generate PDF **(changed in nightly)**
+Generate PDF
 
 - `public byte[] pdf();`
 - `public byte[] pdf(PdfOptions options);`
@@ -623,7 +623,7 @@ Get buffered page errors
 
 **`page.context()`**
 
-Owning browser context **(nightly)**
+Owning browser context
 
 `public BrowserContext context();`
 
@@ -631,7 +631,7 @@ Get the parent BrowserContext.
 
 **`page.id()`**
 
-Browsing context id **(nightly)**
+Browsing context id
 
 `public String id();`
 
@@ -639,7 +639,7 @@ Get the browsing context ID.
 
 **`page.capture()`**
 
-One-shot capture namespace **(nightly)**
+One-shot capture namespace
 
 `public Capture capture();`
 
@@ -647,7 +647,7 @@ Get the one-shot event capture helpers for this page.
 
 **`page.keyboard()`**
 
-Keyboard input for the page **(nightly)**
+Keyboard input for the page
 
 `public Keyboard keyboard();`
 
@@ -655,7 +655,7 @@ Get the Keyboard for this page.
 
 **`page.mouse()`**
 
-Mouse input for the page **(nightly)**
+Mouse input for the page
 
 `public Mouse mouse();`
 
@@ -663,7 +663,7 @@ Get the Mouse for this page.
 
 **`page.touch()`**
 
-Touch input for the page **(nightly)**
+Touch input for the page
 
 `public Touch touch();`
 
@@ -671,7 +671,7 @@ Get the Touch for this page.
 
 **`page.clock()`**
 
-Clock control for the page **(nightly)**
+Clock control for the page
 
 `public Clock clock();`
 
@@ -679,7 +679,7 @@ Get the Clock for this page.
 
 **`page.collectConsole()`**
 
-Enable console collect mode **(nightly)**
+Enable console collect mode
 
 `public void collectConsole();`
 
@@ -687,7 +687,7 @@ Collect console messages into a buffer (retrieve with consoleMessages()).
 
 **`page.collectErrors()`**
 
-Enable error collect mode **(nightly)**
+Enable error collect mode
 
 `public void collectErrors();`
 
@@ -763,7 +763,7 @@ Clear the input field.
 
 **`el.set(value?)`**
 
-Check a checkbox **(changed in nightly)**
+Check a checkbox
 
 - `public void set();`
 - `public void set(boolean value);`
@@ -774,7 +774,7 @@ CLI `vibium set <sel>` · MCP `browser_set`
 
 **`el.unset()`**
 
-Uncheck a checkbox **(changed in nightly)**
+Uncheck a checkbox
 
 `public void unset();`
 
@@ -933,7 +933,7 @@ Get the bounding box.
 
 **`el.boundingBox()`**
 
-Bounding box (Playwright-compat alias for bounds) **(nightly)**
+Bounding box (Playwright-compat alias for bounds)
 
 `public BoundingBox boundingBox();`
 
@@ -941,7 +941,7 @@ Alias for bounds(). Playwright compat.
 
 **`el.getAttribute(name)`**
 
-Get attribute (alias for attr) **(nightly)**
+Get attribute (alias for attr)
 
 `public String getAttribute(String name);`
 
@@ -949,7 +949,7 @@ Alias for attr(). Playwright compat.
 
 **`el.info()`**
 
-Find-time snapshot of tag, text, and box **(nightly)**
+Find-time snapshot of tag, text, and box
 
 `public ElementInfo info();`
 
@@ -987,7 +987,7 @@ CLI `vibium is enabled <sel>` · MCP `browser_is_enabled`
 
 **`el.isSet()`**
 
-Check if element is checked **(changed in nightly)**
+Check if element is checked
 
 `public boolean isSet();`
 
@@ -1137,7 +1137,7 @@ Add an init script
 
 **`context.id()`**
 
-User context id **(nightly)**
+User context id
 
 `public String id();`
 
@@ -1145,7 +1145,7 @@ Get the context ID.
 
 **`context.recording()`**
 
-Recording controls for the context **(nightly)**
+Recording controls for the context
 
 `public Recording recording();`
 
@@ -1540,7 +1540,7 @@ Get request body
 
 `public String postData();`
 
-Get the request body, or null when it is unavailable. Intercepted requests may not expose their body until they are continued, so this best-effort lookup is bounded to avoid blocking a route handler.
+Get the request body, or null when it is unavailable. The lookup is bounded so it cannot hold up a route handler.
 
 ## Response
 
@@ -1664,7 +1664,7 @@ Check if the WebSocket is closed.
 
 **`browser.check(claim, options?)`**
 
-Independently verify the active session or a saved archive **(nightly)**
+Independently verify the active session or a saved archive
 
 - `public CheckResult check(String claim);`
 - `public CheckResult check(String claim, CheckOptions options);`
@@ -1675,7 +1675,7 @@ CLI `vibium check <claim>` · MCP `vibium_check`
 
 **`page.check(claim, options?)`**
 
-Independently verify a pinned page or a saved archive **(nightly)**
+Independently verify a pinned page or a saved archive
 
 - `public CheckResult check(String claim);`
 - `public CheckResult check(String claim, CheckOptions options);`
@@ -1684,7 +1684,7 @@ Verify the existing session with a fresh verifier inference context.
 
 **`Vibium.check(claim, options)`**
 
-Check a saved archive without launching a browser **(nightly)**
+Check a saved archive without launching a browser
 
 `public static com.vibium.types.CheckResult check(String claim, com.vibium.types.CheckOptions options);`
 
@@ -1692,7 +1692,7 @@ Inspect a saved recording without installing or starting a browser.
 
 **`browser.run(goal, opts?)`**
 
-Accomplish a goal in the active browser session **(nightly)**
+Accomplish a goal in the active browser session
 
 - `public RunResult run(String goal);`
 - `public RunResult run(String goal, RunOptions options);`
@@ -1703,7 +1703,7 @@ CLI `vibium run <goal>` · MCP `vibium_run`
 
 **`page.run(goal, opts?)`**
 
-Accomplish a goal on a pinned page **(nightly)**
+Accomplish a goal on a pinned page
 
 - `public RunResult run(String goal);`
 - `public RunResult run(String goal, RunOptions options);`
@@ -1714,7 +1714,7 @@ Accomplish a goal through the existing runtime in this live session.
 
 **`browser.say(text, options?)`**
 
-Speak text into the session, this machine's speakers, or a WAV file **(nightly)**
+Speak text into the session, this machine's speakers, or a WAV file
 
 - `public SayResult say(String text);`
 - `public SayResult say(String text, SayOptions options);`
@@ -1725,7 +1725,7 @@ CLI `vibium say <text>` · MCP `vibium_say`
 
 **`page.say(text, options?)`**
 
-Speak text into a pinned page **(nightly)**
+Speak text into a pinned page
 
 - `public SayResult say(String text);`
 - `public SayResult say(String text, SayOptions options);`
@@ -1734,7 +1734,7 @@ Speak text into this page's microphone, or into the device.
 
 **`browser.listen(options?)`**
 
-Hear the session, this machine's microphone, or a WAV file, and return a transcript **(nightly)**
+Hear the session, this machine's microphone, or a WAV file, and return a transcript
 
 - `public ListenResult listen();`
 - `public ListenResult listen(ListenOptions options);`
@@ -1745,7 +1745,7 @@ CLI `vibium listen` · MCP `vibium_listen`
 
 **`page.listen(options?)`**
 
-Hear a pinned page and return a transcript **(nightly)**
+Hear a pinned page and return a transcript
 
 - `public ListenResult listen();`
 - `public ListenResult listen(ListenOptions options);`
@@ -1754,14 +1754,14 @@ Hear what this page, or the device, plays, and return its words.
 
 **`Vibium.say(text, options?)`**
 
-Speak with no browser, into this machine's speakers or a WAV file **(nightly)**
+Speak with no browser, into this machine's speakers or a WAV file
 
 - `public static com.vibium.types.SayResult say(String text);`
 - `public static com.vibium.types.SayResult say(String text, com.vibium.types.SayOptions options);`
 
 **`Vibium.listen(options?)`**
 
-Listen with no browser, to this machine's microphone or a WAV file **(nightly)**
+Listen with no browser, to this machine's microphone or a WAV file
 
 - `public static com.vibium.types.ListenResult listen();`
 - `public static com.vibium.types.ListenResult listen(com.vibium.types.ListenOptions options);`

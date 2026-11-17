@@ -1,14 +1,10 @@
 ---
 title: "Finding things by sight with Vibium"
 description: "find takes a description, an exact locator, or a picture, and hands back an @eN ref that the next command can act on."
-sidebar:
-  badge: Nightly
 editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/tutorials/finding-things-by-sight.md
 ---
 
 <!-- Imported from docs/tutorials/finding-things-by-sight.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
-
-> **Nightly only.** This guide uses `vibium find css`, `vibium find description`, `vibium find image`, which are not in 26.8.21. See [What's in Nightly](../nightly.md).
 
 `find` takes a description, an exact locator, or a picture, and hands back
 an `@eN` ref that the next command can act on. This walk uses

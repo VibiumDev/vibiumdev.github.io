@@ -1,14 +1,10 @@
 ---
 title: "Web Bot Auth (Cloudflare Verified Bots)"
 description: "Some sites put automated traffic behind a challenge like Cloudflare Turnstile."
-sidebar:
-  badge: Nightly
 editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/how-to-guides/web-bot-auth.md
 ---
 
 <!-- Imported from docs/how-to-guides/web-bot-auth.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
-
-> **Nightly only.** This guide uses `vibium webbotauth directory`, `vibium webbotauth keygen`, which are not in 26.8.21. See [What's in Nightly](../nightly.md).
 
 Some sites put automated traffic behind a challenge like Cloudflare Turnstile.
 Beating that challenge is not a game Vibium plays. The supported path is the

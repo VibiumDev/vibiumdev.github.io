@@ -6,8 +6,6 @@ editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/tutorials/webdriver-
 
 <!-- Imported from docs/tutorials/webdriver-bidi-raw.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
 
-> This guide was updated after the 26.8.21 release, so parts of it MAY need a nightly build. See [What's in Nightly](../nightly.md).
-
 Learn WebDriver BiDi by talking directly to Firefox with nothing but a terminal and websocat. No libraries, no abstractions — just raw JSON over WebSocket.
 
 By the end, you'll understand exactly what Vibium does under the hood.

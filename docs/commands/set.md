@@ -1,14 +1,10 @@
 ---
 title: vibium set
-sidebar:
-  badge: Nightly
 ---
 
 Check a checkbox or radio button.
 
 ## Synopsis
-
-> **Nightly only.** This command is in the nightly builds but not yet in the latest npm release. See [What's in Nightly](../nightly.md).
 
 ```
 vibium set [selector] [flags]

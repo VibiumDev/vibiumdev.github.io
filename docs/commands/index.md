@@ -21,8 +21,8 @@ hand the whole task to a model with [`run`](run.md) and verify it with
 | [`vibium back`](back.md) | Navigate back in browser history |
 | [`vibium check`](check.md) | Check a claim in a live browser or an existing recording with an independent model. |
 | [`vibium click`](click.md) | Click an element (optionally navigate to URL first) |
-| [`vibium codegen`](codegen.md) | Generate a runnable script that replays a recording's action stream. **(nightly)** |
-| [`vibium config`](config.md) | Manage Vibium settings files **(nightly)** |
+| [`vibium codegen`](codegen.md) | Generate a runnable script that replays a recording's action stream. |
+| [`vibium config`](config.md) | Manage Vibium settings files |
 | [`vibium content`](content.md) | Replace the page HTML content |
 | [`vibium cookies`](cookies.md) | Manage browser cookies |
 | [`vibium count`](count.md) | Count matching elements |
@@ -48,8 +48,8 @@ hand the whole task to a model with [`run`](run.md) and verify it with
 | [`vibium is`](is.md) | Check element state (visible, enabled, set, actionable) |
 | [`vibium is-installed`](is-installed.md) | Check if the selected browser is installed (exit 0 = yes, exit 1 = no) |
 | [`vibium keys`](keys.md) | Press a key or key combination |
-| [`vibium listen`](listen.md) | Capture audio from a target and return a transcript. **(nightly)** |
-| [`vibium long-press`](long-press.md) | Press and hold a touchscreen at coordinates **(nightly)** |
+| [`vibium listen`](listen.md) | Capture audio from a target and return a transcript. |
+| [`vibium long-press`](long-press.md) | Press and hold a touchscreen at coordinates |
 | [`vibium map`](map.md) | Map interactive page elements with @refs |
 | [`vibium mcp`](mcp.md) | Start the Model Context Protocol (MCP) server. |
 | [`vibium media`](media.md) | Override CSS media features |
@@ -60,34 +60,34 @@ hand the whole task to a model with [`run`](run.md) and verify it with
 | [`vibium pdf`](pdf.md) | Save page as PDF |
 | [`vibium pipe`](pipe.md) | Start vibium in pipe mode where protocol messages are exchanged |
 | [`vibium press`](press.md) | Press a key on a specific element or the focused element |
-| [`vibium ready`](ready.md) | Check the selected local browser executable files, then test AI when configured. No browser or driver is launched. **(nightly)** |
+| [`vibium ready`](ready.md) | Check the selected local browser executable files, then test AI when configured. No browser or driver is launched. |
 | [`vibium record`](record.md) | Record browser sessions (screenshots and snapshots) |
 | [`vibium reload`](reload.md) | Reload the current page |
-| [`vibium run`](run.md) | Accomplish a live browser goal using VIBIUM_AI_* configuration. **(nightly)** |
-| [`vibium say`](say.md) | Turn text into speech and play it into a target. **(nightly)** |
+| [`vibium run`](run.md) | Accomplish a live browser goal using VIBIUM_AI_* configuration. |
+| [`vibium say`](say.md) | Turn text into speech and play it into a target. |
 | [`vibium screenshot`](screenshot.md) | Capture a screenshot (optionally navigate to URL first) |
 | [`vibium scroll`](scroll.md) | Scroll the page or an element |
 | [`vibium select`](select.md) | Select an option in a <select> element |
 | [`vibium serve`](serve.md) | Start WebSocket proxy server for browser automation |
-| [`vibium set`](set.md) | Check a checkbox or radio button **(nightly)** |
-| [`vibium setup`](setup.md) | Interactive setup for AI settings, agent skills, and the local browser. **(nightly)** |
+| [`vibium set`](set.md) | Check a checkbox or radio button |
+| [`vibium setup`](setup.md) | Interactive setup for AI settings, agent skills, and the local browser. |
 | [`vibium sleep`](sleep.md) | Pause execution for a number of milliseconds |
 | [`vibium start`](start.md) | Start a browser session. Without arguments, launches a local browser. |
 | [`vibium stop`](stop.md) | Stop the browser session |
 | [`vibium storage`](storage.md) | Export or restore browser state (cookies, localStorage, sessionStorage) |
-| [`vibium swipe`](swipe.md) | Swipe a touchscreen in a direction or from one point to another **(nightly)** |
-| [`vibium tap`](tap.md) | Tap a touchscreen at coordinates or on an element **(nightly)** |
+| [`vibium swipe`](swipe.md) | Swipe a touchscreen in a direction or from one point to another |
+| [`vibium tap`](tap.md) | Tap a touchscreen at coordinates or on an element |
 | [`vibium text`](text.md) | Get text content of the page or an element |
 | [`vibium title`](title.md) | Get the current page title |
 | [`vibium type`](type.md) | Type text into an element, or into whatever has focus |
-| [`vibium unset`](unset.md) | Uncheck a checkbox **(nightly)** |
+| [`vibium unset`](unset.md) | Uncheck a checkbox |
 | [`vibium upload`](upload.md) | Set files on an input[type=file] element |
 | [`vibium url`](url.md) | Get the current page URL |
 | [`vibium value`](value.md) | Get the current value of a form element |
 | [`vibium version`](version.md) | Print the version number |
 | [`vibium viewport`](viewport.md) | Get or set the browser viewport size |
 | [`vibium wait`](wait.md) | Wait for an element, URL, text, page load, or JS condition |
-| [`vibium webbotauth`](webbotauth.md) | Create and inspect the Ed25519 key used for Web Bot Auth request signing. **(nightly)** |
+| [`vibium webbotauth`](webbotauth.md) | Create and inspect the Ed25519 key used for Web Bot Auth request signing. |
 | [`vibium window`](window.md) | Get or set the OS browser window size, position, or state |
 
 Commands marked **(nightly)** are not yet in the latest npm release; see [What's in Nightly](../nightly.md).

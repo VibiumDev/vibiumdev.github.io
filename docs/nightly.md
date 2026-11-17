@@ -2,48 +2,10 @@
 title: What's in Nightly
 ---
 
-Vibium publishes automated nightly builds from `main` as GitHub prereleases, ahead of the next npm release. This page is regenerated automatically by diffing the two binaries: everything listed here is in the current nightly but **not** in `vibium@26.8.21`, the latest npm release.
+Vibium publishes automated nightly builds from `main` as GitHub prereleases, ahead of the next npm release. This page is regenerated automatically by diffing the two binaries: everything listed here is in the current nightly but **not** in `vibium@26.11.16`, the latest npm release.
 
 Get a nightly from the [releases page](https://github.com/VibiumDev/vibium/releases) — the `nightly-*` prereleases carry standalone binaries plus npm and Python packages. Nightlies are automated and unsupported.
 
-## New commands
+## No differences
 
-| Command | Description |
-| ------- | ----------- |
-| [`vibium codegen`](commands/codegen.md) | Generate a runnable script that replays a recording's action stream. |
-| [`vibium config`](commands/config.md) | Manage Vibium settings files |
-| [`vibium config init`](commands/config.md) | Write a commented settings file to the Vibium config directory. |
-| [`vibium find css`](commands/find.md) | Find element by CSS selector |
-| [`vibium find description`](commands/find.md) | Find element by natural-language description |
-| [`vibium find image`](commands/find.md) | Find where a reference image appears on screen |
-| [`vibium find tag`](commands/find.md) | Find element by HTML tag name |
-| [`vibium is set`](commands/is.md) | Check if a checkbox or radio is checked |
-| [`vibium listen`](commands/listen.md) | Capture audio from a target and return a transcript. |
-| [`vibium long-press`](commands/long-press.md) | Press and hold a touchscreen at coordinates |
-| [`vibium ready`](commands/ready.md) | Check the selected local browser executable files, then test AI when configured. No browser or driver is launched. |
-| [`vibium ready ai`](commands/ready.md) | Require valid AI configuration and test authentication, model access, tool calling, and a structured response. |
-| [`vibium ready browser`](commands/ready.md) | List discovered Vibium browser installations and check the selected Chrome or Firefox executable files. |
-| [`vibium ready speech`](commands/ready.md) | Resolve the say and listen providers as the say and listen commands do, have the say provider render one phrase into a WAV file, and have the listen provider transcribe that file. |
-| [`vibium run`](commands/run.md) | Accomplish a live browser goal using VIBIUM_AI_* configuration. |
-| [`vibium say`](commands/say.md) | Turn text into speech and play it into a target. |
-| [`vibium set`](commands/set.md) | Check a checkbox or radio button |
-| [`vibium setup`](commands/setup.md) | Interactive setup for AI settings, agent skills, and the local browser. |
-| [`vibium swipe`](commands/swipe.md) | Swipe a touchscreen in a direction or from one point to another |
-| [`vibium tap`](commands/tap.md) | Tap a touchscreen at coordinates or on an element |
-| [`vibium unset`](commands/unset.md) | Uncheck a checkbox |
-| [`vibium webbotauth`](commands/webbotauth.md) | Create and inspect the Ed25519 key used for Web Bot Auth request signing. |
-| [`vibium webbotauth directory`](commands/webbotauth.md) | Print the JWKS directory to publish at /.well-known/http-message-signatures-directory |
-| [`vibium webbotauth keygen`](commands/webbotauth.md) | Generate an Ed25519 signing key (PKCS#8 PEM) |
-
-## New flags on existing commands
-
-| Command | New flags |
-| ------- | --------- |
-| [`vibium add-skill`](commands/add-skill.md) | `--agent` |
-| [`vibium check`](commands/check.md) | `--ai-base-url`, `--base-url`, `--expect`, `--input`, `--keep-open`, `--model`, `--output`, `--provider`, `--reasoning-effort`, `--report` |
-| [`vibium daemon start`](commands/daemon.md) | `--connect-caps` |
-| [`vibium find`](commands/find.md) | `--ai-base-url`, `--details`, `--model`, `--provider`, `--reasoning-effort`, `--strategy` |
-| [`vibium page new`](commands/page.md) | `--isolated` |
-| [`vibium pdf`](commands/pdf.md) | `--background`, `--landscape`, `--margin`, `--page-height`, `--page-ranges`, `--page-width`, `--scale` |
-| [`vibium pipe`](commands/pipe.md) | `--browser-arg`, `--connect-caps`, `--no-browser` |
-| [`vibium record stop`](commands/record.md) | `--upload`, `--upload-to` |
+The current nightly has no new commands or flags compared to the npm release.

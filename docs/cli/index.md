@@ -93,8 +93,7 @@ vibium check "the contact page lists an email address"
 ```
 
 Both need an AI provider configured once — `vibium setup` walks you through
-it. These commands are in the nightly builds and the next npm release; see
-[Run and Check](../run-and-check.md).
+it. See [Run and Check](../run-and-check.md).
 
 ## What to read next
 

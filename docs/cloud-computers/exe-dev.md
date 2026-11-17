@@ -6,8 +6,6 @@ editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/how-to-guides/cloud-
 
 <!-- Imported from docs/how-to-guides/cloud-computers/exe-dev.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
 
-> This guide was added after the 26.8.21 release, so parts of it MAY need a nightly build. See [What's in Nightly](../nightly.md).
-
 exe.dev VMs boot in ~2 seconds from an image that already includes
 Chrome headless-shell and every Chrome library dependency — the least
 setup of any platform here. The whole API is SSH.

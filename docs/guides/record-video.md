@@ -1,14 +1,10 @@
 ---
 title: "Record Video"
 description: "Recordings include a video track wherever the engine supports it — no option needed."
-sidebar:
-  badge: Nightly
 editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/how-to-guides/record-video.md
 ---
 
 <!-- Imported from docs/how-to-guides/record-video.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
-
-> **Nightly only.** This guide uses `vibium listen`, `vibium say`, `vibium tap`, which are not in 26.8.21. See [What's in Nightly](../nightly.md).
 
 Recordings include a video track wherever the engine supports it — no option
 needed. The browser encodes the viewport to WebM itself, using the WebDriver

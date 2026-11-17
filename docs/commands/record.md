@@ -173,8 +173,6 @@ vibium record stop [flags]
     --upload-to string   Upload to this station's URL instead, with the API key from VIBIUM_CONNECT_API_KEY
 ```
 
-New in nightly (not yet in the npm release): `--upload`, `--upload-to`
-
 ```sh
 vibium record stop
 # Saved record-20260808-094123.zip (23 steps, 14s video)

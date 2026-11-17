@@ -11,7 +11,7 @@ All 186 entries of the JavaScript client API, grouped by object. Each
 entry shows the signature from the client's own source, then the
 matching CLI command and MCP tool where one exists.
 
-Entries marked **(nightly)** are not in the latest release (26.8.21);
+Entries marked **(nightly)** are not in the latest release (26.11.16);
 **(changed in nightly)** means the documented signature differs from that release.
 Signatures come from the latest nightly build. See
 [What's in Nightly](../../nightly.md). The same data for every surface
@@ -191,7 +191,7 @@ Example: `const html = await vibe.content()`
 
 **`page.find(locator, opts?)`**
 
-Find a single element by description (a bare string), css, tag, semantic locator, or reference image; strategy auto, cv, vlm, or tree **(changed in nightly)**
+Find a single element by description (a bare string), css, tag, semantic locator, or reference image; strategy auto, cv, vlm, or tree
 
 `find(selector: string | SelectorOptions, options?: FindOptions): FluentElement;`
 
@@ -203,7 +203,7 @@ CLI `vibium find <description>` · MCP `browser_find`
 
 **`page.findAll(locator, opts?)`**
 
-Find all matching elements, same locator forms **(changed in nightly)**
+Find all matching elements, same locator forms
 
 `findAll(selector: string | SelectorOptions, options?: FindOptions): Promise<Element[]>;`
 
@@ -227,7 +227,7 @@ CLI `vibium screenshot` · MCP `browser_screenshot`
 
 **`page.pdf(opts?)`**
 
-Generate PDF **(changed in nightly)**
+Generate PDF
 
 `pdf(options?: PdfOptions): Promise<Buffer>;`
 
@@ -715,7 +715,7 @@ Return collected errors and clear the buffer. Returns \[\] if not collecting.
 
 **`page.context`**
 
-Owning browser context **(nightly)**
+Owning browser context
 
 `get context(): BrowserContext;`
 
@@ -723,7 +723,7 @@ The parent BrowserContext that owns this page.
 
 **`page.id`**
 
-Browsing context id **(nightly)**
+Browsing context id
 
 `get id(): string;`
 
@@ -731,7 +731,7 @@ The browsing context ID for this page.
 
 **`page.capture`**
 
-One-shot capture namespace **(nightly)**
+One-shot capture namespace
 
 ```text
 readonly capture: {
@@ -766,7 +766,7 @@ Capture namespace — set up a listener before performing an action.
 
 **`page.keyboard`**
 
-Keyboard input for the page **(nightly)**
+Keyboard input for the page
 
 `readonly keyboard: Keyboard;`
 
@@ -774,7 +774,7 @@ Page-level keyboard input.
 
 **`page.mouse`**
 
-Mouse input for the page **(nightly)**
+Mouse input for the page
 
 `readonly mouse: Mouse;`
 
@@ -782,7 +782,7 @@ Page-level mouse input.
 
 **`page.touch`**
 
-Touch input for the page **(nightly)**
+Touch input for the page
 
 `readonly touch: Touch;`
 
@@ -790,7 +790,7 @@ Page-level touch input.
 
 **`page.clock`**
 
-Clock control for the page **(nightly)**
+Clock control for the page
 
 `readonly clock: Clock;`
 
@@ -798,7 +798,7 @@ Page-level clock control for faking timers and Date.
 
 **`page.waitUntil(fn, opts?)`**
 
-Deprecated alias for the wait helpers **(nightly)**
+Deprecated alias for the wait helpers
 
 ```text
 readonly waitUntil: ((fn: string, options?: {
@@ -819,15 +819,15 @@ Wait until a condition is met. Callable with a function, or use .url() / .loaded
 
 ***mode of onConsole('collect')***
 
-Enable console collect mode **(nightly)**
+Enable console collect mode
 
 ***mode of onError('collect')***
 
-Enable error collect mode **(nightly)**
+Enable error collect mode
 
 **`page.routeWebSocket(pattern, fn)`**
 
-Intercept WebSockets (unsupported: throws) **(nightly)**
+Intercept WebSockets (unsupported: throws)
 
 `routeWebSocket(_pattern: string, _handler: unknown): never;`
 
@@ -903,7 +903,7 @@ Clear the element's content (select all + delete).
 
 **`el.set(value?, opts?)`**
 
-Check a checkbox **(changed in nightly)**
+Check a checkbox
 
 `set(value?: boolean, options?: ActionOptions): Promise<void>;`
 
@@ -915,7 +915,7 @@ CLI `vibium set <sel>` · MCP `browser_set`
 
 **`el.unset(opts?)`**
 
-Uncheck a checkbox **(changed in nightly)**
+Uncheck a checkbox
 
 `unset(options?: ActionOptions): Promise<void>;`
 
@@ -1079,7 +1079,7 @@ Get the element's bounding box. Short name for boundingBox.
 
 **`el.boundingBox()`**
 
-Bounding box (Playwright-compat alias for bounds) **(nightly)**
+Bounding box (Playwright-compat alias for bounds)
 
 `boundingBox(): Promise<BoundingBox>;`
 
@@ -1087,7 +1087,7 @@ Get the element's bounding box. Alias for bounds().
 
 **`el.getAttribute(name)`**
 
-Get attribute (alias for attr) **(nightly)**
+Get attribute (alias for attr)
 
 `getAttribute(name: string): Promise<string | null>;`
 
@@ -1095,7 +1095,7 @@ Get an attribute value. Alias for attr().
 
 **`el.info`**
 
-Find-time snapshot of tag, text, and box **(nightly)**
+Find-time snapshot of tag, text, and box
 
 `readonly info: ElementInfo;`
 
@@ -1131,7 +1131,7 @@ CLI `vibium is enabled <sel>` · MCP `browser_is_enabled`
 
 **`el.isSet()`**
 
-Check if element is checked **(changed in nightly)**
+Check if element is checked
 
 `isSet(): Promise<boolean>;`
 
@@ -1297,7 +1297,7 @@ Add an init script that runs before page scripts in this context.
 
 **`context.id`**
 
-User context id **(nightly)**
+User context id
 
 `get id(): string;`
 
@@ -1305,7 +1305,7 @@ The user context ID for this browser context.
 
 **`context.recording`**
 
-Recording controls for the context **(nightly)**
+Recording controls for the context
 
 `readonly recording: Recording;`
 
@@ -1411,7 +1411,7 @@ CLI `vibium tap <x> <y>` · MCP `browser_tap`
 
 **`touch.swipe(direction, opts?)`**
 
-Swipe in a direction (up, down, left, right; from an edge or point; speed, hold) or between coordinates **(nightly)**
+Swipe in a direction (up, down, left, right; from an edge or point; speed, hold) or between coordinates
 
 - `swipe(direction: SwipeDirection, options?: SwipeOptions): Promise<void>;`
 - `swipe(x1: number, y1: number, x2: number, y2: number, durationMs?: number): Promise<void>;`
@@ -1422,7 +1422,7 @@ CLI `vibium swipe <direction>` · MCP `browser_swipe`
 
 **`touch.longPress(x, y, durationMs?)`**
 
-Long-press at coordinates **(nightly)**
+Long-press at coordinates
 
 `longPress(x: number, y: number, durationMs?: number): Promise<void>;`
 
@@ -1873,7 +1873,7 @@ Check whether socket is closed
 
 **`browser.check(claim, opts?)`**
 
-Independently verify the active session or a saved archive **(nightly)**
+Independently verify the active session or a saved archive
 
 `check(claim: string, options?: CheckOptions): Promise<CheckResult>;`
 
@@ -1883,7 +1883,7 @@ CLI `vibium check <claim>` · MCP `vibium_check`
 
 **`page.check(claim, opts?)`**
 
-Independently verify a pinned page or a saved archive **(nightly)**
+Independently verify a pinned page or a saved archive
 
 `check(claim: string, options?: CheckOptions): Promise<CheckResult>;`
 
@@ -1891,7 +1891,7 @@ Verify this exact page, or inspect a read-only archive.
 
 **`browser.run(goal, opts?)`**
 
-Accomplish a goal in the active browser session **(nightly)**
+Accomplish a goal in the active browser session
 
 `run(goal: string, options?: RunOptions): Promise<RunResult>;`
 
@@ -1901,7 +1901,7 @@ CLI `vibium run <goal>` · MCP `vibium_run`
 
 **`page.run(goal, opts?)`**
 
-Accomplish a goal on a pinned page **(nightly)**
+Accomplish a goal on a pinned page
 
 `run(goal: string, options?: RunOptions): Promise<RunResult>;`
 
@@ -1911,7 +1911,7 @@ Accomplish a live browser goal; provider settings are read in the runtime.
 
 **`browser.say(text, opts?)`**
 
-Speak text into the session, this machine's speakers, or a WAV file **(nightly)**
+Speak text into the session, this machine's speakers, or a WAV file
 
 `say(text: string, options?: SayOptions): Promise<SayResult>;`
 
@@ -1921,7 +1921,7 @@ CLI `vibium say <text>` · MCP `vibium_say`
 
 **`page.say(text, opts?)`**
 
-Speak text into a pinned page **(nightly)**
+Speak text into a pinned page
 
 `say(text: string, options?: SayOptions): Promise<SayResult>;`
 
@@ -1929,7 +1929,7 @@ Speak text into this page's microphone, or into the device.
 
 **`browser.listen(opts?)`**
 
-Hear the session, this machine's microphone, or a WAV file, and return a transcript **(nightly)**
+Hear the session, this machine's microphone, or a WAV file, and return a transcript
 
 `listen(options?: ListenOptions): Promise<ListenResult>;`
 
@@ -1939,7 +1939,7 @@ CLI `vibium listen` · MCP `vibium_listen`
 
 **`page.listen(opts?)`**
 
-Hear a pinned page and return a transcript **(nightly)**
+Hear a pinned page and return a transcript
 
 `listen(options?: ListenOptions): Promise<ListenResult>;`
 

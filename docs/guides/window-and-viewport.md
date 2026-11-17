@@ -6,8 +6,6 @@ editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/how-to-guides/window
 
 <!-- Imported from docs/how-to-guides/window-and-viewport.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
 
-> This guide was updated after the 26.8.21 release, so parts of it MAY need a nightly build. See [What's in Nightly](../nightly.md).
-
 Learn the difference between the browser window and the viewport, and how to control both.
 
 ---

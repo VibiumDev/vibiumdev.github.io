@@ -6,8 +6,6 @@ editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/how-to-guides/testin
 
 <!-- Imported from docs/how-to-guides/testing-private-sites.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
 
-> This guide was added after the 26.8.21 release, so parts of it MAY need a nightly build. See [What's in Nightly](../nightly.md).
-
 A remote browser can only test what it can reach. Your app on
 `localhost:3000`, a LAN address, or an internal VPN doesn't exist from
 a browser running in a cloud — so every remote-browser setup needs an

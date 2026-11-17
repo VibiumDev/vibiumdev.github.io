@@ -58,8 +58,6 @@ vibium is enabled "button[type=submit]"
 
 Check if a checkbox or radio is checked.
 
-> **Nightly only.** This command is in the nightly builds but not yet in the latest npm release. See [What's in Nightly](../nightly.md).
-
 ```
 vibium is set [selector] [flags]
 ```

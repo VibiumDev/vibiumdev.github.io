@@ -1,14 +1,10 @@
 ---
 title: vibium long-press
-sidebar:
-  badge: Nightly
 ---
 
 Press and hold a touchscreen at coordinates.
 
 ## Synopsis
-
-> **Nightly only.** This command is in the nightly builds but not yet in the latest npm release. See [What's in Nightly](../nightly.md).
 
 ```
 vibium long-press [x] [y] [flags]

@@ -2,8 +2,9 @@
 """Import guides from the main vibium repository into docs/.
 
 scripts/upstream-manifest.json lists the pages. Each one is fetched from
-VibiumDev/vibium at the latest nightly tag and rewritten just enough to
-live on the site:
+VibiumDev/vibium at the latest nightly tag (or at the release tag, when
+that nightly holds nothing newer) and rewritten just enough to live on the
+site:
 
   - the leading H1 becomes the frontmatter title
   - the first paragraph becomes the description
@@ -32,7 +33,7 @@ import urllib.request
 from pathlib import Path
 
 from gen_api_reference import latest_nightly_tag
-from gen_command_reference import REPO_ROOT, run
+from gen_command_reference import REPO_ROOT, gh_json, run
 
 MANIFEST = REPO_ROOT / "scripts" / "upstream-manifest.json"
 COMMANDS_JSON = REPO_ROOT / "site" / "public" / "commands.json"
@@ -163,6 +164,15 @@ class NightlyIndex:
         return sorted(found)
 
 
+def newest_ref(repo: str, stable_version: str) -> str:
+    """The latest nightly tag, or the release tag right after a release."""
+    nightly = latest_nightly_tag()
+    compare = gh_json(
+        f"https://api.github.com/repos/{repo}/compare/v{stable_version}...{nightly}"
+    )
+    return nightly if compare["ahead_by"] else f"v{stable_version}"
+
+
 def release_note(
     used: list[str], stable_text: str | None, text: str, stable_version: str, dest: str
 ) -> str:
@@ -194,8 +204,8 @@ def main() -> None:
     pages = manifest["pages"]
     site_paths = {**manifest.get("aliases", {}), **{p["src"]: p["dest"] for p in pages}}
 
-    ref = args.ref or latest_nightly_tag()
     stable_version = run(["npm", "view", "vibium", "dist-tags.latest"]).strip()
+    ref = args.ref or newest_ref(repo, stable_version)
     print(f"upstream docs: {ref} vs v{stable_version}")
     nightly = NightlyIndex()
 

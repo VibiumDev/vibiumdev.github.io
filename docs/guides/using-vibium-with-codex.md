@@ -1,14 +1,10 @@
 ---
 title: "Use Vibium with Codex"
 description: "Give Codex browser tools through the Vibium CLI and its browser and check skills."
-sidebar:
-  badge: Nightly
 editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/how-to-guides/using-vibium-with-codex.md
 ---
 
 <!-- Imported from docs/how-to-guides/using-vibium-with-codex.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
-
-> **Nightly only.** This guide uses `vibium ready ai`, `vibium ready browser`, `vibium run`, which are not in 26.8.21. See [What's in Nightly](../nightly.md).
 
 Give Codex browser tools through the Vibium CLI and its `browser` and `check`
 skills. Use a local Codex session with shell access to your project. The terminal

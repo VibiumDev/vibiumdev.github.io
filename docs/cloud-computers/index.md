@@ -9,8 +9,6 @@ editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/how-to-guides/cloud-
 
 <!-- Imported from docs/how-to-guides/cloud-computers/README.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
 
-> This guide was added after the 26.8.21 release, so parts of it MAY need a nightly build. See [What's in Nightly](../nightly.md).
-
 There are two ways to get a browser in the cloud. You can rent the
 **browser**: managed vendors (Sauce Labs, BrowserStack, TestMu
 (LambdaTest), Kernel, …) sell browsers as a service — a session URL,

@@ -6,8 +6,6 @@ editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/how-to-guides/slow-c
 
 <!-- Imported from docs/how-to-guides/slow-chrome-launch-in-macos-vm.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
 
-> This guide was updated after the 26.8.21 release, so parts of it MAY need a nightly build. See [What's in Nightly](../nightly.md).
-
 On a macOS guest whose virtual GPU doesn't work, **every Chrome launch costs an
 extra ~15 seconds**. Since `make test` launches Chrome ~120 times, this is the
 difference between a ~6 minute suite and an ~18 minute one.

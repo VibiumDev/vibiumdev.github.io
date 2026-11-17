@@ -1,14 +1,10 @@
 ---
 title: "How Run and Check work"
 description: "Run carries out a browser goal. Check investigates a claim about the result."
-sidebar:
-  badge: Nightly
 editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/explanation/run-check-webdriver-bidi-architecture.md
 ---
 
 <!-- Imported from docs/explanation/run-check-webdriver-bidi-architecture.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
-
-> **Nightly only.** This guide uses `vibium run`, which is not in 26.8.21. See [What's in Nightly](../nightly.md).
 
 Run carries out a browser goal. Check investigates a claim about the result.
 Both use a model to choose from Vibium’s existing browser operations.

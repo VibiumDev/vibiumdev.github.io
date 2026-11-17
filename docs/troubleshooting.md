@@ -4,17 +4,17 @@ title: Troubleshooting
 
 Quick fixes for the most common issues.
 
-## First stop: `vibium ready` (nightly)
+## First stop: `vibium ready`
 
 ```sh
 vibium ready
 ```
 
-On nightly builds, `ready` checks the installed browser files and, when AI
+`ready` checks the installed browser files and, when AI
 is configured, the model provider used by `run` and `check`. It names what
 is missing and how to fix it. `vibium ready browser` and `vibium ready ai`
-run each half alone. On the npm release, `vibium go https://example.com`
-is the quickest health check.
+run each half alone. `vibium go https://example.com` is the quickest
+health check when you only want to see a page load.
 
 ## "command not found: vibium"
 

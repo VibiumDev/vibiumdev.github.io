@@ -1,14 +1,10 @@
 ---
 title: "How find by intent works"
 description: "find turns a description, a reference image, or an exact locator into mapped elements with @eN refs."
-sidebar:
-  badge: Nightly
 editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/explanation/find-by-intent.md
 ---
 
 <!-- Imported from docs/explanation/find-by-intent.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
-
-> **Nightly only.** This guide uses `vibium find css`, `vibium find image`, which are not in 26.8.21. See [What's in Nightly](../nightly.md).
 
 `find` turns a description, a reference image, or an exact locator into
 mapped elements with `@eN` refs. This page explains how each is resolved,

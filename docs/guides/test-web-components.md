@@ -1,14 +1,10 @@
 ---
 title: "Test a web component"
 description: "Web components hide their internals in a shadow root. document.querySelector stops at that boundary, so a plain CSS selector cannot see inside one."
-sidebar:
-  badge: Nightly
 editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/how-to-guides/test-web-components.md
 ---
 
 <!-- Imported from docs/how-to-guides/test-web-components.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
-
-> **Nightly only.** This guide uses `vibium find css`, which is not in 26.8.21. See [What's in Nightly](../nightly.md).
 
 Web components hide their internals in a shadow root. `document.querySelector` stops at that boundary, so a plain CSS selector cannot see inside one.
 
@@ -37,6 +33,14 @@ vibium find css "my-card >> p"
 
 ```js
 const p = await vibe.find({ css: 'my-card >> p' });
+```
+
+```python
+p = vibe.find(css="my-card >> p")
+```
+
+```java
+Element p = vibe.find(new SelectorOptions().css("my-card >> p"));
 ```
 
 Everything works on the result, not just `find`:

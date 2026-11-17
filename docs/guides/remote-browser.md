@@ -6,8 +6,6 @@ editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/tutorials/remote-bro
 
 <!-- Imported from docs/tutorials/remote-browser.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
 
-> This guide was updated after the 26.8.21 release, so parts of it MAY need a nightly build. See [What's in Nightly](../nightly.md).
-
 Run Chrome on one machine, control it from another.
 
 ---
@@ -185,7 +183,7 @@ bro.stop()
 ### Java
 
 ```groovy
-implementation 'com.vibium:vibium:26.8.21'
+implementation 'com.vibium:vibium:26.11.16'
 ```
 
 ```java
@@ -213,11 +211,11 @@ The env-var fallback makes jshell a first-class way to drive a remote
 browser interactively — no build file, no `StartOptions`:
 
 ```bash
-curl -sO https://repo1.maven.org/maven2/com/vibium/vibium/26.8.21/vibium-26.8.21.jar
+curl -sO https://repo1.maven.org/maven2/com/vibium/vibium/26.11.16/vibium-26.11.16.jar
 curl -sO https://repo1.maven.org/maven2/com/google/code/gson/gson/2.11.0/gson-2.11.0.jar
 
 VIBIUM_CONNECT_URL=ws://your-server:9515/session \
-  jshell --class-path vibium-26.8.21.jar:gson-2.11.0.jar
+  jshell --class-path vibium-26.11.16.jar:gson-2.11.0.jar
 ```
 
 ```text

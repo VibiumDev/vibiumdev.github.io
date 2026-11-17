@@ -1,14 +1,10 @@
 ---
 title: "Check a live browser or saved recording"
 description: "vibium check asks a fresh verifier to investigate a claim and return PASS, FAIL, or REVIEW, with evidence."
-sidebar:
-  badge: Nightly
 editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/how-to-guides/check.md
 ---
 
 <!-- Imported from docs/how-to-guides/check.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
-
-> **Nightly only.** This guide uses `vibium check --keep-open`, `vibium check --report`, `vibium ready ai`, which are not in 26.8.21. See [What's in Nightly](../nightly.md).
 
 `vibium check` asks a fresh verifier to investigate a claim and return **PASS**,
 **FAIL**, or **REVIEW**, with evidence. Live checks use your existing local
