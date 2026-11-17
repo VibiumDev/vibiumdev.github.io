@@ -4,13 +4,10 @@ description: "There are two ways to get a browser in the cloud. You can rent the
 sidebar:
   label: Overview
   order: 0
-  badge: Nightly
 editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/how-to-guides/cloud-browsers/README.md
 ---
 
 <!-- Imported from docs/how-to-guides/cloud-browsers/README.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
-
-> **Nightly only.** This guide uses `vibium config init`, which is not in 26.8.21. See [What's in Nightly](../nightly.md).
 
 There are two ways to get a browser in the cloud. You can rent the
 **computer** and run the browser yourself — that's

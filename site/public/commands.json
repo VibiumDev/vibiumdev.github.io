@@ -1,6 +1,6 @@
 {
- "description": "Machine-readable listing of every vibium CLI command, generated from the binaries. nightlyOnly marks commands not yet in the npm release (vibium@26.8.21). Human docs: https://vibium.com/docs/commands/",
- "stableVersion": "26.8.21",
+ "description": "Machine-readable listing of every vibium CLI command, generated from the binaries. nightlyOnly marks commands not yet in the npm release (vibium@26.11.16). Human docs: https://vibium.com/docs/commands/",
+ "stableVersion": "26.11.16",
  "globalFlags": [
   {
    "flag": "--channel",
@@ -74,10 +74,7 @@
     }
    ],
    "nightlyOnly": false,
-   "docs": "https://vibium.com/docs/commands/add-skill/",
-   "nightlyOnlyFlags": [
-    "--agent"
-   ]
+   "docs": "https://vibium.com/docs/commands/add-skill/"
   },
   {
    "command": "vibium attr",
@@ -159,19 +156,7 @@
     }
    ],
    "nightlyOnly": false,
-   "docs": "https://vibium.com/docs/commands/check/",
-   "nightlyOnlyFlags": [
-    "--ai-base-url",
-    "--base-url",
-    "--expect",
-    "--input",
-    "--keep-open",
-    "--model",
-    "--output",
-    "--provider",
-    "--reasoning-effort",
-    "--report"
-   ]
+   "docs": "https://vibium.com/docs/commands/check/"
   },
   {
    "command": "vibium click",
@@ -215,7 +200,7 @@
      "argument": "string"
     }
    ],
-   "nightlyOnly": true,
+   "nightlyOnly": false,
    "docs": "https://vibium.com/docs/commands/codegen/"
   },
   {
@@ -225,7 +210,7 @@
     "vibium config [command]"
    ],
    "flags": [],
-   "nightlyOnly": true,
+   "nightlyOnly": false,
    "docs": "https://vibium.com/docs/commands/config/"
   },
   {
@@ -244,7 +229,7 @@
      "description": "Print the template instead of writing it"
     }
    ],
-   "nightlyOnly": true,
+   "nightlyOnly": false,
    "docs": "https://vibium.com/docs/commands/config/"
   },
   {
@@ -337,10 +322,7 @@
     }
    ],
    "nightlyOnly": false,
-   "docs": "https://vibium.com/docs/commands/daemon/",
-   "nightlyOnlyFlags": [
-    "--connect-caps"
-   ]
+   "docs": "https://vibium.com/docs/commands/daemon/"
   },
   {
    "command": "vibium daemon status",
@@ -551,15 +533,7 @@
     }
    ],
    "nightlyOnly": false,
-   "docs": "https://vibium.com/docs/commands/find/",
-   "nightlyOnlyFlags": [
-    "--ai-base-url",
-    "--details",
-    "--model",
-    "--provider",
-    "--reasoning-effort",
-    "--strategy"
-   ]
+   "docs": "https://vibium.com/docs/commands/find/"
   },
   {
    "command": "vibium find alt",
@@ -590,7 +564,7 @@
      "argument": "timeout"
     }
    ],
-   "nightlyOnly": true,
+   "nightlyOnly": false,
    "docs": "https://vibium.com/docs/commands/find/"
   },
   {
@@ -626,7 +600,7 @@
      "argument": "string"
     }
    ],
-   "nightlyOnly": true,
+   "nightlyOnly": false,
    "docs": "https://vibium.com/docs/commands/find/"
   },
   {
@@ -662,7 +636,7 @@
      "argument": "string"
     }
    ],
-   "nightlyOnly": true,
+   "nightlyOnly": false,
    "docs": "https://vibium.com/docs/commands/find/"
   },
   {
@@ -731,7 +705,7 @@
      "argument": "timeout"
     }
    ],
-   "nightlyOnly": true,
+   "nightlyOnly": false,
    "docs": "https://vibium.com/docs/commands/find/"
   },
   {
@@ -969,7 +943,7 @@
      "description": "Exit non-zero when the answer is false"
     }
    ],
-   "nightlyOnly": true,
+   "nightlyOnly": false,
    "docs": "https://vibium.com/docs/commands/is/"
   },
   {
@@ -1064,7 +1038,7 @@
      "argument": "int"
     }
    ],
-   "nightlyOnly": true,
+   "nightlyOnly": false,
    "docs": "https://vibium.com/docs/commands/listen/"
   },
   {
@@ -1080,7 +1054,7 @@
      "argument": "int"
     }
    ],
-   "nightlyOnly": true,
+   "nightlyOnly": false,
    "docs": "https://vibium.com/docs/commands/long-press/"
   },
   {
@@ -1254,10 +1228,7 @@
     }
    ],
    "nightlyOnly": false,
-   "docs": "https://vibium.com/docs/commands/page/",
-   "nightlyOnlyFlags": [
-    "--isolated"
-   ]
+   "docs": "https://vibium.com/docs/commands/page/"
   },
   {
    "command": "vibium page switch",
@@ -1337,16 +1308,7 @@
     }
    ],
    "nightlyOnly": false,
-   "docs": "https://vibium.com/docs/commands/pdf/",
-   "nightlyOnlyFlags": [
-    "--background",
-    "--landscape",
-    "--margin",
-    "--page-height",
-    "--page-ranges",
-    "--page-width",
-    "--scale"
-   ]
+   "docs": "https://vibium.com/docs/commands/pdf/"
   },
   {
    "command": "vibium pipe",
@@ -1381,12 +1343,7 @@
     }
    ],
    "nightlyOnly": false,
-   "docs": "https://vibium.com/docs/commands/pipe/",
-   "nightlyOnlyFlags": [
-    "--browser-arg",
-    "--connect-caps",
-    "--no-browser"
-   ]
+   "docs": "https://vibium.com/docs/commands/pipe/"
   },
   {
    "command": "vibium press",
@@ -1427,7 +1384,7 @@
      "argument": "string"
     }
    ],
-   "nightlyOnly": true,
+   "nightlyOnly": false,
    "docs": "https://vibium.com/docs/commands/ready/"
   },
   {
@@ -1458,7 +1415,7 @@
      "argument": "string"
     }
    ],
-   "nightlyOnly": true,
+   "nightlyOnly": false,
    "docs": "https://vibium.com/docs/commands/ready/"
   },
   {
@@ -1468,7 +1425,7 @@
     "vibium ready browser [engine] [flags]"
    ],
    "flags": [],
-   "nightlyOnly": true,
+   "nightlyOnly": false,
    "docs": "https://vibium.com/docs/commands/ready/"
   },
   {
@@ -1478,7 +1435,7 @@
     "vibium ready speech [flags]"
    ],
    "flags": [],
-   "nightlyOnly": true,
+   "nightlyOnly": false,
    "docs": "https://vibium.com/docs/commands/ready/"
   },
   {
@@ -1668,11 +1625,7 @@
     }
    ],
    "nightlyOnly": false,
-   "docs": "https://vibium.com/docs/commands/record/",
-   "nightlyOnlyFlags": [
-    "--upload",
-    "--upload-to"
-   ]
+   "docs": "https://vibium.com/docs/commands/record/"
   },
   {
    "command": "vibium reload",
@@ -1737,7 +1690,7 @@
      "argument": "string"
     }
    ],
-   "nightlyOnly": true,
+   "nightlyOnly": false,
    "docs": "https://vibium.com/docs/commands/run/"
   },
   {
@@ -1792,7 +1745,7 @@
      "argument": "string"
     }
    ],
-   "nightlyOnly": true,
+   "nightlyOnly": false,
    "docs": "https://vibium.com/docs/commands/say/"
   },
   {
@@ -1904,7 +1857,7 @@
      "argument": "timeout"
     }
    ],
-   "nightlyOnly": true,
+   "nightlyOnly": false,
    "docs": "https://vibium.com/docs/commands/set/"
   },
   {
@@ -1923,7 +1876,7 @@
      "description": "Only fill what is missing"
     }
    ],
-   "nightlyOnly": true,
+   "nightlyOnly": false,
    "docs": "https://vibium.com/docs/commands/setup/"
   },
   {
@@ -2017,7 +1970,7 @@
      "argument": "string"
     }
    ],
-   "nightlyOnly": true,
+   "nightlyOnly": false,
    "docs": "https://vibium.com/docs/commands/swipe/"
   },
   {
@@ -2027,7 +1980,7 @@
     "vibium tap [x] [y] | tap <selector|@ref> [flags]"
    ],
    "flags": [],
-   "nightlyOnly": true,
+   "nightlyOnly": false,
    "docs": "https://vibium.com/docs/commands/tap/"
   },
   {
@@ -2079,7 +2032,7 @@
      "argument": "timeout"
     }
    ],
-   "nightlyOnly": true,
+   "nightlyOnly": false,
    "docs": "https://vibium.com/docs/commands/unset/"
   },
   {
@@ -2237,7 +2190,7 @@
     "vibium webbotauth [command]"
    ],
    "flags": [],
-   "nightlyOnly": true,
+   "nightlyOnly": false,
    "docs": "https://vibium.com/docs/commands/webbotauth/"
   },
   {
@@ -2253,7 +2206,7 @@
      "argument": "string"
     }
    ],
-   "nightlyOnly": true,
+   "nightlyOnly": false,
    "docs": "https://vibium.com/docs/commands/webbotauth/"
   },
   {
@@ -2270,7 +2223,7 @@
      "argument": "string"
     }
    ],
-   "nightlyOnly": true,
+   "nightlyOnly": false,
    "docs": "https://vibium.com/docs/commands/webbotauth/"
   },
   {

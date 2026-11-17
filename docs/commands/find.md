@@ -41,8 +41,6 @@ openai-compatible   the model name your server serves
 local               the model name your server serves
 ```
 
-New in nightly (not yet in the npm release): `--ai-base-url`, `--details`, `--model`, `--provider`, `--reasoning-effort`, `--strategy`
-
 ## Subcommands
 
 ### vibium find alt
@@ -67,8 +65,6 @@ vibium find alt "Logo"
 
 Find element by CSS selector.
 
-> **Nightly only.** This command is in the nightly builds but not yet in the latest npm release. See [What's in Nightly](../nightly.md).
-
 ```
 vibium find css [css] [flags]
 ```
@@ -90,8 +86,6 @@ vibium find css "a" --all
 ### vibium find description
 
 Find element by natural-language description.
-
-> **Nightly only.** This command is in the nightly builds but not yet in the latest npm release. See [What's in Nightly](../nightly.md).
 
 ```
 vibium find description [description] [flags]
@@ -133,8 +127,6 @@ vibium description --provider local --model my-model --ai-base-url http://127.0.
 ### vibium find image
 
 Find where a reference image appears on screen.
-
-> **Nightly only.** This command is in the nightly builds but not yet in the latest npm release. See [What's in Nightly](../nightly.md).
 
 ```
 vibium find image [path] [flags]
@@ -243,8 +235,6 @@ vibium find role heading --name "Example"
 ### vibium find tag
 
 Find element by HTML tag name.
-
-> **Nightly only.** This command is in the nightly builds but not yet in the latest npm release. See [What's in Nightly](../nightly.md).
 
 ```
 vibium find tag [tag] [flags]

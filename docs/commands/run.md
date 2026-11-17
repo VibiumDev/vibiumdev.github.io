@@ -1,14 +1,10 @@
 ---
 title: vibium run
-sidebar:
-  badge: Nightly
 ---
 
 Accomplish a live browser goal using VIBIUM_AI_* configuration.
 
 ## Synopsis
-
-> **Nightly only.** This command is in the nightly builds but not yet in the latest npm release. See [What's in Nightly](../nightly.md).
 
 ```
 vibium run "<goal>" [flags]

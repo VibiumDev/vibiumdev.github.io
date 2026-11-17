@@ -1,14 +1,10 @@
 ---
 title: "Use Vibium with Claude Desktop"
 description: "Connect Claude Desktop's Chat tab to Vibium's local MCP server to control a browser."
-sidebar:
-  badge: Nightly
 editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/how-to-guides/using-vibium-with-claude-desktop.md
 ---
 
 <!-- Imported from docs/how-to-guides/using-vibium-with-claude-desktop.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
-
-> **Nightly only.** This guide uses `vibium ready browser`, `vibium_check`, `vibium_run`, which are not in 26.8.21. See [What's in Nightly](../nightly.md).
 
 Connect Claude Desktop's **Chat tab** to Vibium's local MCP server to control
 a browser. For CLI skills in the **Code tab**, follow

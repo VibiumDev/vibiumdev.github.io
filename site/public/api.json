@@ -1,6 +1,6 @@
 {
-  "source": "https://github.com/VibiumDev/vibium/blob/nightly-2026.11.14-dev.20261114035046-cd25266/docs/reference/api.md",
-  "stableVersion": "26.8.21",
+  "source": "https://github.com/VibiumDev/vibium/blob/nightly-2026.11.17-dev.20261117050657-7068cf6/docs/reference/api.md",
+  "stableVersion": "26.11.16",
   "surfaces": [
     "cli",
     "mcp",
@@ -257,9 +257,7 @@
       "javascript": null,
       "python": null,
       "java": "browser.context()",
-      "nightlyOnly": [
-        "java"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "java": [
@@ -476,12 +474,7 @@
       "python": "page.find(locator, **opts)",
       "java": "page.find(locator, options?)",
       "nightlyOnly": [],
-      "changedInNightly": [
-        "cli",
-        "javascript",
-        "python",
-        "java"
-      ],
+      "changedInNightly": [],
       "signatures": {
         "javascript": [
           "find(selector: string | SelectorOptions, options?: FindOptions): FluentElement;"
@@ -512,12 +505,7 @@
       "python": "page.find_all(locator, **opts)",
       "java": "page.findAll(locator, options?)",
       "nightlyOnly": [],
-      "changedInNightly": [
-        "cli",
-        "javascript",
-        "python",
-        "java"
-      ],
+      "changedInNightly": [],
       "signatures": {
         "javascript": [
           "findAll(selector: string | SelectorOptions, options?: FindOptions): Promise<Element[]>;"
@@ -578,11 +566,7 @@
       "python": "page.pdf(**opts)",
       "java": "page.pdf(options?)",
       "nightlyOnly": [],
-      "changedInNightly": [
-        "javascript",
-        "python",
-        "java"
-      ],
+      "changedInNightly": [],
       "signatures": {
         "javascript": [
           "pdf(options?: PdfOptions): Promise<Buffer>;"
@@ -1682,11 +1666,7 @@
       "javascript": "page.context",
       "python": "page.context",
       "java": "page.context()",
-      "nightlyOnly": [
-        "javascript",
-        "python",
-        "java"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "javascript": [
@@ -1710,11 +1690,7 @@
       "javascript": "page.id",
       "python": "page.id",
       "java": "page.id()",
-      "nightlyOnly": [
-        "javascript",
-        "python",
-        "java"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "javascript": [
@@ -1738,11 +1714,7 @@
       "javascript": "page.capture",
       "python": "page.capture",
       "java": "page.capture()",
-      "nightlyOnly": [
-        "javascript",
-        "python",
-        "java"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "javascript": [
@@ -1766,11 +1738,7 @@
       "javascript": "page.keyboard",
       "python": "page.keyboard",
       "java": "page.keyboard()",
-      "nightlyOnly": [
-        "javascript",
-        "python",
-        "java"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "javascript": [
@@ -1794,11 +1762,7 @@
       "javascript": "page.mouse",
       "python": "page.mouse",
       "java": "page.mouse()",
-      "nightlyOnly": [
-        "javascript",
-        "python",
-        "java"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "javascript": [
@@ -1822,11 +1786,7 @@
       "javascript": "page.touch",
       "python": "page.touch",
       "java": "page.touch()",
-      "nightlyOnly": [
-        "javascript",
-        "python",
-        "java"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "javascript": [
@@ -1850,11 +1810,7 @@
       "javascript": "page.clock",
       "python": "page.clock",
       "java": "page.clock()",
-      "nightlyOnly": [
-        "javascript",
-        "python",
-        "java"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "javascript": [
@@ -1878,10 +1834,7 @@
       "javascript": "page.waitUntil(fn, opts?)",
       "python": "page.wait_until",
       "java": null,
-      "nightlyOnly": [
-        "javascript",
-        "python"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "javascript": [
@@ -1902,11 +1855,7 @@
       "javascript": "*mode of onConsole('collect')*",
       "python": "*mode of on_console('collect')*",
       "java": "page.collectConsole()",
-      "nightlyOnly": [
-        "javascript",
-        "python",
-        "java"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "java": [
@@ -1924,11 +1873,7 @@
       "javascript": "*mode of onError('collect')*",
       "python": "*mode of on_error('collect')*",
       "java": "page.collectErrors()",
-      "nightlyOnly": [
-        "javascript",
-        "python",
-        "java"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "java": [
@@ -1946,9 +1891,7 @@
       "javascript": "page.routeWebSocket(pattern, fn)",
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "javascript"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "javascript": [
@@ -1966,9 +1909,7 @@
       "javascript": null,
       "python": "page.eval(expr)",
       "java": null,
-      "nightlyOnly": [
-        "python"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "python": [
@@ -2151,13 +2092,7 @@
       "python": "el.set(value=True, timeout=...)",
       "java": "el.set(value?)",
       "nightlyOnly": [],
-      "changedInNightly": [
-        "cli",
-        "mcp",
-        "javascript",
-        "python",
-        "java"
-      ],
+      "changedInNightly": [],
       "signatures": {
         "javascript": [
           "set(value?: boolean, options?: ActionOptions): Promise<void>;"
@@ -2187,13 +2122,7 @@
       "python": "el.unset(timeout?)",
       "java": "el.unset()",
       "nightlyOnly": [],
-      "changedInNightly": [
-        "cli",
-        "mcp",
-        "javascript",
-        "python",
-        "java"
-      ],
+      "changedInNightly": [],
       "signatures": {
         "javascript": [
           "unset(options?: ActionOptions): Promise<void>;"
@@ -2602,11 +2531,7 @@
       "javascript": "el.boundingBox()",
       "python": "el.bounding_box()",
       "java": "el.boundingBox()",
-      "nightlyOnly": [
-        "javascript",
-        "python",
-        "java"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "javascript": [
@@ -2630,11 +2555,7 @@
       "javascript": "el.getAttribute(name)",
       "python": "el.get_attribute(name)",
       "java": "el.getAttribute(name)",
-      "nightlyOnly": [
-        "javascript",
-        "python",
-        "java"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "javascript": [
@@ -2658,11 +2579,7 @@
       "javascript": "el.info",
       "python": "el.info",
       "java": "el.info()",
-      "nightlyOnly": [
-        "javascript",
-        "python",
-        "java"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "javascript": [
@@ -2764,13 +2681,7 @@
       "python": "el.is_set()",
       "java": "el.isSet()",
       "nightlyOnly": [],
-      "changedInNightly": [
-        "cli",
-        "mcp",
-        "javascript",
-        "python",
-        "java"
-      ],
+      "changedInNightly": [],
       "signatures": {
         "javascript": [
           "isSet(): Promise<boolean>;"
@@ -3188,11 +3099,7 @@
       "javascript": "context.id",
       "python": "context.id",
       "java": "context.id()",
-      "nightlyOnly": [
-        "javascript",
-        "python",
-        "java"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "javascript": [
@@ -3216,11 +3123,7 @@
       "javascript": "context.recording",
       "python": "context.recording",
       "java": "context.recording()",
-      "nightlyOnly": [
-        "javascript",
-        "python",
-        "java"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "javascript": [
@@ -3469,10 +3372,7 @@
       "javascript": "touch.tap(x, y)",
       "python": "touch.tap(x, y)",
       "java": "touch.tap(x, y)",
-      "nightlyOnly": [
-        "cli",
-        "mcp"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "javascript": [
@@ -3496,12 +3396,7 @@
       "javascript": "touch.swipe(direction, opts?)",
       "python": "touch.swipe(direction, from_=, speed=, hold_ms=)",
       "java": null,
-      "nightlyOnly": [
-        "cli",
-        "mcp",
-        "javascript",
-        "python"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "javascript": [
@@ -3523,12 +3418,7 @@
       "javascript": "touch.longPress(x, y, durationMs?)",
       "python": "touch.long_press(x, y, duration_ms?)",
       "java": null,
-      "nightlyOnly": [
-        "cli",
-        "mcp",
-        "javascript",
-        "python"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "javascript": [
@@ -3768,9 +3658,7 @@
       "python": "recording.stop(path?, upload?)",
       "java": "recording.stop(path?)",
       "nightlyOnly": [],
-      "changedInNightly": [
-        "python"
-      ],
+      "changedInNightly": [],
       "signatures": {
         "javascript": [
           "stop(options?: RecordingStopOptions): Promise<RecordingResult>;"
@@ -3894,9 +3782,7 @@
       "python": "route.request (property)",
       "java": "route.request()",
       "nightlyOnly": [],
-      "changedInNightly": [
-        "python"
-      ],
+      "changedInNightly": [],
       "signatures": {
         "javascript": [
           "readonly request: Request;"
@@ -4680,9 +4566,7 @@
       "python": null,
       "java": null,
       "nightlyOnly": [],
-      "changedInNightly": [
-        "cli"
-      ]
+      "changedInNightly": []
     },
     {
       "id": 164,
@@ -4733,9 +4617,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -4748,9 +4630,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -4763,9 +4643,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -4778,9 +4656,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -4793,9 +4669,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -4808,9 +4682,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -4823,9 +4695,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -4838,9 +4708,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -4853,9 +4721,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -4868,9 +4734,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -4883,9 +4747,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -4898,9 +4760,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -4913,9 +4773,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -4928,9 +4786,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -4943,9 +4799,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -4958,9 +4812,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -4973,9 +4825,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -4988,9 +4838,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -5003,9 +4851,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -5018,9 +4864,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -5033,9 +4877,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -5048,9 +4890,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -5063,9 +4903,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -5078,9 +4916,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -5093,9 +4929,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -5108,9 +4942,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -5123,9 +4955,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -5138,9 +4968,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -5153,9 +4981,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -5168,9 +4994,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -5183,9 +5007,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -5198,9 +5020,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -5213,9 +5033,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -5228,13 +5046,7 @@
       "javascript": "browser.check(claim, opts?)",
       "python": "browser.check(claim, record=...)",
       "java": "browser.check(claim, options?)",
-      "nightlyOnly": [
-        "cli",
-        "mcp",
-        "javascript",
-        "python",
-        "java"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "javascript": [
@@ -5259,11 +5071,7 @@
       "javascript": "page.check(claim, opts?)",
       "python": "page.check(claim, record=...)",
       "java": "page.check(claim, options?)",
-      "nightlyOnly": [
-        "javascript",
-        "python",
-        "java"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "javascript": [
@@ -5288,9 +5096,7 @@
       "javascript": null,
       "python": null,
       "java": "Vibium.check(claim, options)",
-      "nightlyOnly": [
-        "java"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "java": [
@@ -5308,9 +5114,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -5323,9 +5127,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -5338,9 +5140,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -5353,9 +5153,7 @@
       "javascript": null,
       "python": null,
       "java": null,
-      "nightlyOnly": [
-        "cli"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": []
     },
     {
@@ -5368,13 +5166,7 @@
       "javascript": "browser.run(goal, opts?)",
       "python": "browser.run(goal, opts?)",
       "java": "browser.run(goal, opts?)",
-      "nightlyOnly": [
-        "cli",
-        "mcp",
-        "javascript",
-        "python",
-        "java"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "javascript": [
@@ -5399,11 +5191,7 @@
       "javascript": "page.run(goal, opts?)",
       "python": "page.run(goal, opts?)",
       "java": "page.run(goal, opts?)",
-      "nightlyOnly": [
-        "javascript",
-        "python",
-        "java"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "javascript": [
@@ -5428,13 +5216,7 @@
       "javascript": "browser.say(text, opts?)",
       "python": "browser.say(text, target=...)",
       "java": "browser.say(text, options?)",
-      "nightlyOnly": [
-        "cli",
-        "mcp",
-        "javascript",
-        "python",
-        "java"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "javascript": [
@@ -5459,11 +5241,7 @@
       "javascript": "page.say(text, opts?)",
       "python": "page.say(text, target=...)",
       "java": "page.say(text, options?)",
-      "nightlyOnly": [
-        "javascript",
-        "python",
-        "java"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "javascript": [
@@ -5488,13 +5266,7 @@
       "javascript": "browser.listen(opts?)",
       "python": "browser.listen(target=...)",
       "java": "browser.listen(options?)",
-      "nightlyOnly": [
-        "cli",
-        "mcp",
-        "javascript",
-        "python",
-        "java"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "javascript": [
@@ -5519,11 +5291,7 @@
       "javascript": "page.listen(opts?)",
       "python": "page.listen(target=...)",
       "java": "page.listen(options?)",
-      "nightlyOnly": [
-        "javascript",
-        "python",
-        "java"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "javascript": [
@@ -5548,9 +5316,7 @@
       "javascript": null,
       "python": null,
       "java": "Vibium.say(text, options?)",
-      "nightlyOnly": [
-        "java"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "java": [
@@ -5569,9 +5335,7 @@
       "javascript": null,
       "python": null,
       "java": "Vibium.listen(options?)",
-      "nightlyOnly": [
-        "java"
-      ],
+      "nightlyOnly": [],
       "changedInNightly": [],
       "signatures": {
         "java": [

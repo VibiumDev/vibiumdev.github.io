@@ -1,14 +1,10 @@
 ---
 title: "Recording Browser Sessions"
 description: "Record a timeline of screenshots, network requests, DOM snapshots, action groups — and, on supported engines, a video track — then view it in Record Player."
-sidebar:
-  badge: Nightly
 editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/tutorials/recording.md
 ---
 
 <!-- Imported from docs/tutorials/recording.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
-
-> **Nightly only.** This guide uses `vibium codegen`, `vibium run`, which are not in 26.8.21. See [What's in Nightly](../nightly.md).
 
 Record a timeline of screenshots, network requests, DOM snapshots, action groups — and, on supported engines, a video track — then view it in Record Player.
 

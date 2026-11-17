@@ -51,7 +51,7 @@ bro.stop()
 ```
 
 ```java
-// implementation 'com.vibium:vibium:26.8.21'
+// implementation 'com.vibium:vibium:26.11.16'
 import com.vibium.Vibium;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -118,8 +118,6 @@ vibium text
 ```
 
 ## Let the AI drive
-
-> Nightly builds and the next npm release; see [Run and Check](run-and-check.md).
 
 With an AI provider configured (`vibium setup` asks the questions and writes
 the config), a whole goal is one command:

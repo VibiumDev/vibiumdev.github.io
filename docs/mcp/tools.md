@@ -11,7 +11,7 @@ The Vibium MCP server exposes 92 tools. This page lists each
 one with its parameters, as reported by the server's own `tools/list`.
 The raw schemas are published as [`/mcp-tools.json`](/mcp-tools.json).
 
-Tools marked **(nightly)** are not in the latest release (26.8.21);
+Tools marked **(nightly)** are not in the latest release (26.11.16);
 see [What's in Nightly](../nightly.md). To register the server, see
 [Client Setup](setup.md).
 
@@ -19,10 +19,10 @@ see [What's in Nightly](../nightly.md). To register the server, see
 
 | Tool | What it does |
 |---|---|
-| [`vibium_run`](#vibium_run) **(nightly)** | Accomplish a goal in the current local browser session using configured AI provider and constrained browser tools |
-| [`vibium_check`](#vibium_check) **(nightly)** | Independently verify an explicit claim against the current local Chrome/Firefox session, or a read-only recording zip |
-| [`vibium_say`](#vibium_say) **(nightly)** | Speak text into the target |
-| [`vibium_listen`](#vibium_listen) **(nightly)** | Listen to the target and return what was said |
+| [`vibium_run`](#vibium_run) | Accomplish a goal in the current local browser session using configured AI provider and constrained browser tools |
+| [`vibium_check`](#vibium_check) | Independently verify an explicit claim against the current local Chrome/Firefox session, or a read-only recording zip |
+| [`vibium_say`](#vibium_say) | Speak text into the target |
+| [`vibium_listen`](#vibium_listen) | Listen to the target and return what was said |
 | [`browser_start`](#browser_start) | Start a browser session |
 | [`browser_navigate`](#browser_navigate) | Navigate to a URL in the browser |
 | [`browser_click`](#browser_click) | Click an element by CSS selector |
@@ -62,8 +62,8 @@ see [What's in Nightly](../nightly.md). To register the server, see
 | [`browser_get_value`](#browser_get_value) | Get the current value of an input, textarea, or select element |
 | [`browser_get_attribute`](#browser_get_attribute) | Get the value of an HTML attribute on an element |
 | [`browser_is_visible`](#browser_is_visible) | Check if an element is visible on the page |
-| [`browser_set`](#browser_set) **(nightly)** | Set checkbox/radio selection |
-| [`browser_unset`](#browser_unset) **(nightly)** | Uncheck a checkbox |
+| [`browser_set`](#browser_set) | Set checkbox/radio selection |
+| [`browser_unset`](#browser_unset) | Uncheck a checkbox |
 | [`browser_scroll_into_view`](#browser_scroll_into_view) | Scroll an element into view, centering it on screen |
 | [`browser_wait_for_url`](#browser_wait_for_url) | Wait until the page URL contains a given substring |
 | [`browser_wait_for_load`](#browser_wait_for_load) | Wait until the page reaches the "complete" ready state (all resources loaded) |
@@ -76,7 +76,7 @@ see [What's in Nightly](../nightly.md). To register the server, see
 | [`browser_focus`](#browser_focus) | Focus an element by CSS selector or @ref |
 | [`browser_count`](#browser_count) | Count the number of elements matching a CSS selector |
 | [`browser_is_enabled`](#browser_is_enabled) | Check if an element is enabled (not disabled) |
-| [`browser_is_set`](#browser_is_set) **(nightly)** | Check if a checkbox or radio button is checked |
+| [`browser_is_set`](#browser_is_set) | Check if a checkbox or radio button is checked |
 | [`browser_wait_for_text`](#browser_wait_for_text) | Wait until specific text appears on the page |
 | [`browser_wait_for_fn`](#browser_wait_for_fn) | Wait until a JavaScript expression returns a truthy value |
 | [`browser_dialog_accept`](#browser_dialog_accept) | Accept a dialog (alert, confirm, prompt) |
@@ -88,9 +88,9 @@ see [What's in Nightly](../nightly.md). To register the server, see
 | [`browser_mouse_down`](#browser_mouse_down) | Press a mouse button down at the current position |
 | [`browser_mouse_up`](#browser_mouse_up) | Release a mouse button at the current position |
 | [`browser_mouse_click`](#browser_mouse_click) | Click at coordinates or at the current mouse position |
-| [`browser_tap`](#browser_tap) **(nightly)** | Tap a touch pointer at coordinates, or on an element given as a selector or @ref (for touchscreen devices and phones) |
-| [`browser_swipe`](#browser_swipe) **(nightly)** | Swipe a touch pointer, finger held down for the move (for touchscreen devices and phones) |
-| [`browser_long_press`](#browser_long_press) **(nightly)** | Press and hold a touch pointer at coordinates (for touchscreen devices and phones) |
+| [`browser_tap`](#browser_tap) | Tap a touch pointer at coordinates, or on an element given as a selector or @ref (for touchscreen devices and phones) |
+| [`browser_swipe`](#browser_swipe) | Swipe a touch pointer, finger held down for the move (for touchscreen devices and phones) |
+| [`browser_long_press`](#browser_long_press) | Press and hold a touch pointer at coordinates (for touchscreen devices and phones) |
 | [`browser_drag`](#browser_drag) | Drag from one element to another |
 | [`browser_set_viewport`](#browser_set_viewport) | Set the browser viewport size |
 | [`browser_get_viewport`](#browser_get_viewport) | Get the current viewport dimensions |
@@ -116,8 +116,6 @@ see [What's in Nightly](../nightly.md). To register the server, see
 
 ### `vibium_run`
 
-> **Nightly only.** Not in the latest release.
-
 Accomplish a goal in the current local browser session using configured AI provider and constrained browser tools. Returns completed or not_completed with evidence. Live only; uses VIBIUM_AI_* configuration.
 
 | Parameter | Type | Required | Description |
@@ -131,8 +129,6 @@ Accomplish a goal in the current local browser session using configured AI provi
 | `reasoningEffort` | string | no | Per-call model setting override. Changing provider clears inherited model, endpoint, and reasoning effort. Credentials come from the runtime environment. |
 
 ### `vibium_check`
-
-> **Nightly only.** Not in the latest release.
 
 Independently verify an explicit claim against the current local Chrome/Firefox session, or a read-only recording zip. Returns passed, failed, or inconclusive with evidence. Recorded mode never launches a browser. Uses shared AI configuration from the server environment.
 
@@ -148,8 +144,6 @@ Independently verify an explicit claim against the current local Chrome/Firefox 
 | `record` | string | no | Optional path to an existing version 8 Vibium record.zip or Playwright trace.zip on this host; selects archive mode instead of the live browser. |
 
 ### `vibium_say`
-
-> **Nightly only.** Not in the latest release.
 
 Speak text into the target. The default is the current session: the phone on a Roadie, or the page's microphone in a browser. With no session open it is this machine's speakers. Returns when playback ends.
 
@@ -168,8 +162,6 @@ Speak text into the target. The default is the current session: the phone on a R
 | `voice` | string | no |  |
 
 ### `vibium_listen`
-
-> **Nightly only.** Not in the latest release.
 
 Listen to the target and return what was said. The default is the current session: what the phone or the page plays. With no session open it is this machine's microphone. Hears from the end of the last vibium_say, so a reply that began before this call is not missed. Stops after trailing silence.
 
@@ -589,8 +581,6 @@ Check if an element is visible on the page. Returns true/false without throwing 
 
 ### `browser_set`
 
-> **Nightly only.** Not in the latest release.
-
 Set checkbox/radio selection. Defaults to true; false clears a checkbox. Idempotent.
 
 | Parameter | Type | Required | Description |
@@ -601,8 +591,6 @@ Set checkbox/radio selection. Defaults to true; false clears a checkbox. Idempot
 | `value` | boolean | no | Desired selection state; false clears a checkbox |
 
 ### `browser_unset`
-
-> **Nightly only.** Not in the latest release.
 
 Uncheck a checkbox. Idempotent — does nothing if already unchecked.
 
@@ -735,8 +723,6 @@ Check if an element is enabled (not disabled). Returns true/false.
 
 ### `browser_is_set`
 
-> **Nightly only.** Not in the latest release.
-
 Check if a checkbox or radio button is checked. Returns true/false.
 
 | Parameter | Type | Required | Description |
@@ -851,8 +837,6 @@ Click at coordinates or at the current mouse position. If x and y are provided, 
 
 ### `browser_tap`
 
-> **Nightly only.** Not in the latest release.
-
 Tap a touch pointer at coordinates, or on an element given as a selector or @ref (for touchscreen devices and phones)
 
 | Parameter | Type | Required | Description |
@@ -863,8 +847,6 @@ Tap a touch pointer at coordinates, or on an element given as a selector or @ref
 | `y` | number | no | Y coordinate to tap at |
 
 ### `browser_swipe`
-
-> **Nightly only.** Not in the latest release.
 
 Swipe a touch pointer, finger held down for the move (for touchscreen devices and phones). Give a direction, or x1, y1, x2, y2. A direction swipe starts at the viewport center, or at an edge with from, and moves half the viewport unless distance says otherwise. On a phone through Roadie, from: bottom with direction: up goes home, from: top with direction: down opens Notification Center or the notification shade, and from: top-right with direction: down opens Control Center on an iPhone
 
@@ -885,8 +867,6 @@ Swipe a touch pointer, finger held down for the move (for touchscreen devices an
 | `y2` | number | no | Y coordinate to end at |
 
 ### `browser_long_press`
-
-> **Nightly only.** Not in the latest release.
 
 Press and hold a touch pointer at coordinates (for touchscreen devices and phones)
 

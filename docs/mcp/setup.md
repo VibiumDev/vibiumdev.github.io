@@ -95,8 +95,6 @@ claude mcp add vibium -- /path/to/vibium mcp
 
 ## Run and Check settings
 
-> **Nightly only.** See [Run and Check](../run-and-check.md).
-
 `vibium_run` and `vibium_check` read AI settings from the server's
 environment. In a JSON config, add an `env` object next to `command` and
 `args`:

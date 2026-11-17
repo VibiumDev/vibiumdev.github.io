@@ -28,7 +28,7 @@ The tools mirror the CLI commands, so everything in the
 | `browser_click`, `browser_fill`, `browser_type`, `browser_select`, `browser_keys` | Act on elements |
 | `browser_get_text`, `browser_get_html`, `browser_a11y_tree`, `browser_screenshot` | Read the result |
 | `browser_new_page`, `browser_list_pages`, `browser_switch_page` | Work with several tabs |
-| `vibium_run`, `vibium_check` | Hand over a whole goal, or verify a claim (nightly) |
+| `vibium_run`, `vibium_check` | Hand over a whole goal, or verify a claim |
 
 The [Tool Reference](tools.md) lists every tool with its parameters.
 
@@ -49,8 +49,6 @@ This is the same loop as the [CLI](../cli/index.md); MCP removes the shell
 from the middle.
 
 ## Run and Check
-
-> **Nightly only.** See [Run and Check](../run-and-check.md).
 
 `vibium_run` drives the browser toward a goal. `vibium_check` independently
 verifies a claim and returns a verdict with evidence. Both use the AI

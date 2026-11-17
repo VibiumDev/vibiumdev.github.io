@@ -36,7 +36,7 @@ first use; `vibium install --engine firefox` adds Firefox. Client libraries:
 ## Configuration
 
 No configuration is needed for direct browser commands. For the AI-driven
-`vibium run` and `vibium check` (nightly builds), set `VIBIUM_AI_PROVIDER`,
+`vibium run` and `vibium check`, set `VIBIUM_AI_PROVIDER`,
 `VIBIUM_AI_MODEL`, and the provider's API key env var, or run `vibium setup`
 to write `~/.config/vibium/ai.env` interactively. Useful env vars:
 `VIBIUM_ENGINE` (chrome|firefox), `VIBIUM_SESSION` (isolated concurrent

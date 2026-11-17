@@ -1,14 +1,10 @@
 ---
 title: "Model providers for Run and Check"
 description: "Run and Check share one AI configuration. Each invocation still starts a fresh conversation; the operation selects its instructions and tool permissions."
-sidebar:
-  badge: Nightly
 editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/reference/model-providers.md
 ---
 
 <!-- Imported from docs/reference/model-providers.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
-
-> **Nightly only.** This guide uses `vibium config init`, `vibium ready`, `vibium ready ai`, `vibium run`, `vibium setup`, `vibium_check`, and 1 more, which are not in 26.8.21. See [What's in Nightly](nightly.md).
 
 Run and Check share one AI configuration. Each invocation still starts a fresh
 conversation; the operation selects its instructions and tool permissions.

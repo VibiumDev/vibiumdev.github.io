@@ -1,14 +1,10 @@
 ---
 title: "Accomplish a browser goal with Run"
 description: "vibium run uses the live browser to carry out a goal and returns COMPLETED or NOT_COMPLETED, with concise evidence."
-sidebar:
-  badge: Nightly
 editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/how-to-guides/run.md
 ---
 
 <!-- Imported from docs/how-to-guides/run.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
-
-> **Nightly only.** This guide uses `vibium ready`, `vibium run`, `vibium setup`, `vibium_run`, which are not in 26.8.21. See [What's in Nightly](../nightly.md).
 
 `vibium run` uses the live browser to carry out a goal and returns
 **COMPLETED** or **NOT_COMPLETED**, with concise evidence. Use Check separately

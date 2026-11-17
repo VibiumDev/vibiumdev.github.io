@@ -6,8 +6,6 @@ editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/how-to-guides/downlo
 
 <!-- Imported from docs/how-to-guides/downloads.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
 
-> This guide was updated after the 26.8.21 release, so parts of it MAY need a nightly build. See [What's in Nightly](../nightly.md).
-
 Detect and save files downloaded by the browser.
 
 ## JavaScript

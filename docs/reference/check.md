@@ -1,14 +1,10 @@
 ---
 title: "Check reference"
 description: "Use this page to look up options, configuration, API examples, and limits."
-sidebar:
-  badge: Nightly
 editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/reference/check.md
 ---
 
 <!-- Imported from docs/reference/check.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
-
-> **Nightly only.** This guide uses `vibium check --base-url`, `vibium check --expect`, `vibium check --keep-open`, `vibium check --report`, `vibium config init`, `vibium ready`, and 3 more, which are not in 26.8.21. See [What's in Nightly](../nightly.md).
 
 Use this page to look up options, configuration, API examples, and limits.
 For everyday commands, see [Check a live browser or saved recording](../guides/check.md).

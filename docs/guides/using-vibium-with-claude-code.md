@@ -1,14 +1,10 @@
 ---
 title: "Use Vibium with Claude Code"
 description: "Give Claude Code browser tools through Vibium's CLI skills. This guide covers local CLI sessions and local sessions in Claude Desktop's Code tab."
-sidebar:
-  badge: Nightly
 editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/how-to-guides/using-vibium-with-claude-code.md
 ---
 
 <!-- Imported from docs/how-to-guides/using-vibium-with-claude-code.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
-
-> **Nightly only.** This guide uses `vibium ready ai`, `vibium ready browser`, `vibium run`, which are not in 26.8.21. See [What's in Nightly](../nightly.md).
 
 Give Claude Code browser tools through Vibium's CLI skills. This guide covers
 local CLI sessions and local sessions in Claude Desktop's Code tab. For the

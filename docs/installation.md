@@ -37,7 +37,7 @@ pip install vibium
 ```
 
 ```groovy title="Java"
-implementation 'com.vibium:vibium:26.8.21'
+implementation 'com.vibium:vibium:26.11.16'
 ```
 
 Each one bundles or locates the same `vibium` binary. Next steps per
@@ -56,9 +56,6 @@ that requires a browser, Vibium downloads its managed Google Chrome for
 Testing build. On macOS, the browser appears as "Google Chrome for Testing".
 
 ### Guided setup
-
-> `vibium setup` and `vibium ready` are in the [nightly builds](nightly.md)
-> and the next npm release.
 
 After installing, `vibium setup` walks you through the rest in one step: it
 prompts for AI settings (used by [`run` and `check`](run-and-check.md)),
@@ -127,10 +124,10 @@ Firefox auto-install is not available: install Firefox yourself and point
 `VIBIUM_ENGINE_PATH` at `firefox.exe`.
 
 `--channel` (or `VIBIUM_ENGINE_CHANNEL`) selects the Firefox release
-channel (`release` or `beta`). On [nightly builds](nightly.md), channels
-extend to Chrome (`stable`, `beta`, `dev`, `canary`), Vibium installs the
-known-good browser version baked into the release by default, and
-`VIBIUM_ENGINE_VERSION` pins an exact version for CI fleets.
+channel (`release` or `beta`) or the Chrome channel (`stable`, `beta`,
+`dev`, `canary`). Vibium installs the known-good browser version baked
+into the release by default, and `VIBIUM_ENGINE_VERSION` pins an exact
+version for CI fleets.
 See [Using Firefox](using-firefox.md) for details.
 
 ## Verify the installation
@@ -140,8 +137,8 @@ vibium go https://example.com
 vibium text
 ```
 
-If `vibium text` prints the page text, the install succeeded. On nightly
-builds, `vibium ready` runs the same verification as a proper diagnostic:
+If `vibium text` prints the page text, the install succeeded.
+`vibium ready` runs the same verification as a proper diagnostic:
 it checks the installed browser files (and, if configured, the AI provider
 for `run` and `check`) and prints what is missing.
 

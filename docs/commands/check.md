@@ -41,8 +41,6 @@ openai-compatible   the model name your server serves
 local               the model name your server serves
 ```
 
-New in nightly (not yet in the npm release): `--ai-base-url`, `--base-url`, `--expect`, `--input`, `--keep-open`, `--model`, `--output`, `--provider`, `--reasoning-effort`, `--report`
-
 ## Description
 
 Asks a fresh AI verifier to investigate a claim and return **PASS**,

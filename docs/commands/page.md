@@ -46,8 +46,6 @@ vibium page new [url] [flags]
     --isolated   Open the page in its own isolated context (separate cookies and storage)
 ```
 
-New in nightly (not yet in the npm release): `--isolated`
-
 ```sh
 vibium page new
 # Open a blank new page

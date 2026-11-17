@@ -53,7 +53,7 @@ workflow and its checks.
 
 ## Concurrent agents in one browser
 
-On nightly builds, the client libraries additionally give each agent its
+The client libraries additionally give each agent its
 own isolated page inside a single session: `browser.newPage()` returns a
 page with per-page element references, so two agents mapping and clicking
 concurrently do not clobber each other's `@eN` references.

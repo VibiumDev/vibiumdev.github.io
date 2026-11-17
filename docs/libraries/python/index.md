@@ -115,14 +115,11 @@ vibe.find(placeholder="Search...")
 vibe.find(testid="checkout")
 ```
 
-> **Nightly only.** A bare string is a plain-language description
-> (`vibe.find("the Add to Cart button")`), and `css="..."` takes an exact
-> CSS selector. In 26.8.21 a bare string is a CSS selector. The keyword
-> forms above work in both.
+A bare string is a plain-language description
+(`vibe.find("the Add to Cart button")`), and `css="..."` takes an exact
+CSS selector. Before 26.11.16 a bare string was a CSS selector.
 
 ## Let the AI drive
-
-> **Nightly only.** See [Run and Check](../../run-and-check.md).
 
 ```python
 result = vibe.run("open the contact page")

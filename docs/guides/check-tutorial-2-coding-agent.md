@@ -1,14 +1,10 @@
 ---
 title: "Part 2: Check with your coding agent"
 description: "Ask your coding agent to write and run a small cart test on var.parts."
-sidebar:
-  badge: Nightly
 editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/tutorials/check-with-a-coding-agent.md
 ---
 
 <!-- Imported from docs/tutorials/check-with-a-coding-agent.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
-
-> **Nightly only.** This guide uses `vibium config init`, `vibium ready`, `vibium run`, which are not in 26.8.21. See [What's in Nightly](../nightly.md).
 
 **Check tutorials:** [Part 1: Live websites](check-tutorial-1-live-website.md) · Part 2 · [Part 3: Recordings and traces](check-tutorial-3-recording.md)
 

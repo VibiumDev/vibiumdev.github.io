@@ -1,14 +1,10 @@
 ---
 title: vibium swipe
-sidebar:
-  badge: Nightly
 ---
 
 Swipe a touchscreen in a direction or from one point to another.
 
 ## Synopsis
-
-> **Nightly only.** This command is in the nightly builds but not yet in the latest npm release. See [What's in Nightly](../nightly.md).
 
 ```
 vibium swipe <up|down|left|right> | <x1> <y1> <x2> <y2> [flags]

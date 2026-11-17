@@ -1,14 +1,10 @@
 ---
 title: vibium setup
-sidebar:
-  badge: Nightly
 ---
 
 Interactive setup for AI settings, agent skills, and the local browser.
 
 ## Synopsis
-
-> **Nightly only.** This command is in the nightly builds but not yet in the latest npm release. See [What's in Nightly](../nightly.md).
 
 ```
 vibium setup [browser|ai|skills] [flags]

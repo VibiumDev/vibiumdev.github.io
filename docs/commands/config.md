@@ -1,14 +1,10 @@
 ---
 title: vibium config
-sidebar:
-  badge: Nightly
 ---
 
 Manage Vibium settings files.
 
 ## Synopsis
-
-> **Nightly only.** This command is in the nightly builds but not yet in the latest npm release. See [What's in Nightly](../nightly.md).
 
 ```
 vibium config [command]
@@ -19,8 +15,6 @@ vibium config [command]
 ### vibium config init
 
 Write a commented settings file to the Vibium config directory.
-
-> **Nightly only.** This command is in the nightly builds but not yet in the latest npm release. See [What's in Nightly](../nightly.md).
 
 ```
 vibium config init [ai|cloud|all] [flags]

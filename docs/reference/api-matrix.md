@@ -12,7 +12,7 @@ surface. An empty cell means the surface has no equivalent. The source
 is the [API spec](https://github.com/VibiumDev/vibium/blob/main/docs/reference/api.md) in the main repository, which CI checks
 against the binary and all three clients.
 
-Operations marked **(nightly)** are not in the latest release (26.8.21).
+Operations marked **(nightly)** are not in the latest release (26.11.16).
 The same data is published as [`/api.json`](/api.json). Per-language
 views: [JavaScript](../libraries/javascript/api.md),
 [Python](../libraries/python/api.md), [Java](../libraries/java/api.md).
@@ -30,7 +30,7 @@ views: [JavaScript](../libraries/javascript/api.md),
 | Listen for new page events |  |  | `browser.onPage(cb)` | `browser.on_page(cb)` | `browser.onPage(cb)` |
 | Listen for popup events |  |  | `browser.onPopup(cb)` | `browser.on_popup(cb)` | `browser.onPopup(cb)` |
 | Remove all event listeners |  |  | `browser.removeAllListeners(ev?)` | `browser.remove_all_listeners(ev?)` | `browser.removeAllListeners(ev?)` |
-| Get the default context **(nightly)** |  |  |  |  | `browser.context()` |
+| Get the default context |  |  |  |  | `browser.context()` |
 
 ## Page
 
@@ -89,18 +89,18 @@ views: [JavaScript](../libraries/javascript/api.md),
 | Capture dialog (before action) |  |  | `page.capture.dialog(fn?)` | `page.capture.dialog(fn?)` | `page.capture().dialog(action)` |
 | Get buffered console messages |  |  | `page.consoleMessages()` | `page.console_messages()` | `page.consoleMessages()` |
 | Get buffered page errors |  |  | `page.errors()` | `page.errors()` | `page.errors()` |
-| Owning browser context **(nightly)** |  |  | `page.context` | `page.context` | `page.context()` |
-| Browsing context id **(nightly)** |  |  | `page.id` | `page.id` | `page.id()` |
-| One-shot capture namespace **(nightly)** |  |  | `page.capture` | `page.capture` | `page.capture()` |
-| Keyboard input for the page **(nightly)** |  |  | `page.keyboard` | `page.keyboard` | `page.keyboard()` |
-| Mouse input for the page **(nightly)** |  |  | `page.mouse` | `page.mouse` | `page.mouse()` |
-| Touch input for the page **(nightly)** |  |  | `page.touch` | `page.touch` | `page.touch()` |
-| Clock control for the page **(nightly)** |  |  | `page.clock` | `page.clock` | `page.clock()` |
-| Deprecated alias for the wait helpers **(nightly)** |  |  | `page.waitUntil(fn, opts?)` | `page.wait_until` |  |
-| Enable console collect mode **(nightly)** |  |  | *mode of onConsole('collect')* | *mode of on_console('collect')* | `page.collectConsole()` |
-| Enable error collect mode **(nightly)** |  |  | *mode of onError('collect')* | *mode of on_error('collect')* | `page.collectErrors()` |
-| Intercept WebSockets (unsupported: throws) **(nightly)** |  |  | `page.routeWebSocket(pattern, fn)` |  |  |
-| Alias for evaluate **(nightly)** |  |  |  | `page.eval(expr)` |  |
+| Owning browser context |  |  | `page.context` | `page.context` | `page.context()` |
+| Browsing context id |  |  | `page.id` | `page.id` | `page.id()` |
+| One-shot capture namespace |  |  | `page.capture` | `page.capture` | `page.capture()` |
+| Keyboard input for the page |  |  | `page.keyboard` | `page.keyboard` | `page.keyboard()` |
+| Mouse input for the page |  |  | `page.mouse` | `page.mouse` | `page.mouse()` |
+| Touch input for the page |  |  | `page.touch` | `page.touch` | `page.touch()` |
+| Clock control for the page |  |  | `page.clock` | `page.clock` | `page.clock()` |
+| Deprecated alias for the wait helpers |  |  | `page.waitUntil(fn, opts?)` | `page.wait_until` |  |
+| Enable console collect mode |  |  | *mode of onConsole('collect')* | *mode of on_console('collect')* | `page.collectConsole()` |
+| Enable error collect mode |  |  | *mode of onError('collect')* | *mode of on_error('collect')* | `page.collectErrors()` |
+| Intercept WebSockets (unsupported: throws) |  |  | `page.routeWebSocket(pattern, fn)` |  |  |
+| Alias for evaluate |  |  |  | `page.eval(expr)` |  |
 
 ## Element
 
@@ -129,9 +129,9 @@ views: [JavaScript](../libraries/javascript/api.md),
 | Get input element value | `vibium value <sel>` | `browser_get_value` | `el.value()` | `el.value()` | `el.value()` |
 | Get element attribute | `vibium attr <sel> <name>` | `browser_get_attribute` | `el.attr(name)` | `el.attr(name)` | `el.attr(name)` |
 | Get element bounding box |  |  | `el.bounds()` | `el.bounds()` | `el.bounds()` |
-| Bounding box (Playwright-compat alias for bounds) **(nightly)** |  |  | `el.boundingBox()` | `el.bounding_box()` | `el.boundingBox()` |
-| Get attribute (alias for attr) **(nightly)** |  |  | `el.getAttribute(name)` | `el.get_attribute(name)` | `el.getAttribute(name)` |
-| Find-time snapshot of tag, text, and box **(nightly)** |  |  | `el.info` | `el.info` | `el.info()` |
+| Bounding box (Playwright-compat alias for bounds) |  |  | `el.boundingBox()` | `el.bounding_box()` | `el.boundingBox()` |
+| Get attribute (alias for attr) |  |  | `el.getAttribute(name)` | `el.get_attribute(name)` | `el.getAttribute(name)` |
+| Find-time snapshot of tag, text, and box |  |  | `el.info` | `el.info` | `el.info()` |
 | Check if element is visible | `vibium is visible <sel>` | `browser_is_visible` | `el.isVisible()` | `el.is_visible()` | `el.isVisible()` |
 | Check if element is hidden |  |  | `el.isHidden()` | `el.is_hidden()` | `el.isHidden()` |
 | Check if element is enabled | `vibium is enabled <sel>` | `browser_is_enabled` | `el.isEnabled()` | `el.is_enabled()` | `el.isEnabled()` |
@@ -157,8 +157,8 @@ views: [JavaScript](../libraries/javascript/api.md),
 | Set storage state |  | `browser_restore_storage` | `context.setStorage(state)` | `context.set_storage(state)` | `context.setStorage(state)` |
 | Clear all storage |  |  | `context.clearStorage()` | `context.clear_storage()` | `context.clearStorage()` |
 | Add an init script |  |  | `context.addInitScript(script)` | `context.add_init_script(script)` | `context.addInitScript(script)` |
-| User context id **(nightly)** |  |  | `context.id` | `context.id` | `context.id()` |
-| Recording controls for the context **(nightly)** |  |  | `context.recording` | `context.recording` | `context.recording()` |
+| User context id |  |  | `context.id` | `context.id` | `context.id()` |
+| Recording controls for the context |  |  | `context.recording` | `context.recording` | `context.recording()` |
 
 ## Keyboard
 
@@ -184,8 +184,8 @@ views: [JavaScript](../libraries/javascript/api.md),
 | Operation | CLI | MCP | JavaScript | Python | Java |
 |---|---|---|---|---|---|
 | Tap at coordinates | `vibium tap <x> <y>` | `browser_tap` | `touch.tap(x, y)` | `touch.tap(x, y)` | `touch.tap(x, y)` |
-| Swipe in a direction (up, down, left, right; from an edge or point; speed, hold) or between coordinates **(nightly)** | `vibium swipe <direction>` | `browser_swipe` | `touch.swipe(direction, opts?)` | `touch.swipe(direction, from_=, speed=, hold_ms=)` |  |
-| Long-press at coordinates **(nightly)** | `vibium long-press <x> <y>` | `browser_long_press` | `touch.longPress(x, y, durationMs?)` | `touch.long_press(x, y, duration_ms?)` |  |
+| Swipe in a direction (up, down, left, right; from an edge or point; speed, hold) or between coordinates | `vibium swipe <direction>` | `browser_swipe` | `touch.swipe(direction, opts?)` | `touch.swipe(direction, from_=, speed=, hold_ms=)` |  |
+| Long-press at coordinates | `vibium long-press <x> <y>` | `browser_long_press` | `touch.longPress(x, y, durationMs?)` | `touch.long_press(x, y, duration_ms?)` |  |
 
 ## Clock
 
@@ -287,61 +287,61 @@ views: [JavaScript](../libraries/javascript/api.md),
 | Count elements matching selector | `vibium count <sel>` | `browser_count` |  |  |  |
 | Wait for text to appear on page | `vibium wait text <text>` | `browser_wait_for_text` |  |  |  |
 | Set the download directory | `vibium download dir <path>` | `browser_download_set_dir` |  |  |  |
-| Start the background daemon **(nightly)** | `vibium daemon start` |  |  |  |  |
-| Query daemon status **(nightly)** | `vibium daemon status` |  |  |  |  |
-| Stop the background daemon **(nightly)** | `vibium daemon stop` |  |  |  |  |
-| Print the version **(nightly)** | `vibium version` |  |  |  |  |
-| Print browser and cache paths **(nightly)** | `vibium paths` |  |  |  |  |
-| Download the browser engine **(nightly)** | `vibium install` |  |  |  |  |
-| Check whether the engine is installed **(nightly)** | `vibium is-installed` |  |  |  |  |
-| Run the BiDi websocket server **(nightly)** | `vibium serve` |  |  |  |  |
-| Run the ndjson stdio transport **(nightly)** | `vibium pipe` |  |  |  |  |
-| Run the MCP server **(nightly)** | `vibium mcp` |  |  |  |  |
-| Install the agent skill **(nightly)** | `vibium add-skill` |  |  |  |  |
-| Write a starter settings file **(nightly)** | `vibium config init` |  |  |  |  |
-| Set up AI settings, agent skills, and the browser interactively **(nightly)** | `vibium setup` |  |  |  |  |
-| Generate a script that replays a recording **(nightly)** | `vibium codegen -i <zip>` |  |  |  |  |
-| Generate an Ed25519 Web Bot Auth signing key **(nightly)** | `vibium webbotauth keygen` |  |  |  |  |
-| Print the Web Bot Auth JWKS directory to publish **(nightly)** | `vibium webbotauth directory` |  |  |  |  |
-| Restore saved storage state **(nightly)** | `vibium storage restore <path>` |  |  |  |  |
-| Print all actionability checks **(nightly)** | `vibium is actionable <sel>` |  |  |  |  |
-| Find by ARIA role **(nightly)** | `vibium find role <val>` |  |  |  |  |
-| Find by visible text **(nightly)** | `vibium find text <val>` |  |  |  |  |
-| Find by label **(nightly)** | `vibium find label <val>` |  |  |  |  |
-| Find by placeholder **(nightly)** | `vibium find placeholder <val>` |  |  |  |  |
-| Find by alt text **(nightly)** | `vibium find alt <val>` |  |  |  |  |
-| Find by title attribute **(nightly)** | `vibium find title <val>` |  |  |  |  |
-| Find by test id **(nightly)** | `vibium find testid <val>` |  |  |  |  |
-| Find by XPath **(nightly)** | `vibium find xpath <val>` |  |  |  |  |
-| Find by CSS selector, explicitly **(nightly)** | `vibium find css <val>` |  |  |  |  |
-| Find by HTML tag **(nightly)** | `vibium find tag <val>` |  |  |  |  |
-| Find by description, explicitly **(nightly)** | `vibium find description <val>` |  |  |  |  |
-| Find where a reference image appears **(nightly)** | `vibium find image <path>` |  |  |  |  |
-| Diagnostic: launch the browser directly **(nightly)** | `vibium launch-test` |  |  |  |  |
-| Diagnostic: test a websocket endpoint **(nightly)** | `vibium ws-test <url>` |  |  |  |  |
-| Diagnostic: test a BiDi endpoint **(nightly)** | `vibium bidi-test <url>` |  |  |  |  |
+| Start the background daemon | `vibium daemon start` |  |  |  |  |
+| Query daemon status | `vibium daemon status` |  |  |  |  |
+| Stop the background daemon | `vibium daemon stop` |  |  |  |  |
+| Print the version | `vibium version` |  |  |  |  |
+| Print browser and cache paths | `vibium paths` |  |  |  |  |
+| Download the browser engine | `vibium install` |  |  |  |  |
+| Check whether the engine is installed | `vibium is-installed` |  |  |  |  |
+| Run the BiDi websocket server | `vibium serve` |  |  |  |  |
+| Run the ndjson stdio transport | `vibium pipe` |  |  |  |  |
+| Run the MCP server | `vibium mcp` |  |  |  |  |
+| Install the agent skill | `vibium add-skill` |  |  |  |  |
+| Write a starter settings file | `vibium config init` |  |  |  |  |
+| Set up AI settings, agent skills, and the browser interactively | `vibium setup` |  |  |  |  |
+| Generate a script that replays a recording | `vibium codegen -i <zip>` |  |  |  |  |
+| Generate an Ed25519 Web Bot Auth signing key | `vibium webbotauth keygen` |  |  |  |  |
+| Print the Web Bot Auth JWKS directory to publish | `vibium webbotauth directory` |  |  |  |  |
+| Restore saved storage state | `vibium storage restore <path>` |  |  |  |  |
+| Print all actionability checks | `vibium is actionable <sel>` |  |  |  |  |
+| Find by ARIA role | `vibium find role <val>` |  |  |  |  |
+| Find by visible text | `vibium find text <val>` |  |  |  |  |
+| Find by label | `vibium find label <val>` |  |  |  |  |
+| Find by placeholder | `vibium find placeholder <val>` |  |  |  |  |
+| Find by alt text | `vibium find alt <val>` |  |  |  |  |
+| Find by title attribute | `vibium find title <val>` |  |  |  |  |
+| Find by test id | `vibium find testid <val>` |  |  |  |  |
+| Find by XPath | `vibium find xpath <val>` |  |  |  |  |
+| Find by CSS selector, explicitly | `vibium find css <val>` |  |  |  |  |
+| Find by HTML tag | `vibium find tag <val>` |  |  |  |  |
+| Find by description, explicitly | `vibium find description <val>` |  |  |  |  |
+| Find where a reference image appears | `vibium find image <path>` |  |  |  |  |
+| Diagnostic: launch the browser directly | `vibium launch-test` |  |  |  |  |
+| Diagnostic: test a websocket endpoint | `vibium ws-test <url>` |  |  |  |  |
+| Diagnostic: test a BiDi endpoint | `vibium bidi-test <url>` |  |  |  |  |
 
 ## Run and Check
 
 | Operation | CLI | MCP | JavaScript | Python | Java |
 |---|---|---|---|---|---|
-| Independently verify the active session or a saved archive **(nightly)** | `vibium check <claim>` | `vibium_check` | `browser.check(claim, opts?)` | `browser.check(claim, record=...)` | `browser.check(claim, options?)` |
-| Independently verify a pinned page or a saved archive **(nightly)** |  |  | `page.check(claim, opts?)` | `page.check(claim, record=...)` | `page.check(claim, options?)` |
-| Check a saved archive without launching a browser **(nightly)** |  |  |  |  | `Vibium.check(claim, options)` |
-| Check browser installation and configured AI readiness **(nightly)** | `vibium ready` |  |  |  |  |
-| Require AI configuration and provider tool support **(nightly)** | `vibium ready ai` |  |  |  |  |
-| Check local browser executable files without launching **(nightly)** | `vibium ready browser` |  |  |  |  |
-| Send one phrase through the say and listen providers, without a browser **(nightly)** | `vibium ready speech` |  |  |  |  |
-| Accomplish a goal in the active browser session **(nightly)** | `vibium run <goal>` | `vibium_run` | `browser.run(goal, opts?)` | `browser.run(goal, opts?)` | `browser.run(goal, opts?)` |
-| Accomplish a goal on a pinned page **(nightly)** |  |  | `page.run(goal, opts?)` | `page.run(goal, opts?)` | `page.run(goal, opts?)` |
+| Independently verify the active session or a saved archive | `vibium check <claim>` | `vibium_check` | `browser.check(claim, opts?)` | `browser.check(claim, record=...)` | `browser.check(claim, options?)` |
+| Independently verify a pinned page or a saved archive |  |  | `page.check(claim, opts?)` | `page.check(claim, record=...)` | `page.check(claim, options?)` |
+| Check a saved archive without launching a browser |  |  |  |  | `Vibium.check(claim, options)` |
+| Check browser installation and configured AI readiness | `vibium ready` |  |  |  |  |
+| Require AI configuration and provider tool support | `vibium ready ai` |  |  |  |  |
+| Check local browser executable files without launching | `vibium ready browser` |  |  |  |  |
+| Send one phrase through the say and listen providers, without a browser | `vibium ready speech` |  |  |  |  |
+| Accomplish a goal in the active browser session | `vibium run <goal>` | `vibium_run` | `browser.run(goal, opts?)` | `browser.run(goal, opts?)` | `browser.run(goal, opts?)` |
+| Accomplish a goal on a pinned page |  |  | `page.run(goal, opts?)` | `page.run(goal, opts?)` | `page.run(goal, opts?)` |
 
 ## Say and Listen
 
 | Operation | CLI | MCP | JavaScript | Python | Java |
 |---|---|---|---|---|---|
-| Speak text into the session, this machine's speakers, or a WAV file **(nightly)** | `vibium say <text>` | `vibium_say` | `browser.say(text, opts?)` | `browser.say(text, target=...)` | `browser.say(text, options?)` |
-| Speak text into a pinned page **(nightly)** |  |  | `page.say(text, opts?)` | `page.say(text, target=...)` | `page.say(text, options?)` |
-| Hear the session, this machine's microphone, or a WAV file, and return a transcript **(nightly)** | `vibium listen` | `vibium_listen` | `browser.listen(opts?)` | `browser.listen(target=...)` | `browser.listen(options?)` |
-| Hear a pinned page and return a transcript **(nightly)** |  |  | `page.listen(opts?)` | `page.listen(target=...)` | `page.listen(options?)` |
-| Speak with no browser, into this machine's speakers or a WAV file **(nightly)** |  |  |  |  | `Vibium.say(text, options?)` |
-| Listen with no browser, to this machine's microphone or a WAV file **(nightly)** |  |  |  |  | `Vibium.listen(options?)` |
+| Speak text into the session, this machine's speakers, or a WAV file | `vibium say <text>` | `vibium_say` | `browser.say(text, opts?)` | `browser.say(text, target=...)` | `browser.say(text, options?)` |
+| Speak text into a pinned page |  |  | `page.say(text, opts?)` | `page.say(text, target=...)` | `page.say(text, options?)` |
+| Hear the session, this machine's microphone, or a WAV file, and return a transcript | `vibium listen` | `vibium_listen` | `browser.listen(opts?)` | `browser.listen(target=...)` | `browser.listen(options?)` |
+| Hear a pinned page and return a transcript |  |  | `page.listen(opts?)` | `page.listen(target=...)` | `page.listen(options?)` |
+| Speak with no browser, into this machine's speakers or a WAV file |  |  |  |  | `Vibium.say(text, options?)` |
+| Listen with no browser, to this machine's microphone or a WAV file |  |  |  |  | `Vibium.listen(options?)` |
