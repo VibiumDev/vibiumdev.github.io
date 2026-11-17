@@ -127,7 +127,7 @@ def latest_nightly_tag() -> str:
         "https://api.github.com/repos/VibiumDev/vibium/releases?per_page=15"
     )
     for release in releases:
-        if release.get("prerelease") and release["tag_name"].startswith("nightly-"):
+        if release.get("prerelease") and not release.get("draft") and release["tag_name"].startswith("nightly-"):
             return release["tag_name"]
     raise RuntimeError("no nightly release found")
 
