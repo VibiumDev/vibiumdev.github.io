@@ -6,6 +6,8 @@ editUrl: https://github.com/VibiumDev/vibium/edit/main/docs/explanation/bidi-dat
 
 <!-- Imported from docs/explanation/bidi-data-collector.md in VibiumDev/vibium by scripts/import_upstream_docs.py. Edit it there. -->
 
+> This guide was updated after the 26.11.16 release, so parts of it MAY need a nightly build. See [What's in Nightly](../nightly.md).
+
 WebDriver BiDi network events tell you *about* requests — the URL, method, headers, status code — but they don't include the actual body bytes. This is by design: cloning every request and response body would be expensive, and most automation doesn't need it.
 
 When you *do* need body data (reading POST payloads, capturing response content), BiDi provides an opt-in system: **data collectors**.
@@ -159,16 +161,23 @@ await page.route('**/api/**', async (route) => {
 ```
 
 ```python
-# Async API
-async def log_body(route):
-    body = await route.request.post_data()
+def log_body(route):
+    body = route.request["post_data"]
     print("API received:", body)  # '{"name":"Alice"}'
-    await route.continue_()
+    route.continue_()
 
-await page.route("**/api/**", log_body)
+page.route("**/api/**", log_body)
 ```
 
-In the Python sync API and in Java, the request passed to a route handler does not carry the body. Read it from `on_request` / `onRequest` or from `capture.request` instead, as shown below.
+```java
+page.route("**/api/**", route -> {
+    String body = route.request().postData();
+    System.out.println("API received: " + body);  // {"name":"Alice"}
+    route.doContinue();
+});
+```
+
+In the Python async API the handler is `async def` and reads `await route.request.post_data()`.
 
 Without a data collector, `postData()` would always return `null` — the BiDi event simply doesn't include the body.
 
@@ -233,6 +242,27 @@ await page.route('**/api/search', async (route) => {
   } else {
     route.fulfill({ status: 200, body: JSON.stringify({ results: ['item1'] }) });
   }
+});
+```
+
+```python
+import json
+
+def mock_search(route):
+    body = json.loads(route.request["post_data"])
+    if body["query"] == "empty":
+        route.fulfill(status=200, body=json.dumps({"results": []}))
+    else:
+        route.fulfill(status=200, body=json.dumps({"results": ["item1"]}))
+
+page.route("**/api/search", mock_search)
+```
+
+```java
+page.route("**/api/search", route -> {
+    String body = route.request().postData();  // {"query":"empty"}
+    String results = body.contains("\"empty\"") ? "[]" : "[\"item1\"]";
+    route.fulfill(new FulfillOptions().status(200).body("{\"results\":" + results + "}"));
 });
 ```
 

@@ -144,6 +144,8 @@ Go back
 
 `back() -> None`
 
+Navigate back in history.
+
 Example: `vibe.back()`
 
 CLI `vibium back` · MCP `browser_back`
@@ -154,6 +156,8 @@ Go forward
 
 `forward() -> None`
 
+Navigate forward in history.
+
 CLI `vibium forward` · MCP `browser_forward`
 
 **`page.reload()`**
@@ -161,6 +165,8 @@ CLI `vibium forward` · MCP `browser_forward`
 Reload page
 
 `reload() -> None`
+
+Reload the page.
 
 Example: `vibe.reload()`
 
@@ -172,6 +178,8 @@ Get current URL
 
 `url() -> str`
 
+Get the current page URL.
+
 Example: `url = vibe.url()`
 
 CLI `vibium url` · MCP `browser_get_url`
@@ -182,6 +190,8 @@ Get page title
 
 `title() -> str`
 
+Get the current page title.
+
 Example: `title = vibe.title()`
 
 CLI `vibium title` · MCP `browser_get_title`
@@ -191,6 +201,8 @@ CLI `vibium title` · MCP `browser_get_title`
 Get page HTML
 
 `content() -> str`
+
+Get the full HTML content of the page.
 
 Example: `html = vibe.content()`
 
@@ -513,6 +525,8 @@ Bring page to front
 
 `bring_to_front() -> None`
 
+Bring this page to the foreground.
+
 CLI `vibium page switch <idx>` · MCP `browser_switch_page`
 
 **`page.close()`**
@@ -520,6 +534,8 @@ CLI `vibium page switch <idx>` · MCP `browser_switch_page`
 Close the page
 
 `close() -> None`
+
+Close this page.
 
 CLI `vibium page close` · MCP `browser_close_page`
 
@@ -711,6 +727,8 @@ Browsing context id
 
 `id: str  # property`
 
+The browsing context ID for this page.
+
 **`page.capture`**
 
 One-shot capture namespace
@@ -725,11 +743,15 @@ Keyboard input for the page
 
 `keyboard: Keyboard  # property`
 
+Page-level keyboard input.
+
 **`page.mouse`**
 
 Mouse input for the page
 
 `mouse: Mouse  # property`
+
+Page-level mouse input.
 
 **`page.touch`**
 
@@ -737,11 +759,15 @@ Touch input for the page
 
 `touch: Touch  # property`
 
+Page-level touch input.
+
 **`page.clock`**
 
 Clock control for the page
 
 `clock: Clock  # property`
+
+Page-level clock control for faking timers and Date.
 
 **`page.wait_until`**
 
@@ -775,6 +801,8 @@ Click an element
 
 `click(timeout: Optional[int] = None) -> None`
 
+Click the element. Waits for the element to be visible, stable, receive events, and enabled.
+
 Example: `vibe.find(role="button", text="Submit").click()`
 
 CLI `vibium click <sel>` · MCP `browser_click`
@@ -785,6 +813,8 @@ Double-click an element
 
 `dblclick(timeout: Optional[int] = None) -> None`
 
+Double-click the element.
+
 CLI `vibium dblclick <sel>` · MCP `browser_dblclick`
 
 **`el.fill(value, timeout?)`**
@@ -792,6 +822,8 @@ CLI `vibium dblclick <sel>` · MCP `browser_dblclick`
 Fill an input field
 
 `fill(value: str, timeout: Optional[int] = None) -> None`
+
+Fill the element with text (clears existing content first). For inputs and textareas.
 
 Example: `vibe.find(label="Email").fill("user@example.com")`
 
@@ -803,6 +835,8 @@ Type text character by character
 
 `type(text: str, timeout: Optional[int] = None) -> None`
 
+Type text into the element (appends to existing content). Waits for the element to be visible, stable, receive events, enabled, and editable.
+
 Example: `vibe.find(label="Email").type("user@example.com")`
 
 CLI `vibium type <text>` · MCP `browser_type`
@@ -812,6 +846,8 @@ CLI `vibium type <text>` · MCP `browser_type`
 Press a key on focused element
 
 `press(key: str, timeout: Optional[int] = None) -> None`
+
+Press a key while the element is focused. Supports key names ("Enter", "Tab") and combos ("Control+a").
 
 Example: `vibe.find(label="Email").press("Enter")`
 
@@ -823,11 +859,15 @@ Clear an input field
 
 `clear(timeout: Optional[int] = None) -> None`
 
+Clear the element's content (select all + delete).
+
 **`el.set(value=True, timeout=...)`**
 
 Check a checkbox
 
 `set(value: bool = True, timeout: Optional[int] = None) -> None`
+
+Check a checkbox (no-op if already checked).
 
 Example: `vibe.find(css='input[type="checkbox"]').set()`
 
@@ -839,6 +879,8 @@ Uncheck a checkbox
 
 `unset(timeout: Optional[int] = None) -> None`
 
+Uncheck a checkbox (no-op if already unchecked).
+
 CLI `vibium unset <sel>` · MCP `browser_unset`
 
 **`el.select_option(val, timeout?)`**
@@ -846,6 +888,8 @@ CLI `vibium unset <sel>` · MCP `browser_unset`
 Select a dropdown option
 
 `select_option(value: str, timeout: Optional[int] = None) -> None`
+
+Select an option in a \<select\> element by value.
 
 Example: `vibe.find(label="Country").select_option("de")`
 
@@ -857,6 +901,8 @@ Hover over an element
 
 `hover(timeout: Optional[int] = None) -> None`
 
+Hover over the element (move mouse to center, no click).
+
 Example: `vibe.find(role="button", text="Menu").hover()`
 
 CLI `vibium hover <sel>` · MCP `browser_hover`
@@ -867,6 +913,8 @@ Focus an element
 
 `focus(timeout: Optional[int] = None) -> None`
 
+Focus the element.
+
 CLI `vibium focus <sel>` · MCP `browser_focus`
 
 **`el.drag_to(target, timeout?)`**
@@ -874,6 +922,8 @@ CLI `vibium focus <sel>` · MCP `browser_focus`
 Drag an element to a target
 
 `drag_to(target: Element, timeout: Optional[int] = None) -> None`
+
+Drag this element to a target element.
 
 CLI `vibium drag <sel> <x> <y>` · MCP `browser_drag`
 
@@ -883,11 +933,15 @@ Tap an element (touch)
 
 `tap(timeout: Optional[int] = None) -> None`
 
+Tap the element (touch action).
+
 **`el.scroll_into_view(timeout?)`**
 
 Scroll element into view
 
 `scroll_into_view(timeout: Optional[int] = None) -> None`
+
+Scroll the element into view.
 
 CLI `vibium scroll into-view <sel>` · MCP `browser_scroll_into_view`
 
@@ -897,11 +951,15 @@ Dispatch a DOM event
 
 `dispatch_event(event_type: str, event_init: Optional[Dict[str, Any]] = None, timeout: Optional[int] = None) -> None`
 
+Dispatch a DOM event on the element.
+
 **`el.set_files(files, timeout?)`**
 
 Set files on a file input
 
 `set_files(files: List[str], timeout: Optional[int] = None) -> None`
+
+Set files on an \<input type="file"\> element.
 
 CLI `vibium upload <sel> <paths>` · MCP `browser_upload`
 
@@ -921,6 +979,8 @@ Get element text content
 
 `text() -> str`
 
+Get the element's textContent (trimmed).
+
 Example: `heading = vibe.find(css="h1").text()`
 
 CLI `vibium text <sel>` · MCP `browser_get_text`
@@ -931,6 +991,8 @@ Get element inner text
 
 `inner_text() -> str`
 
+Get the element's innerText (rendered text only).
+
 CLI `vibium text <sel>` · MCP `browser_get_text`
 
 **`el.html()`**
@@ -939,6 +1001,8 @@ Get element outer HTML
 
 `html() -> str`
 
+Get the element's innerHTML.
+
 CLI `vibium html <sel>` · MCP `browser_get_html`
 
 **`el.value()`**
@@ -946,6 +1010,8 @@ CLI `vibium html <sel>` · MCP `browser_get_html`
 Get input element value
 
 `value() -> str`
+
+Get the element's value (for inputs, textareas, selects).
 
 Example: `email = vibe.find(label="Email").value()`
 
@@ -957,6 +1023,8 @@ Get element attribute
 
 `attr(name: str) -> Optional[str]`
 
+Get an attribute value. Short name for get_attribute().
+
 Example: `href = vibe.find(role="link", text="Next").attr("href")`
 
 CLI `vibium attr <sel> <name>` · MCP `browser_get_attribute`
@@ -966,6 +1034,8 @@ CLI `vibium attr <sel> <name>` · MCP `browser_get_attribute`
 Get element bounding box
 
 `bounds() -> BoundingBox`
+
+Get the element's bounding box. Short name for bounding_box().
 
 **`el.bounding_box()`**
 
@@ -993,6 +1063,8 @@ Check if element is visible
 
 `is_visible() -> bool`
 
+Check if the element is visible (has dimensions, not display:none/visibility:hidden/opacity:0).
+
 Example: `visible = vibe.find(role="button", text="Submit").is_visible()`
 
 CLI `vibium is visible <sel>` · MCP `browser_is_visible`
@@ -1003,11 +1075,15 @@ Check if element is hidden
 
 `is_hidden() -> bool`
 
+Check if the element is hidden (inverse of is_visible()).
+
 **`el.is_enabled()`**
 
 Check if element is enabled
 
 `is_enabled() -> bool`
+
+Check if the element is enabled (not disabled).
 
 CLI `vibium is enabled <sel>` · MCP `browser_is_enabled`
 
@@ -1017,6 +1093,8 @@ Check if element is checked
 
 `is_set() -> bool`
 
+Check if the element is checked (for checkboxes/radios).
+
 CLI `vibium is set <sel>` · MCP `browser_is_set`
 
 **`el.is_editable()`**
@@ -1025,11 +1103,15 @@ Check if element is editable
 
 `is_editable() -> bool`
 
+Check if the element is editable (not disabled and not readonly).
+
 **`el.role()`**
 
 Get element ARIA role
 
 `role() -> str`
+
+Get the element's computed ARIA role.
 
 **`el.label()`**
 
@@ -1037,11 +1119,15 @@ Get element accessible label
 
 `label() -> str`
 
+Get the element's accessible name (label).
+
 **`el.screenshot()`**
 
 Screenshot an element
 
 `screenshot() -> bytes`
+
+Take a screenshot of just this element. Returns PNG bytes.
 
 **`el.wait_until(state?, timeout?)`**
 
@@ -1215,11 +1301,15 @@ User context id
 
 `id: str  # property`
 
+The user context ID for this browser context.
+
 **`context.recording`**
 
 Recording controls for the context
 
 `recording: Recording  # property`
+
+Get the Recording for this context.
 
 ## Keyboard
 
@@ -1228,6 +1318,8 @@ Recording controls for the context
 Press a key
 
 `press(key: str) -> None`
+
+Press and release a key. Supports combos like "Control+a".
 
 Example: `vibe.keyboard.press("Enter")`
 
@@ -1239,17 +1331,23 @@ Key down
 
 `down(key: str) -> None`
 
+Press a key down (without releasing).
+
 **`keyboard.up(key)`**
 
 Key up
 
 `up(key: str) -> None`
 
+Release a key.
+
 **`keyboard.type(text)`**
 
 Type text
 
 `type(text: str) -> None`
+
+Type a string of text character by character.
 
 ## Mouse
 
@@ -1259,6 +1357,8 @@ Click at coordinates
 
 `click(x: float, y: float) -> None`
 
+Click at (x, y) coordinates.
+
 CLI `vibium mouse click <x> <y>` · MCP `browser_mouse_click`
 
 **`mouse.move(x, y, **opts)`**
@@ -1266,6 +1366,8 @@ CLI `vibium mouse click <x> <y>` · MCP `browser_mouse_click`
 Move mouse
 
 `move(x: float, y: float) -> None`
+
+Move mouse to (x, y) coordinates.
 
 CLI `vibium mouse move <x> <y>` · MCP `browser_mouse_move`
 
@@ -1275,6 +1377,8 @@ Mouse button down
 
 `down() -> None`
 
+Press mouse button down.
+
 CLI `vibium mouse down` · MCP `browser_mouse_down`
 
 **`mouse.up(**opts)`**
@@ -1282,6 +1386,8 @@ CLI `vibium mouse down` · MCP `browser_mouse_down`
 Mouse button up
 
 `up() -> None`
+
+Release mouse button.
 
 CLI `vibium mouse up` · MCP `browser_mouse_up`
 
@@ -1291,6 +1397,8 @@ Scroll mouse wheel
 
 `wheel(delta_x: float, delta_y: float) -> None`
 
+Scroll the mouse wheel at the current pointer position.
+
 ## Touch
 
 **`touch.tap(x, y)`**
@@ -1298,6 +1406,8 @@ Scroll mouse wheel
 Tap at coordinates
 
 `tap(x: float, y: float) -> None`
+
+Tap at (x, y) coordinates.
 
 CLI `vibium tap <x> <y>` · MCP `browser_tap`
 
@@ -1599,11 +1709,15 @@ Get download URL
 
 `url() -> str`
 
+The URL of the download.
+
 **`download.suggested_filename()`**
 
 Get download filename
 
 `suggested_filename() -> str`
+
+The filename suggested by the server (from Content-Disposition).
 
 **`download.path()`**
 
@@ -1621,11 +1735,15 @@ Get request URL
 
 `url() -> str`
 
+The request URL.
+
 **`request.method()`**
 
 Get HTTP method
 
 `method() -> str`
+
+The HTTP method (GET, POST, etc.).
 
 **`request.headers()`**
 
@@ -1633,17 +1751,23 @@ Get request headers
 
 `headers() -> Dict[str, str]`
 
+Request headers as a dict.
+
 **`request.request_id()`**
 
 Get BiDi request ID
 
 `request_id() -> str`
 
+The request ID (BiDi network request identifier).
+
 **`request.post_data()`**
 
 Get request body
 
 `post_data() -> Optional[str]`
+
+Request body / post data.
 
 ## Response
 
@@ -1653,11 +1777,15 @@ Get response URL
 
 `url() -> str`
 
+The response URL.
+
 **`response.status()`**
 
 Get HTTP status
 
 `status() -> int`
+
+The HTTP status code.
 
 **`response.headers()`**
 
@@ -1665,11 +1793,15 @@ Get response headers
 
 `headers() -> Dict[str, str]`
 
+Response headers as a dict.
+
 **`response.request_id()`**
 
 Get associated request ID
 
 `request_id() -> str`
+
+The request ID associated with this response.
 
 **`response.body()`**
 
@@ -1677,11 +1809,15 @@ Get response body
 
 `body() -> Optional[str]`
 
+Response body as a string. Requires a data collector (set up by on_response or capture.response).
+
 **`response.json()`**
 
 Parse response body as JSON
 
 `json() -> Any`
+
+Response body parsed as JSON. Requires a data collector (set up by on_response or capture.response).
 
 ## ConsoleMessage
 
@@ -1725,6 +1861,8 @@ Get WebSocket URL
 
 `url() -> str`
 
+Get the WebSocket URL.
+
 **`socket.on_message(fn)`**
 
 Listen for messages
@@ -1746,6 +1884,8 @@ Register handler for close. fn(code, reason).
 Check whether socket is closed
 
 `is_closed() -> bool`
+
+Check if the WebSocket is closed.
 
 ## Run and Check
 
