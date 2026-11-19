@@ -14,8 +14,8 @@ vibium version [flags]
 
 ```sh
 vibium version
-# vibium v26.8.21
+# vibium v26.11.16
 
 vibium version --json
-# {"ok":true,"result":{"name":"vibium","version":"26.8.21"}}
+# {"ok":true,"result":{"name":"vibium","version":"26.11.16"}}
 ```
